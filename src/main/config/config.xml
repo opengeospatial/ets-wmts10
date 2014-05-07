@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Add this entry to TE_BASE/config.xml (//organization/standard) -->
+<organization>
+  <name>OGC</name>
+  <standard>
+    <name>Web Map Tile Service (WMTS)</name>
+    <version>
+      <name>${spec-version}</name>
+      <suite>
+        <namespace-uri>http://www.opengis.net/wmts/1.0</namespace-uri>
+        <prefix>wmts</prefix>
+        <local-name>server.suite.base</local-name>
+        <title>WMTS ${spec-version} Conformance Test Suite</title>
+        <description>Checks WMTS implementations for conformance to OGC 07-057r7.</description>
+      </suite>
+      <revision>
+        <name>${version}</name>
+        <status>Beta</status>
+        <sources>
+          <source>${ets-code}/${spec-version}/ctl</source>
+        </sources>
+        <resources>${ets-code}/${spec-version}/resources</resources>
+        <webdir>${ets-code}/${spec-version}/site</webdir>
+        <profile>
+          <namespace-uri>http://www.opengis.net/wmts/1.0</namespace-uri>
+          <prefix>wmts</prefix>
+          <local-name>server.profile.kvp.get</local-name>
+          <title>GET binding</title>
+        </profile>
+        <profile>
+          <namespace-uri>http://www.opengis.net/wmts/1.0</namespace-uri>
+          <prefix>wmts</prefix>
+          <local-name>server.profile.kvp.post</local-name>
+          <title>POST/KVP binding</title>
+        </profile>
+        <profile>
+          <namespace-uri>http://www.opengis.net/wmts/1.0</namespace-uri>
+          <prefix>wmts</prefix>
+          <local-name>server.profile.xml.post</local-name>
+          <title>POST/XML binding</title>
+        </profile>
+        <profile>
+          <namespace-uri>http://www.opengis.net/wmts/1.0</namespace-uri>
+          <prefix>wmts</prefix>
+          <local-name>server.profile.soap.post</local-name>
+          <title>POST/SOAP binding</title>
+        </profile>
+        <profile>
+          <namespace-uri>http://www.opengis.net/wmts/1.0</namespace-uri>
+          <prefix>wmts</prefix>
+          <local-name>server.profile.restful</local-name>
+          <title>REST binding</title>
+        </profile>
+      </revision>
+    </version>
+  </standard>
+</organization>
