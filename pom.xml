@@ -31,7 +31,7 @@
     <ets-code>wmts</ets-code>
     <spec-version>1.0.0</spec-version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <teamengine.version>4.0.6-SNAPSHOT</teamengine.version>
+    <teamengine.version>4.0.5</teamengine.version>
   </properties>
 
   <build>
