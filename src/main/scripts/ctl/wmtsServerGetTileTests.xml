@@ -714,62 +714,6 @@
 	</ctl:code>	
 </ctl:test>
 
-<ctl:test name="wmts:Server.KVP.GET.GetTile.Invalid.SampleDimension.Name" type="MandatoryIfImplemented">
-	<ctl:param name="metPrerequisites">Bootstrap prerequisites test result for this test - true or false</ctl:param>
-	<ctl:param name="selected">This test was selected for execution - true or false </ctl:param>
-	<ctl:param name="tileURL">/wmts:Capabilities/ows:OperationsMetadata/ows:Operation[@name='GetTile']/ows:DCP/ows:HTTP/ows:Get/@xlink:href</ctl:param>
-	<ctl:param name="wmtsVersion">version returned in the bootstrap capabilities document, expected to be 1.0.0</ctl:param>
-	<ctl:param name="wmts.capabilities.doc">Capabilities document from test suite bootstrap.</ctl:param>
-	<ctl:param name="exceptionReportSchemaPath">full path to owsExceptionReport.xsd</ctl:param>
-	<ctl:context>wmts:main</ctl:context>
-	<ctl:assertion>
-	1.  the request entity is a valid KVP GET GetTile request with the mandatory request parameter with a value of GetTile;
-	2.  the request entity is a valid KVP GET GetTile request with the mandatory service parameter with a value of WMTS;
-	3.  the request entity is a valid KVP GET GetTile request with the mandatory Version parameter with a value of 1.0.0;
-	4.  the request entity is a valid KVP GET GetTile request with the mandatory Layer parameter with a layer identifier value equal to a &lt;Layer&gt;&lt;ows:Identifier&gt; value from the Service Metadata document;
-	5.  the request entity is a valid KVP GET GetTile request with the mandatory Style parameter with a style identifier value equal to a &lt;Layer&gt;&lt;Style&gt;&lt;owsIdentifier&gt; value for the specified Layer from the Service Metadata document;
-	6.  the request entity is a valid KVP GET GetTile request with the mandatory Format parameter parameter with a MIME type format value equal to a &lt;Layer&gt;&lt;Format&gt; value for the specified Layer from the Service Metadata document
-	7.  the request entity is a valid KVP GET GetTile request with the mandatory TileMatrixSet parameter with a TileMatrixSet identifier value equal to a &lt;Layer&gt;&lt;TileMatrixSetLink&gt;&lt;TileMatrixSet&gt; value for the specified Layer from the Service Metadata document
-	8.  the request entity is a valid KVP GET GetTile request with the mandatory TileMatrix parameter with a TileMatrix identifier value equal to a &lt;TileMatrixSet&gt;&lt;TileMatrix&gt;&lt;owsIdentifier&gt; value for the specified TileMatrixSet from the Service Metadata document;
-	9.  the request entity is a valid KVP GET GetTile request with the mandatory TileRow parameter with a TileRow index value from zero to the value of &lt;MatrixHeight&gt; minus 1 for the specified TileMatrix from the Service Metadata document;
-	10.  the request entity is a valid KVP GET GetTile request with the mandatory TileCol parameter with a TileCol index value from zero to the value of &lt;MatrixWidth&gt; minus 1 for the specified TileMatrix from the Service Metadata document;
-	11.  the request entity for a tile from a Layer with TileMatrixSetLimits with TileMatrixLimits that references the identifier of the TileMatrix for the tile specifies a TileRow index value within the TileMatrixLimits MinTileRow and MaxTileRow values.
-	12.  the request entity for a tile from a Layer with TileMatrixSetLimits with TileMatrixLimits that references the identifier of the TileMatrix for the tile specifies a TileCol index value within the TileMatrixLimits MinTileCol and MaxTileCol values.
-	13.  the request entity is a valid KVP GET GetTile request with an optional sample dimensions parameter with a name that is not specified in a &lt;Contents&gt;&lt;Layer&gt;&lt;Dimension&gt;&lt;ows:Identifier&gt; in the Service Metadata document;
-	14.  the request entity is a valid KVP GET GetTile request with an optional sample dimensions parameter with any value.
-	15.  the response entity is a schema-valid ows:Exception document.
-	16.  the response entity contains an exceptionCode attribute value of "InvalidParameterValue".
-	17.  the response entity contains a locator attribute value of the name of the sample dimension.
-	18.  the HTTP status code value is set to 400, corresponding to the message "Bad Request".</ctl:assertion>
-	<ctl:comment>Verify that when a GetTile request contains the name not defined as a sample dimension, then the server throws an exception. </ctl:comment>
-	<ctl:link>docs/wmts/1.0/WMTS 1.0 ATS.html#Server.KVP.GET.GetTile.Invalid.SampleDimension.Name</ctl:link>
-	<ctl:code>
-		<xsl:choose>
-			<xsl:when test="$metPrerequisites = 'true' ">
-				<xsl:choose>
-					<xsl:when test="$selected = 'true' ">
-						<ctl:call-function name="wmtsFunctions:KVP.GetTile.Invalid.SampleDimension.Name">
-							<ctl:with-param name="tileURL" select="$tileURL"/>
-							<ctl:with-param name="version" select="$wmtsVersion"/>
-							<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-							<ctl:with-param name="method">get</ctl:with-param>
-							<ctl:with-param name="exceptionReportSchemaPath" select="$exceptionReportSchemaPath"/>						
-						</ctl:call-function>
-					</xsl:when>
-					<xsl:otherwise>
-						<ctl:message>Server.KVP.GET.GetTile.Invalid.SampleDimension.Name not tested.</ctl:message>
-						<ctl:notTested/>
-					</xsl:otherwise>
-				</xsl:choose>
-			</xsl:when>
-			<xsl:otherwise>
-				<ctl:message>Server.KVP.GET.GetTile.Invalid.SampleDimension.Name test skipped because its prerequisites were not met.</ctl:message>
-				<ctl:skipped/>
-			</xsl:otherwise>
-		</xsl:choose>
-	</ctl:code>
-</ctl:test>
-
 <ctl:test name="wmts:Server.KVP.GET.GetTile.Invalid.SampleDimension.Value" type="MandatoryIfImplemented">
 	<ctl:param name="metPrerequisites">Bootstrap prerequisites test result for this test - true or false</ctl:param>
 	<ctl:param name="selected">This test was selected for execution - true or false </ctl:param>
@@ -1665,62 +1609,6 @@
 	</ctl:code>	
 </ctl:test>
 
-<ctl:test name="wmts:Server.KVP.POST.GetTile.Invalid.SampleDimension.Name" type="MandatoryIfImplemented">
-	<ctl:param name="metPrerequisites">Bootstrap prerequisites test result for this test - true or false</ctl:param>
-	<ctl:param name="selected">This test was selected for execution - true or false </ctl:param>
-	<ctl:param name="tileURL">/wmts:Capabilities/ows:OperationsMetadata/ows:Operation[@name='GetTile']/ows:DCP/ows:HTTP/ows:Post/@xlink:href</ctl:param>
-	<ctl:param name="wmtsVersion">version returned in the bootstrap capabilities document, expected to be 1.0.0</ctl:param>
-	<ctl:param name="wmts.capabilities.doc">Capabilities document from test suite bootstrap.</ctl:param>
-	<ctl:param name="exceptionReportSchemaPath">full path to owsExceptionReport.xsd</ctl:param>
-	<ctl:context>wmts:main</ctl:context>
-	<ctl:assertion>
-	1.  the request entity is a valid KVP POST GetTile request with the mandatory request parameter with a value of GetTile;
-	2.  the request entity is a valid KVP POST GetTile request with the mandatory service parameter with a value of WMTS;
-	3.  the request entity is a valid KVP POST GetTile request with the mandatory Version parameter with a value of 1.0.0;
-	4.  the request entity is a valid KVP POST GetTile request with the mandatory Layer parameter with a layer identifier value equal to a &lt;Layer&gt;&lt;ows:Identifier&gt; value from the Service Metadata document;
-	5.  the request entity is a valid KVP POST GetTile request with the mandatory Style parameter with a style identifier value equal to a &lt;Layer&gt;&lt;Style&gt;&lt;owsIdentifier&gt; value for the specified Layer from the Service Metadata document;
-	6.  the request entity is a valid KVP POST GetTile request with the mandatory Format parameter parameter with a MIME type format value equal to a &lt;Layer&gt;&lt;Format&gt; value for the specified Layer from the Service Metadata document
-	7.  the request entity is a valid KVP POST GetTile request with the mandatory TileMatrixSet parameter with a TileMatrixSet identifier value equal to a &lt;Layer&gt;&lt;TileMatrixSetLink&gt;&lt;TileMatrixSet&gt; value for the specified Layer from the Service Metadata document
-	8.  the request entity is a valid KVP POST GetTile request with the mandatory TileMatrix parameter with a TileMatrix identifier value equal to a &lt;TileMatrixSet&gt;&lt;TileMatrix&gt;&lt;owsIdentifier&gt; value for the specified TileMatrixSet from the Service Metadata document;
-	9.  the request entity is a valid KVP POST GetTile request with the mandatory TileRow parameter with a TileRow index value from zero to the value of &lt;MatrixHeight&gt; minus 1 for the specified TileMatrix from the Service Metadata document;
-	10.  the request entity is a valid KVP POST GetTile request with the mandatory TileCol parameter with a TileCol index value from zero to the value of &lt;MatrixWidth&gt; minus 1 for the specified TileMatrix from the Service Metadata document;
-	11.  the request entity for a tile from a Layer with TileMatrixSetLimits with TileMatrixLimits that references the identifier of the TileMatrix for the tile specifies a TileRow index value within the TileMatrixLimits MinTileRow and MaxTileRow values.
-	12.  the request entity for a tile from a Layer with TileMatrixSetLimits with TileMatrixLimits that references the identifier of the TileMatrix for the tile specifies a TileCol index value within the TileMatrixLimits MinTileCol and MaxTileCol values.
-	13.  the request entity is a valid KVP POST GetTile request with an optional sample dimensions parameter with a name that is not specified in a &lt;Contents&gt;&lt;Layer&gt;&lt;Dimension&gt;&lt;ows:Identifier&gt; in the Service Metadata document;
-	14.  the request entity is a valid KVP POST GetTile request with an optional sample dimensions parameter with any value.
-	15.  the response entity is a schema-valid ows:Exception document.
-	16.  the response entity contains an exceptionCode attribute value of "InvalidParameterValue".
-	17.  the response entity contains a locator attribute value of "SampleDimension".
-	18.  the HTTP status code value is set to 400, corresponding to the message "Bad Request".</ctl:assertion>
-	<ctl:comment>Verify that when a GetTile request contains the name not defined as a sample dimension, then the server throws an exception. </ctl:comment>
-	<ctl:link>docs/wmts/1.0/WMTS 1.0 ATS.html#Server.KVP.POST.GetTile.Invalid.SampleDimension.Name</ctl:link>
-	<ctl:code>
-		<xsl:choose>
-			<xsl:when test="$metPrerequisites = 'true' ">
-				<xsl:choose>
-					<xsl:when test="$selected = 'true' ">
-						<ctl:call-function name="wmtsFunctions:KVP.GetTile.Invalid.SampleDimension.Name">
-							<ctl:with-param name="tileURL" select="$tileURL"/>
-							<ctl:with-param name="version" select="$wmtsVersion"/>
-							<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-							<ctl:with-param name="method">post</ctl:with-param>
-							<ctl:with-param name="exceptionReportSchemaPath" select="$exceptionReportSchemaPath"/>						
-						</ctl:call-function>
-					</xsl:when>
-					<xsl:otherwise>
-						<ctl:message>Server.KVP.POST.GetTile.Invalid.SampleDimension.Name not tested.</ctl:message>
-						<ctl:notTested/>
-					</xsl:otherwise>
-				</xsl:choose>
-			</xsl:when>
-			<xsl:otherwise>
-				<ctl:message>Server.KVP.POST.GetTile.Invalid.SampleDimension.Name test skipped because its prerequisites were not met.</ctl:message>
-				<ctl:skipped/>
-			</xsl:otherwise>
-		</xsl:choose>
-	</ctl:code>
-</ctl:test>
-
 <ctl:test name="wmts:Server.KVP.POST.GetTile.Invalid.SampleDimension.Value" type="MandatoryIfImplemented">
 	<ctl:param name="metPrerequisites">Bootstrap prerequisites test result for this test - true or false</ctl:param>
 	<ctl:param name="selected">This test was selected for execution - true or false </ctl:param>
@@ -2606,61 +2494,6 @@
 	</ctl:code>	
 </ctl:test>
 
-<ctl:test name="wmts:Server.XML.POST.GetTile.Invalid.SampleDimension.Name" type="MandatoryIfImplemented">
-	<ctl:param name="metPrerequisites">Bootstrap prerequisites test result for this test - true or false</ctl:param>
-	<ctl:param name="selected">This test was selected for execution - true or false </ctl:param>
-	<ctl:param name="tileURL">/wmts:Capabilities/ows:OperationsMetadata/ows:Operation[@name='GetTile']/ows:DCP/ows:HTTP/ows:Post/@xlink:href</ctl:param>
-	<ctl:param name="wmtsVersion">version returned in the bootstrap capabilities document, expected to be 1.0.0</ctl:param>
-	<ctl:param name="wmts.capabilities.doc">Capabilities document from test suite bootstrap.</ctl:param>
-	<ctl:param name="exceptionReportSchemaPath">full path to owsExceptionReport.xsd</ctl:param>
-	<ctl:context>wmts:main</ctl:context>
-	<ctl:assertion>
-	1.  the request entity is a valid XML POST GetTile request with the mandatory request parameter with a value of GetTile;
-	2.  the request entity is a valid XML POST GetTile request with the mandatory service parameter with a value of WMTS;
-	3.  the request entity is a valid XML POST GetTile request with the mandatory Version parameter with a value of 1.0.0;
-	4.  the request entity is a valid XML POST GetTile request with the mandatory Layer parameter with a layer identifier value equal to a &lt;Layer&gt;&lt;ows:Identifier&gt; value from the Service Metadata document;
-	5.  the request entity is a valid XML POST GetTile request with the mandatory Style parameter with a style identifier value equal to a &lt;Layer&gt;&lt;Style&gt;&lt;owsIdentifier&gt; value for the specified Layer from the Service Metadata document;
-	6.  the request entity is a valid XML POST GetTile request with the mandatory Format parameter parameter with a MIME type format value equal to a &lt;Layer&gt;&lt;Format&gt; value for the specified Layer from the Service Metadata document
-	7.  the request entity is a valid XML POST GetTile request with the mandatory TileMatrixSet parameter with a TileMatrixSet identifier value equal to a &lt;Layer&gt;&lt;TileMatrixSetLink&gt;&lt;TileMatrixSet&gt; value for the specified Layer from the Service Metadata document
-	8.  the request entity is a valid XML POST GetTile request with the mandatory TileMatrix parameter with a TileMatrix identifier value equal to a &lt;TileMatrixSet&gt;&lt;TileMatrix&gt;&lt;owsIdentifier&gt; value for the specified TileMatrixSet from the Service Metadata document;
-	9.  the request entity is a valid XML POST GetTile request with the mandatory TileRow parameter with a TileRow index value from zero to the value of &lt;MatrixHeight&gt; minus 1 for the specified TileMatrix from the Service Metadata document;
-	10.  the request entity is a valid XML POST GetTile request with the mandatory TileCol parameter with a TileCol index value from zero to the value of &lt;MatrixWidth&gt; minus 1 for the specified TileMatrix from the Service Metadata document;
-	11.  the request entity for a tile from a Layer with TileMatrixSetLimits with TileMatrixLimits that references the identifier of the TileMatrix for the tile specifies a TileRow index value within the TileMatrixLimits MinTileRow and MaxTileRow values.
-	12.  the request entity for a tile from a Layer with TileMatrixSetLimits with TileMatrixLimits that references the identifier of the TileMatrix for the tile specifies a TileCol index value within the TileMatrixLimits MinTileCol and MaxTileCol values.
-	13.  the request entity is a valid XML POST GetTile request with an optional sample dimensions parameter with a name that is not specified in a &lt;Contents&gt;&lt;Layer&gt;&lt;Dimension&gt;&lt;ows:Identifier&gt; in the Service Metadata document;
-	14.  the request entity is a valid XML POST GetTile request with an optional sample dimensions parameter with any value.
-	15.  the response entity is a schema-valid ows:Exception document.
-	16.  the response entity contains an exceptionCode attribute value of "InvalidParameterValue".
-	17.  the response entity contains a locator attribute value of "SampleDimension".
-	18.  the HTTP status code value is set to 400, corresponding to the message "Bad Request".</ctl:assertion>
-	<ctl:comment>Verify that when a GetTile request contains the name not defined as a sample dimension, then the server throws an exception. </ctl:comment>
-	<ctl:link>docs/wmts/1.0/WMTS 1.0 ATS.html#Server.XML.POST.GetTile.Invalid.SampleDimension.Name</ctl:link>
-	<ctl:code>
-		<xsl:choose>
-			<xsl:when test="$metPrerequisites = 'true' ">
-				<xsl:choose>
-					<xsl:when test="$selected = 'true' ">
-						<ctl:call-function name="wmtsFunctions:XML.GetTile.Invalid.SampleDimension.Name">
-							<ctl:with-param name="tileURL" select="$tileURL"/>
-							<ctl:with-param name="version" select="$wmtsVersion"/>
-							<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-							<ctl:with-param name="exceptionReportSchemaPath" select="$exceptionReportSchemaPath"/>						
-						</ctl:call-function>
-					</xsl:when>
-					<xsl:otherwise>
-						<ctl:message>Server.XML.POST.GetTile.Invalid.SampleDimension.Name not tested.</ctl:message>
-						<ctl:notTested/>
-					</xsl:otherwise>
-				</xsl:choose>
-			</xsl:when>
-			<xsl:otherwise>
-				<ctl:message>Server.XML.POST.GetTile.Invalid.SampleDimension.Name test skipped because its prerequisites were not met.</ctl:message>
-				<ctl:skipped/>
-			</xsl:otherwise>
-		</xsl:choose>
-	</ctl:code>
-</ctl:test>
-
 <ctl:test name="wmts:Server.XML.POST.GetTile.Invalid.SampleDimension.Value" type="MandatoryIfImplemented">
 	<ctl:param name="metPrerequisites">Bootstrap prerequisites test result for this test - true or false</ctl:param>
 	<ctl:param name="selected">This test was selected for execution - true or false </ctl:param>
@@ -3537,61 +3370,6 @@
 			</xsl:otherwise>
 		</xsl:choose>	
 	</ctl:code>	
-</ctl:test>
-
-<ctl:test name="wmts:Server.SOAP.POST.GetTile.Invalid.SampleDimension.Name" type="MandatoryIfImplemented">
-	<ctl:param name="metPrerequisites">Bootstrap prerequisites test result for this test - true or false</ctl:param>
-	<ctl:param name="selected">This test was selected for execution - true or false </ctl:param>
-	<ctl:param name="tileURL">/wmts:Capabilities/ows:OperationsMetadata/ows:Operation[@name='GetTile']/ows:DCP/ows:HTTP/ows:Post/@xlink:href</ctl:param>
-	<ctl:param name="wmtsVersion">version returned in the bootstrap capabilities document, expected to be 1.0.0</ctl:param>
-	<ctl:param name="wmts.capabilities.doc">Capabilities document from test suite bootstrap.</ctl:param>
-	<ctl:param name="exceptionReportSchemaPath">full path to owsExceptionReport.xsd</ctl:param>
-	<ctl:context>wmts:main</ctl:context>
-	<ctl:assertion>
-	1.  the request entity is a valid SOAP POST GetTile request with the mandatory request parameter with a value of GetTile;
-	2.  the request entity is a valid SOAP POST GetTile request with the mandatory service parameter with a value of WMTS;
-	3.  the request entity is a valid SOAP POST GetTile request with the mandatory Version parameter with a value of 1.0.0;
-	4.  the request entity is a valid SOAP POST GetTile request with the mandatory Layer parameter with a layer identifier value equal to a &lt;Layer&gt;&lt;ows:Identifier&gt; value from the Service Metadata document;
-	5.  the request entity is a valid SOAP POST GetTile request with the mandatory Style parameter with a style identifier value equal to a &lt;Layer&gt;&lt;Style&gt;&lt;owsIdentifier&gt; value for the specified Layer from the Service Metadata document;
-	6. the request entity is a valid SOAP POST GetTile request with the mandatory Format parameter parameter with a MIME type format value equal to a &lt;Layer&gt;&lt;Format&gt; value for the specified Layer from the Service Metadata document
-	7.  the request entity is a valid SOAP POST GetTile request with the mandatory TileMatrixSet parameter with a TileMatrixSet identifier value equal to a &lt;Layer&gt;&lt;TileMatrixSetLink&gt;&lt;TileMatrixSet&gt; value for the specified Layer from the Service Metadata document
-	8.  the request entity is a valid SOAP POST GetTile request with the mandatory TileMatrix parameter with a TileMatrix identifier value equal to a &lt;TileMatrixSet&gt;&lt;TileMatrix&gt;&lt;owsIdentifier&gt; value for the specified TileMatrixSet from the Service Metadata document;
-	9.  the request entity is a valid SOAP POST GetTile request with the mandatory TileRow parameter with a TileRow index value from zero to the value of &lt;MatrixHeight&gt; minus 1 for the specified TileMatrix from the Service Metadata document;
-	10.  the request entity is a valid SOAP POST GetTile request with the mandatory TileCol parameter with a TileCol index value from zero to the value of &lt;MatrixWidth&gt; minus 1 for the specified TileMatrix from the Service Metadata document;
-	11.  the request entity for a tile from a Layer with TileMatrixSetLimits with TileMatrixLimits that references the identifier of the TileMatrix for the tile specifies a TileRow index value within the TileMatrixLimits MinTileRow and MaxTileRow values.
-	12.  the request entity for a tile from a Layer with TileMatrixSetLimits with TileMatrixLimits that references the identifier of the TileMatrix for the tile specifies a TileCol index value within the TileMatrixLimits MinTileCol and MaxTileCol values.
-	13.  the request entity is a valid SOAP POST GetTile request with an optional sample dimensions parameter with a name that is not specified in a &lt;Contents&gt;&lt;Layer&gt;&lt;Dimension&gt;&lt;ows:Identifier&gt; in the Service Metadata document;
-	14.  the request entity is a valid SOAP POST GetTile request with an optional sample dimensions parameter with any value.
-	15.  the response entity is a a SOAP 1.2 response message that contains a schema-valid ows:Exception document in the &lt;soap:Detail&gt; element.
-	16.  the response entity contains an exceptionCode attribute value of "InvalidParameterValue".
-	17.  the response entity contains a locator attribute value of "SampleDimension".
-	18.  the HTTP status code value is set to 400, corresponding to the message "Bad Request".</ctl:assertion>
-	<ctl:comment>Verify that when a GetTile request contains the name not defined as a sample dimension, then the server throws an exception. </ctl:comment>
-	<ctl:link>docs/wmts/1.0/WMTS 1.0 ATS.html#Server.SOAP.POST.GetTile.Invalid.SampleDimension.Name</ctl:link>
-	<ctl:code>
-		<xsl:choose>
-			<xsl:when test="$metPrerequisites = 'true' ">
-				<xsl:choose>
-					<xsl:when test="$selected = 'true' ">
-						<ctl:call-function name="wmtsFunctions:SOAP.GetTile.Invalid.SampleDimension.Name">
-							<ctl:with-param name="tileURL" select="$tileURL"/>
-							<ctl:with-param name="version" select="$wmtsVersion"/>
-							<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-							<ctl:with-param name="exceptionReportSchemaPath" select="$exceptionReportSchemaPath"/>						
-						</ctl:call-function>
-					</xsl:when>
-					<xsl:otherwise>
-						<ctl:message>Server.SOAP.POST.GetTile.Invalid.SampleDimension.Name not tested.</ctl:message>
-						<ctl:notTested/>
-					</xsl:otherwise>
-				</xsl:choose>
-			</xsl:when>
-			<xsl:otherwise>
-				<ctl:message>Server.SOAP.POST.GetTile.Invalid.SampleDimension.Name test skipped because its prerequisites were not met.</ctl:message>
-				<ctl:skipped/>
-			</xsl:otherwise>
-		</xsl:choose>
-	</ctl:code>
 </ctl:test>
 
 <ctl:test name="wmts:Server.SOAP.POST.GetTile.Invalid.SampleDimension.Value" type="MandatoryIfImplemented">
