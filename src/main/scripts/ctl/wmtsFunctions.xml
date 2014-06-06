@@ -12,8 +12,8 @@ xmlns:xlink="http://www.w3.org/1999/xlink"
 xmlns:xml="http://www.w3.org/XML/1998/namespace" 
 xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
 xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-xmlns:wmts="http://www.opengis.net/wmts/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:wmts="http://www.opengis.net/wmts/1.0"
 xmlns:ctlFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/ctlFunctions.xml" 
 xmlns:owsFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/owsFunctions.xml" 
 xmlns:wmtsFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wmtsFunctions.xml" 
@@ -3936,22 +3936,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 									<ctl:with-param name="capabilitiesURL" select="$kvpGetCapabilitiesURL"/>
 								</ctl:call-test>
 							</xsl:when>
-	
-							<xsl:when test="$testName = 'Server.KVP.GET.GetCapabilities.Response.No.Layers.OtherSource' " >
-								<ctl:call-test name="wmts:Server.KVP.GET.GetCapabilities.Response.No.Layers.OtherSource">
-									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
-									<ctl:with-param name="selected" select="$testSelected"/>
-									<ctl:with-param name="capabilitiesURL" select="$kvpGetCapabilitiesURL"/>
-								</ctl:call-test>
-							</xsl:when>
-
-							<xsl:when test="$testName = 'Server.KVP.GET.GetCapabilities.Response.Style.Identifiers.Unique' " >
-								<ctl:call-test name="wmts:Server.KVP.GET.GetCapabilities.Response.Style.Identifiers.Unique">
-									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
-									<ctl:with-param name="selected" select="$testSelected"/>
-									<ctl:with-param name="capabilitiesURL" select="$kvpGetCapabilitiesURL"/>
-								</ctl:call-test>
-							</xsl:when>
 
 							<xsl:when test="$testName = 'Server.KVP.GET.GetCapabilities.Response.Layer.LegendURL.Correct.Resource' " >
 								<ctl:call-test name="wmts:Server.KVP.GET.GetCapabilities.Response.Layer.LegendURL.Correct.Resource">
@@ -3971,14 +3955,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 
 							<xsl:when test="$testName = 'Server.KVP.GET.GetCapabilities.Response.Layer.LegendURL.Correct.Size' " >
 								<ctl:call-test name="wmts:Server.KVP.GET.GetCapabilities.Response.Layer.LegendURL.Correct.Size">
-									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
-									<ctl:with-param name="selected" select="$testSelected"/>
-									<ctl:with-param name="capabilitiesURL" select="$kvpGetCapabilitiesURL"/>
-								</ctl:call-test>
-							</xsl:when>
-
-							<xsl:when test="$testName = 'Server.KVP.GET.GetCapabilities.Response.Dimension.Identifiers.Unique' " >
-								<ctl:call-test name="wmts:Server.KVP.GET.GetCapabilities.Response.Dimension.Identifiers.Unique">
 									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
 									<ctl:with-param name="selected" select="$testSelected"/>
 									<ctl:with-param name="capabilitiesURL" select="$kvpGetCapabilitiesURL"/>
@@ -4096,28 +4072,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 									<ctl:with-param name="exceptionReportSchemaPath" select="$bootstrap/exceptionReportSchemaPath"/>
 								</ctl:call-test>
 							</xsl:when>
-
-							<xsl:when test="$testName = 'Server.KVP.GET.GetTile.Invalid.Tile.Row.No.TileMatrixSetLimits' ">
-								<ctl:call-test name="wmts:Server.KVP.GET.GetTile.Invalid.Tile.Row.No.TileMatrixSetLimits">
-									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/>
-									<ctl:with-param name="selected" select="$testSelected"/>
-									<ctl:with-param name="tileURL" select="$kvpGetTileURL"/>
-									<ctl:with-param name="wmtsVersion" select="$bootstrap/wmtsVersion"/>
-									<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-									<ctl:with-param name="exceptionReportSchemaPath" select="$bootstrap/exceptionReportSchemaPath"/>
-								</ctl:call-test>
-							</xsl:when>
-		
-							<xsl:when test="$testName = 'Server.KVP.GET.GetTile.Invalid.Tile.Col.No.TileMatrixSetLimits' ">
-								<ctl:call-test name="wmts:Server.KVP.GET.GetTile.Invalid.Tile.Col.No.TileMatrixSetLimits">
-									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/>
-									<ctl:with-param name="selected" select="$testSelected"/>
-									<ctl:with-param name="tileURL" select="$kvpGetTileURL"/>
-									<ctl:with-param name="wmtsVersion" select="$bootstrap/wmtsVersion"/>
-									<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-									<ctl:with-param name="exceptionReportSchemaPath" select="$bootstrap/exceptionReportSchemaPath"/>
-								</ctl:call-test>
-							</xsl:when>
 					
 							<xsl:when test="$testName = 'Server.KVP.GET.GetTile.Invalid.Tile.Row.TileMatrixSetLimits' ">
 								<ctl:call-test name="wmts:Server.KVP.GET.GetTile.Invalid.Tile.Row.TileMatrixSetLimits">
@@ -4163,17 +4117,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 								</ctl:call-test>
 							</xsl:when>
 
-							<xsl:when test="$testName = 'Server.KVP.GET.GetTile.Invalid.SampleDimension.Name' ">
-								<ctl:call-test name="wmts:Server.KVP.GET.GetTile.Invalid.SampleDimension.Name">
-									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/>
-									<ctl:with-param name="selected" select="$testSelected"/>
-									<ctl:with-param name="tileURL" select="$kvpGetTileURL"/>
-									<ctl:with-param name="wmtsVersion" select="$bootstrap/wmtsVersion"/>
-									<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-									<ctl:with-param name="exceptionReportSchemaPath" select="$bootstrap/exceptionReportSchemaPath"/>
-								</ctl:call-test>
-							</xsl:when>
-						
 							<xsl:when test="$testName = 'Server.KVP.GET.GetTile.Invalid.SampleDimension.Value' ">
 								<ctl:call-test name="wmts:Server.KVP.GET.GetTile.Invalid.SampleDimension.Value">
 									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/>
@@ -4310,28 +4253,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 								</ctl:call-test>
 							</xsl:when>
 
-							<xsl:when test="$testName = 'Server.KVP.GET.GetFeatureInfo.Invalid.Tile.Row.No.TileMatrixSetLimits' " >
-								<ctl:call-test name="wmts:Server.KVP.GET.GetFeatureInfo.Invalid.Tile.Row.No.TileMatrixSetLimits">
-									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
-									<ctl:with-param name="selected" select="$testSelected"/>
-									<ctl:with-param name="featureInfoURL" select="$kvpGetFeatureInfoURL"/>
-									<ctl:with-param name="wmtsVersion" select="$bootstrap/wmtsVersion"/>
-									<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-									<ctl:with-param name="exceptionReportSchemaPath" select="$bootstrap/exceptionReportSchemaPath"/>
-								</ctl:call-test>
-							</xsl:when>
-				
-		<xsl:when test="$testName = 'Server.KVP.GET.GetFeatureInfo.Invalid.Tile.Col.No.TileMatrixSetLimits' " >
-								<ctl:call-test name="wmts:Server.KVP.GET.GetFeatureInfo.Invalid.Tile.Col.No.TileMatrixSetLimits">
-									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
-									<ctl:with-param name="selected" select="$testSelected"/>
-									<ctl:with-param name="featureInfoURL" select="$kvpGetFeatureInfoURL"/>
-									<ctl:with-param name="wmtsVersion" select="$bootstrap/wmtsVersion"/>
-									<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-									<ctl:with-param name="exceptionReportSchemaPath" select="$bootstrap/exceptionReportSchemaPath"/>
-								</ctl:call-test>
-							</xsl:when>
-	
 							<xsl:when test="$testName = 'Server.KVP.GET.GetFeatureInfo.Invalid.Tile.Row.TileMatrixSetLimits' " >
 								<ctl:call-test name="wmts:Server.KVP.GET.GetFeatureInfo.Invalid.Tile.Row.TileMatrixSetLimits">
 									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
@@ -4367,17 +4288,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 
 							<xsl:when test="$testName = 'Server.KVP.GET.GetFeatureInfo.Missing.Optional' ">
 								<ctl:call-test name="wmts:Server.KVP.GET.GetFeatureInfo.Missing.Optional">
-									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
-									<ctl:with-param name="selected" select="$testSelected"/>
-									<ctl:with-param name="featureInfoURL" select="$kvpGetFeatureInfoURL"/>
-									<ctl:with-param name="wmtsVersion" select="$bootstrap/wmtsVersion"/>
-									<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-									<ctl:with-param name="exceptionReportSchemaPath" select="$bootstrap/exceptionReportSchemaPath"/>
-								</ctl:call-test>
-							</xsl:when>
-
-							<xsl:when test="$testName = 'Server.KVP.GET.GetFeatureInfo.Invalid.SampleDimension.Name' " >
-								<ctl:call-test name="wmts:Server.KVP.GET.GetFeatureInfo.Invalid.SampleDimension.Name">
 									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
 									<ctl:with-param name="selected" select="$testSelected"/>
 									<ctl:with-param name="featureInfoURL" select="$kvpGetFeatureInfoURL"/>
@@ -4737,22 +4647,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 								</ctl:call-test>
 							</xsl:when>
 
-							<xsl:when test="$testName = 'Server.KVP.POST.GetCapabilities.Response.No.Layers.OtherSource' " >
-								<ctl:call-test name="wmts:Server.KVP.POST.GetCapabilities.Response.No.Layers.OtherSource">
-									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
-									<ctl:with-param name="selected" select="$testSelected"/>
-									<ctl:with-param name="capabilitiesURL" select="$postGetCapabilitiesURL"/>
-								</ctl:call-test>
-							</xsl:when>
-
-							<xsl:when test="$testName = 'Server.KVP.POST.GetCapabilities.Response.Style.Identifiers.Unique' " >
-								<ctl:call-test name="wmts:Server.KVP.POST.GetCapabilities.Response.Style.Identifiers.Unique">
-									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
-									<ctl:with-param name="selected" select="$testSelected"/>
-									<ctl:with-param name="capabilitiesURL" select="$postGetCapabilitiesURL"/>
-								</ctl:call-test>
-							</xsl:when>
-
 							<xsl:when test="$testName = 'Server.KVP.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Resource' " >
 								<ctl:call-test name="wmts:Server.KVP.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Resource">
 									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
@@ -4771,14 +4665,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 
 							<xsl:when test="$testName = 'Server.KVP.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Size' " >
 								<ctl:call-test name="wmts:Server.KVP.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Size">
-									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
-									<ctl:with-param name="selected" select="$testSelected"/>
-									<ctl:with-param name="capabilitiesURL" select="$postGetCapabilitiesURL"/>
-								</ctl:call-test>
-							</xsl:when>
-
-							<xsl:when test="$testName = 'Server.KVP.POST.GetCapabilities.Response.Dimension.Identifiers.Unique' " >
-								<ctl:call-test name="wmts:Server.KVP.POST.GetCapabilities.Response.Dimension.Identifiers.Unique">
 									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
 									<ctl:with-param name="selected" select="$testSelected"/>
 									<ctl:with-param name="capabilitiesURL" select="$postGetCapabilitiesURL"/>
@@ -4897,28 +4783,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 								</ctl:call-test>
 							</xsl:when>
 
-							<xsl:when test="$testName = 'Server.KVP.POST.GetTile.Invalid.Tile.Row.No.TileMatrixSetLimits' ">
-								<ctl:call-test name="wmts:Server.KVP.POST.GetTile.Invalid.Tile.Row.No.TileMatrixSetLimits">
-									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/>
-									<ctl:with-param name="selected" select="$testSelected"/>
-									<ctl:with-param name="tileURL" select="$postGetTileURL"/>
-									<ctl:with-param name="wmtsVersion" select="$bootstrap/wmtsVersion"/>
-									<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-									<ctl:with-param name="exceptionReportSchemaPath" select="$bootstrap/exceptionReportSchemaPath"/>
-								</ctl:call-test>
-							</xsl:when>
-
-							<xsl:when test="$testName = 'Server.KVP.POST.GetTile.Invalid.Tile.Col.No.TileMatrixSetLimits' ">
-								<ctl:call-test name="wmts:Server.KVP.POST.GetTile.Invalid.Tile.Col.No.TileMatrixSetLimits">
-									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/>
-									<ctl:with-param name="selected" select="$testSelected"/>
-									<ctl:with-param name="tileURL" select="$postGetTileURL"/>
-									<ctl:with-param name="wmtsVersion" select="$bootstrap/wmtsVersion"/>
-									<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-									<ctl:with-param name="exceptionReportSchemaPath" select="$bootstrap/exceptionReportSchemaPath"/>
-								</ctl:call-test>
-							</xsl:when>
-			
 							<xsl:when test="$testName = 'Server.KVP.POST.GetTile.Invalid.Tile.Row.TileMatrixSetLimits' ">
 								<ctl:call-test name="wmts:Server.KVP.POST.GetTile.Invalid.Tile.Row.TileMatrixSetLimits">
 									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/>
@@ -4963,17 +4827,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 								</ctl:call-test>
 							</xsl:when>
 
-							<xsl:when test="$testName = 'Server.KVP.POST.GetTile.Invalid.SampleDimension.Name' ">
-								<ctl:call-test name="wmts:Server.KVP.POST.GetTile.Invalid.SampleDimension.Name">
-									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/>
-									<ctl:with-param name="selected" select="$testSelected"/>
-									<ctl:with-param name="tileURL" select="$postGetTileURL"/>
-									<ctl:with-param name="wmtsVersion" select="$bootstrap/wmtsVersion"/>
-									<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-									<ctl:with-param name="exceptionReportSchemaPath" select="$bootstrap/exceptionReportSchemaPath"/>
-								</ctl:call-test>
-							</xsl:when>
-					
 							<xsl:when test="$testName = 'Server.KVP.POST.GetTile.Invalid.SampleDimension.Value' ">
 								<ctl:call-test name="wmts:Server.KVP.POST.GetTile.Invalid.SampleDimension.Value">
 									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/>
@@ -5110,28 +4963,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 								</ctl:call-test>
 							</xsl:when>
 
-							<xsl:when test="$testName = 'Server.KVP.POST.GetFeatureInfo.Invalid.Tile.Row.No.TileMatrixSetLimits' " >
-								<ctl:call-test name="wmts:Server.KVP.POST.GetFeatureInfo.Invalid.Tile.Row.No.TileMatrixSetLimits">
-									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
-									<ctl:with-param name="selected" select="$testSelected"/>
-									<ctl:with-param name="featureInfoURL" select="$postGetFeatureInfoURL"/>
-									<ctl:with-param name="wmtsVersion" select="$bootstrap/wmtsVersion"/>
-									<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-									<ctl:with-param name="exceptionReportSchemaPath" select="$bootstrap/exceptionReportSchemaPath"/>
-								</ctl:call-test>
-							</xsl:when>
-
-							<xsl:when test="$testName = 'Server.KVP.POST.GetFeatureInfo.Invalid.Tile.Col.No.TileMatrixSetLimits' " >
-								<ctl:call-test name="wmts:Server.KVP.POST.GetFeatureInfo.Invalid.Tile.Col.No.TileMatrixSetLimits">
-									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
-									<ctl:with-param name="selected" select="$testSelected"/>
-									<ctl:with-param name="featureInfoURL" select="$postGetFeatureInfoURL"/>
-									<ctl:with-param name="wmtsVersion" select="$bootstrap/wmtsVersion"/>
-									<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-									<ctl:with-param name="exceptionReportSchemaPath" select="$bootstrap/exceptionReportSchemaPath"/>
-								</ctl:call-test>
-							</xsl:when>
-
 							<xsl:when test="$testName = 'Server.KVP.POST.GetFeatureInfo.Invalid.Tile.Row.TileMatrixSetLimits' " >
 								<ctl:call-test name="wmts:Server.KVP.POST.GetFeatureInfo.Invalid.Tile.Row.TileMatrixSetLimits">
 									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
@@ -5167,17 +4998,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 
 							<xsl:when test="$testName = 'Server.KVP.POST.GetFeatureInfo.Missing.Optional' ">
 								<ctl:call-test name="wmts:Server.KVP.POST.GetFeatureInfo.Missing.Optional">
-									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
-									<ctl:with-param name="selected" select="$testSelected"/>
-									<ctl:with-param name="featureInfoURL" select="$postGetFeatureInfoURL"/>
-									<ctl:with-param name="wmtsVersion" select="$bootstrap/wmtsVersion"/>
-									<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-									<ctl:with-param name="exceptionReportSchemaPath" select="$bootstrap/exceptionReportSchemaPath"/>
-								</ctl:call-test>
-							</xsl:when>
-
-							<xsl:when test="$testName = 'Server.KVP.POST.GetFeatureInfo.Invalid.SampleDimension.Name' " >
-								<ctl:call-test name="wmts:Server.KVP.POST.GetFeatureInfo.Invalid.SampleDimension.Name">
 									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
 									<ctl:with-param name="selected" select="$testSelected"/>
 									<ctl:with-param name="featureInfoURL" select="$postGetFeatureInfoURL"/>
@@ -5527,22 +5347,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 								</ctl:call-test>
 							</xsl:when>
 
-							<xsl:when test="$testName = 'Server.XML.POST.GetCapabilities.Response.No.Layers.OtherSource' " >
-								<ctl:call-test name="wmts:Server.XML.POST.GetCapabilities.Response.No.Layers.OtherSource">
-									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
-									<ctl:with-param name="selected" select="$testSelected"/>
-									<ctl:with-param name="capabilitiesURL" select="$postGetCapabilitiesURL"/>
-								</ctl:call-test>
-							</xsl:when>
-
-							<xsl:when test="$testName = 'Server.XML.POST.GetCapabilities.Response.Style.Identifiers.Unique' " >
-								<ctl:call-test name="wmts:Server.XML.POST.GetCapabilities.Response.Style.Identifiers.Unique">
-									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
-									<ctl:with-param name="selected" select="$testSelected"/>
-									<ctl:with-param name="capabilitiesURL" select="$postGetCapabilitiesURL"/>
-								</ctl:call-test>
-							</xsl:when>
-
 							<xsl:when test="$testName = 'Server.XML.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Resource' " >
 								<ctl:call-test name="wmts:Server.XML.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Resource">
 									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
@@ -5561,14 +5365,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 
 							<xsl:when test="$testName = 'Server.XML.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Size' " >
 								<ctl:call-test name="wmts:Server.XML.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Size">
-									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
-									<ctl:with-param name="selected" select="$testSelected"/>
-									<ctl:with-param name="capabilitiesURL" select="$postGetCapabilitiesURL"/>
-								</ctl:call-test>
-							</xsl:when>
-
-							<xsl:when test="$testName = 'Server.XML.POST.GetCapabilities.Response.Dimension.Identifiers.Unique' " >
-								<ctl:call-test name="wmts:Server.XML.POST.GetCapabilities.Response.Dimension.Identifiers.Unique">
 									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
 									<ctl:with-param name="selected" select="$testSelected"/>
 									<ctl:with-param name="capabilitiesURL" select="$postGetCapabilitiesURL"/>
@@ -5687,28 +5483,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 								</ctl:call-test>
 							</xsl:when>
 
-							<xsl:when test="$testName = 'Server.XML.POST.GetTile.Invalid.Tile.Row.No.TileMatrixSetLimits' " >
-								<ctl:call-test name="wmts:Server.XML.POST.GetTile.Invalid.Tile.Row.No.TileMatrixSetLimits">
-									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
-									<ctl:with-param name="selected" select="$testSelected"/>
-									<ctl:with-param name="tileURL" select="$postGetTileURL"/>
-									<ctl:with-param name="wmtsVersion" select="$bootstrap/wmtsVersion"/>
-									<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-									<ctl:with-param name="exceptionReportSchemaPath" select="$bootstrap/exceptionReportSchemaPath"/>
-								</ctl:call-test>
-							</xsl:when>
-
-							<xsl:when test="$testName = 'Server.XML.POST.GetTile.Invalid.Tile.Col.No.TileMatrixSetLimits' " >
-								<ctl:call-test name="wmts:Server.XML.POST.GetTile.Invalid.Tile.Col.No.TileMatrixSetLimits">
-									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
-									<ctl:with-param name="selected" select="$testSelected"/>
-									<ctl:with-param name="tileURL" select="$postGetTileURL"/>
-									<ctl:with-param name="wmtsVersion" select="$bootstrap/wmtsVersion"/>
-									<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-									<ctl:with-param name="exceptionReportSchemaPath" select="$bootstrap/exceptionReportSchemaPath"/>
-								</ctl:call-test>
-							</xsl:when>
-
 							<xsl:when test="$testName = 'Server.XML.POST.GetTile.Invalid.Tile.Row.TileMatrixSetLimits' " >
 								<ctl:call-test name="wmts:Server.XML.POST.GetTile.Invalid.Tile.Row.TileMatrixSetLimits">
 									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
@@ -5744,17 +5518,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 
 							<xsl:when test="$testName = 'Server.XML.POST.GetTile.Missing.Optional' ">
 								<ctl:call-test name="wmts:Server.XML.POST.GetTile.Missing.Optional">
-									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
-									<ctl:with-param name="selected" select="$testSelected"/>
-									<ctl:with-param name="tileURL" select="$postGetTileURL"/>
-									<ctl:with-param name="wmtsVersion" select="$bootstrap/wmtsVersion"/>
-									<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-									<ctl:with-param name="exceptionReportSchemaPath" select="$bootstrap/exceptionReportSchemaPath"/>
-								</ctl:call-test>
-							</xsl:when>
-
-							<xsl:when test="$testName = 'Server.XML.POST.GetTile.Invalid.SampleDimension.Name' " >
-								<ctl:call-test name="wmts:Server.XML.POST.GetTile.Invalid.SampleDimension.Name">
 									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
 									<ctl:with-param name="selected" select="$testSelected"/>
 									<ctl:with-param name="tileURL" select="$postGetTileURL"/>
@@ -5900,28 +5663,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 								</ctl:call-test>
 							</xsl:when>
 
-							<xsl:when test="$testName = 'Server.XML.POST.GetFeatureInfo.Invalid.Tile.Row.No.TileMatrixSetLimits' " >
-								<ctl:call-test name="wmts:Server.XML.POST.GetFeatureInfo.Invalid.Tile.Row.No.TileMatrixSetLimits">
-									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
-									<ctl:with-param name="selected" select="$testSelected"/>
-									<ctl:with-param name="featureInfoURL" select="$postGetFeatureInfoURL"/>
-									<ctl:with-param name="wmtsVersion" select="$bootstrap/wmtsVersion"/>
-									<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-									<ctl:with-param name="exceptionReportSchemaPath" select="$bootstrap/exceptionReportSchemaPath"/>
-								</ctl:call-test>
-							</xsl:when>
-
-							<xsl:when test="$testName = 'Server.XML.POST.GetFeatureInfo.Invalid.Tile.Col.No.TileMatrixSetLimits' " >
-								<ctl:call-test name="wmts:Server.XML.POST.GetFeatureInfo.Invalid.Tile.Col.No.TileMatrixSetLimits">
-									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
-									<ctl:with-param name="selected" select="$testSelected"/>
-									<ctl:with-param name="featureInfoURL" select="$postGetFeatureInfoURL"/>
-									<ctl:with-param name="wmtsVersion" select="$bootstrap/wmtsVersion"/>
-									<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-									<ctl:with-param name="exceptionReportSchemaPath" select="$bootstrap/exceptionReportSchemaPath"/>
-								</ctl:call-test>
-							</xsl:when>
-
 							<xsl:when test="$testName = 'Server.XML.POST.GetFeatureInfo.Invalid.Tile.Row.TileMatrixSetLimits' " >
 								<ctl:call-test name="wmts:Server.XML.POST.GetFeatureInfo.Invalid.Tile.Row.TileMatrixSetLimits">
 									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
@@ -5957,17 +5698,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 
 							<xsl:when test="$testName = 'Server.XML.POST.GetFeatureInfo.Missing.Optional' ">
 								<ctl:call-test name="wmts:Server.XML.POST.GetFeatureInfo.Missing.Optional">
-									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
-									<ctl:with-param name="selected" select="$testSelected"/>
-									<ctl:with-param name="featureInfoURL" select="$postGetFeatureInfoURL"/>
-									<ctl:with-param name="wmtsVersion" select="$bootstrap/wmtsVersion"/>
-									<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-									<ctl:with-param name="exceptionReportSchemaPath" select="$bootstrap/exceptionReportSchemaPath"/>
-								</ctl:call-test>
-							</xsl:when>
-
-							<xsl:when test="$testName = 'Server.XML.POST.GetFeatureInfo.Invalid.SampleDimension.Name' " >
-								<ctl:call-test name="wmts:Server.XML.POST.GetFeatureInfo.Invalid.SampleDimension.Name">
 									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
 									<ctl:with-param name="selected" select="$testSelected"/>
 									<ctl:with-param name="featureInfoURL" select="$postGetFeatureInfoURL"/>
@@ -6306,22 +6036,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 								</ctl:call-test>
 							</xsl:when>
 
-							<xsl:when test="$testName = 'Server.SOAP.POST.GetCapabilities.Response.No.Layers.OtherSource' " >
-								<ctl:call-test name="wmts:Server.SOAP.POST.GetCapabilities.Response.No.Layers.OtherSource">
-									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
-									<ctl:with-param name="selected" select="$testSelected"/>
-									<ctl:with-param name="capabilitiesURL" select="$postGetCapabilitiesURL"/>
-								</ctl:call-test>
-							</xsl:when>
-
-							<xsl:when test="$testName = 'Server.SOAP.POST.GetCapabilities.Response.Style.Identifiers.Unique' " >
-								<ctl:call-test name="wmts:Server.SOAP.POST.GetCapabilities.Response.Style.Identifiers.Unique">
-									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
-									<ctl:with-param name="selected" select="$testSelected"/>
-									<ctl:with-param name="capabilitiesURL" select="$postGetCapabilitiesURL"/>
-								</ctl:call-test>
-							</xsl:when>
-
 							<xsl:when test="$testName = 'Server.SOAP.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Resource' " >
 								<ctl:call-test name="wmts:Server.SOAP.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Resource">
 									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
@@ -6340,14 +6054,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 
 							<xsl:when test="$testName = 'Server.SOAP.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Size' " >
 								<ctl:call-test name="wmts:Server.SOAP.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Size">
-									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
-									<ctl:with-param name="selected" select="$testSelected"/>
-									<ctl:with-param name="capabilitiesURL" select="$postGetCapabilitiesURL"/>
-								</ctl:call-test>
-							</xsl:when>
-
-							<xsl:when test="$testName = 'Server.SOAP.POST.GetCapabilities.Response.Dimension.Identifiers.Unique' " >
-								<ctl:call-test name="wmts:Server.SOAP.POST.GetCapabilities.Response.Dimension.Identifiers.Unique">
 									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
 									<ctl:with-param name="selected" select="$testSelected"/>
 									<ctl:with-param name="capabilitiesURL" select="$postGetCapabilitiesURL"/>
@@ -6466,28 +6172,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 								</ctl:call-test>
 							</xsl:when>
 
-							<xsl:when test="$testName = 'Server.SOAP.POST.GetTile.Invalid.Tile.Row.No.TileMatrixSetLimits' " >
-								<ctl:call-test name="wmts:Server.SOAP.POST.GetTile.Invalid.Tile.Row.No.TileMatrixSetLimits">
-									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
-									<ctl:with-param name="selected" select="$testSelected"/>
-									<ctl:with-param name="tileURL" select="$postGetTileURL"/>
-									<ctl:with-param name="wmtsVersion" select="$bootstrap/wmtsVersion"/>
-									<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-									<ctl:with-param name="exceptionReportSchemaPath" select="$bootstrap/exceptionReportSchemaPath"/>
-								</ctl:call-test>
-							</xsl:when>
-
-							<xsl:when test="$testName = 'Server.SOAP.POST.GetTile.Invalid.Tile.Col.No.TileMatrixSetLimits' " >
-								<ctl:call-test name="wmts:Server.SOAP.POST.GetTile.Invalid.Tile.Col.No.TileMatrixSetLimits">
-									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
-									<ctl:with-param name="selected" select="$testSelected"/>
-									<ctl:with-param name="tileURL" select="$postGetTileURL"/>
-									<ctl:with-param name="wmtsVersion" select="$bootstrap/wmtsVersion"/>
-									<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-									<ctl:with-param name="exceptionReportSchemaPath" select="$bootstrap/exceptionReportSchemaPath"/>
-								</ctl:call-test>
-							</xsl:when>
-
 							<xsl:when test="$testName = 'Server.SOAP.POST.GetTile.Invalid.Tile.Row.TileMatrixSetLimits' " >
 								<ctl:call-test name="wmts:Server.SOAP.POST.GetTile.Invalid.Tile.Row.TileMatrixSetLimits">
 									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
@@ -6523,17 +6207,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 
 							<xsl:when test="$testName = 'Server.SOAP.POST.GetTile.Missing.Optional' ">
 								<ctl:call-test name="wmts:Server.SOAP.POST.GetTile.Missing.Optional">
-									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
-									<ctl:with-param name="selected" select="$testSelected"/>
-									<ctl:with-param name="tileURL" select="$postGetTileURL"/>
-									<ctl:with-param name="wmtsVersion" select="$bootstrap/wmtsVersion"/>
-									<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-									<ctl:with-param name="exceptionReportSchemaPath" select="$bootstrap/exceptionReportSchemaPath"/>
-								</ctl:call-test>
-							</xsl:when>
-
-							<xsl:when test="$testName = 'Server.SOAP.POST.GetTile.Invalid.SampleDimension.Name' " >
-								<ctl:call-test name="wmts:Server.SOAP.POST.GetTile.Invalid.SampleDimension.Name">
 									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
 									<ctl:with-param name="selected" select="$testSelected"/>
 									<ctl:with-param name="tileURL" select="$postGetTileURL"/>
@@ -6679,28 +6352,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 								</ctl:call-test>
 							</xsl:when>
 
-							<xsl:when test="$testName = 'Server.SOAP.POST.GetFeatureInfo.Invalid.Tile.Row.No.TileMatrixSetLimits' " >
-								<ctl:call-test name="wmts:Server.SOAP.POST.GetFeatureInfo.Invalid.Tile.Row.No.TileMatrixSetLimits">
-									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
-									<ctl:with-param name="selected" select="$testSelected"/>
-									<ctl:with-param name="featureInfoURL" select="$postGetFeatureInfoURL"/>
-									<ctl:with-param name="wmtsVersion" select="$bootstrap/wmtsVersion"/>
-									<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-									<ctl:with-param name="exceptionReportSchemaPath" select="$bootstrap/exceptionReportSchemaPath"/>
-								</ctl:call-test>
-							</xsl:when>
-
-							<xsl:when test="$testName = 'Server.SOAP.POST.GetFeatureInfo.Invalid.Tile.Col.No.TileMatrixSetLimits' " >
-								<ctl:call-test name="wmts:Server.SOAP.POST.GetFeatureInfo.Invalid.Tile.Col.No.TileMatrixSetLimits">
-									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
-									<ctl:with-param name="selected" select="$testSelected"/>
-									<ctl:with-param name="featureInfoURL" select="$postGetFeatureInfoURL"/>
-									<ctl:with-param name="wmtsVersion" select="$bootstrap/wmtsVersion"/>
-									<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-									<ctl:with-param name="exceptionReportSchemaPath" select="$bootstrap/exceptionReportSchemaPath"/>
-								</ctl:call-test>
-							</xsl:when>
-
 							<xsl:when test="$testName = 'Server.SOAP.POST.GetFeatureInfo.Invalid.Tile.Row.TileMatrixSetLimits' " >
 								<ctl:call-test name="wmts:Server.SOAP.POST.GetFeatureInfo.Invalid.Tile.Row.TileMatrixSetLimits">
 									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
@@ -6736,17 +6387,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 
 							<xsl:when test="$testName = 'Server.SOAP.POST.GetFeatureInfo.Missing.Optional' ">
 								<ctl:call-test name="wmts:Server.SOAP.POST.GetFeatureInfo.Missing.Optional">
-									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
-									<ctl:with-param name="selected" select="$testSelected"/>
-									<ctl:with-param name="featureInfoURL" select="$postGetFeatureInfoURL"/>
-									<ctl:with-param name="wmtsVersion" select="$bootstrap/wmtsVersion"/>
-									<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-									<ctl:with-param name="exceptionReportSchemaPath" select="$bootstrap/exceptionReportSchemaPath"/>
-								</ctl:call-test>
-							</xsl:when>
-
-							<xsl:when test="$testName = 'Server.SOAP.POST.GetFeatureInfo.Invalid.SampleDimension.Name' " >
-								<ctl:call-test name="wmts:Server.SOAP.POST.GetFeatureInfo.Invalid.SampleDimension.Name">
 									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
 									<ctl:with-param name="selected" select="$testSelected"/>
 									<ctl:with-param name="featureInfoURL" select="$postGetFeatureInfoURL"/>
@@ -6918,24 +6558,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 									<ctl:with-param name="exceptionReportSchemaPath" select="$bootstrap/exceptionReportSchemaPath"/>
 								</ctl:call-test>
 							</xsl:when>
-						
-							<xsl:when test="$testName = 'Server.RESTful.GetTile.Invalid.Tile.Row.No.TileMatrixSetLimits' " >
-								<ctl:call-test name="wmts:Server.RESTful.GetTile.Invalid.Tile.Row.No.TileMatrixSetLimits">
-									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
-									<ctl:with-param name="selected" select="$testSelected"/>
-									<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-									<ctl:with-param name="exceptionReportSchemaPath" select="$bootstrap/exceptionReportSchemaPath"/>
-								</ctl:call-test>
-							</xsl:when>
-
-							<xsl:when test="$testName = 'Server.RESTful.GetTile.Invalid.Tile.Col.No.TileMatrixSetLimits' " >
-								<ctl:call-test name="wmts:Server.RESTful.GetTile.Invalid.Tile.Col.No.TileMatrixSetLimits">
-									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
-									<ctl:with-param name="selected" select="$testSelected"/>
-									<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-									<ctl:with-param name="exceptionReportSchemaPath" select="$bootstrap/exceptionReportSchemaPath"/>
-								</ctl:call-test>
-							</xsl:when>
 
 							<xsl:when test="$testName = 'Server.RESTful.GetTile.Invalid.Tile.Row.TileMatrixSetLimits' " >
 								<ctl:call-test name="wmts:Server.RESTful.GetTile.Invalid.Tile.Row.TileMatrixSetLimits">
@@ -7067,24 +6689,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 
 							<xsl:when test="$testName = 'Server.RESTful.GetFeatureInfo.Invalid.TileMatrix' " >
 								<ctl:call-test name="wmts:Server.RESTful.GetFeatureInfo.Invalid.TileMatrix">
-									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
-									<ctl:with-param name="selected" select="$testSelected"/>
-									<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-									<ctl:with-param name="exceptionReportSchemaPath" select="$bootstrap/exceptionReportSchemaPath"/>
-								</ctl:call-test>
-							</xsl:when>
-
-							<xsl:when test="$testName = 'Server.RESTful.GetFeatureInfo.Invalid.Tile.Row.No.TileMatrixSetLimits' " >
-								<ctl:call-test name="wmts:Server.RESTful.GetFeatureInfo.Invalid.Tile.Row.No.TileMatrixSetLimits">
-									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
-									<ctl:with-param name="selected" select="$testSelected"/>
-									<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-									<ctl:with-param name="exceptionReportSchemaPath" select="$bootstrap/exceptionReportSchemaPath"/>
-								</ctl:call-test>
-							</xsl:when>
-
-							<xsl:when test="$testName = 'Server.RESTful.GetFeatureInfo.Invalid.Tile.Col.No.TileMatrixSetLimits' " >
-								<ctl:call-test name="wmts:Server.RESTful.GetFeatureInfo.Invalid.Tile.Col.No.TileMatrixSetLimits">
 									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
 									<ctl:with-param name="selected" select="$testSelected"/>
 									<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
