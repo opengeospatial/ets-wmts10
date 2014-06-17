@@ -9635,8 +9635,10 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 		<ctl:code>
 			<xsl:variable name="serviceURL" select="owsFunctions:getServiceURL($tileURL)"/>
 			<ctl:message select="concat('Issuing KVP ', upper-case($method), ' GetTile requests to ', $serviceURL, ' for the following:')"/>
+            <xsl:variable name="layerPos" select="(count($wmts.capabilities.doc/wmts:Contents/wmts:Layer) + 1) idiv 2"/>
+            <!-- <ctl:message select="concat('layerPos ', $layerPos)"/> -->
 			<xsl:variable name="results">
-				<xsl:for-each select="$wmts.capabilities.doc/wmts:Contents/wmts:Layer[wmts:Dimension]">
+				<xsl:for-each select="$wmts.capabilities.doc/wmts:Contents/wmts:Layer[$layerPos and wmts:Dimension]">
 					<xsl:variable name="layer" select="."/>
 					<xsl:variable name="layerId" select="$layer/ows:Identifier"/>
 					<xsl:variable name="dimensionNames" select="string-join($layer/wmts:Dimension/ows:Identifier, ',')"/>
@@ -9649,21 +9651,25 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 					</xsl:variable>
 					<!-- <ctl:message select="concat('dimensionsValues: ', $dimensionsValues)"/> -->
 					<xsl:variable name="dimensionsValuesList" select="tokenize($dimensionsValues, '#')"/>
-					<!-- <ctl:message select="concat('layer ', $layerId)"/> -->
-					<xsl:for-each select="$layer/wmts:Style">
+                    <xsl:variable name="stylePos" select="(count($layer/wmts:Style) +1) idiv 2"/>
+                    <!-- <ctl:message select="concat('layer ', $layerId, ' stylePos ', $stylePos)"/> -->
+                    <xsl:for-each select="$layer/wmts:Style[$stylePos]">
 						<xsl:variable name="style" select="."/>
 						<xsl:variable name="styleId" select="$style/ows:Identifier"/>
-						<!-- <ctl:message select="concat('style ', $styleId)"/>  -->
-						<xsl:for-each select="$layer/wmts:Format">
+                        <xsl:variable name="formatPos" select="(count($layer/wmts:Format) + 1) idiv 2"/>
+                        <!-- <ctl:message select="concat('style ', $styleId, ' formatPos ', $formatPos)"/> -->
+                        <xsl:for-each select="$layer/wmts:Format[$formatPos]">
 							<xsl:variable name="format" select="."/>
-							<!-- <ctl:message select="concat('format ', $format)"/> -->
-							<xsl:for-each select="$layer/wmts:TileMatrixSetLink">
+                            <xsl:variable name="tmslPos" select="(count($layer/wmts:TileMatrixSetLink) + 1) idiv 2"/>
+                            <!-- <ctl:message select="concat('format ', $format, ' tmslPos ', $tmslPos)"/> -->
+                            <xsl:for-each select="$layer/wmts:TileMatrixSetLink[$tmslPos]">
 								<xsl:variable name="tileMatrixSetId" select="wmts:TileMatrixSet"/>
 								<xsl:variable name="tileMatrixSetLimits" select="wmts:TileMatrixSetLimits"/>
 								<xsl:variable name="setLimits" select="count($tileMatrixSetLimits/*) gt 0"/>
 								<!-- <ctl:message select="concat('tileMatrixSet ', $tileMatrixSetId, ' has limits ', $setLimits)"/> -->
 								<xsl:variable name="tileMatrixSet" select="$wmts.capabilities.doc/wmts:Contents/wmts:TileMatrixSet[ows:Identifier = $tileMatrixSetId]"/>
-								<xsl:for-each select="$tileMatrixSet/wmts:TileMatrix">
+                                <xsl:variable name="tmsPos" select="(count($tileMatrixSet/wmts:TileMatrix)  + 1) idiv 2"/>
+                                <xsl:for-each select="$tileMatrixSet/wmts:TileMatrix[$tmsPos]">
 									<xsl:variable name="tileMatrix" select="."/>
 									<xsl:variable name="tileMatrixId" select="$tileMatrix/ows:Identifier"/>
 									<xsl:variable name="tileWidth" select="$tileMatrix/wmts:TileWidth"/>
