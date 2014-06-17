@@ -9110,7 +9110,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
       <xsl:variable name="layerPos" select="(count($wmts.capabilities.doc/wmts:Contents/wmts:Layer) + 1) idiv 2"/>
       <!-- <ctl:message select="concat('layerPos ', $layerPos)"/> -->
       <xsl:variable name="results">
-        <xsl:for-each select="$wmts.capabilities.doc/wmts:Contents/wmts:Layer[$layerPos and (not(wmts:Dimension) or (every $d in wmts:Dimension satisfies $d/wmts:Default))]">
+        <xsl:for-each select="$wmts.capabilities.doc/wmts:Contents/wmts:Layer[not(wmts:Dimension) or (every $d in wmts:Dimension satisfies $d/wmts:Default)][$layerPos]">
           <xsl:variable name="layer" select="."/>
           <xsl:variable name="layerId" select="$layer/ows:Identifier"/>
           <xsl:variable name="stylePos" select="(count($layer/wmts:Style) +1) idiv 2"/>
@@ -9638,7 +9638,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
             <xsl:variable name="layerPos" select="(count($wmts.capabilities.doc/wmts:Contents/wmts:Layer) + 1) idiv 2"/>
             <!-- <ctl:message select="concat('layerPos ', $layerPos)"/> -->
 			<xsl:variable name="results">
-				<xsl:for-each select="$wmts.capabilities.doc/wmts:Contents/wmts:Layer[$layerPos and wmts:Dimension]">
+				<xsl:for-each select="$wmts.capabilities.doc/wmts:Contents/wmts:Layer[wmts:Dimension][$layerPos]">
 					<xsl:variable name="layer" select="."/>
 					<xsl:variable name="layerId" select="$layer/ows:Identifier"/>
 					<xsl:variable name="dimensionNames" select="string-join($layer/wmts:Dimension/ows:Identifier, ',')"/>
