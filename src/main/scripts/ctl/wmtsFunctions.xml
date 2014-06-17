@@ -19773,6 +19773,8 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 		<ctl:code>
 			<xsl:variable name="serviceURL" select="owsFunctions:getServiceURL($tileURL)"/>
 			<ctl:message select="concat('Issuing XML POST GetTile requests to ', $serviceURL, ' for the following:')"/>
+            <xsl:variable name="layerPos" select="(count($wmts.capabilities.doc/wmts:Contents/wmts:Layer) + 1) idiv 2"/>
+            <!-- <ctl:message select="concat('layerPos ', $layerPos)"/> -->
 			<xsl:variable name="results">
 				<xsl:for-each select="$wmts.capabilities.doc/wmts:Contents/wmts:Layer">
 					<xsl:variable name="layer" select="."/>
