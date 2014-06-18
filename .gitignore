@@ -8,3 +8,7 @@ target/
 pom.xml.releaseBackup
 release.properties
 /target
+
+# IntelliJ IDEA config
+.idea/
+ets-wmts10.iml
