@@ -1855,21 +1855,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 								</tr>
 								<tr>
 									<td width="300">
-										<xsl:choose>
-											<xsl:when test="$interfaceType = 'RESTful' ">
-												<nbsp/>
-											</xsl:when>
-											<xsl:otherwise>
-												<input type="checkbox" name="invalidSampleDimensionName">Invalid Sample Dimension Name</input>
-											</xsl:otherwise>
-										</xsl:choose>
-									</td>
-									<td width="300">
-										<input type="checkbox" name="invalidSampleDimensionValue">Invalid Sample Dimension Value</input>
-									</td>
-								</tr>
-								<tr>
-									<td width="300">
 										<input type="checkbox" name="defaultSampleDimension">Default Sample Dimension</input>
 									</td>
 									<td width="300">
@@ -2082,21 +2067,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 									</td>
 									<td width="300">
 										<input type="checkbox" name="invalidTileColTileMatrixSetLimits">Invalid Tile Column - Tile Matrix Set Limits</input>
-									</td>
-								</tr>
-								<tr>
-									<td width="300">
-										<xsl:choose>
-											<xsl:when test="$interfaceType = 'RESTful' ">
-												<nbsp/>
-											</xsl:when>
-											<xsl:otherwise>
-												<input type="checkbox" name="invalidSampleDimensionName">Invalid Sample Dimension Name</input>
-											</xsl:otherwise>
-										</xsl:choose>
-									</td>
-									<td width="300">
-										<input type="checkbox" name="invalidSampleDimensionValue">Invalid Sample Dimension Value</input>
 									</td>
 								</tr>
 								<tr>
