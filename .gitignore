@@ -12,9 +12,4 @@ release.properties
 <<<<<<< HEAD
 # IntelliJ IDEA config
 .idea/
-ets-wmts10.iml
-=======
-# IntelliJ Idea
-.idea/
-ets-wmts10.iml
->>>>>>> feature/remove-ets-1443
+*.iml
