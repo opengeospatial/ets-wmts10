@@ -1857,6 +1857,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 									<td width="300">
 										<input type="checkbox" name="invalidSampleDimensionValue">Invalid Sample Dimension Value</input>
 									</td>
+                                    <td width="300"/>
 								</tr>
 								<tr>
 									<td width="300">
@@ -2078,6 +2079,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 									<td width="300">
 										<input type="checkbox" name="invalidSampleDimensionValue">Invalid Sample Dimension Value</input>
 									</td>
+                                    <td width="300"/>
 								</tr>
 								<tr>
 									<td width="300">
