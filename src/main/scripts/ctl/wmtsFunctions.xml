@@ -1413,12 +1413,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 				<xsl:element name="{concat('Server.', $interfaceType, '.GetCapabilities.Response.Layer.Identifiers.Unique.Selected')}">
 					<xsl:value-of select="$allOrNone"/>
 				</xsl:element>
-				<xsl:element name="{concat('Server.', $interfaceType, '.GetCapabilities.Response.No.Layers.OtherSource.Selected')}">
-					<xsl:value-of select="$allOrNone"/>
-				</xsl:element>
-				<xsl:element name="{concat('Server.', $interfaceType, '.GetCapabilities.Response.Style.Identifiers.Unique.Selected')}">
-					<xsl:value-of select="$allOrNone"/>
-				</xsl:element>
 				<xsl:element name="{concat('Server.', $interfaceType, '.GetCapabilities.Response.Layer.LegendURL.Correct.Resource.Selected')}">
 					<xsl:value-of select="$allOrNone"/>
 				</xsl:element>
@@ -1426,9 +1420,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 					<xsl:value-of select="$allOrNone"/>
 				</xsl:element>
 				<xsl:element name="{concat('Server.', $interfaceType, '.GetCapabilities.Response.Layer.LegendURL.Correct.Size.Selected')}">
-					<xsl:value-of select="$allOrNone"/>
-				</xsl:element>
-				<xsl:element name="{concat('Server.', $interfaceType, '.GetCapabilities.Response.Dimension.Identifiers.Unique.Selected')}">
 					<xsl:value-of select="$allOrNone"/>
 				</xsl:element>
 				<xsl:element name="{concat('Server.', $interfaceType, '.GetCapabilities.Response.Layer.TileMatrixSet.Valid.Selected')}">
@@ -1706,12 +1697,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 				<xsl:element name="{concat('Server.', $interfaceType, '.GetCapabilities.Response.Layer.Identifiers.Unique.Selected')}">
 					<xsl:value-of select="string($gc-form-values/values/value[@key='layerIdentifiersUnique'] = 'on')"/>
 				</xsl:element>
-				<xsl:element name="{concat('Server.', $interfaceType, '.GetCapabilities.Response.No.Layers.OtherSource.Selected')}">
-					<xsl:value-of select="string($gc-form-values/values/value[@key='noLayersContainsOtherSourceURL'] = 'on')"/>
-				</xsl:element>
-				<xsl:element name="{concat('Server.', $interfaceType, '.GetCapabilities.Response.Style.Identifiers.Unique.Selected')}">
-					<xsl:value-of select="string($gc-form-values/values/value[@key='styleIdentifiersUnique'] = 'on')"/>
-				</xsl:element>
 				<xsl:element name="{concat('Server.', $interfaceType, '.GetCapabilities.Response.Layer.LegendURL.Correct.Resource.Selected')}">
 					<xsl:value-of select="string($gc-form-values/values/value[@key='layerLegendURLsCorrectResources'] = 'on')"/>
 				</xsl:element>
@@ -1720,9 +1705,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 				</xsl:element>
 				<xsl:element name="{concat('Server.', $interfaceType, '.GetCapabilities.Response.Layer.LegendURL.Correct.Size.Selected')}">
 					<xsl:value-of select="string($gc-form-values/values/value[@key='layerLegendURLsCorrectSizes'] = 'on')"/>
-				</xsl:element>
-				<xsl:element name="{concat('Server.', $interfaceType, '.GetCapabilities.Response.Dimension.Identifiers.Unique.Selected')}">
-					<xsl:value-of select="string($gc-form-values/values/value[@key='dimensionIdentifiersUnique'] = 'on')"/>
 				</xsl:element>
 				<xsl:element name="{concat('Server.', $interfaceType, '.GetCapabilities.Response.Layer.TileMatrixSet.Valid.Selected')}">
 					<xsl:value-of select="string($gc-form-values/values/value[@key='layerTileMatrixSetsValid'] = 'on')"/>
@@ -1770,12 +1752,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 				<xsl:element name="{concat('Server.', $interfaceType, '.GetTile.Invalid.TileMatrix.Selected')}">
 					<xsl:value-of select="$allOrNone"/>
 				</xsl:element>
-				<xsl:element name="{concat('Server.', $interfaceType, '.GetTile.Invalid.Tile.Row.No.TileMatrixSetLimits.Selected')}">
-					<xsl:value-of select="$allOrNone"/>
-				</xsl:element>
-				<xsl:element name="{concat('Server.', $interfaceType, '.GetTile.Invalid.Tile.Col.No.TileMatrixSetLimits.Selected')}">
-					<xsl:value-of select="$allOrNone"/>
-				</xsl:element>
 				<xsl:element name="{concat('Server.', $interfaceType, '.GetTile.Invalid.Tile.Row.TileMatrixSetLimits.Selected')}">
 					<xsl:value-of select="$allOrNone"/>
 				</xsl:element>
@@ -1785,14 +1761,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 				<xsl:element name="{concat('Server.', $interfaceType, '.GetTile.Invalid.Tile.Style.Selected')}">
 					<xsl:value-of select="$allOrNone"/>
 				</xsl:element>
-				<xsl:element name="{concat('Server.', $interfaceType, '.GetTile.Missing.Optional.Selected')}">
-					<xsl:value-of select="$allOrNone"/>
-				</xsl:element>
-				<xsl:if test="$interfaceType != 'RESTful' ">
-					<xsl:element name="{concat('Server.', $interfaceType, '.GetTile.Invalid.SampleDimension.Name.Selected')}">
-						<xsl:value-of select="$allOrNone"/>
-					</xsl:element>
-				</xsl:if>
 				<xsl:element name="{concat('Server.', $interfaceType, '.GetTile.Invalid.SampleDimension.Value.Selected')}">
 					<xsl:value-of select="$allOrNone"/>
 				</xsl:element>
@@ -1960,12 +1928,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 				<xsl:element name="{concat('Server.', $interfaceType, '.GetTile.Invalid.TileMatrix.Selected')}">
 					<xsl:value-of select="string($gc-form-values/values/value[@key='invalidTileMatrix'] = 'on')"/>
 				</xsl:element>
-				<xsl:element name="{concat('Server.', $interfaceType, '.GetTile.Invalid.Tile.Row.No.TileMatrixSetLimits.Selected')}">
-					<xsl:value-of select="string($gc-form-values/values/value[@key='invalidTileRowNoTileMatrixSetLimits'] = 'on')"/>
-				</xsl:element>
-				<xsl:element name="{concat('Server.', $interfaceType, '.GetTile.Invalid.Tile.Col.No.TileMatrixSetLimits.Selected')}">
-					<xsl:value-of select="string($gc-form-values/values/value[@key='invalidTileColNoTileMatrixSetLimits'] = 'on')"/>
-				</xsl:element>
 				<xsl:element name="{concat('Server.', $interfaceType, '.GetTile.Invalid.Tile.Row.TileMatrixSetLimits.Selected')}">
 					<xsl:value-of select="string($gc-form-values/values/value[@key='invalidTileRowTileMatrixSetLimits'] = 'on')"/>
 				</xsl:element>
@@ -1974,12 +1936,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 				</xsl:element>
 				<xsl:element name="{concat('Server.', $interfaceType, '.GetTile.Invalid.Tile.Style.Selected')}">
 					<xsl:value-of select="string($gc-form-values/values/value[@key='invalidTileStyle'] = 'on')"/>
-				</xsl:element>
-				<xsl:element name="{concat('Server.', $interfaceType, '.GetTile.Missing.Optional.Selected')}">
-					<xsl:value-of select="string($gc-form-values/values/value[@key='missingOptionalParameters'] = 'on')"/>
-				</xsl:element>
-				<xsl:element name="{concat('Server.', $interfaceType, '.GetTile.Invalid.SampleDimension.Name.Selected')}">
-					<xsl:value-of select="string($gc-form-values/values/value[@key='invalidSampleDimensionName'] = 'on')"/>
 				</xsl:element>
 				<xsl:element name="{concat('Server.', $interfaceType, '.GetTile.Invalid.SampleDimension.Value.Selected')}">
 					<xsl:value-of select="string($gc-form-values/values/value[@key='invalidSampleDimensionValue'] = 'on')"/>
@@ -2030,12 +1986,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 				<xsl:element name="{concat('Server.', $interfaceType, '.GetFeatureInfo.Invalid.TileMatrix.Selected')}">
 					<xsl:value-of select="$allOrNone"/>
 				</xsl:element>
-				<xsl:element name="{concat('Server.', $interfaceType, '.GetFeatureInfo.Invalid.Tile.Row.No.TileMatrixSetLimits.Selected')}">
-					<xsl:value-of select="$allOrNone"/>
-				</xsl:element>
-				<xsl:element name="{concat('Server.', $interfaceType, '.GetFeatureInfo.Invalid.Tile.Col.No.TileMatrixSetLimits.Selected')}">
-					<xsl:value-of select="$allOrNone"/>
-				</xsl:element>
 				<xsl:element name="{concat('Server.', $interfaceType, '.GetFeatureInfo.Invalid.Tile.Row.TileMatrixSetLimits.Selected')}">
 					<xsl:value-of select="$allOrNone"/>
 				</xsl:element>
@@ -2045,14 +1995,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 				<xsl:element name="{concat('Server.', $interfaceType, '.GetFeatureInfo.Invalid.Tile.Style.Selected')}">
 					<xsl:value-of select="$allOrNone"/>
 				</xsl:element>
-				<xsl:element name="{concat('Server.', $interfaceType, '.GetFeatureInfo.Missing.Optional.Selected')}">
-					<xsl:value-of select="$allOrNone"/>
-				</xsl:element>
-				<xsl:if test="$interfaceType != 'RESTful' ">
-					<xsl:element name="{concat('Server.', $interfaceType, '.GetFeatureInfo.Invalid.SampleDimension.Name.Selected')}">
-						<xsl:value-of select="$allOrNone"/>
-					</xsl:element>
-				</xsl:if>
 				<xsl:element name="{concat('Server.', $interfaceType, '.GetFeatureInfo.Invalid.SampleDimension.Value.Selected')}">
 					<xsl:value-of select="$allOrNone"/>
 				</xsl:element>
@@ -2233,12 +2175,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 				<xsl:element name="{concat('Server.', $interfaceType, '.GetFeatureInfo.Invalid.TileMatrix.Selected')}">
 					<xsl:value-of select="string($gc-form-values/values/value[@key='invalidTileMatrix'] = 'on')"/>
 				</xsl:element>
-				<xsl:element name="{concat('Server.', $interfaceType, '.GetFeatureInfo.Invalid.Tile.Row.No.TileMatrixSetLimits.Selected')}">
-					<xsl:value-of select="string($gc-form-values/values/value[@key='invalidTileRowNoTileMatrixSetLimits'] = 'on')"/>
-				</xsl:element>
-				<xsl:element name="{concat('Server.', $interfaceType, '.GetFeatureInfo.Invalid.Tile.Col.No.TileMatrixSetLimits.Selected')}">
-					<xsl:value-of select="string($gc-form-values/values/value[@key='invalidTileColNoTileMatrixSetLimits'] = 'on')"/>
-				</xsl:element>
 				<xsl:element name="{concat('Server.', $interfaceType, '.GetFeatureInfo.Invalid.Tile.Row.TileMatrixSetLimits.Selected')}">
 					<xsl:value-of select="string($gc-form-values/values/value[@key='invalidTileRowTileMatrixSetLimits'] = 'on')"/>
 				</xsl:element>
@@ -2247,12 +2183,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 				</xsl:element>
 				<xsl:element name="{concat('Server.', $interfaceType, '.GetFeatureInfo.Invalid.Tile.Style.Selected')}">
 					<xsl:value-of select="string($gc-form-values/values/value[@key='invalidTileStyle'] = 'on')"/>
-				</xsl:element>
-				<xsl:element name="{concat('Server.', $interfaceType, '.GetFeatureInfo.Missing.Optional.Selected')}">
-					<xsl:value-of select="string($gc-form-values/values/value[@key='missingOptionalParameters'] = 'on')"/>
-				</xsl:element>
-				<xsl:element name="{concat('Server.', $interfaceType, '.GetFeatureInfo.Invalid.SampleDimension.Name.Selected')}">
-					<xsl:value-of select="string($gc-form-values/values/value[@key='invalidSampleDimensionName'] = 'on')"/>
 				</xsl:element>
 				<xsl:element name="{concat('Server.', $interfaceType, '.GetFeatureInfo.Invalid.SampleDimension.Value.Selected')}">
 					<xsl:value-of select="string($gc-form-values/values/value[@key='invalidSampleDimensionValue'] = 'on')"/>
@@ -2430,12 +2360,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 						<xsl:when test="$selected/sel/Server.KVP.GET.GetTile.Invalid.Tile.Style.Selected = 'true' ">
 							<xsl:text>true</xsl:text>
 						</xsl:when>
-						<xsl:when test="$selected/sel/Server.KVP.GET.GetTile.Missing.Optional.Selected = 'true' ">
-							<xsl:text>true</xsl:text>
-						</xsl:when>
-						<xsl:when test="$selected/sel/Server.KVP.GET.GetTile.Invalid.SampleDimension.Value.Selected = 'true' ">
-							<xsl:text>true</xsl:text>
-						</xsl:when>
 						<xsl:when test="$selected/sel/Server.KVP.GET.GetTile.Default.SampleDimension.Selected = 'true' ">
 							<xsl:text>true</xsl:text>
 						</xsl:when>
@@ -2479,12 +2403,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 							<xsl:text>true</xsl:text>
 						</xsl:when>
 						<xsl:when test="$selected/sel/Server.KVP.GET.GetFeatureInfo.Invalid.Tile.Style.Selected = 'true' ">
-							<xsl:text>true</xsl:text>
-						</xsl:when>
-						<xsl:when test="$selected/sel/Server.KVP.GET.GetFeatureInfo.Missing.Optional.Selected = 'true' ">
-							<xsl:text>true</xsl:text>
-						</xsl:when>
-						<xsl:when test="$selected/sel/Server.KVP.GET.GetFeatureInfo.Invalid.SampleDimension.Value.Selected = 'true' ">
 							<xsl:text>true</xsl:text>
 						</xsl:when>
 						<xsl:when test="$selected/sel/Server.KVP.GET.GetFeatureInfo.Default.SampleDimension.Selected = 'true' ">
@@ -2653,12 +2571,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 						<xsl:when test="$selected/sel/Server.KVP.POST.GetTile.Invalid.Tile.Style.Selected = 'true' ">
 							<xsl:text>true</xsl:text>
 						</xsl:when>
-						<xsl:when test="$selected/sel/Server.KVP.POST.GetTile.Missing.Optional.Selected = 'true' ">
-							<xsl:text>true</xsl:text>
-						</xsl:when>
-						<xsl:when test="$selected/sel/Server.KVP.POST.GetTile.Invalid.SampleDimension.Value.Selected = 'true' ">
-							<xsl:text>true</xsl:text>
-						</xsl:when>
 						<xsl:when test="$selected/sel/Server.KVP.POST.GetTile.Default.SampleDimension.Selected = 'true' ">
 							<xsl:text>true</xsl:text>
 						</xsl:when>
@@ -2702,12 +2614,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 							<xsl:text>true</xsl:text>
 						</xsl:when>
 						<xsl:when test="$selected/sel/Server.KVP.POST.GetFeatureInfo.Invalid.Tile.Style.Selected= 'true' ">
-							<xsl:text>true</xsl:text>
-						</xsl:when>
-						<xsl:when test="$selected/sel/Server.KVP.POST.GetFeatureInfo.Missing.Optional.Selected = 'true' ">
-							<xsl:text>true</xsl:text>
-						</xsl:when>
-						<xsl:when test="$selected/sel/Server.KVP.POST.GetFeatureInfo.Invalid.SampleDimension.Value.Selected = 'true' ">
 							<xsl:text>true</xsl:text>
 						</xsl:when>
 						<xsl:when test="$selected/sel/Server.KVP.POST.GetFeatureInfo.Default.SampleDimension.Selected = 'true' ">
@@ -2870,12 +2776,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 						<xsl:when test="$selected/sel/Server.XML.POST.GetTile.Invalid.Tile.Style.Selected = 'true' ">
 							<xsl:text>true</xsl:text>
 						</xsl:when>
-						<xsl:when test="$selected/sel/Server.XML.POST.GetTile.Missing.Optional.Selected = 'true' ">
-							<xsl:text>true</xsl:text>
-						</xsl:when>
-						<xsl:when test="$selected/sel/Server.XML.POST.GetTile.Invalid.SampleDimension.Value.Selected = 'true' ">
-							<xsl:text>true</xsl:text>
-						</xsl:when>
 						<xsl:when test="$selected/sel/Server.XML.POST.GetTile.Default.SampleDimension.Selected = 'true' ">
 							<xsl:text>true</xsl:text>
 						</xsl:when>
@@ -2919,12 +2819,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 							<xsl:text>true</xsl:text>
 						</xsl:when>
 						<xsl:when test="$selected/sel/Server.XML.POST.GetFeatureInfo.Invalid.Tile.Style.Selected = 'true' ">
-							<xsl:text>true</xsl:text>
-						</xsl:when>
-						<xsl:when test="$selected/sel/Server.XML.POST.GetFeatureInfo.Missing.Optional.Selected = 'true' ">
-							<xsl:text>true</xsl:text>
-						</xsl:when>
-						<xsl:when test="$selected/sel/Server.XML.POST.GetFeatureInfo.Invalid.SampleDimension.Value.Selected = 'true' ">
 							<xsl:text>true</xsl:text>
 						</xsl:when>
 						<xsl:when test="$selected/sel/Server.XML.POST.GetFeatureInfo.Default.SampleDimension.Selected = 'true' ">
@@ -3090,12 +2984,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 						<xsl:when test="$selected/sel/Server.SOAP.POST.GetTile.Invalid.Tile.Style.Selected = 'true' ">
 							<xsl:text>true</xsl:text>
 						</xsl:when>
-						<xsl:when test="$selected/sel/Server.SOAP.POST.GetTile.Missing.Optional.Selected = 'true' ">
-							<xsl:text>true</xsl:text>
-						</xsl:when>
-						<xsl:when test="$selected/sel/Server.SOAP.POST.GetTile.Invalid.SampleDimension.Value.Selected = 'true' ">
-							<xsl:text>true</xsl:text>
-						</xsl:when>
 						<xsl:when test="$selected/sel/Server.SOAP.POST.GetTile.Default.SampleDimension.Selected = 'true' ">
 							<xsl:text>true</xsl:text>
 						</xsl:when>
@@ -3139,9 +3027,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 							<xsl:text>true</xsl:text>
 						</xsl:when>
 						<xsl:when test="$selected/sel/Server.SOAP.POST.GetFeatureInfo.Invalid.Tile.Style.Selected = 'true' ">
-							<xsl:text>true</xsl:text>
-						</xsl:when>
-						<xsl:when test="$selected/sel/Server.SOAP.POST.GetFeatureInfo.Missing.Optional.Selected = 'true' ">
 							<xsl:text>true</xsl:text>
 						</xsl:when>
 						<xsl:when test="$selected/sel/Server.SOAP.POST.GetFeatureInfo.Invalid.SampleDimension.Value.Selected = 'true' ">
@@ -3211,9 +3096,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 						<xsl:when test="$selected/sel/Server.RESTful.GetTile.Invalid.Tile.Style.Selected = 'true' ">
 							<xsl:text>true</xsl:text>
 						</xsl:when>
-						<xsl:when test="$selected/sel/Server.RESTful.GetTile.Missing.Optional.Selected = 'true' ">
-							<xsl:text>true</xsl:text>
-						</xsl:when>
 						<xsl:when test="$selected/sel/Server.RESTful.GetTile.Invalid.SampleDimension.Value.Selected = 'true' ">
 							<xsl:text>true</xsl:text>
 						</xsl:when>
@@ -3250,9 +3132,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 						<xsl:when test="$selected/sel/Server.RESTful.GetFeatureInfo.Invalid.TileMatrix.Selected = 'true' ">
 							<xsl:text>true</xsl:text>
 						</xsl:when>
-						<xsl:when test="$selected/sel/Server.RESTful.GetFeatureInfo.Invalid.Tile.Col.No.TileMatrixSetLimits.Selected = 'true' ">
-							<xsl:text>true</xsl:text>
-						</xsl:when>
 						<xsl:when test="$selected/sel/Server.RESTful.GetFeatureInfo.Invalid.Tile.Row.TileMatrixSetLimits.Selected = 'true' ">
 							<xsl:text>true</xsl:text>
 						</xsl:when>
@@ -3260,12 +3139,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 							<xsl:text>true</xsl:text>
 						</xsl:when>
 						<xsl:when test="$selected/sel/Server.RESTful.GetFeatureInfo.Invalid.Tile.Style.Selected = 'true' ">
-							<xsl:text>true</xsl:text>
-						</xsl:when>
-						<xsl:when test="$selected/sel/Server.RESTful.GetFeatureInfo.Missing.Optional.Selected = 'true' ">
-							<xsl:text>true</xsl:text>
-						</xsl:when>
-						<xsl:when test="$selected/sel/Server.RESTful.GetFeatureInfo.Invalid.SampleDimension.Name.Selected = 'true' ">
 							<xsl:text>true</xsl:text>
 						</xsl:when>
 						<xsl:when test="$selected/sel/Server.RESTful.GetFeatureInfo.Invalid.SampleDimension.Value.Selected = 'true' ">
@@ -3985,17 +3858,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 									<ctl:with-param name="exceptionReportSchemaPath" select="$bootstrap/exceptionReportSchemaPath"/>
 								</ctl:call-test>
 							</xsl:when>
-	
-							<xsl:when test="$testName = 'Server.KVP.GET.GetTile.Missing.Optional' ">
-								<ctl:call-test name="wmts:Server.KVP.GET.GetTile.Missing.Optional">
-									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/>
-									<ctl:with-param name="selected" select="$testSelected"/>
-									<ctl:with-param name="tileURL" select="$kvpGetTileURL"/>
-									<ctl:with-param name="wmtsVersion" select="$bootstrap/wmtsVersion"/>
-									<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-									<ctl:with-param name="exceptionReportSchemaPath" select="$bootstrap/exceptionReportSchemaPath"/>
-								</ctl:call-test>
-							</xsl:when>
 
 							<xsl:when test="$testName = 'Server.KVP.GET.GetTile.Invalid.SampleDimension.Value' ">
 								<ctl:call-test name="wmts:Server.KVP.GET.GetTile.Invalid.SampleDimension.Value">
@@ -4157,17 +4019,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 
 							<xsl:when test="$testName = 'Server.KVP.GET.GetFeatureInfo.Invalid.Tile.Style' " >
 								<ctl:call-test name="wmts:Server.KVP.GET.GetFeatureInfo.Invalid.Tile.Style">
-									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
-									<ctl:with-param name="selected" select="$testSelected"/>
-									<ctl:with-param name="featureInfoURL" select="$kvpGetFeatureInfoURL"/>
-									<ctl:with-param name="wmtsVersion" select="$bootstrap/wmtsVersion"/>
-									<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-									<ctl:with-param name="exceptionReportSchemaPath" select="$bootstrap/exceptionReportSchemaPath"/>
-								</ctl:call-test>
-							</xsl:when>
-
-							<xsl:when test="$testName = 'Server.KVP.GET.GetFeatureInfo.Missing.Optional' ">
-								<ctl:call-test name="wmts:Server.KVP.GET.GetFeatureInfo.Missing.Optional">
 									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
 									<ctl:with-param name="selected" select="$testSelected"/>
 									<ctl:with-param name="featureInfoURL" select="$kvpGetFeatureInfoURL"/>
@@ -4696,17 +4547,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 								</ctl:call-test>
 							</xsl:when>
 
-							<xsl:when test="$testName = 'Server.KVP.POST.GetTile.Missing.Optional' ">
-								<ctl:call-test name="wmts:Server.KVP.POST.GetTile.Missing.Optional">
-									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/>
-									<ctl:with-param name="selected" select="$testSelected"/>
-									<ctl:with-param name="tileURL" select="$postGetTileURL"/>
-									<ctl:with-param name="wmtsVersion" select="$bootstrap/wmtsVersion"/>
-									<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-									<ctl:with-param name="exceptionReportSchemaPath" select="$bootstrap/exceptionReportSchemaPath"/>
-								</ctl:call-test>
-							</xsl:when>
-
 							<xsl:when test="$testName = 'Server.KVP.POST.GetTile.Invalid.SampleDimension.Value' ">
 								<ctl:call-test name="wmts:Server.KVP.POST.GetTile.Invalid.SampleDimension.Value">
 									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/>
@@ -4867,17 +4707,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 
 							<xsl:when test="$testName = 'Server.KVP.POST.GetFeatureInfo.Invalid.Tile.Style' " >
 								<ctl:call-test name="wmts:Server.KVP.POST.GetFeatureInfo.Invalid.Tile.Style">
-									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
-									<ctl:with-param name="selected" select="$testSelected"/>
-									<ctl:with-param name="featureInfoURL" select="$postGetFeatureInfoURL"/>
-									<ctl:with-param name="wmtsVersion" select="$bootstrap/wmtsVersion"/>
-									<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-									<ctl:with-param name="exceptionReportSchemaPath" select="$bootstrap/exceptionReportSchemaPath"/>
-								</ctl:call-test>
-							</xsl:when>
-
-							<xsl:when test="$testName = 'Server.KVP.POST.GetFeatureInfo.Missing.Optional' ">
-								<ctl:call-test name="wmts:Server.KVP.POST.GetFeatureInfo.Missing.Optional">
 									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
 									<ctl:with-param name="selected" select="$testSelected"/>
 									<ctl:with-param name="featureInfoURL" select="$postGetFeatureInfoURL"/>
@@ -5396,17 +5225,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 								</ctl:call-test>
 							</xsl:when>
 
-							<xsl:when test="$testName = 'Server.XML.POST.GetTile.Missing.Optional' ">
-								<ctl:call-test name="wmts:Server.XML.POST.GetTile.Missing.Optional">
-									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
-									<ctl:with-param name="selected" select="$testSelected"/>
-									<ctl:with-param name="tileURL" select="$postGetTileURL"/>
-									<ctl:with-param name="wmtsVersion" select="$bootstrap/wmtsVersion"/>
-									<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-									<ctl:with-param name="exceptionReportSchemaPath" select="$bootstrap/exceptionReportSchemaPath"/>
-								</ctl:call-test>
-							</xsl:when>
-
 							<xsl:when test="$testName = 'Server.XML.POST.GetTile.Invalid.SampleDimension.Value' " >
 								<ctl:call-test name="wmts:Server.XML.POST.GetTile.Invalid.SampleDimension.Value">
 									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
@@ -5567,17 +5385,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 
 							<xsl:when test="$testName = 'Server.XML.POST.GetFeatureInfo.Invalid.Tile.Style' " >
 								<ctl:call-test name="wmts:Server.XML.POST.GetFeatureInfo.Invalid.Tile.Style">
-									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
-									<ctl:with-param name="selected" select="$testSelected"/>
-									<ctl:with-param name="featureInfoURL" select="$postGetFeatureInfoURL"/>
-									<ctl:with-param name="wmtsVersion" select="$bootstrap/wmtsVersion"/>
-									<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-									<ctl:with-param name="exceptionReportSchemaPath" select="$bootstrap/exceptionReportSchemaPath"/>
-								</ctl:call-test>
-							</xsl:when>
-
-							<xsl:when test="$testName = 'Server.XML.POST.GetFeatureInfo.Missing.Optional' ">
-								<ctl:call-test name="wmts:Server.XML.POST.GetFeatureInfo.Missing.Optional">
 									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
 									<ctl:with-param name="selected" select="$testSelected"/>
 									<ctl:with-param name="featureInfoURL" select="$postGetFeatureInfoURL"/>
@@ -6085,17 +5892,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 								</ctl:call-test>
 							</xsl:when>
 
-							<xsl:when test="$testName = 'Server.SOAP.POST.GetTile.Missing.Optional' ">
-								<ctl:call-test name="wmts:Server.SOAP.POST.GetTile.Missing.Optional">
-									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
-									<ctl:with-param name="selected" select="$testSelected"/>
-									<ctl:with-param name="tileURL" select="$postGetTileURL"/>
-									<ctl:with-param name="wmtsVersion" select="$bootstrap/wmtsVersion"/>
-									<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-									<ctl:with-param name="exceptionReportSchemaPath" select="$bootstrap/exceptionReportSchemaPath"/>
-								</ctl:call-test>
-							</xsl:when>
-
 							<xsl:when test="$testName = 'Server.SOAP.POST.GetTile.Invalid.SampleDimension.Value' " >
 								<ctl:call-test name="wmts:Server.SOAP.POST.GetTile.Invalid.SampleDimension.Value">
 									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
@@ -6256,17 +6052,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 
 							<xsl:when test="$testName = 'Server.SOAP.POST.GetFeatureInfo.Invalid.Tile.Style' " >
 								<ctl:call-test name="wmts:Server.SOAP.POST.GetFeatureInfo.Invalid.Tile.Style">
-									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
-									<ctl:with-param name="selected" select="$testSelected"/>
-									<ctl:with-param name="featureInfoURL" select="$postGetFeatureInfoURL"/>
-									<ctl:with-param name="wmtsVersion" select="$bootstrap/wmtsVersion"/>
-									<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-									<ctl:with-param name="exceptionReportSchemaPath" select="$bootstrap/exceptionReportSchemaPath"/>
-								</ctl:call-test>
-							</xsl:when>
-
-							<xsl:when test="$testName = 'Server.SOAP.POST.GetFeatureInfo.Missing.Optional' ">
-								<ctl:call-test name="wmts:Server.SOAP.POST.GetFeatureInfo.Missing.Optional">
 									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
 									<ctl:with-param name="selected" select="$testSelected"/>
 									<ctl:with-param name="featureInfoURL" select="$postGetFeatureInfoURL"/>
@@ -6466,15 +6251,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 								</ctl:call-test>
 							</xsl:when>
 
-							<xsl:when test="$testName = 'Server.RESTful.GetTile.Missing.Optional' ">
-								<ctl:call-test name="wmts:Server.RESTful.GetTile.Missing.Optional">
-									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
-									<ctl:with-param name="selected" select="$testSelected"/>
-									<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-									<ctl:with-param name="exceptionReportSchemaPath" select="$bootstrap/exceptionReportSchemaPath"/>
-								</ctl:call-test>
-							</xsl:when>
-
 							<xsl:when test="$testName = 'Server.RESTful.GetTile.Invalid.SampleDimension.Value' " >
 								<ctl:call-test name="wmts:Server.RESTful.GetTile.Invalid.SampleDimension.Value">
 									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
@@ -6596,15 +6372,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 
 							<xsl:when test="$testName = 'Server.RESTful.GetFeatureInfo.Invalid.Tile.Style' " >
 								<ctl:call-test name="wmts:Server.RESTful.GetFeatureInfo.Invalid.Tile.Style">
-									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
-									<ctl:with-param name="selected" select="$testSelected"/>
-									<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-									<ctl:with-param name="exceptionReportSchemaPath" select="$bootstrap/exceptionReportSchemaPath"/>
-								</ctl:call-test>
-							</xsl:when>
-	
-							<xsl:when test="$testName = 'Server.RESTful.GetFeatureInfo.Missing.Optional' ">
-								<ctl:call-test name="wmts:Server.RESTful.GetFeatureInfo.Missing.Optional">
 									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
 									<ctl:with-param name="selected" select="$testSelected"/>
 									<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
@@ -23474,20 +23241,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 					</xsl:for-each>
 				</xsl:for-each>
 			</xsl:variable>
-			<xsl:choose>
-				<xsl:when test="contains($results, 'false')">
-					<ctl:message>Test failed. Server.RESTful.GetFeatureInfo.Invalid.Tile.Row.No.TileMatrixSetLimits</ctl:message>
-					<ctl:fail/>
-				</xsl:when>
-				<xsl:when test="contains($results, 'bestPractice')">
-					<ctl:message>Test passed as BestPractice: Server.RESTful.GetFeatureInfo.Invalid.Tile.Row.No.TileMatrixSetLimits</ctl:message>
-					<ctl:bestPractice/>
-				</xsl:when>
-				<xsl:otherwise>
-					<ctl:message>Test passed. Server.RESTful.GetFeatureInfo.Invalid.Tile.Row.No.TileMatrixSetLimits</ctl:message>
-					<ctl:pass/>
-				</xsl:otherwise>
-			</xsl:choose>
 		</ctl:code>
 	</ctl:function>
 
@@ -24130,20 +23883,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 					</xsl:for-each>
 				</xsl:for-each>
 			</xsl:variable>
-			<xsl:choose>
-				<xsl:when test="contains($results, 'false')">
-					<ctl:message>Test failed. Server.RESTful.GetFeatureInfo.Invalid.Tile.Row.No.TileMatrixSetLimits</ctl:message>
-					<ctl:fail/>
-				</xsl:when>
-				<xsl:when test="contains($results, 'bestPractice')">
-					<ctl:message>Test passed as BestPractice: Server.RESTful.GetFeatureInfo.Invalid.Tile.Row.No.TileMatrixSetLimits</ctl:message>
-					<ctl:bestPractice/>
-				</xsl:when>
-				<xsl:otherwise>
-					<ctl:message>Test passed. Server.RESTful.GetFeatureInfo.Invalid.Tile.Row.No.TileMatrixSetLimits</ctl:message>
-					<ctl:pass/>
-				</xsl:otherwise>
-			</xsl:choose>
 		</ctl:code>
 	</ctl:function>
 
