@@ -2769,6 +2769,7 @@
     <ctl:param name="requiredFormat">format required by service to be among advertised AcceptFormats</ctl:param>
     <ctl:description></ctl:description>
     <ctl:code>
+    <xsl:if test="exists($capabilities.elt/ows:OperationsMetadata/ows:Operation[@name='GetCapabilities']/ows:Parameter[@name='AcceptFormats']/ows:AllowedValues/ows:Value)">
       <xsl:variable name="acceptFormats">
         <xsl:for-each select="$capabilities.elt/ows:OperationsMetadata/ows:Operation[@name='GetCapabilities']/ows:Parameter[@name='AcceptFormats']/ows:AllowedValues/ows:Value">
           <xsl:value-of select="."/>
@@ -2787,6 +2788,7 @@
           <ctl:fail/>
         </xsl:otherwise>
       </xsl:choose>
+    </xsl:if>
     </ctl:code>
   </ctl:function>
 
