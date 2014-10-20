@@ -1857,20 +1857,19 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 									<td width="300">
 										<input type="checkbox" name="invalidSampleDimensionValue">Invalid Sample Dimension Value</input>
 									</td>
-                                    <td width="300"/>
-								</tr>
-								<tr>
 									<td width="300">
 										<input type="checkbox" name="defaultSampleDimension">Default Sample Dimension</input>
 									</td>
-									<td width="300">
-										<input type="checkbox" name="currentSampleDimension">CurrentSampleDimension</input>
-									</td>
 								</tr>
 								<tr>
 									<td width="300">
+										<input type="checkbox" name="currentSampleDimension">CurrentSampleDimension</input>
+									</td>
+									<td width="300">
 										<input type="checkbox" name="validTileFormat">Valid Tile Format</input>
 									</td>
+								</tr>
+								<tr>
 									<td width="300">
 										<xsl:choose>
 											<xsl:when test="$interfaceType = 'RESTful' ">
@@ -1881,11 +1880,11 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 											</xsl:otherwise>
 										</xsl:choose>
 									</td>
-								</tr>
-								<tr>
 									<td width="300">
 										<input type="checkbox" name="validTileSize">Valid Tile Size</input>
 									</td>
+								</tr>
+								<tr>
 									<td width="300">
 										<input type="checkbox" name="validTileTransparency">Valid Tile Transparency</input>
 									</td>
@@ -2079,36 +2078,27 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 									<td width="300">
 										<input type="checkbox" name="invalidSampleDimensionValue">Invalid Sample Dimension Value</input>
 									</td>
-                                    <td width="300"/>
-								</tr>
-								<tr>
 									<td width="300">
 										<input type="checkbox" name="defaultSampleDimension">Default Sample Dimension</input>
 									</td>
+								</tr>
+								<tr>
 									<td width="300">
 										<input type="checkbox" name="currentSampleDimension">Current Sample Dimension</input>
 									</td>
-								</tr>
-								<tr>
 									<td width="300">
 										<input type="checkbox" name="invalidTileStyle">Invalid Tile Style</input>
 									</td>
+								</tr>
+								<tr>
 									<td width="300">
 										<input type="checkbox" name="missingOptionalParameters">Missing Optional Parameters</input>
 									</td>
-								</tr>
-							<xsl:if test="$interfaceType != 'RESTful' ">
-								<tr>
-									<td width="300">
-										<input type="checkbox" name="nonQueryableLayer">Non Queryable Layer</input>
-									</td>
-									<td width="300"/>
-								</tr>
-							</xsl:if>
-								<tr>
 									<td width="300">
 										<input type="checkbox" name="validInfoFormat">Valid InfoFormat</input>
 									</td>
+								</tr>
+								<tr>
 									<td width="300">
 										<xsl:choose>
 											<xsl:when test="$interfaceType = 'RESTful' ">
@@ -2119,15 +2109,23 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 											</xsl:otherwise>
 										</xsl:choose>
 									</td>
-								</tr>
-								<tr>
 									<td width="300">
 										<input type="checkbox" name="invalidPixelRowJ">Invalid Pixel Row J</input>
 									</td>
+								</tr>
+								<tr>
 									<td width="300">
 										<input type="checkbox" name="invalidPixelColI">Invalid Pixel Column I</input>
 									</td>
 								</tr>
+								<xsl:if test="$interfaceType != 'RESTful' ">
+									<tr>
+										<td width="300">
+											<input type="checkbox" name="nonQueryableLayer">Non Queryable Layer</input>
+										</td>
+										<td width="300"/>
+									</tr>
+								</xsl:if>
 								<tr>
 									<td colspan="2" align="right">
 										<input type="submit" value="OK"/>
@@ -8149,7 +8147,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 														<xsl:value-of select="$styleId"/>
 													</ctl:param>
 													<ctl:param name="format">
-														<xsl:value-of select="$format"/>
+														<xsl:value-of select="wmtsFunctions:encodeForUri($format)"/>
 													</ctl:param>
 													<ctl:param name="TileMatrixSet">
 														<xsl:value-of select="$tileMatrixSetId"/>
@@ -8703,7 +8701,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 														<xsl:value-of select="$styleId"/>
 													</ctl:param>
 													<ctl:param name="format">
-														<xsl:value-of select="$format"/>
+														<xsl:value-of select="wmtsFunctions:encodeForUri($format)"/>
 													</ctl:param>
 													<ctl:param name="TileMatrixSet">
 														<xsl:value-of select="$tileMatrixSetId"/>
@@ -9410,7 +9408,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 												</xsl:if>
 												<xsl:if test="not($missingParameter = 'format')">
 													<ctl:param name="format">
-														<xsl:value-of select="$format"/>
+														<xsl:value-of select="wmtsFunctions:encodeForUri($format)"/>
 													</ctl:param>
 												</xsl:if>
 												<xsl:if test="not($missingParameter = 'TileMatrixSet')">
@@ -10352,7 +10350,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 												<xsl:value-of select="$styleId"/>
 											</ctl:param>
 											<ctl:param name="format">
-												<xsl:value-of select="$format"/>
+												<xsl:value-of select="wmtsFunctions:encodeForUri($format)"/>
 											</ctl:param>
 											<ctl:param name="TileMatrixSet">
 												<xsl:value-of select="$tileMatrixSetId"/>
@@ -10946,7 +10944,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 												<xsl:value-of select="$styleId"/>
 											</ctl:param>
 											<ctl:param name="format">
-												<xsl:value-of select="$format"/>
+												<xsl:value-of select="wmtsFunctions:encodeForUri($format)"/>
 											</ctl:param>
 											<ctl:param name="TileMatrixSet">
 												<xsl:value-of select="$bogusTileMatrixSetId"/>
@@ -11545,7 +11543,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 												<xsl:value-of select="$styleId"/>
 											</ctl:param>
 											<ctl:param name="format">
-												<xsl:value-of select="$format"/>
+												<xsl:value-of select="wmtsFunctions:encodeForUri($format)"/>
 											</ctl:param>
 											<ctl:param name="TileMatrixSet">
 												<xsl:value-of select="$tileMatrixSetId"/>
@@ -12142,7 +12140,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 												<xsl:value-of select="$styleId"/>
 											</ctl:param>
 											<ctl:param name="format">
-												<xsl:value-of select="$format"/>
+												<xsl:value-of select="wmtsFunctions:encodeForUri($format)"/>
 											</ctl:param>
 											<ctl:param name="TileMatrixSet">
 												<xsl:value-of select="$tileMatrixSetId"/>
@@ -12733,7 +12731,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 												<xsl:value-of select="$styleId"/>
 											</ctl:param>
 											<ctl:param name="format">
-												<xsl:value-of select="$format"/>
+												<xsl:value-of select="wmtsFunctions:encodeForUri($format)"/>
 											</ctl:param>
 											<ctl:param name="TileMatrixSet">
 												<xsl:value-of select="$tileMatrixSetId"/>
@@ -13325,7 +13323,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 												<xsl:value-of select="$styleId"/>
 											</ctl:param>
 											<ctl:param name="format">
-												<xsl:value-of select="$format"/>
+												<xsl:value-of select="wmtsFunctions:encodeForUri($format)"/>
 											</ctl:param>
 											<ctl:param name="TileMatrixSet">
 												<xsl:value-of select="$tileMatrixSetId"/>
@@ -13937,7 +13935,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 													<xsl:value-of select="$styleId"/>
 												</ctl:param>
 												<ctl:param name="format">
-													<xsl:value-of select="$format"/>
+													<xsl:value-of select="wmtsFunctions:encodeForUri($format)"/>
 												</ctl:param>
 												<ctl:param name="TileMatrixSet">
 													<xsl:value-of select="$tileMatrixSetId"/>
@@ -14575,7 +14573,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 													<xsl:value-of select="$styleId"/>
 												</ctl:param>
 												<ctl:param name="format">
-													<xsl:value-of select="$format"/>
+													<xsl:value-of select="wmtsFunctions:encodeForUri($format)"/>
 												</ctl:param>
 												<ctl:param name="TileMatrixSet">
 													<xsl:value-of select="$tileMatrixSetId"/>
@@ -15228,7 +15226,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 													<xsl:value-of select="$styleId"/>
 												</ctl:param>
 												<ctl:param name="format">
-													<xsl:value-of select="$format"/>
+													<xsl:value-of select="wmtsFunctions:encodeForUri($format)"/>
 												</ctl:param>
 												<ctl:param name="TileMatrixSet">
 													<xsl:value-of select="$tileMatrixSetId"/>
@@ -15880,7 +15878,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 														<xsl:value-of select="$styleId"/>
 													</ctl:param>
 													<ctl:param name="format">
-														<xsl:value-of select="$format"/>
+														<xsl:value-of select="wmtsFunctions:encodeForUri($format)"/>
 													</ctl:param>
 													<ctl:param name="TileMatrixSet">
 														<xsl:value-of select="$tileMatrixSetId"/>
@@ -16510,7 +16508,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 											<xsl:value-of select="$styleId"/>
 										</ctl:param>
 										<ctl:param name="format">
-											<xsl:value-of select="$format"/>
+											<xsl:value-of select="wmtsFunctions:encodeForUri($format)"/>
 										</ctl:param>
 										<ctl:param name="TileMatrixSet">
 											<xsl:value-of select="$tileMatrixSetId"/>
@@ -16930,7 +16928,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 														<xsl:value-of select="$styleId"/>
 													</ctl:param>
 													<ctl:param name="format">
-														<xsl:value-of select="$format"/>
+														<xsl:value-of select="wmtsFunctions:encodeForUri($format)"/>
 													</ctl:param>
 													<ctl:param name="TileMatrixSet">
 														<xsl:value-of select="$tileMatrixSetId"/>
@@ -17622,7 +17620,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 							<xsl:value-of select="$styleId"/>
 						</ctl:param>
 						<ctl:param name="format">
-							<xsl:value-of select="$format"/>
+							<xsl:value-of select="wmtsFunctions:encodeForUri($format)"/>
 						</ctl:param>
 						<ctl:param name="TileMatrixSet">
 							<xsl:value-of select="$tileMatrixSetId"/>
@@ -18222,10 +18220,10 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
                                                                       <xsl:value-of select="$styleId"/>
                                                                   </ctl:param>
                                                                   <ctl:param name="format">
-                                                                      <xsl:value-of select="$format"/>
+                                                                      <xsl:value-of select="wmtsFunctions:encodeForUri($format)"/>
                                                                   </ctl:param>
                                                                   <ctl:param name="InfoFormat">
-                                                                      <xsl:value-of select="$infoFormat"/>
+                                                                      <xsl:value-of select="wmtsFunctions:encodeForUri($infoFormat)"/>
                                                                   </ctl:param>
                                                                   <ctl:param name="TileMatrixSet">
                                                                       <xsl:value-of select="$tileMatrixSetId"/>
@@ -18912,10 +18910,10 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 															<xsl:value-of select="$styleId"/>
 														</ctl:param>
 														<ctl:param name="format">
-															<xsl:value-of select="$format"/>
+															<xsl:value-of select="wmtsFunctions:encodeForUri($format)"/>
 														</ctl:param>
 														<ctl:param name="infoFormat">
-															<xsl:value-of select="$infoFormat"/>
+															<xsl:value-of select="wmtsFunctions:encodeForUri($infoFormat)"/>
 														</ctl:param>
 														<ctl:param name="TileMatrixSet">
 															<xsl:value-of select="$tileMatrixSetId"/>
@@ -19663,12 +19661,12 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 													</xsl:if>
 													<xsl:if test="not($missingParameter = 'format')">
 														<ctl:param name="format">
-															<xsl:value-of select="$format"/>
+															<xsl:value-of select="wmtsFunctions:encodeForUri($format)"/>
 														</ctl:param>
 													</xsl:if>
 													<xsl:if test="not($missingParameter = 'infoFormat')">
 														<ctl:param name="infoFormat">
-															<xsl:value-of select="$infoFormat"/>
+															<xsl:value-of select="wmtsFunctions:encodeForUri($infoFormat)"/>
 														</ctl:param>
 													</xsl:if>
 													<xsl:if test="not($missingParameter = 'TileMatrixSet')">
@@ -20802,10 +20800,10 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 													<xsl:value-of select="$styleId"/>
 												</ctl:param>
 												<ctl:param name="format">
-													<xsl:value-of select="$format"/>
+													<xsl:value-of select="wmtsFunctions:encodeForUri($format)"/>
 												</ctl:param>
 												<ctl:param name="infoFormat">
-													<xsl:value-of select="$infoFormat"/>
+													<xsl:value-of select="wmtsFunctions:encodeForUri($infoFormat)"/>
 												</ctl:param>
 												<ctl:param name="TileMatrixSet">
 													<xsl:value-of select="$tileMatrixSetId"/>
@@ -21462,10 +21460,10 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 													<xsl:value-of select="$styleId"/>
 												</ctl:param>
 												<ctl:param name="format">
-													<xsl:value-of select="$format"/>
+													<xsl:value-of select="wmtsFunctions:encodeForUri($format)"/>
 												</ctl:param>
 												<ctl:param name="infoFormat">
-													<xsl:value-of select="$infoFormat"/>
+													<xsl:value-of select="wmtsFunctions:encodeForUri($infoFormat)"/>
 												</ctl:param>
 												<ctl:param name="TileMatrixSet">
 													<xsl:value-of select="$bogusTileMatrixSetId"/>
@@ -22132,10 +22130,10 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 													<xsl:value-of select="$styleId"/>
 												</ctl:param>
 												<ctl:param name="format">
-													<xsl:value-of select="$format"/>
+													<xsl:value-of select="wmtsFunctions:encodeForUri($format)"/>
 												</ctl:param>
 												<ctl:param name="infoFormat">
-													<xsl:value-of select="$infoFormat"/>
+													<xsl:value-of select="wmtsFunctions:encodeForUri($infoFormat)"/>
 												</ctl:param>
 												<ctl:param name="TileMatrixSet">
 													<xsl:value-of select="$tileMatrixSetId"/>
@@ -22797,10 +22795,10 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 													<xsl:value-of select="$styleId"/>
 												</ctl:param>
 												<ctl:param name="format">
-													<xsl:value-of select="$format"/>
+													<xsl:value-of select="wmtsFunctions:encodeForUri($format)"/>
 												</ctl:param>
 												<ctl:param name="infoFormat">
-													<xsl:value-of select="$infoFormat"/>
+													<xsl:value-of select="wmtsFunctions:encodeForUri($infoFormat)"/>
 												</ctl:param>
 												<ctl:param name="TileMatrixSet">
 													<xsl:value-of select="$tileMatrixSetId"/>
@@ -23439,10 +23437,10 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 													<xsl:value-of select="$styleId"/>
 												</ctl:param>
 												<ctl:param name="format">
-													<xsl:value-of select="$format"/>
+													<xsl:value-of select="wmtsFunctions:encodeForUri($format)"/>
 												</ctl:param>
 												<ctl:param name="infoFormat">
-													<xsl:value-of select="$infoFormat"/>
+													<xsl:value-of select="wmtsFunctions:encodeForUri($infoFormat)"/>
 												</ctl:param>
 												<ctl:param name="TileMatrixSet">
 													<xsl:value-of select="$tileMatrixSetId"/>
@@ -24083,10 +24081,10 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 													<xsl:value-of select="$styleId"/>
 												</ctl:param>
 												<ctl:param name="format">
-													<xsl:value-of select="$format"/>
+													<xsl:value-of select="wmtsFunctions:encodeForUri($format)"/>
 												</ctl:param>
 												<ctl:param name="infoFormat">
-													<xsl:value-of select="$infoFormat"/>
+													<xsl:value-of select="wmtsFunctions:encodeForUri($infoFormat)"/>
 												</ctl:param>
 												<ctl:param name="TileMatrixSet">
 													<xsl:value-of select="$tileMatrixSetId"/>
@@ -24765,10 +24763,10 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 														<xsl:value-of select="$styleId"/>
 													</ctl:param>
 													<ctl:param name="format">
-														<xsl:value-of select="$format"/>
+														<xsl:value-of select="wmtsFunctions:encodeForUri($format)"/>
 													</ctl:param>
 													<ctl:param name="infoFormat">
-														<xsl:value-of select="$infoFormat"/>
+														<xsl:value-of select="wmtsFunctions:encodeForUri($infoFormat)"/>
 													</ctl:param>
 													<ctl:param name="TileMatrixSet">
 														<xsl:value-of select="$tileMatrixSetId"/>
@@ -25483,10 +25481,10 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 														<xsl:value-of select="$styleId"/>
 													</ctl:param>
 													<ctl:param name="format">
-														<xsl:value-of select="$format"/>
+														<xsl:value-of select="wmtsFunctions:encodeForUri($format)"/>
 													</ctl:param>
 													<ctl:param name="infoFormat">
-														<xsl:value-of select="$infoFormat"/>
+														<xsl:value-of select="wmtsFunctions:encodeForUri($infoFormat)"/>
 													</ctl:param>
 													<ctl:param name="TileMatrixSet">
 														<xsl:value-of select="$tileMatrixSetId"/>
@@ -26160,10 +26158,10 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 														<xsl:value-of select="$styleId"/>
 													</ctl:param>
 													<ctl:param name="format">
-														<xsl:value-of select="$format"/>
+														<xsl:value-of select="wmtsFunctions:encodeForUri($format)"/>
 													</ctl:param>
 													<ctl:param name="infoFormat">
-														<xsl:value-of select="$infoFormat"/>
+														<xsl:value-of select="wmtsFunctions:encodeForUri($infoFormat)"/>
 													</ctl:param>
 													<ctl:param name="TileMatrixSet">
 														<xsl:value-of select="$tileMatrixSetId"/>
@@ -26827,10 +26825,10 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 												<xsl:value-of select="$styleId"/>
 											</ctl:param>
 											<ctl:param name="format">
-												<xsl:value-of select="$format"/>
+												<xsl:value-of select="wmtsFunctions:encodeForUri($format)"/>
 											</ctl:param>
 											<ctl:param name="infoFormat">
-												<xsl:value-of select="$infoFormat"/>
+												<xsl:value-of select="wmtsFunctions:encodeForUri($infoFormat)"/>
 											</ctl:param>
 											<ctl:param name="TileMatrixSet">
 												<xsl:value-of select="$tileMatrixSetId"/>
@@ -27288,10 +27286,10 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 													<xsl:value-of select="$styleId"/>
 												</ctl:param>
 												<ctl:param name="format">
-													<xsl:value-of select="$format"/>
+													<xsl:value-of select="wmtsFunctions:encodeForUri($format)"/>
 												</ctl:param>
 												<ctl:param name="infoFormat">
-													<xsl:value-of select="$infoFormat"/>
+													<xsl:value-of select="wmtsFunctions:encodeForUri($infoFormat)"/>
 												</ctl:param>
 												<ctl:param name="TileMatrixSet">
 													<xsl:value-of select="$tileMatrixSetId"/>
@@ -27923,10 +27921,10 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 													<xsl:value-of select="$styleId"/>
 												</ctl:param>
 												<ctl:param name="format">
-													<xsl:value-of select="$format"/>
+													<xsl:value-of select="wmtsFunctions:encodeForUri($format)"/>
 												</ctl:param>
 												<ctl:param name="infoFormat">
-													<xsl:value-of select="$infoFormat"/>
+													<xsl:value-of select="wmtsFunctions:encodeForUri($infoFormat)"/>
 												</ctl:param>
 												<ctl:param name="TileMatrixSet">
 													<xsl:value-of select="$tileMatrixSetId"/>
@@ -28394,10 +28392,10 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 													<xsl:value-of select="$styleId"/>
 												</ctl:param>
 												<ctl:param name="format">
-													<xsl:value-of select="$format"/>
+													<xsl:value-of select="wmtsFunctions:encodeForUri($format)"/>
 												</ctl:param>
 												<ctl:param name="infoFormat">
-													<xsl:value-of select="$infoFormat"/>
+													<xsl:value-of select="wmtsFunctions:encodeForUri($infoFormat)"/>
 												</ctl:param>
 												<ctl:param name="TileMatrixSet">
 													<xsl:value-of select="$tileMatrixSetId"/>
@@ -29048,10 +29046,10 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 													<xsl:value-of select="$styleId"/>
 												</ctl:param>
 												<ctl:param name="format">
-													<xsl:value-of select="$format"/>
+													<xsl:value-of select="wmtsFunctions:encodeForUri($format)"/>
 												</ctl:param>
 												<ctl:param name="infoFormat">
-													<xsl:value-of select="$infoFormat"/>
+													<xsl:value-of select="wmtsFunctions:encodeForUri($infoFormat)"/>
 												</ctl:param>
 												<ctl:param name="TileMatrixSet">
 													<xsl:value-of select="$tileMatrixSetId"/>
