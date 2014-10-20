@@ -8149,8 +8149,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 														<xsl:value-of select="$styleId"/>
 													</ctl:param>
 													<ctl:param name="format">
-                                                        <xsl:variable name="rFormat" select="replace($format,' ','%20')"/>
-                                                        <xsl:value-of select="$rFormat"/>
+														<xsl:value-of select="$format"/>
 													</ctl:param>
 													<ctl:param name="TileMatrixSet">
 														<xsl:value-of select="$tileMatrixSetId"/>
@@ -8704,8 +8703,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 														<xsl:value-of select="$styleId"/>
 													</ctl:param>
 													<ctl:param name="format">
-                                                        <xsl:variable name="rFormat" select="replace($format,' ','%20')"/>
-                                                        <xsl:value-of select="$rFormat"/>
+														<xsl:value-of select="$format"/>
 													</ctl:param>
 													<ctl:param name="TileMatrixSet">
 														<xsl:value-of select="$tileMatrixSetId"/>
@@ -9343,8 +9341,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 													<xsl:text>MISSING </xsl:text>
 												</xsl:when>
 												<xsl:otherwise>
-                                                    <xsl:variable name="rFormat" select="replace($format,' ','%20')"/>
-                                                    <xsl:value-of select="$rFormat"/>
+													<xsl:value-of select="$format"/>
 												</xsl:otherwise>
 											</xsl:choose>
 											<xsl:text> TileMatrixSet </xsl:text>
@@ -9413,8 +9410,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 												</xsl:if>
 												<xsl:if test="not($missingParameter = 'format')">
 													<ctl:param name="format">
-                                                        <xsl:variable name="rFormat" select="replace($format,' ','%20')"/>
-                                                        <xsl:value-of select="$rFormat"/>
+														<xsl:value-of select="$format"/>
 													</ctl:param>
 												</xsl:if>
 												<xsl:if test="not($missingParameter = 'TileMatrixSet')">
@@ -9581,8 +9577,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 													<xsl:text>MISSING </xsl:text>
 												</xsl:when>
 												<xsl:otherwise>
-                                                    <xsl:variable name="rFormat" select="replace($format,' ','%20')"/>
-                                                    <xsl:value-of select="$rFormat"/>
+													<xsl:value-of select="$format"/>
 												</xsl:otherwise>
 											</xsl:choose>
 											<xsl:text> TileMatrixSet </xsl:text>
@@ -10357,8 +10352,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 												<xsl:value-of select="$styleId"/>
 											</ctl:param>
 											<ctl:param name="format">
-                                                <xsl:variable name="rFormat" select="replace($format,' ','%20')"/>
-                                                <xsl:value-of select="$rFormat"/>
+												<xsl:value-of select="$format"/>
 											</ctl:param>
 											<ctl:param name="TileMatrixSet">
 												<xsl:value-of select="$tileMatrixSetId"/>
@@ -10952,8 +10946,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 												<xsl:value-of select="$styleId"/>
 											</ctl:param>
 											<ctl:param name="format">
-                                                <xsl:variable name="rFormat" select="replace($format,' ','%20')"/>
-                                                <xsl:value-of select="$rFormat"/>
+												<xsl:value-of select="$format"/>
 											</ctl:param>
 											<ctl:param name="TileMatrixSet">
 												<xsl:value-of select="$bogusTileMatrixSetId"/>
@@ -11552,8 +11545,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 												<xsl:value-of select="$styleId"/>
 											</ctl:param>
 											<ctl:param name="format">
-                                                <xsl:variable name="rFormat" select="replace($format,' ','%20')"/>
-                                                <xsl:value-of select="$rFormat"/>
+												<xsl:value-of select="$format"/>
 											</ctl:param>
 											<ctl:param name="TileMatrixSet">
 												<xsl:value-of select="$tileMatrixSetId"/>
@@ -12150,8 +12142,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 												<xsl:value-of select="$styleId"/>
 											</ctl:param>
 											<ctl:param name="format">
-                                                <xsl:variable name="rFormat" select="replace($format,' ','%20')"/>
-                                                <xsl:value-of select="$rFormat"/>
+												<xsl:value-of select="$format"/>
 											</ctl:param>
 											<ctl:param name="TileMatrixSet">
 												<xsl:value-of select="$tileMatrixSetId"/>
@@ -12742,8 +12733,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 												<xsl:value-of select="$styleId"/>
 											</ctl:param>
 											<ctl:param name="format">
-                                                <xsl:variable name="rFormat" select="replace($format,' ','%20')"/>
-                                                <xsl:value-of select="$rFormat"/>
+												<xsl:value-of select="$format"/>
 											</ctl:param>
 											<ctl:param name="TileMatrixSet">
 												<xsl:value-of select="$tileMatrixSetId"/>
@@ -13335,8 +13325,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 												<xsl:value-of select="$styleId"/>
 											</ctl:param>
 											<ctl:param name="format">
-                                                <xsl:variable name="rFormat" select="replace($format,' ','%20')"/>
-                                                <xsl:value-of select="$rFormat"/>
+												<xsl:value-of select="$format"/>
 											</ctl:param>
 											<ctl:param name="TileMatrixSet">
 												<xsl:value-of select="$tileMatrixSetId"/>
@@ -13948,8 +13937,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 													<xsl:value-of select="$styleId"/>
 												</ctl:param>
 												<ctl:param name="format">
-                                                    <xsl:variable name="rFormat" select="replace($format,' ','%20')"/>
-                                                    <xsl:value-of select="$rFormat"/>
+													<xsl:value-of select="$format"/>
 												</ctl:param>
 												<ctl:param name="TileMatrixSet">
 													<xsl:value-of select="$tileMatrixSetId"/>
@@ -14587,8 +14575,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 													<xsl:value-of select="$styleId"/>
 												</ctl:param>
 												<ctl:param name="format">
-                                                    <xsl:variable name="rFormat" select="replace($format,' ','%20')"/>
-                                                    <xsl:value-of select="$rFormat"/>
+													<xsl:value-of select="$format"/>
 												</ctl:param>
 												<ctl:param name="TileMatrixSet">
 													<xsl:value-of select="$tileMatrixSetId"/>
@@ -15241,8 +15228,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 													<xsl:value-of select="$styleId"/>
 												</ctl:param>
 												<ctl:param name="format">
-                                                    <xsl:variable name="rFormat" select="replace($format,' ','%20')"/>
-                                                    <xsl:value-of select="$rFormat"/>
+													<xsl:value-of select="$format"/>
 												</ctl:param>
 												<ctl:param name="TileMatrixSet">
 													<xsl:value-of select="$tileMatrixSetId"/>
@@ -15894,8 +15880,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 														<xsl:value-of select="$styleId"/>
 													</ctl:param>
 													<ctl:param name="format">
-                                                        <xsl:variable name="rFormat" select="replace($format,' ','%20')"/>
-                                                        <xsl:value-of select="$rFormat"/>
+														<xsl:value-of select="$format"/>
 													</ctl:param>
 													<ctl:param name="TileMatrixSet">
 														<xsl:value-of select="$tileMatrixSetId"/>
@@ -16525,8 +16510,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 											<xsl:value-of select="$styleId"/>
 										</ctl:param>
 										<ctl:param name="format">
-                                            <xsl:variable name="rFormat" select="replace($format,' ','%20')"/>
-                                            <xsl:value-of select="$rFormat"/>
+											<xsl:value-of select="$format"/>
 										</ctl:param>
 										<ctl:param name="TileMatrixSet">
 											<xsl:value-of select="$tileMatrixSetId"/>
@@ -16946,8 +16930,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 														<xsl:value-of select="$styleId"/>
 													</ctl:param>
 													<ctl:param name="format">
-                                                        <xsl:variable name="rFormat" select="replace($format,' ','%20')"/>
-                                                        <xsl:value-of select="$rFormat"/>
+														<xsl:value-of select="$format"/>
 													</ctl:param>
 													<ctl:param name="TileMatrixSet">
 														<xsl:value-of select="$tileMatrixSetId"/>
@@ -17639,8 +17622,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 							<xsl:value-of select="$styleId"/>
 						</ctl:param>
 						<ctl:param name="format">
-                            <xsl:variable name="rFormat" select="replace($format,' ','%20')"/>
-                            <xsl:value-of select="$rFormat"/>
+							<xsl:value-of select="$format"/>
 						</ctl:param>
 						<ctl:param name="TileMatrixSet">
 							<xsl:value-of select="$tileMatrixSetId"/>
@@ -18240,12 +18222,10 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
                                                                       <xsl:value-of select="$styleId"/>
                                                                   </ctl:param>
                                                                   <ctl:param name="format">
-                                                                      <xsl:variable name="rFormat" select="replace($format,' ','%20')"/>
-                                                                      <xsl:value-of select="$rFormat"/>
+                                                                      <xsl:value-of select="$format"/>
                                                                   </ctl:param>
-                                                                  <ctl:param name="infoFormat">
-                                                                      <xsl:variable name="rInfoFormat" select="replace($infoFormat,' ','%20')"/>
-                                                                      <xsl:value-of select="$rInfoFormat"/>
+                                                                  <ctl:param name="InfoFormat">
+                                                                      <xsl:value-of select="$infoFormat"/>
                                                                   </ctl:param>
                                                                   <ctl:param name="TileMatrixSet">
                                                                       <xsl:value-of select="$tileMatrixSetId"/>
@@ -18932,12 +18912,10 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 															<xsl:value-of select="$styleId"/>
 														</ctl:param>
 														<ctl:param name="format">
-                                                            <xsl:variable name="rFormat" select="replace($format,' ','%20')"/>
-                                                            <xsl:value-of select="$rFormat"/>
+															<xsl:value-of select="$format"/>
 														</ctl:param>
 														<ctl:param name="infoFormat">
-                                                            <xsl:variable name="rInfoFormat" select="replace($infoFormat,' ','%20')"/>
-                                                            <xsl:value-of select="$rInfoFormat"/>
+															<xsl:value-of select="$infoFormat"/>
 														</ctl:param>
 														<ctl:param name="TileMatrixSet">
 															<xsl:value-of select="$tileMatrixSetId"/>
@@ -19690,8 +19668,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 													</xsl:if>
 													<xsl:if test="not($missingParameter = 'infoFormat')">
 														<ctl:param name="infoFormat">
-                                                            <xsl:variable name="rInfoFormat" select="replace($infoFormat,' ','%20')"/>
-                                                            <xsl:value-of select="$rInfoFormat"/>
+															<xsl:value-of select="$infoFormat"/>
 														</ctl:param>
 													</xsl:if>
 													<xsl:if test="not($missingParameter = 'TileMatrixSet')">
@@ -20825,12 +20802,10 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 													<xsl:value-of select="$styleId"/>
 												</ctl:param>
 												<ctl:param name="format">
-                                                    <xsl:variable name="rFormat" select="replace($format,' ','%20')"/>
-                                                    <xsl:value-of select="$rFormat"/>
+													<xsl:value-of select="$format"/>
 												</ctl:param>
 												<ctl:param name="infoFormat">
-                                                    <xsl:variable name="rInfoFormat" select="replace($infoFormat,' ','%20')"/>
-                                                    <xsl:value-of select="$rInfoFormat"/>
+													<xsl:value-of select="$infoFormat"/>
 												</ctl:param>
 												<ctl:param name="TileMatrixSet">
 													<xsl:value-of select="$tileMatrixSetId"/>
@@ -21487,12 +21462,10 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 													<xsl:value-of select="$styleId"/>
 												</ctl:param>
 												<ctl:param name="format">
-                                                    <xsl:variable name="rFormat" select="replace($format,' ','%20')"/>
-                                                    <xsl:value-of select="$rFormat"/>
+													<xsl:value-of select="$format"/>
 												</ctl:param>
 												<ctl:param name="infoFormat">
-                                                    <xsl:variable name="rInfoFormat" select="replace($infoFormat,' ','%20')"/>
-                                                    <xsl:value-of select="$rInfoFormat"/>
+													<xsl:value-of select="$infoFormat"/>
 												</ctl:param>
 												<ctl:param name="TileMatrixSet">
 													<xsl:value-of select="$bogusTileMatrixSetId"/>
@@ -22159,12 +22132,10 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 													<xsl:value-of select="$styleId"/>
 												</ctl:param>
 												<ctl:param name="format">
-                                                    <xsl:variable name="rFormat" select="replace($format,' ','%20')"/>
-                                                    <xsl:value-of select="$rFormat"/>
+													<xsl:value-of select="$format"/>
 												</ctl:param>
 												<ctl:param name="infoFormat">
-                                                    <xsl:variable name="rInfoFormat" select="replace($infoFormat,' ','%20')"/>
-                                                    <xsl:value-of select="$rInfoFormat"/>
+													<xsl:value-of select="$infoFormat"/>
 												</ctl:param>
 												<ctl:param name="TileMatrixSet">
 													<xsl:value-of select="$tileMatrixSetId"/>
@@ -22826,12 +22797,10 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 													<xsl:value-of select="$styleId"/>
 												</ctl:param>
 												<ctl:param name="format">
-                                                    <xsl:variable name="rFormat" select="replace($format,' ','%20')"/>
-                                                    <xsl:value-of select="$rFormat"/>
+													<xsl:value-of select="$format"/>
 												</ctl:param>
 												<ctl:param name="infoFormat">
-                                                    <xsl:variable name="rInfoFormat" select="replace($infoFormat,' ','%20')"/>
-                                                    <xsl:value-of select="$rInfoFormat"/>
+													<xsl:value-of select="$infoFormat"/>
 												</ctl:param>
 												<ctl:param name="TileMatrixSet">
 													<xsl:value-of select="$tileMatrixSetId"/>
@@ -23470,12 +23439,10 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 													<xsl:value-of select="$styleId"/>
 												</ctl:param>
 												<ctl:param name="format">
-                                                    <xsl:variable name="rFormat" select="replace($format,' ','%20')"/>
-                                                    <xsl:value-of select="$rFormat"/>
+													<xsl:value-of select="$format"/>
 												</ctl:param>
 												<ctl:param name="infoFormat">
-                                                    <xsl:variable name="rInfoFormat" select="replace($infoFormat,' ','%20')"/>
-                                                    <xsl:value-of select="$rInfoFormat"/>
+													<xsl:value-of select="$infoFormat"/>
 												</ctl:param>
 												<ctl:param name="TileMatrixSet">
 													<xsl:value-of select="$tileMatrixSetId"/>
@@ -24116,12 +24083,10 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 													<xsl:value-of select="$styleId"/>
 												</ctl:param>
 												<ctl:param name="format">
-                                                    <xsl:variable name="rFormat" select="replace($format,' ','%20')"/>
-                                                    <xsl:value-of select="$rFormat"/>
+													<xsl:value-of select="$format"/>
 												</ctl:param>
 												<ctl:param name="infoFormat">
-                                                    <xsl:variable name="rInfoFormat" select="replace($infoFormat,' ','%20')"/>
-                                                    <xsl:value-of select="$rInfoFormat"/>
+													<xsl:value-of select="$infoFormat"/>
 												</ctl:param>
 												<ctl:param name="TileMatrixSet">
 													<xsl:value-of select="$tileMatrixSetId"/>
@@ -24800,12 +24765,10 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 														<xsl:value-of select="$styleId"/>
 													</ctl:param>
 													<ctl:param name="format">
-                                                        <xsl:variable name="rFormat" select="replace($format,' ','%20')"/>
-                                                        <xsl:value-of select="$rFormat"/>
+														<xsl:value-of select="$format"/>
 													</ctl:param>
 													<ctl:param name="infoFormat">
-                                                        <xsl:variable name="rInfoFormat" select="replace($infoFormat,' ','%20')"/>
-                                                        <xsl:value-of select="$rInfoFormat"/>
+														<xsl:value-of select="$infoFormat"/>
 													</ctl:param>
 													<ctl:param name="TileMatrixSet">
 														<xsl:value-of select="$tileMatrixSetId"/>
@@ -25520,12 +25483,10 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 														<xsl:value-of select="$styleId"/>
 													</ctl:param>
 													<ctl:param name="format">
-                                                        <xsl:variable name="rFormat" select="replace($format,' ','%20')"/>
-                                                        <xsl:value-of select="$rFormat"/>
+														<xsl:value-of select="$format"/>
 													</ctl:param>
 													<ctl:param name="infoFormat">
-                                                        <xsl:variable name="rInfoFormat" select="replace($infoFormat,' ','%20')"/>
-                                                        <xsl:value-of select="$rInfoFormat"/>
+														<xsl:value-of select="$infoFormat"/>
 													</ctl:param>
 													<ctl:param name="TileMatrixSet">
 														<xsl:value-of select="$tileMatrixSetId"/>
@@ -26199,12 +26160,10 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 														<xsl:value-of select="$styleId"/>
 													</ctl:param>
 													<ctl:param name="format">
-                                                        <xsl:variable name="rFormat" select="replace($format,' ','%20')"/>
-                                                        <xsl:value-of select="$rFormat"/>
+														<xsl:value-of select="$format"/>
 													</ctl:param>
 													<ctl:param name="infoFormat">
-                                                        <xsl:variable name="rInfoFormat" select="replace($infoFormat,' ','%20')"/>
-                                                        <xsl:value-of select="$rInfoFormat"/>
+														<xsl:value-of select="$infoFormat"/>
 													</ctl:param>
 													<ctl:param name="TileMatrixSet">
 														<xsl:value-of select="$tileMatrixSetId"/>
@@ -26868,12 +26827,10 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 												<xsl:value-of select="$styleId"/>
 											</ctl:param>
 											<ctl:param name="format">
-                                                <xsl:variable name="rFormat" select="replace($format,' ','%20')"/>
-                                                <xsl:value-of select="$rFormat"/>
+												<xsl:value-of select="$format"/>
 											</ctl:param>
 											<ctl:param name="infoFormat">
-                                                <xsl:variable name="rInfoFormat" select="replace($infoFormat,' ','%20')"/>
-                                                <xsl:value-of select="$rInfoFormat"/>
+												<xsl:value-of select="$infoFormat"/>
 											</ctl:param>
 											<ctl:param name="TileMatrixSet">
 												<xsl:value-of select="$tileMatrixSetId"/>
@@ -27331,12 +27288,10 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 													<xsl:value-of select="$styleId"/>
 												</ctl:param>
 												<ctl:param name="format">
-                                                    <xsl:variable name="rFormat" select="replace($format,' ','%20')"/>
-                                                    <xsl:value-of select="$rFormat"/>
+													<xsl:value-of select="$format"/>
 												</ctl:param>
 												<ctl:param name="infoFormat">
-                                                    <xsl:variable name="rInfoFormat" select="replace($infoFormat,' ','%20')"/>
-                                                    <xsl:value-of select="$rInfoFormat"/>
+													<xsl:value-of select="$infoFormat"/>
 												</ctl:param>
 												<ctl:param name="TileMatrixSet">
 													<xsl:value-of select="$tileMatrixSetId"/>
@@ -27968,12 +27923,10 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 													<xsl:value-of select="$styleId"/>
 												</ctl:param>
 												<ctl:param name="format">
-                                                    <xsl:variable name="rFormat" select="replace($format,' ','%20')"/>
-                                                    <xsl:value-of select="$rFormat"/>
+													<xsl:value-of select="$format"/>
 												</ctl:param>
 												<ctl:param name="infoFormat">
-                                                    <xsl:variable name="rInfoFormat" select="replace($infoFormat,' ','%20')"/>
-                                                    <xsl:value-of select="$rInfoFormat"/>
+													<xsl:value-of select="$infoFormat"/>
 												</ctl:param>
 												<ctl:param name="TileMatrixSet">
 													<xsl:value-of select="$tileMatrixSetId"/>
@@ -28441,12 +28394,10 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 													<xsl:value-of select="$styleId"/>
 												</ctl:param>
 												<ctl:param name="format">
-                                                    <xsl:variable name="rFormat" select="replace($format,' ','%20')"/>
-                                                    <xsl:value-of select="$rFormat"/>
+													<xsl:value-of select="$format"/>
 												</ctl:param>
 												<ctl:param name="infoFormat">
-                                                    <xsl:variable name="rInfoFormat" select="replace($infoFormat,' ','%20')"/>
-                                                    <xsl:value-of select="$rInfoFormat"/>
+													<xsl:value-of select="$infoFormat"/>
 												</ctl:param>
 												<ctl:param name="TileMatrixSet">
 													<xsl:value-of select="$tileMatrixSetId"/>
@@ -29097,12 +29048,10 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 													<xsl:value-of select="$styleId"/>
 												</ctl:param>
 												<ctl:param name="format">
-                                                    <xsl:variable name="rFormat" select="replace($format,' ','%20')"/>
-                                                    <xsl:value-of select="$rFormat"/>
+													<xsl:value-of select="$format"/>
 												</ctl:param>
 												<ctl:param name="infoFormat">
-                                                    <xsl:variable name="rInfoFormat" select="replace($infoFormat,' ','%20')"/>
-                                                    <xsl:value-of select="$rInfoFormat"/>
+													<xsl:value-of select="$infoFormat"/>
 												</ctl:param>
 												<ctl:param name="TileMatrixSet">
 													<xsl:value-of select="$tileMatrixSetId"/>
