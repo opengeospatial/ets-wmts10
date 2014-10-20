@@ -29794,8 +29794,11 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 		</xsl:choose>
 	</xsl:template>
 
+	<ctl:function name="wmtsFunctions:encodeForUri">
+		<ctl:param name="str">String to be percent-encoded.</ctl:param>
+		<ctl:code>
+			<xsl:value-of select="encode-for-uri($str)"/>
+		</ctl:code>
+	</ctl:function>	
 
-	
-	
-	
 </ctl:package>
