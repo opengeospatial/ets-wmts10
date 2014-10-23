@@ -799,7 +799,7 @@
 								<ctl:pass/>
 							</xsl:when>
 							<xsl:otherwise>
-								<ctl:message>Test skipped:  Server did not return a correct ows:ExceptionReport and HTTP status in response to request with a sections parameter value of Bogus, so sections option considered to not be implemented.')"/></ctl:message>
+								<ctl:message>Test skipped:  Server did not return a correct ows:ExceptionReport and HTTP status in response to request with a sections parameter value of Bogus, so sections option considered to not be implemented.</ctl:message>
 								<ctl:skipped/>
 							</xsl:otherwise>
 						</xsl:choose>
@@ -858,7 +858,7 @@
 								<ctl:pass/>
 							</xsl:when>
 							<xsl:otherwise>
-								<ctl:message>Test skipped: Server did not return a correct ows:ExceptionReport and HTTP status in response to request with a sections parameter with a missing value, so sections option considered to not be implemented.')"/></ctl:message>
+								<ctl:message>Test skipped: Server did not return a correct ows:ExceptionReport and HTTP status in response to request with a sections parameter with a missing value, so sections option considered to not be implemented.</ctl:message>
 								<ctl:skipped/>
 							</xsl:otherwise>
 						</xsl:choose>
@@ -2201,7 +2201,7 @@
 								<ctl:pass/>
 							</xsl:when>
 							<xsl:otherwise>
-								<ctl:message>Test skipped:  Server did not return a correct ows:ExceptionReport and HTTP status in response to request with a sections parameter value of Bogus, so sections option considered to not be implemented.')"/></ctl:message>
+								<ctl:message>Test skipped:  Server did not return a correct ows:ExceptionReport and HTTP status in response to request with a sections parameter value of Bogus, so sections option considered to not be implemented.</ctl:message>
 								<ctl:skipped/>
 							</xsl:otherwise>
 						</xsl:choose>
@@ -2260,7 +2260,7 @@
 								<ctl:pass/>
 							</xsl:when>
 							<xsl:otherwise>
-								<ctl:message>Test skipped: Server did not return a correct ows:ExceptionReport and HTTP status in response to request with a sections parameter with a missing value, so sections option considered to not be implemented.')"/></ctl:message>
+								<ctl:message>Test skipped: Server did not return a correct ows:ExceptionReport and HTTP status in response to request with a sections parameter with a missing value, so sections option considered to not be implemented.</ctl:message>
 								<ctl:skipped/>
 							</xsl:otherwise>
 						</xsl:choose>
@@ -3556,7 +3556,7 @@
 								<ctl:pass/>
 							</xsl:when>
 							<xsl:otherwise>
-								<ctl:message>Test skipped:  Server did not return a correct ows:ExceptionReport and HTTP status in response to request with a sections parameter value of Bogus, so sections option considered to not be implemented.')"/></ctl:message>
+								<ctl:message>Test skipped:  Server did not return a correct ows:ExceptionReport and HTTP status in response to request with a sections parameter value of Bogus, so sections option considered to not be implemented.</ctl:message>
 								<ctl:skipped/>
 							</xsl:otherwise>
 						</xsl:choose>
@@ -3620,7 +3620,7 @@
 								<ctl:pass/>
 							</xsl:when>
 							<xsl:otherwise>
-								<ctl:message>Test skipped: Server did not return a correct ows:ExceptionReport and HTTP status in response to request with a sections parameter with a missing value, so sections option considered to not be implemented.')"/></ctl:message>
+								<ctl:message>Test skipped: Server did not return a correct ows:ExceptionReport and HTTP status in response to request with a sections parameter with a missing value, so sections option considered to not be implemented.</ctl:message>
 								<ctl:skipped/>
 							</xsl:otherwise>
 						</xsl:choose>
@@ -4881,7 +4881,7 @@
 								<ctl:pass/>
 							</xsl:when>
 							<xsl:otherwise>
-								<ctl:message>Test skipped:  Server did not return a correct ows:ExceptionReport and HTTP status in response to request with a sections parameter value of Bogus, so sections option considered to not be implemented.')"/></ctl:message>
+								<ctl:message>Test skipped:  Server did not return a correct ows:ExceptionReport and HTTP status in response to request with a sections parameter value of Bogus, so sections option considered to not be implemented.</ctl:message>
 								<ctl:skipped/>
 							</xsl:otherwise>
 						</xsl:choose>
@@ -4944,7 +4944,7 @@
 								<ctl:pass/>
 							</xsl:when>
 							<xsl:otherwise>
-								<ctl:message>Test skipped: Server did not return a correct ows:ExceptionReport and HTTP status in response to request with a sections parameter with a missing value, so sections option considered to not be implemented.')"/></ctl:message>
+								<ctl:message>Test skipped: Server did not return a correct ows:ExceptionReport and HTTP status in response to request with a sections parameter with a missing value, so sections option considered to not be implemented.</ctl:message>
 								<ctl:skipped/>
 							</xsl:otherwise>
 						</xsl:choose>
