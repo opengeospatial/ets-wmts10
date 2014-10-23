@@ -8,27 +8,22 @@ against the following specification(s):
 * _OpenGIS Web Map Tile Service Implementation Standard_, Version 1.0.0 
   [OGC 07-057r7](http://portal.opengeospatial.org/files/?artifact_id=35326)
 
+Detailed information about this test suite is available [here](http://opengeospatial.github.io/ets-wmts10/)
+
   
 ## License
 
 [Apache 2.0 License](LICENSE.md)
 
 
-## How to build
+## Building
 
-[Apache Maven](http://maven.apache.org/) or higher is required to build 
-the test suite. Simply run 'mvn package' in the root project directory to 
-generate all build artifacts; execute the 'mvn site' phase to generate project 
-documentation. The main distribution archive (ets-wmts10-${version}.zip) is 
-created in the usual output directory (/target).
+This test is build using [Apache Maven](http://maven.apache.org/) To 
+build the test suite run maven from the root directory.
+   % mvn install
 
+Follow the [TEAM ENGINE instructions](http://opengeospatial.github.io/teamengine/installation.html) to install and run the tests in TEAM   
 
-## How to run
-The official OGC test harness, [TEAM Engine](https://github.com/opengeospatial/teamengine), 
-is required to run the test suite. Unpack the archive in the TE_BASE/scripts 
-directory. In order to run the suite using the web interface, update the 
-appropriate entry in the TE_BASE/config.xml file by copying the <standard> 
-element from the config.xml file in the distribution archive.
 
 
 ## Mailing Lists
