@@ -18246,37 +18246,42 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
                                                                   <parsers:HTTPParser/>
                                                               </ctl:request>
                                                           </xsl:variable>
-                                                          <!-- <xsl:message>response: <xsl:copy-of select="$response"/></xsl:message> -->
-                                                          <xsl:variable name="content" select="$response/response/content/*"/>
+
+							  <xsl:variable name="code" select="$response/response/status/@code"/>
                                                           <xsl:variable name="contentType" select="$response/response/headers/header[@name='Content-Type']"/>
-                                                          <!--
-                                                          <ctl:call-function name="ctl:putLogCache">
-                                                              <ctl:with-param name="id">content</ctl:with-param>
-                                                              <ctl:with-param name="xmlToCache"><xsl:copy-of select="$content"/></ctl:with-param>
-                                                          </ctl:call-function>
-                                                          -->
-                                                          <!-- <ctl:message select="concat('content: ', $content, ' Content-Type: ', $contentType)"/> -->
+							  <xsl:variable name="contentLength" select="$response/response/headers/header[@name='Content-Length']"/>
+
+							  <!-- ctl:message select="concat(' Code: ', $code)"/ -->
+							  <!-- ctl:message select="concat(' Content-Type: ', $contentType)"/ -->
+							  <!-- ctl:message select="concat(' Content-Length: ', $contentLength)"/ -->
+
                                                           <xsl:choose>
-                                                              <xsl:when test="not(exists($content))">
-                                                                  <ctl:message select="concat('FAILURE: Missing or invalid response entity ; should have been Feature Info in format ', $infoFormat)"/>
+                                                              <xsl:when test="$code != '200' ">
+                                                                  <ctl:message>Response does not contain Status Code 200.</ctl:message>
                                                                   <xsl:text>false|</xsl:text>
                                                               </xsl:when>
+
                                                               <xsl:otherwise>
                                                                   <xsl:choose>
-                                                                      <xsl:when test="string(wwwFunctions:mime-match($contentType, $infoFormat)) = 'true' ">
-                                                                          <ctl:message select="concat('Response entity contentType ', $contentType, ' considered to match infoFormat ', $infoFormat)"/>
+                                                                      <xsl:when test="$contentType != $infoFormat ">
+                                                                          <ctl:message select="concat(' ContentType ', $contentType, ' does not match with InfoFormat ', $infoFormat, ' . ')"/>
+									  <xsl:text>false|</xsl:text>
                                                                       </xsl:when>
+
                                                                       <xsl:otherwise>
-                                                                          <ctl:message select="concat('Failure: Response entity contentType ', $contentType, ' not considered to match infoFormat ', $infoFormat)"/>
-                                                                          <xsl:text>false|</xsl:text>
+                                                                          <xsl:choose>
+									     <xsl:when test="$contentLength &lt;= 1 ">
+										<ctl:message>Response does not contain any content.</ctl:message>
+										<xsl:text>false|</xsl:text>
+									     </xsl:when>
+									  </xsl:choose>
                                                                       </xsl:otherwise>
+
                                                                   </xsl:choose>
                                                               </xsl:otherwise>
+
                                                           </xsl:choose>
-                                                          <xsl:variable name="code" select="$response/response/status/@code"/>
-                                                          <xsl:if test="$code != '' ">
-                                                              <ctl:message select="concat('HTTP status code ', $code)"/>
-                                                          </xsl:if>
+
                                                       </xsl:for-each>
                                                   </xsl:for-each>
                                               </xsl:for-each>
@@ -18459,37 +18464,41 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 																<parsers:HTTPParser/>
 															</ctl:request>
 														</xsl:variable>
-														<!-- <xsl:message>response: <xsl:copy-of select="$response"/></xsl:message> -->
-														<xsl:variable name="content" select="$response/response/content/*"/>
-														<xsl:variable name="contentType" select="$response/response/headers/header[@name='Content-Type']"/>
-														<!--
-														<ctl:call-function name="ctl:putLogCache">
-															<ctl:with-param name="id">content</ctl:with-param>
-															<ctl:with-param name="xmlToCache"><xsl:copy-of select="$content"/></ctl:with-param> 
-														</ctl:call-function>
-														-->
-														<!-- <ctl:message select="concat('content: ', $content, ' Content-Type: ', $contentType)"/> -->
-														<xsl:choose>
-															<xsl:when test="not(exists($content))">
-																<ctl:message select="concat('FAILURE: Missing or invalid response entity ; should have been Feature Info in format ', $infoFormat)"/>
-																<xsl:text>false|</xsl:text>
-															</xsl:when>
-															<xsl:otherwise>
-																<xsl:choose>
-																	<xsl:when test="string(wwwFunctions:mime-match($contentType, $infoFormat)) = 'true' ">
-																		<ctl:message select="concat('Response entity contentType ', $contentType, ' considered to match infoFormat ', $infoFormat)"/>
-																	</xsl:when>
-																	<xsl:otherwise>
-																		<ctl:message select="concat('Failure: Response entity contentType ', $contentType, ' not considered to match infoFormat ', $infoFormat)"/>
-																		<xsl:text>false|</xsl:text>
-																	</xsl:otherwise>
-																</xsl:choose>
-															</xsl:otherwise>
-														</xsl:choose>
+
 														<xsl:variable name="code" select="$response/response/status/@code"/>
-														<xsl:if test="$code != '' ">
-															<ctl:message select="concat('HTTP status code ', $code)"/>
-														</xsl:if>
+														<xsl:variable name="contentType" select="$response/response/headers/header[@name='Content-Type']"/>
+														<xsl:variable name="contentLength" select="$response/response/headers/header[@name='Content-Length']"/>
+
+														<!-- ctl:message select="concat(' Code: ', $code)"/ -->
+														<!-- ctl:message select="concat(' Content-Type: ', $contentType)"/ -->
+														<!-- ctl:message select="concat(' Content-Length: ', $contentLength)"/ -->
+
+														<xsl:choose>
+														    <xsl:when test="$code != '200' ">
+															  <ctl:message>Response does not contain Status Code 200.</ctl:message>
+															  <xsl:text>false|</xsl:text>
+														    </xsl:when>
+
+														    <xsl:otherwise>
+															<xsl:choose>
+															      <xsl:when test="$contentType != $infoFormat ">
+																  <ctl:message select="concat(' ContentType ', $contentType, ' does not match with InfoFormat ', $infoFormat, ' . ')"/>
+																  <xsl:text>false|</xsl:text>
+															      </xsl:when>
+
+															      <xsl:otherwise>
+																  <xsl:choose>
+																     <xsl:when test="$contentLength &lt;= 1 ">
+																	<ctl:message>Response does not contain any content.</ctl:message>
+																	<xsl:text>false|</xsl:text>
+																     </xsl:when>
+																  </xsl:choose>
+															      </xsl:otherwise>
+
+															</xsl:choose>
+														    </xsl:otherwise>
+														</xsl:choose>
+
 													</xsl:for-each>
 												</xsl:for-each>
 											</xsl:for-each>
@@ -18605,23 +18614,41 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 																</parsers:HTTPParser>
 															</ctl:soap-request>
 														</xsl:variable>
-														<!-- <xsl:message>response: <xsl:copy-of select="$response"/></xsl:message> -->
-														<xsl:variable name="content" select="$response/response/content/*"/>
-														<xsl:variable name="contentType" select="$response/response/headers/header[@name='Content-Type']"/>
-														<xsl:choose>
-															<xsl:when test="not(exists($content))">
-																<ctl:message select="concat('FAILURE: Missing or invalid response entity content ; should have been Feature Info in format ', $infoFormat)"/>
-																<xsl:text>false|</xsl:text>
-															</xsl:when>
-															<xsl:otherwise>
-																<xsl:variable name="description" select="wwwFunctions:describeNode($content)"/>
-																<ctl:message select="concat('FeatureInfo content description: ', $description)"/>
-															</xsl:otherwise>
-														</xsl:choose>
+
 														<xsl:variable name="code" select="$response/response/status/@code"/>
-														<xsl:if test="$code != '' ">
-															<ctl:message select="concat('HTTP status code ', $code)"/>
-														</xsl:if>
+														<xsl:variable name="contentType" select="$response/response/headers/header[@name='Content-Type']"/>
+														<xsl:variable name="contentLength" select="$response/response/headers/header[@name='Content-Length']"/>
+
+														<!-- ctl:message select="concat(' Code: ', $code)"/ -->
+														<!-- ctl:message select="concat(' Content-Type: ', $contentType)"/ -->
+														<!-- ctl:message select="concat(' Content-Length: ', $contentLength)"/ -->
+
+														<xsl:choose>
+														    <xsl:when test="$code != '200' ">
+															  <ctl:message>Response does not contain Status Code 200.</ctl:message>
+															  <xsl:text>false|</xsl:text>
+														    </xsl:when>
+
+														    <xsl:otherwise>
+															<xsl:choose>
+															      <xsl:when test="$contentType != $infoFormat ">
+																  <ctl:message select="concat(' ContentType ', $contentType, ' does not match with InfoFormat ', $infoFormat, ' . ')"/>
+																  <xsl:text>false|</xsl:text>
+															      </xsl:when>
+
+															      <xsl:otherwise>
+																  <xsl:choose>
+																     <xsl:when test="$contentLength &lt;= 1 ">
+																	<ctl:message>Response does not contain any content.</ctl:message>
+																	<xsl:text>false|</xsl:text>
+																     </xsl:when>
+																  </xsl:choose>
+															      </xsl:otherwise>
+
+															</xsl:choose>
+														    </xsl:otherwise>
+														</xsl:choose>
+
 													</xsl:for-each>
 												</xsl:for-each>
 											</xsl:for-each>
@@ -18749,37 +18776,41 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 																				<parsers:HTTPParser/> 
 																			</ctl:request>
 																		</xsl:variable>
-																		<!-- <xsl:message>response: <xsl:copy-of select="$response"/></xsl:message> -->
-																		<xsl:variable name="content" select="$response/response/content/*"/>
-																		<xsl:variable name="contentType" select="$response/response/headers/header[@name='Content-Type']"/>
-																		<!--
-																		<ctl:call-function name="ctl:putLogCache">
-																			<ctl:with-param name="id">content</ctl:with-param>
-																			<ctl:with-param name="xmlToCache"><xsl:copy-of select="$content"/></ctl:with-param> 
-																		</ctl:call-function>
-																		-->
-																		<!-- <ctl:message select="concat('content: ', $content, ' Content-Type: ', $contentType)"/> -->
-																		<xsl:choose>
-																			<xsl:when test="not(exists($content))">
-																				<ctl:message select="concat('FAILURE: Missing or invalid response entity ; should have been Feature Info in format ', $infoFormat)"/>
-																				<xsl:text>false|</xsl:text>
-																			</xsl:when>
-																			<xsl:otherwise>
-																				<xsl:choose>
-																					<xsl:when test="string(wwwFunctions:mime-match($contentType, $infoFormat)) = 'true' ">
-																						<ctl:message select="concat('Response entity contentType ', $contentType, ' considered to match infoFormat ', $infoFormat)"/>
-																					</xsl:when>
-																					<xsl:otherwise>
-																						<ctl:message select="concat('Failure: Response entity contentType ', $contentType, ' not considered to match infoFormat ', $infoFormat)"/>
-																						<xsl:text>false|</xsl:text>
-																					</xsl:otherwise>
-																				</xsl:choose>
-																			</xsl:otherwise>
-																		</xsl:choose>
+
 																		<xsl:variable name="code" select="$response/response/status/@code"/>
-																		<xsl:if test="$code != '' ">
-																			<ctl:message select="concat('HTTP status code ', $code)"/>
-																		</xsl:if>
+																		<xsl:variable name="contentType" select="$response/response/headers/header[@name='Content-Type']"/>
+																		<xsl:variable name="contentLength" select="$response/response/headers/header[@name='Content-Length']"/>
+
+																		<!-- ctl:message select="concat(' Code: ', $code)"/ -->
+																		<!-- ctl:message select="concat(' Content-Type: ', $contentType)"/ -->
+																		<!-- ctl:message select="concat(' Content-Length: ', $contentLength)"/ -->
+
+																		<xsl:choose>
+																		    <xsl:when test="$code != '200' ">
+																			  <ctl:message>Response does not contain Status Code 200.</ctl:message>
+																			  <xsl:text>false|</xsl:text>
+																		    </xsl:when>
+
+																		    <xsl:otherwise>
+																			<xsl:choose>
+																			      <xsl:when test="$contentType != $infoFormat ">
+																				  <ctl:message select="concat(' ContentType ', $contentType, ' does not match with InfoFormat ', $infoFormat, ' . ')"/>
+																				  <xsl:text>false|</xsl:text>
+																			      </xsl:when>
+
+																			      <xsl:otherwise>
+																				  <xsl:choose>
+																				     <xsl:when test="$contentLength &lt;= 1 ">
+																					<ctl:message>Response does not contain any content.</ctl:message>
+																					<xsl:text>false|</xsl:text>
+																				     </xsl:when>
+																				  </xsl:choose>
+																			      </xsl:otherwise>
+
+																			</xsl:choose>
+																		    </xsl:otherwise>
+																		</xsl:choose>
+
 																	</xsl:for-each>
 																</xsl:for-each>
 															</xsl:for-each>
