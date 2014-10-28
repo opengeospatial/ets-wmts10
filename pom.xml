@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <artifactId>ets-wmts10</artifactId>
   <groupId>org.opengis.cite</groupId>
-  <version>r4-SNAPSHOT</version>
+  <version>4-SNAPSHOT</version>
 
   <name>OGC Web Map Tile Service 1.0.0 - Executable Test Suite</name>
   <description>
@@ -41,7 +41,7 @@
       <plugin>
         <artifactId>maven-project-info-reports-plugin</artifactId>
         <version>2.7</version>
-         <reportSets>
+        <reportSets>
           <reportSet>
             <reports>
               <report>license</report>
@@ -53,11 +53,11 @@
       </plugin>  
     </plugins>
   </reporting> 
-  
- <build>
+
+  <build>
     <plugins>  
-    
-    <plugin>
+
+      <plugin>
         <artifactId>maven-jar-plugin</artifactId>
         <executions>
           <execution>
@@ -65,8 +65,8 @@
             <phase>never</phase>
           </execution>
         </executions>
-    </plugin>
-    <plugin>
+      </plugin>
+      <plugin>
         <artifactId>maven-surefire-plugin</artifactId>
         <configuration>
           <skipTests>true</skipTests>
@@ -79,7 +79,7 @@
             <descriptor>src/assembly/ctl.xml</descriptor>
           </descriptors>
         </configuration>
-         <executions>
+        <executions>
           <execution>
             <phase>package</phase>
             <goals>
@@ -89,13 +89,16 @@
         </executions>
       </plugin>
       <plugin>
-          <artifactId>maven-release-plugin</artifactId>
-           <version>2.5</version>
-         </plugin>
+        <artifactId>maven-release-plugin</artifactId>
+        <version>2.5.1</version>
+        <configuration>
+          <tagNameFormat>r@{project.version}</tagNameFormat>
+        </configuration>
+      </plugin>
       <plugin>     
-         <artifactId>maven-site-plugin</artifactId>
-         <configuration>
-            <relativizeDecorationLinks>false</relativizeDecorationLinks>      
+        <artifactId>maven-site-plugin</artifactId>
+        <configuration>
+          <relativizeDecorationLinks>false</relativizeDecorationLinks>      
         </configuration>
         <executions>
           <execution>
