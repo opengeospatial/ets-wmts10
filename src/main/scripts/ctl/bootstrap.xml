@@ -51,7 +51,10 @@
             </xsl:for-each>
           </xsl:variable>
           <xsl:variable name="hasThemes" select="exists($wmts.capabilities.doc/wmts:Themes/wmts:Theme)"/>
+          <!-- Use local copies to avoid network retrieval (slow)
           <xsl:variable name="ogc.schema.root" select="'http://schemas.opengis.net/'"/>
+          -->
+          <xsl:variable name="ogc.schema.root" select="'xsd/ogc/'"/>
           <xsl:variable name="ows.version" select="'1.1.0'"/>
           <xsl:variable name="exceptionReportSchemaPath" select="ctlFunctions:exceptionReportSchemaPath($ogc.schema.root, $ows.version)"/>
           <!-- bs element will be passed as parameter in WMTS ets so that its children may be examined to easily determine prerequisites.. -->
