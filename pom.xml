@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <artifactId>ets-wmts10</artifactId>
   <groupId>org.opengis.cite</groupId>
-  <version>4-SNAPSHOT</version>
+  <version>r4</version>
 
   <name>OGC Web Map Tile Service 1.0.0 - Executable Test Suite</name>
   <description>
@@ -37,7 +37,7 @@
       <timezone>Europe/Berlin</timezone>
     </developer>
     <developer>
-      <name>L. Burmudez</name>
+      <name>L. Bermudez</name>
       <url>https://github.com/bermud</url>
       <timezone>US/Eastern</timezone>
     </developer>
