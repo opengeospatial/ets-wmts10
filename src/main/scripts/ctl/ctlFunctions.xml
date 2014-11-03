@@ -57,11 +57,12 @@
 				<xsl:when test="starts-with($schemaFile,'http')">
 					<parsers:XMLValidatingParser ignoreErrors="false">
 						<parsers:schemas>
-							<parsers:schema type="url">http://www.w3.org/2001/xml.xsd</parsers:schema>
+							<!--<parsers:schema type="url">http://www.w3.org/2009/01/xml.xsd</parsers:schema>-->
+              <parsers:schema type="resource">xsd/w3c/xlink.xsd</parsers:schema>
 							<parsers:schema type="url">
 								<xsl:value-of select="$schemaFile"/>								
 							</parsers:schema>							
-							<parsers:schema type="url">http://schemas.opengis.net/ows/1.1.0/owsExceptionReport.xsd</parsers:schema>	
+							<parsers:schema type="resource">xsd/ogc/ows/1.1.0/owsExceptionReport.xsd</parsers:schema>	
 							<!-- added 2010-12-18 so exception report gets returned; requires subsequent test to be changed to
 							<xsl:when test="not($response/*) or $response//*[local-name() = 'ExceptionReport']"> PwD -->				
 						</parsers:schemas>
@@ -70,15 +71,15 @@
 				<xsl:otherwise>
 					<parsers:XMLValidatingParser ignoreErrors="false">
 						<parsers:schemas>
-							<parsers:schema type="url">http://www.w3.org/2001/xml.xsd</parsers:schema>						
+							<parsers:schema type="resource">xsd/w3c/xlink.xsd</parsers:schema>						
 							<parsers:schema type="resource">
 								<xsl:value-of select="$schemaFile"/>
 							</parsers:schema>
-							<parsers:schema type="url">http://schemas.opengis.net/ows/1.1.0/owsExceptionReport.xsd</parsers:schema>	
+							<parsers:schema type="resource">xsd/ogc/ows/1.1.0/owsExceptionReport.xsd</parsers:schema>
 						</parsers:schemas>
 					</parsers:XMLValidatingParser>
 				</xsl:otherwise>
-			</xsl:choose>				
+			</xsl:choose>
         </ctl:code>
     </ctl:function>
 
@@ -159,7 +160,7 @@
 							</parsers:schema>														
 						</xsl:when>
 						<xsl:otherwise>
-							<parsers:schema type="file">
+							<parsers:schema type="resource">
 								<xsl:value-of select="$schemaPath"/>								
 							</parsers:schema>							
 						</xsl:otherwise>
