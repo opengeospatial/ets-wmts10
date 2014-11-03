@@ -799,7 +799,7 @@
 								<ctl:pass/>
 							</xsl:when>
 							<xsl:otherwise>
-								<ctl:message>Test skipped:  Server did not return a correct ows:ExceptionReport and HTTP status in response to request with a sections parameter value of Bogus, so sections option considered to not be implemented.')"/></ctl:message>
+								<ctl:message>Test skipped:  Server did not return a correct ows:ExceptionReport and HTTP status in response to request with a sections parameter value of Bogus, so sections option considered to not be implemented.</ctl:message>
 								<ctl:skipped/>
 							</xsl:otherwise>
 						</xsl:choose>
@@ -858,7 +858,7 @@
 								<ctl:pass/>
 							</xsl:when>
 							<xsl:otherwise>
-								<ctl:message>Test skipped: Server did not return a correct ows:ExceptionReport and HTTP status in response to request with a sections parameter with a missing value, so sections option considered to not be implemented.')"/></ctl:message>
+								<ctl:message>Test skipped: Server did not return a correct ows:ExceptionReport and HTTP status in response to request with a sections parameter with a missing value, so sections option considered to not be implemented.</ctl:message>
 								<ctl:skipped/>
 							</xsl:otherwise>
 						</xsl:choose>
@@ -1252,79 +1252,6 @@
 	</ctl:code>
 </ctl:test>
 
-<ctl:test name="wmts:Server.KVP.GET.GetCapabilities.Response.No.Layers.OtherSource" type="MandatoryIfImplemented">
-	<ctl:param name="metPrerequisites">Bootstrap prerequisites test result for this test - true or false</ctl:param>
-	<ctl:param name="selected">This test was selected for execution - true or false </ctl:param>
-	<ctl:param name="capabilitiesURL">/wmts:Capabilities/ows:OperationsMetadata/ows:Operation[@name='GetCapabilities']/ows:DCP/ows:HTTP/ows:Get/@xlink:href</ctl:param>
-	<ctl:context>wmts:main</ctl:context>
-	<ctl:assertion>
-	1.  the request entity is a valid KVP GET GetCapabilities request with the mandatory request parameter with a value of GetCapabilities;
-	2.  the request entity is a valid KVP GET GetCapabilities request with the mandatory service parameter with a value of WMTS;
-	3.  the response entity contains an &lt;ows:OtherSource&gt; element with an xlink:href URL attribute value.</ctl:assertion>
-	<ctl:comment>Verify that a Service Metadata document with no &lt;Layer&gt; elements contains an ows:OtherSource element with an xlink:href URL attribute value. </ctl:comment>
-	<ctl:link>docs/wmts/1.0/WMTS 1.0 ATS.html#Server.KVP.GET.GetCapabilities.Response.No.Layers.OtherSource</ctl:link>
-	<ctl:code>
-		<xsl:choose>
-			<xsl:when test="$metPrerequisites = 'true' ">
-				<xsl:choose>
-					<xsl:when test="$selected = 'true' ">
-						<ctl:call-function name="wmtsFunctions:KVP.GetCapabilities.Response.No.Layers.OtherSource">
-							<ctl:with-param name="capabilitiesURL" select="$capabilitiesURL"/>
-							<ctl:with-param name="method">get</ctl:with-param>
-							<ctl:with-param name="service">WMTS</ctl:with-param>
-						</ctl:call-function>
-					</xsl:when>
-					<xsl:otherwise>
-						<ctl:message>Server.KVP.GET.GetCapabilities.Response.No.Layers.OtherSource not tested.</ctl:message>
-						<ctl:notTested/>
-					</xsl:otherwise>
-				</xsl:choose>
-			</xsl:when>
-			<xsl:otherwise>
-				<ctl:message>Server.KVP.GET.GetCapabilities.Response.No.Layers.OtherSource test skipped because its prerequisites were not met.</ctl:message>
-				<ctl:skipped/>
-			</xsl:otherwise>
-		</xsl:choose>
-	</ctl:code>
-</ctl:test>
-
-<ctl:test name="wmts:Server.KVP.GET.GetCapabilities.Response.Style.Identifiers.Unique" type="Mandatory">
-	<ctl:param name="metPrerequisites">Bootstrap prerequisites test result for this test - true or false</ctl:param>
-	<ctl:param name="selected">This test was selected for execution - true or false </ctl:param>
-	<ctl:param name="capabilitiesURL">/wmts:Capabilities/ows:OperationsMetadata/ows:Operation[@name='GetCapabilities']/ows:DCP/ows:HTTP/ows:Get/@xlink:href</ctl:param>
-	<ctl:context>wmts:main</ctl:context>
-	<ctl:assertion>
-	1.  the request entity is a valid KVP GET GetCapabilities request with the mandatory request parameter with a value of GetCapabilities;
-	2.  the request entity is a valid KVP GET GetCapabilities request with the mandatory service parameter with a value of WMTS;
-	3.  the response entity &lt;Contents&gt;&lt;Layer&gt;&lt;Style&gt;&lt;ows:Identifier&gt; element text values are all different non empty identifiers for each Layer. 
-	</ctl:assertion>
-	<ctl:comment>Verify that the WMTS Styles advertised in the Service Metadata document for each Layer have different non empty identifiers. </ctl:comment>
-	<ctl:link>docs/wmts/1.0/WMTS 1.0 ATS.html#Server.KVP.GET.GetCapabilities.Response.Style.Identifiers.Unique</ctl:link>
-	<ctl:code>
-		<xsl:choose>
-			<xsl:when test="$metPrerequisites = 'true' ">
-				<xsl:choose>
-					<xsl:when test="$selected = 'true' ">
-						<ctl:call-function name="wmtsFunctions:KVP.GetCapabilities.Response.Style.Identifiers.Unique">
-							<ctl:with-param name="capabilitiesURL" select="$capabilitiesURL"/>
-							<ctl:with-param name="method">get</ctl:with-param>
-							<ctl:with-param name="service">WMTS</ctl:with-param>
-						</ctl:call-function>
-					</xsl:when>
-					<xsl:otherwise>
-						<ctl:message>Server.KVP.GET.GetCapabilities.Response.Style.Identifiers.Unique not tested.</ctl:message>
-						<ctl:notTested/>
-					</xsl:otherwise>
-				</xsl:choose>
-			</xsl:when>
-			<xsl:otherwise>
-				<ctl:message>Server.KVP.GET.GetCapabilities.Response.Style.Identifiers.Unique test skipped because its prerequisites were not met.</ctl:message>
-				<ctl:skipped/>
-			</xsl:otherwise>
-		</xsl:choose>
-	</ctl:code>
-</ctl:test>
-
 <ctl:test name="wmts:Server.KVP.GET.GetCapabilities.Response.Layer.LegendURL.Correct.Resource" type="MandatoryIfImplemented">
 	<ctl:param name="metPrerequisites">Bootstrap prerequisites test result for this test - true or false</ctl:param>
 	<ctl:param name="selected">This test was selected for execution - true or false </ctl:param>
@@ -1433,42 +1360,6 @@
 			</xsl:when>
 			<xsl:otherwise>
 				<ctl:message>Server.KVP.GET.GetCapabilities.Response.Layer.LegendURL.Correct.Size test skipped because its prerequisites were not met.</ctl:message>
-				<ctl:skipped/>
-			</xsl:otherwise>
-		</xsl:choose>
-	</ctl:code>
-</ctl:test>
-
-<ctl:test name="wmts:Server.KVP.GET.GetCapabilities.Response.Dimension.Identifiers.Unique" type="MandatoryIfImplemented">
-	<ctl:param name="metPrerequisites">Bootstrap prerequisites test result for this test - true or false</ctl:param>
-	<ctl:param name="selected">This test was selected for execution - true or false </ctl:param>
-	<ctl:param name="capabilitiesURL">/wmts:Capabilities/ows:OperationsMetadata/ows:Operation[@name='GetCapabilities']/ows:DCP/ows:HTTP/ows:Get/@xlink:href</ctl:param>
-	<ctl:context>wmts:main</ctl:context>
-	<ctl:assertion>
-	1.  the request entity is a valid KVP GET GetCapabilities request with the mandatory request parameter with a value of GetCapabilities;
-	2.  the request entity is a valid KVP GET GetCapabilities request with the mandatory service parameter with a value of WMTS;
-	3.  the response entity &lt;Contents&gt;&lt;Layer&gt;&lt;Dimension&gt;&lt;ows:Identifier&gt; element text values are all different non empty identifiers for each Layer. </ctl:assertion>
-	<ctl:comment>Verify that the WMTS Dimensions advertised in the Service Metadata document for each Layer have different non empty identifiers. </ctl:comment>
-	<ctl:link>docs/wmts/1.0/WMTS 1.0 ATS.html#Server.KVP.GET.GetCapabilities.Response.Dimension.Identifiers.Unique</ctl:link>
-	<ctl:code>
-		<xsl:choose>
-			<xsl:when test="$metPrerequisites = 'true' ">
-				<xsl:choose>
-					<xsl:when test="$selected = 'true' ">
-						<ctl:call-function name="wmtsFunctions:KVP.GetCapabilities.Response.Dimension.Identifiers.Unique">
-							<ctl:with-param name="capabilitiesURL" select="$capabilitiesURL"/>
-							<ctl:with-param name="method">get</ctl:with-param>
-							<ctl:with-param name="service">WMTS</ctl:with-param>
-						</ctl:call-function>
-					</xsl:when>
-					<xsl:otherwise>
-						<ctl:message>Server.KVP.GET.GetCapabilities.Response.Dimension.Identifiers.Unique not tested.</ctl:message>
-						<ctl:notTested/>
-					</xsl:otherwise>
-				</xsl:choose>
-			</xsl:when>
-			<xsl:otherwise>
-				<ctl:message>Server.KVP.GET.GetCapabilities.Response.Dimension.Identifiers.Unique test skipped because its prerequisites were not met.</ctl:message>
 				<ctl:skipped/>
 			</xsl:otherwise>
 		</xsl:choose>
@@ -2310,7 +2201,7 @@
 								<ctl:pass/>
 							</xsl:when>
 							<xsl:otherwise>
-								<ctl:message>Test skipped:  Server did not return a correct ows:ExceptionReport and HTTP status in response to request with a sections parameter value of Bogus, so sections option considered to not be implemented.')"/></ctl:message>
+								<ctl:message>Test skipped:  Server did not return a correct ows:ExceptionReport and HTTP status in response to request with a sections parameter value of Bogus, so sections option considered to not be implemented.</ctl:message>
 								<ctl:skipped/>
 							</xsl:otherwise>
 						</xsl:choose>
@@ -2369,7 +2260,7 @@
 								<ctl:pass/>
 							</xsl:when>
 							<xsl:otherwise>
-								<ctl:message>Test skipped: Server did not return a correct ows:ExceptionReport and HTTP status in response to request with a sections parameter with a missing value, so sections option considered to not be implemented.')"/></ctl:message>
+								<ctl:message>Test skipped: Server did not return a correct ows:ExceptionReport and HTTP status in response to request with a sections parameter with a missing value, so sections option considered to not be implemented.</ctl:message>
 								<ctl:skipped/>
 							</xsl:otherwise>
 						</xsl:choose>
@@ -2762,79 +2653,6 @@
 	</ctl:code>
 </ctl:test>
 
-<ctl:test name="wmts:Server.KVP.POST.GetCapabilities.Response.No.Layers.OtherSource" type="MandatoryIfImplemented">
-	<ctl:param name="metPrerequisites">Bootstrap prerequisites test result for this test - true or false</ctl:param>
-	<ctl:param name="selected">This test was selected for execution - true or false </ctl:param>
-	<ctl:param name="capabilitiesURL">/wmts:Capabilities/ows:OperationsMetadata/ows:Operation[@name='GetCapabilities']/ows:DCP/ows:HTTP/ows:Post/@xlink:href</ctl:param>
-	<ctl:context>wmts:main</ctl:context>
-	<ctl:assertion>
-	1.  the request entity is a valid KVP POST GetCapabilities request with the mandatory request parameter with a value of GetCapabilities;
-	2.  the request entity is a valid KVP POST GetCapabilities request with the mandatory service parameter with a value of WMTS;
-	3.  the response entity contains an &lt;ows:OtherSource&gt; element with an xlink:href URL attribute value.
-	</ctl:assertion>
-	<ctl:comment>Verify that a Service Metadata document with no &lt;Layer&gt; elements contains an ows:OtherSource element with an xlink:href URL attribute value. </ctl:comment>
-	<ctl:link>docs/wmts/1.0/WMTS 1.0 ATS.html#Server.KVP.POST.GetCapabilities.Response.No.Layers.OtherSource</ctl:link>
-	<ctl:code>
-		<xsl:choose>
-			<xsl:when test="$metPrerequisites = 'true' ">
-				<xsl:choose>
-					<xsl:when test="$selected = 'true' ">
-						<ctl:call-function name="wmtsFunctions:KVP.GetCapabilities.Response.No.Layers.OtherSource">
-							<ctl:with-param name="capabilitiesURL" select="$capabilitiesURL"/>
-							<ctl:with-param name="method">post</ctl:with-param>
-							<ctl:with-param name="service">WMTS</ctl:with-param>
-						</ctl:call-function>
-					</xsl:when>
-					<xsl:otherwise>
-						<ctl:message>Server.KVP.POST.GetCapabilities.Response.No.Layers.OtherSource not tested.</ctl:message>
-						<ctl:notTested/>
-					</xsl:otherwise>
-				</xsl:choose>
-			</xsl:when>
-			<xsl:otherwise>
-				<ctl:message>Server.KVP.POST.GetCapabilities.Response.No.Layers.OtherSource test skipped because its prerequisites were not met.</ctl:message>
-				<ctl:skipped/>
-			</xsl:otherwise>
-		</xsl:choose>
-	</ctl:code>
-</ctl:test>
-
-<ctl:test name="wmts:Server.KVP.POST.GetCapabilities.Response.Style.Identifiers.Unique" type="MandatoryIfImplemented">
-	<ctl:param name="metPrerequisites">Bootstrap prerequisites test result for this test - true or false</ctl:param>
-	<ctl:param name="selected">This test was selected for execution - true or false </ctl:param>
-	<ctl:param name="capabilitiesURL">/wmts:Capabilities/ows:OperationsMetadata/ows:Operation[@name='GetCapabilities']/ows:DCP/ows:HTTP/ows:Post/@xlink:href</ctl:param>
-	<ctl:context>wmts:main</ctl:context>
-	<ctl:assertion>
-	1.  the request entity is a valid KVP POST GetCapabilities request with the mandatory request parameter with a value of GetCapabilities;
-	2.  the request entity is a valid KVP POST GetCapabilities request with the mandatory service parameter with a value of WMTS;
-	3.  the response entity &lt;Contents&gt;&lt;Layer&gt;&lt;Style&gt;&lt;ows:Identifier&gt; element text values are all different non empty identifiers for each Layer.</ctl:assertion>
-	<ctl:comment>Verify that the WMTS Styles advertised in the Service Metadata document for each Layer have different non empty identifiers. </ctl:comment>
-	<ctl:link>docs/wmts/1.0/WMTS 1.0 ATS.html#Server.KVP.POST.GetCapabilities.Response.Style.Identifiers.Unique</ctl:link>
-	<ctl:code>
-		<xsl:choose>
-			<xsl:when test="$metPrerequisites = 'true' ">
-				<xsl:choose>
-					<xsl:when test="$selected = 'true' ">
-						<ctl:call-function name="wmtsFunctions:KVP.GetCapabilities.Response.Style.Identifiers.Unique">
-							<ctl:with-param name="capabilitiesURL" select="$capabilitiesURL"/>
-							<ctl:with-param name="method">post</ctl:with-param>
-							<ctl:with-param name="service">WMTS</ctl:with-param>
-						</ctl:call-function>
-					</xsl:when>
-					<xsl:otherwise>
-						<ctl:message>Server.KVP.POST.GetCapabilities.Response.Style.Identifiers.Unique not tested.</ctl:message>
-						<ctl:notTested/>
-					</xsl:otherwise>
-				</xsl:choose>
-			</xsl:when>
-			<xsl:otherwise>
-				<ctl:message>Server.KVP.POST.GetCapabilities.Response.Style.Identifiers.Unique test skipped because its prerequisites were not met.</ctl:message>
-				<ctl:skipped/>
-			</xsl:otherwise>
-		</xsl:choose>
-	</ctl:code>
-</ctl:test>
-
 <ctl:test name="wmts:Server.KVP.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Resource" type="MandatoryIfImplemented">
 	<ctl:param name="metPrerequisites">Bootstrap prerequisites test result for this test - true or false</ctl:param>
 	<ctl:param name="selected">This test was selected for execution - true or false </ctl:param>
@@ -2943,42 +2761,6 @@
 			</xsl:when>
 			<xsl:otherwise>
 				<ctl:message>Server.KVP.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Size test skipped because its prerequisites were not met.</ctl:message>
-				<ctl:skipped/>
-			</xsl:otherwise>
-		</xsl:choose>
-	</ctl:code>
-</ctl:test>
-
-<ctl:test name="wmts:Server.KVP.POST.GetCapabilities.Response.Dimension.Identifiers.Unique" type="MandatoryIfImplemented">
-	<ctl:param name="metPrerequisites">Bootstrap prerequisites test result for this test - true or false</ctl:param>
-	<ctl:param name="selected">This test was selected for execution - true or false </ctl:param>
-	<ctl:param name="capabilitiesURL">/wmts:Capabilities/ows:OperationsMetadata/ows:Operation[@name='GetCapabilities']/ows:DCP/ows:HTTP/ows:Post/@xlink:href</ctl:param>
-	<ctl:context>wmts:main</ctl:context>
-	<ctl:assertion>
-	1.  the request entity is a valid KVP POST GetCapabilities request with the mandatory request parameter with a value of GetCapabilities;
-	2.  the request entity is a valid KVP POST GetCapabilities request with the mandatory service parameter with a value of WMTS;
-	3.  the response entity &lt;Contents&gt;&lt;Layer&gt;&lt;Dimension&gt;&lt;ows:Identifier&gt; element text values are all different non empty identifiers for each Layer.</ctl:assertion>
-	<ctl:comment>Verify that the WMTS Dimensions advertised in the Service Metadata document for each Layer have different non empty identifiers. </ctl:comment>
-	<ctl:link>docs/wmts/1.0/WMTS 1.0 ATS.html#Server.KVP.POST.GetCapabilities.Response.Dimension.Identifiers.Unique</ctl:link>
-	<ctl:code>
-		<xsl:choose>
-			<xsl:when test="$metPrerequisites = 'true' ">
-				<xsl:choose>
-					<xsl:when test="$selected = 'true' ">
-						<ctl:call-function name="wmtsFunctions:KVP.GetCapabilities.Response.Dimension.Identifiers.Unique">
-							<ctl:with-param name="capabilitiesURL" select="$capabilitiesURL"/>
-							<ctl:with-param name="method">post</ctl:with-param>
-							<ctl:with-param name="service">WMTS</ctl:with-param>
-						</ctl:call-function>
-					</xsl:when>
-					<xsl:otherwise>
-						<ctl:message>Server.KVP.POST.GetCapabilities.Response.Dimension.Identifiers.Unique not tested.</ctl:message>
-						<ctl:notTested/>
-					</xsl:otherwise>
-				</xsl:choose>
-			</xsl:when>
-			<xsl:otherwise>
-				<ctl:message>Server.KVP.POST.GetCapabilities.Response.Dimension.Identifiers.Unique test skipped because its prerequisites were not met.</ctl:message>
 				<ctl:skipped/>
 			</xsl:otherwise>
 		</xsl:choose>
@@ -3774,7 +3556,7 @@
 								<ctl:pass/>
 							</xsl:when>
 							<xsl:otherwise>
-								<ctl:message>Test skipped:  Server did not return a correct ows:ExceptionReport and HTTP status in response to request with a sections parameter value of Bogus, so sections option considered to not be implemented.')"/></ctl:message>
+								<ctl:message>Test skipped:  Server did not return a correct ows:ExceptionReport and HTTP status in response to request with a sections parameter value of Bogus, so sections option considered to not be implemented.</ctl:message>
 								<ctl:skipped/>
 							</xsl:otherwise>
 						</xsl:choose>
@@ -3838,7 +3620,7 @@
 								<ctl:pass/>
 							</xsl:when>
 							<xsl:otherwise>
-								<ctl:message>Test skipped: Server did not return a correct ows:ExceptionReport and HTTP status in response to request with a sections parameter with a missing value, so sections option considered to not be implemented.')"/></ctl:message>
+								<ctl:message>Test skipped: Server did not return a correct ows:ExceptionReport and HTTP status in response to request with a sections parameter with a missing value, so sections option considered to not be implemented.</ctl:message>
 								<ctl:skipped/>
 							</xsl:otherwise>
 						</xsl:choose>
@@ -4221,76 +4003,6 @@
 	</ctl:code>
 </ctl:test>
 
-<ctl:test name="wmts:Server.XML.POST.GetCapabilities.Response.No.Layers.OtherSource" type="MandatoryIfImplemented">
-	<ctl:param name="metPrerequisites">Bootstrap prerequisites test result for this test - true or false</ctl:param>
-	<ctl:param name="selected">This test was selected for execution - true or false </ctl:param>
-	<ctl:param name="capabilitiesURL">/wmts:Capabilities/ows:OperationsMetadata/ows:Operation[@name='GetCapabilities']/ows:DCP/ows:HTTP/ows:Post/@xlink:href</ctl:param>
-	<ctl:context>wmts:main</ctl:context>
-	<ctl:assertion>
-   1.   the request entity is a valid XML POST GetCapabilities request with the mandatory request parameter with a value of GetCapabilities;
-   2.  the request entity is a valid XML POST GetCapabilities request with the mandatory service parameter with a value of WMTS;
-   3.  the response entity contains an &lt;ows:OtherSource&gt; element with an xlink:href URL attribute value.</ctl:assertion>
-	<ctl:comment>Verify that a Service Metadata document with no &lt;Layer&gt; elements contains an ows:OtherSource element with an xlink:href URL attribute value. </ctl:comment>
-	<ctl:link>docs/wmts/1.0/WMTS 1.0 ATS.html#Server.XML.POST.GetCapabilities.Response.No.Layers.OtherSource</ctl:link>
-	<ctl:code>
-		<xsl:choose>
-			<xsl:when test="$metPrerequisites = 'true' ">
-				<xsl:choose>
-					<xsl:when test="$selected = 'true' ">
-						<ctl:call-function name="wmtsFunctions:XML.GetCapabilities.Response.No.Layers.OtherSource">
-							<ctl:with-param name="capabilitiesURL" select="$capabilitiesURL"/>
-							<ctl:with-param name="service">WMTS</ctl:with-param>
-						</ctl:call-function>
-					</xsl:when>
-					<xsl:otherwise>
-						<ctl:message>Server.XML.POST.GetCapabilities.Response.No.Layers.OtherSource not tested.</ctl:message>
-						<ctl:notTested/>
-					</xsl:otherwise>
-				</xsl:choose>
-			</xsl:when>
-			<xsl:otherwise>
-				<ctl:message>Server.XML.POST.GetCapabilities.Response.No.Layers.OtherSource test skipped because its prerequisites were not met.</ctl:message>
-				<ctl:skipped/>
-			</xsl:otherwise>
-		</xsl:choose>
-	</ctl:code>
-</ctl:test>
-
-<ctl:test name="wmts:Server.XML.POST.GetCapabilities.Response.Style.Identifiers.Unique" type="MandatoryIfImplemented">
-	<ctl:param name="metPrerequisites">Bootstrap prerequisites test result for this test - true or false</ctl:param>
-	<ctl:param name="selected">This test was selected for execution - true or false </ctl:param>
-	<ctl:param name="capabilitiesURL">/wmts:Capabilities/ows:OperationsMetadata/ows:Operation[@name='GetCapabilities']/ows:DCP/ows:HTTP/ows:Post/@xlink:href</ctl:param>
-	<ctl:context>wmts:main</ctl:context>
-	<ctl:assertion>
-	1.  the request entity is a valid XML POST GetCapabilities request with the mandatory request parameter with a value of GetCapabilities;
-	2.  the request entity is a valid XML POST GetCapabilities request with the mandatory service parameter with a value of WMTS;
-	3.  the response entity &lt;Contents&gt;&lt;Layer&gt;&lt;Style&gt;&lt;ows:Identifier&gt; element text values are all different non empty identifiers for each Layer.</ctl:assertion>
-	<ctl:comment>Verify that the WMTS Styles advertised in the Service Metadata document for each Layer have different non empty identifiers. </ctl:comment>
-	<ctl:link>docs/wmts/1.0/WMTS 1.0 ATS.html#Server.XML.POST.GetCapabilities.Response.Style.Identifiers.Unique</ctl:link>
-	<ctl:code>
-		<xsl:choose>
-			<xsl:when test="$metPrerequisites = 'true' ">
-				<xsl:choose>
-					<xsl:when test="$selected = 'true' ">
-						<ctl:call-function name="wmtsFunctions:XML.GetCapabilities.Response.Style.Identifiers.Unique">
-							<ctl:with-param name="capabilitiesURL" select="$capabilitiesURL"/>
-							<ctl:with-param name="service">WMTS</ctl:with-param>
-						</ctl:call-function>
-					</xsl:when>
-					<xsl:otherwise>
-						<ctl:message>Server.XML.POST.GetCapabilities.Response.Style.Identifiers.Unique not tested.</ctl:message>
-						<ctl:notTested/>
-					</xsl:otherwise>
-				</xsl:choose>
-			</xsl:when>
-			<xsl:otherwise>
-				<ctl:message>Server.XML.POST.GetCapabilities.Response.Style.Identifiers.Unique test skipped because its prerequisites were not met.</ctl:message>
-				<ctl:skipped/>
-			</xsl:otherwise>
-		</xsl:choose>
-	</ctl:code>
-</ctl:test>
-
 <ctl:test name="wmts:Server.XML.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Resource" type="MandatoryIfImplemented">
 	<ctl:param name="metPrerequisites">Bootstrap prerequisites test result for this test - true or false</ctl:param>
 	<ctl:param name="selected">This test was selected for execution - true or false </ctl:param>
@@ -4396,41 +4108,6 @@
 			</xsl:when>
 			<xsl:otherwise>
 				<ctl:message>Server.XML.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Size test skipped because its prerequisites were not met.</ctl:message>
-				<ctl:skipped/>
-			</xsl:otherwise>
-		</xsl:choose>
-	</ctl:code>
-</ctl:test>
-
-<ctl:test name="wmts:Server.XML.POST.GetCapabilities.Response.Dimension.Identifiers.Unique" type="MandatoryIfImplemented">
-	<ctl:param name="metPrerequisites">Bootstrap prerequisites test result for this test - true or false</ctl:param>
-	<ctl:param name="selected">This test was selected for execution - true or false </ctl:param>
-	<ctl:param name="capabilitiesURL">/wmts:Capabilities/ows:OperationsMetadata/ows:Operation[@name='GetCapabilities']/ows:DCP/ows:HTTP/ows:Post/@xlink:href</ctl:param>
-	<ctl:context>wmts:main</ctl:context>
-	<ctl:assertion>
-	1.  the request entity is a valid XML POST GetCapabilities request with the mandatory request parameter with a value of GetCapabilities;
-	2.  the request entity is a valid XML POST GetCapabilities request with the mandatory service parameter with a value of WMTS;
-	3.  the response entity &lt;Contents&gt;&lt;Layer&gt;&lt;Dimension&gt;&lt;ows:Identifier&gt; element text values are all different non empty identifiers for each Layer.</ctl:assertion>
-	<ctl:comment>Verify that the WMTS Dimensions advertised in the Service Metadata document for each Layer have different non empty identifiers. </ctl:comment>
-	<ctl:link>docs/wmts/1.0/WMTS 1.0 ATS.html#Server.XML.POST.GetCapabilities.Response.Dimension.Identifiers.Unique</ctl:link>
-	<ctl:code>
-		<xsl:choose>
-			<xsl:when test="$metPrerequisites = 'true' ">
-				<xsl:choose>
-					<xsl:when test="$selected = 'true' ">
-						<ctl:call-function name="wmtsFunctions:XML.GetCapabilities.Response.Dimension.Identifiers.Unique">
-							<ctl:with-param name="capabilitiesURL" select="$capabilitiesURL"/>
-							<ctl:with-param name="service">WMTS</ctl:with-param>
-						</ctl:call-function>
-					</xsl:when>
-					<xsl:otherwise>
-						<ctl:message>Server.XML.POST.GetCapabilities.Response.Dimension.Identifiers.Unique not tested.</ctl:message>
-						<ctl:notTested/>
-					</xsl:otherwise>
-				</xsl:choose>
-			</xsl:when>
-			<xsl:otherwise>
-				<ctl:message>Server.XML.POST.GetCapabilities.Response.Dimension.Identifiers.Unique test skipped because its prerequisites were not met.</ctl:message>
 				<ctl:skipped/>
 			</xsl:otherwise>
 		</xsl:choose>
@@ -5204,7 +4881,7 @@
 								<ctl:pass/>
 							</xsl:when>
 							<xsl:otherwise>
-								<ctl:message>Test skipped:  Server did not return a correct ows:ExceptionReport and HTTP status in response to request with a sections parameter value of Bogus, so sections option considered to not be implemented.')"/></ctl:message>
+								<ctl:message>Test skipped:  Server did not return a correct ows:ExceptionReport and HTTP status in response to request with a sections parameter value of Bogus, so sections option considered to not be implemented.</ctl:message>
 								<ctl:skipped/>
 							</xsl:otherwise>
 						</xsl:choose>
@@ -5267,7 +4944,7 @@
 								<ctl:pass/>
 							</xsl:when>
 							<xsl:otherwise>
-								<ctl:message>Test skipped: Server did not return a correct ows:ExceptionReport and HTTP status in response to request with a sections parameter with a missing value, so sections option considered to not be implemented.')"/></ctl:message>
+								<ctl:message>Test skipped: Server did not return a correct ows:ExceptionReport and HTTP status in response to request with a sections parameter with a missing value, so sections option considered to not be implemented.</ctl:message>
 								<ctl:skipped/>
 							</xsl:otherwise>
 						</xsl:choose>
@@ -5648,76 +5325,6 @@
 	</ctl:code>
 </ctl:test>
 
-<ctl:test name="wmts:Server.SOAP.POST.GetCapabilities.Response.No.Layers.OtherSource" type="MandatoryIfImplemented">
-	<ctl:param name="metPrerequisites">Bootstrap prerequisites test result for this test - true or false</ctl:param>
-	<ctl:param name="selected">This test was selected for execution - true or false </ctl:param>
-	<ctl:param name="capabilitiesURL">/wmts:Capabilities/ows:OperationsMetadata/ows:Operation[@name='GetCapabilities']/ows:DCP/ows:HTTP/ows:Post/@xlink:href</ctl:param>
-	<ctl:context>wmts:main</ctl:context>
-	<ctl:assertion>
-	1.  the request entity is a valid SOAP POST GetCapabilities request with the mandatory request parameter with a value of GetCapabilities;
-	2.  the request entity is a valid SOAP POST GetCapabilities request with the mandatory service parameter with a value of WMTS;
-	3.  the response entity Capabilities document wrapped in a SOAP 1.2 Envelope contains an &lt;ows:OtherSource&gt; element with an xlink:href URL attribute value.</ctl:assertion>
-	<ctl:comment>Verify that a Service Metadata document with no &lt;Layer&gt; elements contains an ows:OtherSource element with an xlink:href URL attribute value. </ctl:comment>
-	<ctl:link>docs/wmts/1.0/WMTS 1.0 ATS.html#Server.SOAP.POST.GetCapabilities.Response.No.Layers.OtherSource</ctl:link>
-	<ctl:code>
-		<xsl:choose>
-			<xsl:when test="$metPrerequisites = 'true' ">
-				<xsl:choose>
-					<xsl:when test="$selected = 'true' ">
-						<ctl:call-function name="wmtsFunctions:SOAP.GetCapabilities.Response.No.Layers.OtherSource">
-							<ctl:with-param name="capabilitiesURL" select="$capabilitiesURL"/>
-							<ctl:with-param name="service">WMTS</ctl:with-param>
-						</ctl:call-function>
-					</xsl:when>
-					<xsl:otherwise>
-						<ctl:message>Server.SOAP.POST.GetCapabilities.Response.No.Layers.OtherSource not tested.</ctl:message>
-						<ctl:notTested/>
-					</xsl:otherwise>
-				</xsl:choose>
-			</xsl:when>
-			<xsl:otherwise>
-				<ctl:message>Server.SOAP.POST.GetCapabilities.Response.No.Layers.OtherSource test skipped because its prerequisites were not met.</ctl:message>
-				<ctl:skipped/>
-			</xsl:otherwise>
-		</xsl:choose>
-	</ctl:code>
-</ctl:test>
-
-<ctl:test name="wmts:Server.SOAP.POST.GetCapabilities.Response.Style.Identifiers.Unique" type="MandatoryIfImplemented">
-	<ctl:param name="metPrerequisites">Bootstrap prerequisites test result for this test - true or false</ctl:param>
-	<ctl:param name="selected">This test was selected for execution - true or false </ctl:param>
-	<ctl:param name="capabilitiesURL">/wmts:Capabilities/ows:OperationsMetadata/ows:Operation[@name='GetCapabilities']/ows:DCP/ows:HTTP/ows:Post/@xlink:href</ctl:param>
-	<ctl:context>wmts:main</ctl:context>
-	<ctl:assertion>
-	1.  the request entity is a valid SOAP POST GetCapabilities request with the mandatory request parameter with a value of GetCapabilities;
-	2.  the request entity is a valid SOAP POST GetCapabilities request with the mandatory service parameter with a value of WMTS;
-	3.  the response entity Capabilities document wrapped in the SOAP version 1.2 envelope has &lt;Contents&gt;&lt;Layer&gt;&lt;Style&gt;&lt;ows:Identifier&gt; element text values that are all different non empty identifiers for each Layer.</ctl:assertion>
-	<ctl:comment>Verify that the WMTS Styles advertised in the Service Metadata document for each Layer have different non empty identifiers. </ctl:comment>
-	<ctl:link>docs/wmts/1.0/WMTS 1.0 ATS.html#Server.SOAP.POST.GetCapabilities.Response.Style.Identifiers.Unique</ctl:link>
-	<ctl:code>
-		<xsl:choose>
-			<xsl:when test="$metPrerequisites = 'true' ">
-				<xsl:choose>
-					<xsl:when test="$selected = 'true' ">
-						<ctl:call-function name="wmtsFunctions:SOAP.GetCapabilities.Response.Style.Identifiers.Unique">
-							<ctl:with-param name="capabilitiesURL" select="$capabilitiesURL"/>
-							<ctl:with-param name="service">WMTS</ctl:with-param>
-						</ctl:call-function>
-					</xsl:when>
-					<xsl:otherwise>
-						<ctl:message>Server.SOAP.POST.GetCapabilities.Response.Style.Identifiers.Unique not tested.</ctl:message>
-						<ctl:notTested/>
-					</xsl:otherwise>
-				</xsl:choose>
-			</xsl:when>
-			<xsl:otherwise>
-				<ctl:message>Server.SOAP.POST.GetCapabilities.Response.Style.Identifiers.Unique test skipped because its prerequisites were not met.</ctl:message>
-				<ctl:skipped/>
-			</xsl:otherwise>
-		</xsl:choose>
-	</ctl:code>
-</ctl:test>
-
 <ctl:test name="wmts:Server.SOAP.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Resource" type="MandatoryIfImplemented">
 	<ctl:param name="metPrerequisites">Bootstrap prerequisites test result for this test - true or false</ctl:param>
 	<ctl:param name="selected">This test was selected for execution - true or false </ctl:param>
@@ -5823,41 +5430,6 @@
 			</xsl:when>
 			<xsl:otherwise>
 				<ctl:message>Server.SOAP.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Size test skipped because its prerequisites were not met.</ctl:message>
-				<ctl:skipped/>
-			</xsl:otherwise>
-		</xsl:choose>
-	</ctl:code>
-</ctl:test>
-
-<ctl:test name="wmts:Server.SOAP.POST.GetCapabilities.Response.Dimension.Identifiers.Unique" type="MandatoryIfImplemented">
-	<ctl:param name="metPrerequisites">Bootstrap prerequisites test result for this test - true or false</ctl:param>
-	<ctl:param name="selected">This test was selected for execution - true or false </ctl:param>
-	<ctl:param name="capabilitiesURL">/wmts:Capabilities/ows:OperationsMetadata/ows:Operation[@name='GetCapabilities']/ows:DCP/ows:HTTP/ows:Post/@xlink:href</ctl:param>
-	<ctl:context>wmts:main</ctl:context>
-	<ctl:assertion>
-	1.  the request entity is a valid SOAP POST GetCapabilities request with the mandatory request parameter with a value of GetCapabilities;
-	2.  the request entity is a valid SOAP POST GetCapabilities request with the mandatory service parameter with a value of WMTS;
-	3.  the response entity Capabilities document wrapped in the SOAP version 1.2 envelope has &lt;Contents&gt;&lt;Layer&gt;&lt;Dimension&gt;&lt;ows:Identifier&gt; element text values that are all different non empty identifiers for each Layer.</ctl:assertion>
-	<ctl:comment>Verify that the WMTS Dimensions advertised in the Service Metadata document for each Layer have different non empty identifiers. </ctl:comment>
-	<ctl:link>docs/wmts/1.0/WMTS 1.0 ATS.html#Server.SOAP.POST.GetCapabilities.Response.Dimension.Identifiers.Unique</ctl:link>
-	<ctl:code>
-		<xsl:choose>
-			<xsl:when test="$metPrerequisites = 'true' ">
-				<xsl:choose>
-					<xsl:when test="$selected = 'true' ">
-						<ctl:call-function name="wmtsFunctions:SOAP.GetCapabilities.Response.Dimension.Identifiers.Unique">
-							<ctl:with-param name="capabilitiesURL" select="$capabilitiesURL"/>
-							<ctl:with-param name="service">WMTS</ctl:with-param>
-						</ctl:call-function>
-					</xsl:when>
-					<xsl:otherwise>
-						<ctl:message>Server.SOAP.POST.GetCapabilities.Response.Dimension.Identifiers.Unique not tested.</ctl:message>
-						<ctl:notTested/>
-					</xsl:otherwise>
-				</xsl:choose>
-			</xsl:when>
-			<xsl:otherwise>
-				<ctl:message>Server.SOAP.POST.GetCapabilities.Response.Dimension.Identifiers.Unique test skipped because its prerequisites were not met.</ctl:message>
 				<ctl:skipped/>
 			</xsl:otherwise>
 		</xsl:choose>
