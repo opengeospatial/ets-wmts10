@@ -7,16 +7,41 @@
   <body>
     <h1>Release Notes</h1>
 
-    <h2>r4 (2014-10-DD)</h2>
-    <p>This release includes the following changes:</p>
+    <h2>r4 (2014-11-03)</h2>
+    <p>This is a major update that includes the following changes:</p>
     <ul>
       <li>Fix <a target="_blank" href="https://github.com/opengeospatial/ets-wmts10/issues/6">issue 
       #6</a>: Validating exception reports is very slow</li>
       <li>Fix <a target="_blank" href="https://github.com/opengeospatial/ets-wmts10/issues/5">issue 
       #5</a>: GetFeatureInfo response entity is expected to be an XML resource</li>
       <li>Integrated <a target="_blank" href="https://github.com/opengeospatial/ets-wmts10/pull/1">PR 
-      #1</a>: Modify test coverage such that that only capabilities from the ATS are tested.</li>
-      <li>Adopt Apache Maven as the build tool and modify directory layout accordingly.</li>
+      #1</a>: Modify test coverage such that that only capabilities from the ATS are tested. In 
+      particular, the following tests were removed:
+        <ul>
+          <li>GetCapabilities.Response.No.Layers.OtherSource</li>
+          <li>GetCapabilities.Response.Style.Identifiers.Unique</li>
+          <li>GetCapabilities.Response.Dimension.Identifiers.Unique</li>
+          <li>GetFeatureInfo.Invalid.SampleDimension.Name</li>
+          <li>GetTile.Invalid.SampleDimension.Name</li>
+          <li>GetFeatureInfo.Invalid.Tile.Row.No.TileMatrixSetLimits</li>
+          <li>GetFeatureInfo.Invalid.Tile.Col.No.TileMatrixSetLimits</li>
+          <li>GetFeatureInfo.Missing.Optional</li>
+          <li>GetTile.Missing.Optional</li>
+          <li>GetTile.Invalid.Tile.Row.No.TileMatrixSetLimits</li>
+          <li>GetTile.Invalid.Tile.Col.No.TileMatrixSetLimits</li>
+        </ul>
+      And the following tests were simplified:
+        <ul>
+          <li>GetTile (SOAP, REST bindings)</li>
+          <li>GetTile.Mandatory (KVP, XML bindings)</li>
+          <li>GetTile.Optional (KVP, XML bindings)</li>
+          <li>GetTile.Valid.Tile.Format (XML binding)</li>
+          <li>GetTile.Invalid.Tile.Format (XML binding)</li>
+          <li>GetTile.Valid.Tile.Size (XML binding)</li>
+          <li>GetFeatureInfo (KVP, XML, SOAP, REST bindings)</li>
+        </ul>
+      </li>
+      <li>Adopt Apache Maven as the build tool and modify the directory layout accordingly.</li>
       <li>Add <code>capabilities.url</code> parameter to wmts:main test (display 
       main input form only if this is not set).</li>
     </ul>

@@ -30,6 +30,24 @@
     <system>GitHub Issue Tracker</system>
     <url>https://github.com/opengeospatial/ets-wmts10/issues</url>
   </issueManagement>
+  <developers>
+    <developer>
+      <name>D. Bretschneider</name>
+      <url>https://github.com/dbretschneider</url>
+      <timezone>Europe/Berlin</timezone>
+    </developer>
+    <developer>
+      <name>P. Daisey</name>
+      <url>https://github.com/pdaisey</url>
+      <timezone>US/Eastern</timezone>
+    </developer>
+    <developer>
+      <name>R. Martell</name>
+      <url>https://github.com/rjmartell</url>
+      <timezone>Canada/Pacific</timezone>
+    </developer>
+  </developers>
+
   <properties>
     <ets-code>wmts</ets-code>
     <spec-version>1.0.0</spec-version>
