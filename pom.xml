@@ -37,6 +37,11 @@
       <timezone>Europe/Berlin</timezone>
     </developer>
     <developer>
+      <name>L. Burmudez</name>
+      <url>https://github.com/bermud</url>
+      <timezone>US/Eastern</timezone>
+    </developer>
+    <developer>
       <name>P. Daisey</name>
       <url>https://github.com/pdaisey</url>
       <timezone>US/Eastern</timezone>
