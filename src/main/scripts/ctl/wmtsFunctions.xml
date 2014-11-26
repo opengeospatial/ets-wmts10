@@ -15935,7 +15935,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 														<xsl:text>false|</xsl:text>
 													</xsl:if>
 													-->
-													<xsl:if test="string(wwwFunctions:mime-match($imageFormat, $format)) = 'false' ">
+													<xsl:if test="not(contains($format, $imageFormat))">
 														<ctl:message>Error: imageFormat of image != request format</ctl:message>
 														<xsl:text>false|</xsl:text>
 													</xsl:if>
