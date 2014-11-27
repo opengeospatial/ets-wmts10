@@ -15935,7 +15935,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 														<xsl:text>false|</xsl:text>
 													</xsl:if>
 													-->
-													<xsl:if test="string(wwwFunctions:mime-match($imageFormat, $format)) = 'false' ">
+													<xsl:if test="not(contains($format, $imageFormat))">
 														<ctl:message>Error: imageFormat of image != request format</ctl:message>
 														<xsl:text>false|</xsl:text>
 													</xsl:if>
@@ -16086,7 +16086,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 														<xsl:text>false|</xsl:text>
 													</xsl:if>
 													-->
-													<xsl:if test="string(wwwFunctions:mime-match($imageFormat, $format)) = 'false' ">
+													<xsl:if test="not(contains($format, $imageFormat))">
 														<ctl:message>Error: imageFormat of image != request format</ctl:message>
 														<xsl:text>false|</xsl:text>
 													</xsl:if>
@@ -16233,15 +16233,15 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 												<ctl:message>Error: Could not read the image size.</ctl:message>
 												<xsl:text>false|</xsl:text>
 											</xsl:if>
-											<xsl:if test="string(wwwFunctions:mime-match($wmtsImageFormat, $format)) = 'false' ">
+											<xsl:if test="not(contains($format, $wmtsImageFormat))">
 												<ctl:message>Error:  wmtsImageFormat from wmts:BinaryPayload/wmtsFormat != request format</ctl:message>
 												<xsl:text>false|</xsl:text>
 											</xsl:if>
-											<xsl:if test="string(wwwFunctions:mime-match($imageFormat, $format)) = 'false' ">
+											<xsl:if test="not(contains($format, $imageFormat))">
 												<ctl:message>Error: imageFormat of image from wmtsBinaryPayload/wmts:BinaryContent != request format</ctl:message>
 												<xsl:text>false|</xsl:text>
 											</xsl:if>
-											<xsl:if test="string(wwwFunctions:mime-match($wmtsImageFormat, $imageFormat) = 'false' ">
+											<xsl:if test="not(contains($imageFormat, $wmtsImageFormat))">
 												<ctl:message>Error:  wmtsImageFormat from wmts:BinaryPayload/wmtsFormat !=  imageFormat of image from wmtsBinaryPayload/wmts:BinaryContent</ctl:message>
 												<xsl:text>false|</xsl:text>
 											</xsl:if>
@@ -16394,7 +16394,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 																		<xsl:text>false|</xsl:text>
 																	</xsl:if>
 																	-->
-																	<xsl:if test="string(wwwFunctions:mime-match($imageFormat, $format)) = 'false' ">
+																	<xsl:if test="not(contains($format, $imageFormat))">
 																		<ctl:message>Error: imageFormat of image != request format</ctl:message>
 																		<xsl:text>false|</xsl:text>
 																	</xsl:if>
