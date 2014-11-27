@@ -22883,7 +22883,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 												<ctl:call-function name="owsFunctions:validateExceptionReport">
 													<ctl:with-param name="httpParserExceptionReport" select="$response"/>
 													<ctl:with-param name="exceptionReportSchemaPath" select="$exceptionReportSchemaPath"/>
-													<ctl:with-param name="exceptionCodes">InvalidParameterValue</ctl:with-param>
+													<ctl:with-param name="exceptionCodes">TileOutOfRange</ctl:with-param>
 													<ctl:with-param name="locators">TileRow</ctl:with-param>
 													<ctl:with-param name="oneOrAll">one</ctl:with-param>
 													<ctl:with-param name="httpStatusCode">400</ctl:with-param>
@@ -23031,7 +23031,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 												<ctl:call-function name="owsFunctions:validateExceptionReport">
 													<ctl:with-param name="httpParserExceptionReport" select="$response"/>
 													<ctl:with-param name="exceptionReportSchemaPath" select="$exceptionReportSchemaPath"/>
-													<ctl:with-param name="exceptionCodes">InvalidParameterValue</ctl:with-param>
+													<ctl:with-param name="exceptionCodes">TileOutOfRange</ctl:with-param>
 													<ctl:with-param name="locators">TileRow</ctl:with-param>
 													<ctl:with-param name="oneOrAll">one</ctl:with-param>
 													<ctl:with-param name="httpStatusCode">400</ctl:with-param>
@@ -23177,7 +23177,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 												<ctl:call-function name="owsFunctions:validateSOAPExceptionReport">
 													<ctl:with-param name="httpParserExceptionReport" select="$response"/>
 													<ctl:with-param name="exceptionReportSchemaPath" select="$exceptionReportSchemaPath"/>
-													<ctl:with-param name="exceptionCodes">InvalidParameterValue</ctl:with-param>
+													<ctl:with-param name="exceptionCodes">TileOutOfRange</ctl:with-param>
 													<ctl:with-param name="locators">TileRow</ctl:with-param>
 													<ctl:with-param name="oneOrAll">one</ctl:with-param>
 													<ctl:with-param name="httpStatusCode">400</ctl:with-param>
@@ -23336,7 +23336,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 																			<ctl:call-function name="owsFunctions:validateExceptionReport">
 																				<ctl:with-param name="httpParserExceptionReport" select="$response"/>
 																				<ctl:with-param name="exceptionReportSchemaPath" select="$exceptionReportSchemaPath"/>
-																				<ctl:with-param name="exceptionCodes">InvalidParameterValue</ctl:with-param>
+																				<ctl:with-param name="exceptionCodes">TileOutOfRange</ctl:with-param>
 																				<ctl:with-param name="locators">TileRow</ctl:with-param>
 																				<ctl:with-param name="oneOrAll">one</ctl:with-param>
 																				<ctl:with-param name="httpStatusCode">404</ctl:with-param>
@@ -23525,7 +23525,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 												<ctl:call-function name="owsFunctions:validateExceptionReport">
 													<ctl:with-param name="httpParserExceptionReport" select="$response"/>
 													<ctl:with-param name="exceptionReportSchemaPath" select="$exceptionReportSchemaPath"/>
-													<ctl:with-param name="exceptionCodes">InvalidParameterValue</ctl:with-param>
+													<ctl:with-param name="exceptionCodes">TileOutOfRange</ctl:with-param>
 													<ctl:with-param name="locators">TileCol</ctl:with-param>
 													<ctl:with-param name="oneOrAll">one</ctl:with-param>
 													<ctl:with-param name="httpStatusCode">400</ctl:with-param>
@@ -23673,7 +23673,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 												<ctl:call-function name="owsFunctions:validateExceptionReport">
 													<ctl:with-param name="httpParserExceptionReport" select="$response"/>
 													<ctl:with-param name="exceptionReportSchemaPath" select="$exceptionReportSchemaPath"/>
-													<ctl:with-param name="exceptionCodes">InvalidParameterValue</ctl:with-param>
+													<ctl:with-param name="exceptionCodes">TileOutOfRange</ctl:with-param>
 													<ctl:with-param name="locators">TileCol</ctl:with-param>
 													<ctl:with-param name="oneOrAll">one</ctl:with-param>
 													<ctl:with-param name="httpStatusCode">400</ctl:with-param>
@@ -23819,7 +23819,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 												<ctl:call-function name="owsFunctions:validateSOAPExceptionReport">
 													<ctl:with-param name="httpParserExceptionReport" select="$response"/>
 													<ctl:with-param name="exceptionReportSchemaPath" select="$exceptionReportSchemaPath"/>
-													<ctl:with-param name="exceptionCodes">InvalidParameterValue</ctl:with-param>
+													<ctl:with-param name="exceptionCodes">TileOutOfRange</ctl:with-param>
 													<ctl:with-param name="locators">TileCol</ctl:with-param>
 													<ctl:with-param name="oneOrAll">one</ctl:with-param>
 													<ctl:with-param name="httpStatusCode">400</ctl:with-param>
@@ -23978,7 +23978,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 																			<ctl:call-function name="owsFunctions:validateExceptionReport">
 																				<ctl:with-param name="httpParserExceptionReport" select="$response"/>
 																				<ctl:with-param name="exceptionReportSchemaPath" select="$exceptionReportSchemaPath"/>
-																				<ctl:with-param name="exceptionCodes">InvalidParameterValue</ctl:with-param>
+																				<ctl:with-param name="exceptionCodes">TileOutOfRange</ctl:with-param>
 																				<ctl:with-param name="locators">TileRow</ctl:with-param>
 																				<ctl:with-param name="oneOrAll">one</ctl:with-param>
 																				<ctl:with-param name="httpStatusCode">404</ctl:with-param>
@@ -28480,7 +28480,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 												<ctl:call-function name="owsFunctions:validateExceptionReport">
 													<ctl:with-param name="httpParserExceptionReport" select="$response"/>
 													<ctl:with-param name="exceptionReportSchemaPath" select="$exceptionReportSchemaPath"/>
-													<ctl:with-param name="exceptionCodes">InvalidParameterValue</ctl:with-param>
+													<ctl:with-param name="exceptionCodes">TileOutOfRange</ctl:with-param>
 													<ctl:with-param name="locators">J</ctl:with-param>
 													<ctl:with-param name="oneOrAll">one</ctl:with-param>
 													<ctl:with-param name="httpStatusCode">400</ctl:with-param>
@@ -28628,7 +28628,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 												<ctl:call-function name="owsFunctions:validateExceptionReport">
 													<ctl:with-param name="httpParserExceptionReport" select="$response"/>
 													<ctl:with-param name="exceptionReportSchemaPath" select="$exceptionReportSchemaPath"/>
-													<ctl:with-param name="exceptionCodes">InvalidParameterValue</ctl:with-param>
+													<ctl:with-param name="exceptionCodes">TileOutOfRange</ctl:with-param>
 													<ctl:with-param name="locators">J</ctl:with-param>
 													<ctl:with-param name="oneOrAll">one</ctl:with-param>
 													<ctl:with-param name="httpStatusCode">400</ctl:with-param>
@@ -28774,7 +28774,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 												<ctl:call-function name="owsFunctions:validateSOAPExceptionReport">
 													<ctl:with-param name="httpParserExceptionReport" select="$response"/>
 													<ctl:with-param name="exceptionReportSchemaPath" select="$exceptionReportSchemaPath"/>
-													<ctl:with-param name="exceptionCodes">InvalidParameterValue</ctl:with-param>
+													<ctl:with-param name="exceptionCodes">TileOutOfRange</ctl:with-param>
 													<ctl:with-param name="locators">J</ctl:with-param>
 													<ctl:with-param name="oneOrAll">one</ctl:with-param>
 													<ctl:with-param name="httpStatusCode">400</ctl:with-param>
@@ -28931,7 +28931,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 																			<ctl:call-function name="owsFunctions:validateExceptionReport">
 																				<ctl:with-param name="httpParserExceptionReport" select="$response"/>
 																				<ctl:with-param name="exceptionReportSchemaPath" select="$exceptionReportSchemaPath"/>
-																				<ctl:with-param name="exceptionCodes">InvalidParameterValue</ctl:with-param>
+																				<ctl:with-param name="exceptionCodes">TileOutOfRange</ctl:with-param>
 																				<ctl:with-param name="locators">TileRow</ctl:with-param>
 																				<ctl:with-param name="oneOrAll">one</ctl:with-param>
 																				<ctl:with-param name="httpStatusCode">404</ctl:with-param>
@@ -29134,7 +29134,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 												<ctl:call-function name="owsFunctions:validateExceptionReport">
 													<ctl:with-param name="httpParserExceptionReport" select="$response"/>
 													<ctl:with-param name="exceptionReportSchemaPath" select="$exceptionReportSchemaPath"/>
-													<ctl:with-param name="exceptionCodes">InvalidParameterValue</ctl:with-param>
+													<ctl:with-param name="exceptionCodes">TileOutOfRange</ctl:with-param>
 													<ctl:with-param name="locators">I</ctl:with-param>
 													<ctl:with-param name="oneOrAll">one</ctl:with-param>
 													<ctl:with-param name="httpStatusCode">400</ctl:with-param>
@@ -29282,7 +29282,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 												<ctl:call-function name="owsFunctions:validateExceptionReport">
 													<ctl:with-param name="httpParserExceptionReport" select="$response"/>
 													<ctl:with-param name="exceptionReportSchemaPath" select="$exceptionReportSchemaPath"/>
-													<ctl:with-param name="exceptionCodes">InvalidParameterValue</ctl:with-param>
+													<ctl:with-param name="exceptionCodes">TileOutOfRange</ctl:with-param>
 													<ctl:with-param name="locators">I</ctl:with-param>
 													<ctl:with-param name="oneOrAll">one</ctl:with-param>
 													<ctl:with-param name="httpStatusCode">400</ctl:with-param>
@@ -29428,7 +29428,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 												<ctl:call-function name="owsFunctions:validateSOAPExceptionReport">
 													<ctl:with-param name="httpParserExceptionReport" select="$response"/>
 													<ctl:with-param name="exceptionReportSchemaPath" select="$exceptionReportSchemaPath"/>
-													<ctl:with-param name="exceptionCodes">InvalidParameterValue</ctl:with-param>
+													<ctl:with-param name="exceptionCodes">TileOutOfRange</ctl:with-param>
 													<ctl:with-param name="locators">I</ctl:with-param>
 													<ctl:with-param name="oneOrAll">one</ctl:with-param>
 													<ctl:with-param name="httpStatusCode">400</ctl:with-param>
@@ -29585,7 +29585,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 																			<ctl:call-function name="owsFunctions:validateExceptionReport">
 																				<ctl:with-param name="httpParserExceptionReport" select="$response"/>
 																				<ctl:with-param name="exceptionReportSchemaPath" select="$exceptionReportSchemaPath"/>
-																				<ctl:with-param name="exceptionCodes">InvalidParameterValue</ctl:with-param>
+																				<ctl:with-param name="exceptionCodes">TileOutOfRange</ctl:with-param>
 																				<ctl:with-param name="locators">TileRow</ctl:with-param>
 																				<ctl:with-param name="oneOrAll">one</ctl:with-param>
 																				<ctl:with-param name="httpStatusCode">404</ctl:with-param>
