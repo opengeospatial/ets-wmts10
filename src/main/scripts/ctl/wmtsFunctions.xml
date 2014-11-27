@@ -18152,7 +18152,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
                           <xsl:variable name="infoFormatPos" select="(count($layer/wmts:InfoFormat) + 1) idiv 2"/>
                           <!-- <ctl:message select="concat('infoFormatPos ', $infoFormatPos)"/> -->
                           <xsl:for-each select="$layer/wmts:InfoFormat[$infoFormatPos]">
-                              <xsl:variable name="format" select="."/>
+                              <xsl:variable name="infoFormat" select="."/>
                               <!-- <ctl:message select="concat('format ', $format)"/> -->
                               <xsl:for-each select="$layer/wmts:InfoFormat">
                                   <xsl:variable name="infoFormat" select="."/>
