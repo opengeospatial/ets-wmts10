@@ -125,14 +125,14 @@ MIME parameters don't have to match anymore - see issue 24, MIME type test too s
 		  </ctl:code>
    </ctl:function>
 
-	<ctl:function name="wwwFunctions:provokeNotFound">
+	<ctl:function name="wwwFunctions:provokeNotExistentService">
 		<ctl:param name="capabilitiesURL">/wmts:Capabilities/ows:OperationsMetadata/ows:Operation[@name='GetCapabilities']/ows:DCP/ows:HTTP/ows:Get/@xlink:href</ctl:param>
 		<ctl:param name="method">get|post</ctl:param>
 		<ctl:description>Provoke an HTTP 404 error and test whether the server returns that status code.</ctl:description>
 		<ctl:code>
 			<xsl:value-of select="wwwFunctions:provokeNotFound($capabilitiesURL, $method, '/nonesuch')"/>
 		</ctl:code>
-	</ctl:function>	
+	</ctl:function>
 	
 	<ctl:function name="wwwFunctions:provokeNotFound">
 		<ctl:param name="capabilitiesURL">/wmts:Capabilities/ows:OperationsMetadata/ows:Operation[@name='GetCapabilities']/ows:DCP/ows:HTTP/ows:Get/@xlink:href</ctl:param>

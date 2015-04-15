@@ -123,7 +123,7 @@
 			<xsl:when test="$metPrerequisites = 'true' ">
 				<xsl:choose>
 					<xsl:when test="$selected = 'true' ">
-						<ctl:call-function name="wwwFunctions:provokeNotFound">
+						<ctl:call-function name="wwwFunctions:provokeNotExistentService">
 							<ctl:with-param name="capabilitiesURL" select="$capabilitiesURL"/>
 							<ctl:with-param name="method">get</ctl:with-param>
 						</ctl:call-function>
