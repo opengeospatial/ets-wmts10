@@ -906,27 +906,29 @@
 	<ctl:param name="capabilitiesURL">/wmts:Capabilities/wmts:ServiceMetadataURL/@xlink:href</ctl:param>
 	<ctl:context>wmts:main</ctl:context>
 	<ctl:assertion>
-	A.  TBD: First Draft:   HTTP status code 404
-	1.  The request entity is for a non-existent service
-	2.  The HTTP status code value is set to 404, corresponding to the message "Not Found"
+  A request for an unsupported type (example/unknown) of ServiceMetadata resource 
+  (as specified by the Accept request header) must return an error response with 
+  status code 406 (Not Acceptable). The target URI of the GET request is extracted 
+  from a ServiceMetadataURL element appearing in the service description.
 	</ctl:assertion>
-	<ctl:comment>Test that a WMTS server observes the rules and conventions governing the use of HTTP GET operations.</ctl:comment>
+	<ctl:comment>See also: WMTS 1.0, cl. 10.1; RFC 7231, 6.5.6.</ctl:comment>
 	<ctl:link>docs/wmts/1.0/WMTS 1.0 ATS.html#Server.RESTful.HTTP.Mandatory</ctl:link>
 	<ctl:code>
 		<xsl:choose>
 			<xsl:when test="$metPrerequisites = 'true' ">
-				<xsl:choose>
-					<xsl:when test="$selected = 'true' ">
-						<ctl:call-function name="wwwFunctions:provokeNotFound">
-							<ctl:with-param name="capabilitiesURL" select="$capabilitiesURL"/>
-							<ctl:with-param name="method">get</ctl:with-param>
-						</ctl:call-function>
-					</xsl:when>
-					<xsl:otherwise>
-						<ctl:message>Server.RESTful.HTTP.Mandatory not tested.</ctl:message>
-						<ctl:notTested/>
-					</xsl:otherwise>
-				</xsl:choose>
+        <xsl:variable name="response">
+          <ctl:request>
+            <ctl:url><xsl:value-of select="$capabilitiesURL"/></ctl:url>
+            <ctl:method>GET</ctl:method>
+            <ctl:header name="Accept">example/unknown</ctl:header>
+            <parsers:HTTPParser />
+          </ctl:request>
+        </xsl:variable>
+        <xsl:variable name="statusCode" select="$response//status/@code"/>
+        <xsl:if test="$statusCode ne '406'">
+          <ctl:message>[FAIL] Expected response status code 406 but received <xsl:value-of select="$statusCode"/>.</ctl:message>
+          <ctl:fail />
+        </xsl:if>
 			</xsl:when>
 			<xsl:otherwise>
 				<ctl:message>Server.RESTful.HTTP.Mandatory test skipped because its prerequisites were not met.</ctl:message>
