@@ -16852,6 +16852,8 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 		<ctl:param name="method">get|post</ctl:param>
 		<ctl:description>Test that the tiles returned by a WMTS server in response to valid KVP GET GetTile requests with the tile sizes (TileWidth and TileHeight) advertised in the Service Metadata Document for each TileMatrix in the TileMatrixSet of a Layer, and for each sample dimension of Layers with Dimensions, are the advertised sizes. </ctl:description>
 		<ctl:code>
+      <!-- getSupportedImageTypes() returns comma-delimited list -->
+      <xsl:variable name="known-image-types-seq" select="tokenize(ctlFunctions:getSupportedImageTypes(), ',')" />
 			<xsl:variable name="serviceURL" select="owsFunctions:getServiceURL($tileURL)"/>
 			<ctl:message select="concat('Issuing KVP ', upper-case($method), ' GetTile requests to ', $serviceURL, ' for the following:')"/>
 			<xsl:variable name="results">
@@ -16965,9 +16967,15 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 														</parsers:parse>
 													</parsers:HTTPParser>
 												</ctl:request>
-											</xsl:variable>
+											</xsl:variable>                   
 											<!-- <xsl:message>response <xsl:copy-of select="$response"/></xsl:message>	-->
+                      <xsl:variable name="image-type" select="$response//header[lower-case(@name) eq 'content-type']"/>
 											<xsl:choose>
+                        <!-- Check if image subtype is in list of known types -->
+                        <xsl:when test="empty(index-of($known-image-types-seq, substring-after($image-type,'/')))">
+                          <ctl:message>[SKIP] Unsupported image content type: <xsl:value-of select="$image-type"/></ctl:message>
+                          <xsl:text>skip|</xsl:text>
+                        </xsl:when>
 												<xsl:when test="not(exists($response/response/content/parsers:ImageParser/parsers:type))">
 													<ctl:message>Error: Could not read the image format.</ctl:message>
 													<xsl:text>false|</xsl:text>
@@ -17008,6 +17016,10 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 				</xsl:for-each>
 			</xsl:variable>
 			<xsl:choose>
+        <xsl:when test="contains($results, 'skip')">
+					<ctl:message select="concat('Test skipped. Server.KVP.', upper-case($method), '.GetTile.Valid.Tile.Size')"/>
+					<ctl:skipped />
+				</xsl:when>
 				<xsl:when test="contains($results, 'false')">
 					<ctl:message select="concat('Test failed. Server.KVP.', upper-case($method), '.GetTile.Valid.Tile.Size')"/>
 					<ctl:fail/>

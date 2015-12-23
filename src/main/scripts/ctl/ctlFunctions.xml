@@ -15,13 +15,17 @@
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:wmts="http://www.opengis.net/wmts/1.0"
-	xmlns:ctlFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/ctlFunctions.xml"	
->
-	<ctl:function name="ctlFunctions:getSupportedImageTypes">
-		<ctl:description>Gets the supported image types in the ImageIO class (gives a comma-seperated list)</ctl:description>
-		<ctl:java class="com.occamlab.te.parsers.ImageParser" 
-                  method="getSupportedImageTypes"/>		
-	</ctl:function>
+	xmlns:ctlFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/ctlFunctions.xml">
+
+  <ctl:function name="ctlFunctions:getSupportedImageTypes">
+    <ctl:return>A comma-delimited list of file extensions for recognized image types 
+    (e.g. "jpg,bmp,gif,wbmp,png,jpeg").</ctl:return>
+    <ctl:description>Gets the image types recognized by the javax.imageio.ImageIO class.</ctl:description>
+    <ctl:comment>It is possible to introduce plug-ins that support other image formats 
+    (e.g. https://bitbucket.org/luciad/webp-imageio )</ctl:comment>
+    <ctl:java class="com.occamlab.te.parsers.ImageParser" 
+              method="getSupportedImageTypes"/>
+  </ctl:function>
 
 	<ctl:function name="ctlFunctions:getImageFormat">
 		<ctl:param name="image.uri"/>
