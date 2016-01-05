@@ -7,7 +7,7 @@
 	xmlns:ows="http://www.opengis.net/ows/1.1" 
 	xmlns:parsers="http://www.occamlab.com/te/parsers"
 	xmlns:saxon="http://saxon.sf.net/" 
-    xmlns:te="http://www.occamlab.com/te"
+  xmlns:te="http://www.occamlab.com/te"
 	xmlns:tep="http://teamengine.sourceforge.net/parsers" 
 	xmlns:xi="http://www.w3.org/2001/XInclude" 
 	xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -20,8 +20,7 @@
 	xmlns:owsFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/owsFunctions.xml"	
 	xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFunctions.xml"	
 	xmlns:wmtsFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wmtsFunctions.xml"	
-	xmlns:wmtsBootstrap="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/bootstrap.xml"
->
+	xmlns:wmtsBootstrap="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/bootstrap.xml">
 
 <!-- note:  tests are grouped by operation and type by containment in group elements created by bootstrap.xml functions.
 				If you change a test type, you need to move it to its new group in the appropriate bootstrap function. -->
@@ -954,12 +953,16 @@
 			<xsl:when test="$metPrerequisites = 'true' ">
 				<xsl:choose>
 					<xsl:when test="$selected = 'true' ">
-						<ctl:call-function name="wmtsFunctions:KVP.GetTile.Valid.Tile.Size">
-							<ctl:with-param name="tileURL" select="$tileURL"/>
-							<ctl:with-param name="version" select="$wmtsVersion"/>
-							<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-							<ctl:with-param name="method">get</ctl:with-param>
-						</ctl:call-function>
+            <!-- get all supported image formats from capabilities doc -->
+            <xsl:for-each select="distinct-values($wmts.capabilities.doc//wmts:Layer/wmts:Format/text())">
+              <ctl:call-test name="wmts:GetTileMatrixByImageFormat">
+							  <ctl:with-param name="tileURL" select="$tileURL"/>
+							  <ctl:with-param name="wmtsVersion" select="$wmtsVersion"/>
+							  <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
+                <ctl:with-param name="http-method">GET</ctl:with-param>
+                <ctl:with-param name="image-format" select="." />
+						  </ctl:call-test>
+            </xsl:for-each>
 					</xsl:when>
 					<xsl:otherwise>
 						<ctl:message>Server.KVP.GET.GetTile.Valid.Tile.Size not tested.</ctl:message>
@@ -974,6 +977,26 @@
 		</xsl:choose>
 	</ctl:code>
 </ctl:test>
+
+  <ctl:test name="wmts:GetTileMatrixByImageFormat">
+    <ctl:param name="tileURL">GetTile endpoint</ctl:param>
+    <ctl:param name="wmtsVersion">WMTS version (expected to be 1.0.0)</ctl:param>
+    <ctl:param name="wmts.capabilities.doc">Service capabilities document</ctl:param>
+    <ctl:param name="http-method">HTTP request method</ctl:param>
+    <ctl:param name="image-format">Image media type</ctl:param>
+    <ctl:assertion>A request to retrieve a tiled map layer produces a correctly formatted response.</ctl:assertion>
+    <ctl:comment>The called function sets a fail or skipped verdict if any service response violates some constraint.</ctl:comment>
+    <ctl:code>
+      <ctl:message>Requested image format: <xsl:value-of select="$image-format"/></ctl:message>
+      <ctl:call-function name="wmtsFunctions:KVP.GetTile.Valid.Tile.Size">
+        <ctl:with-param name="tileURL" select="$tileURL"/>
+        <ctl:with-param name="version" select="$wmtsVersion"/>
+        <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
+        <ctl:with-param name="method" select="$http-method" />
+        <ctl:with-param name="image-format" select="$image-format" />
+      </ctl:call-function>
+    </ctl:code>
+  </ctl:test>
 
 <ctl:test name="wmts:Server.KVP.GET.GetTile.Valid.Tile.Transparency" type="MandatoryIfImplemented">
 	<ctl:param name="metPrerequisites">Bootstrap prerequisites test result for this test - true or false</ctl:param>
@@ -1794,12 +1817,16 @@
 			<xsl:when test="$metPrerequisites = 'true' ">
 				<xsl:choose>
 					<xsl:when test="$selected = 'true' ">
-						<ctl:call-function name="wmtsFunctions:KVP.GetTile.Valid.Tile.Size">
-							<ctl:with-param name="tileURL" select="$tileURL"/>
-							<ctl:with-param name="version" select="$wmtsVersion"/>
-							<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-							<ctl:with-param name="method">post</ctl:with-param>
-						</ctl:call-function>
+            <!-- get all supported image formats from capabilities doc -->
+            <xsl:for-each select="distinct-values($wmts.capabilities.doc//wmts:Layer/wmts:Format/text())">
+              <ctl:call-test name="wmts:GetTileMatrixByImageFormat">
+							  <ctl:with-param name="tileURL" select="$tileURL"/>
+							  <ctl:with-param name="wmtsVersion" select="$wmtsVersion"/>
+							  <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
+                <ctl:with-param name="http-method">POST</ctl:with-param>
+                <ctl:with-param name="image-format" select="." />
+						  </ctl:call-test>
+            </xsl:for-each>
 					</xsl:when>
 					<xsl:otherwise>
 						<ctl:message>Server.KVP.POST.GetTile.Valid.Tile.Size not tested.</ctl:message>

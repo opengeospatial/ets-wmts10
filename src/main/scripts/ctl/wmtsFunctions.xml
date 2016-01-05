@@ -16850,6 +16850,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 		<ctl:param name="version">version returned in the bootstrap capabilities document, expected to be 1.0.0</ctl:param>
 		<ctl:param name="wmts.capabilities.doc">Capabilities document from test suite bootstrap.</ctl:param>
 		<ctl:param name="method">get|post</ctl:param>
+    <ctl:param name="image-format">Image media type</ctl:param>
 		<ctl:description>Test that the tiles returned by a WMTS server in response to valid KVP GET GetTile requests with the tile sizes (TileWidth and TileHeight) advertised in the Service Metadata Document for each TileMatrix in the TileMatrixSet of a Layer, and for each sample dimension of Layers with Dimensions, are the advertised sizes. </ctl:description>
 		<ctl:code>
       <!-- getSupportedImageTypes() returns comma-delimited list -->
@@ -16867,11 +16868,10 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 						<xsl:variable name="style" select="."/>
 						<xsl:variable name="styleId" select="$style/ows:Identifier"/>
 						<!-- <ctl:message select="concat('style ', $styleId)"/> -->
-						<xsl:for-each select="$layer/wmts:Format">
-							<xsl:variable name="format" select="."/>
-							<!-- <ctl:message select="concat('format ', $format)"/> -->
-							<xsl:variable name="tmslPos" select="(count($layer/wmts:TileMatrixSetLink) + 1) idiv 2"/>
-							<!-- <ctl:message select="concat('format ', $format, ' tmslPos ', $tmslPos)"/> -->
+					  <xsl:variable name="format" select="$image-format"/>
+						<!-- <ctl:message select="concat('format ', $format)"/> -->
+						<xsl:variable name="tmslPos" select="(count($layer/wmts:TileMatrixSetLink) + 1) idiv 2"/>
+						<!-- <ctl:message select="concat('format ', $format, ' tmslPos ', $tmslPos)"/> -->
 							<xsl:for-each select="$layer/wmts:TileMatrixSetLink[$tmslPos]">
 								<xsl:variable name="tileMatrixSetId" select="wmts:TileMatrixSet"/>
 								<xsl:variable name="tileMatrixSetLimits" select="wmts:TileMatrixSetLimits"/>
@@ -17011,7 +17011,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 									</xsl:for-each>
 								</xsl:for-each>
 							</xsl:for-each>
-						</xsl:for-each>
 					</xsl:for-each>
 				</xsl:for-each>
 			</xsl:variable>
