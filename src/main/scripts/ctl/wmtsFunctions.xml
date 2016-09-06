@@ -3190,11 +3190,11 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 						<ctl:with-param name="selected" select="$selected"/>
 					</ctl:call-test>
 
-					<ctl:call-test name="wmts:GetCapabilities.Implemented.KVP.GET">
+					<!-- <ctl:call-test name="wmts:GetCapabilities.Implemented.KVP.GET">
 						<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
 						<ctl:with-param name="bootstrap" select="$bootstrap"/>
 						<ctl:with-param name="selected" select="$selected"/>
-					</ctl:call-test>
+					</ctl:call-test> -->
 
 					<ctl:call-test name="wmts:GetTile.Mandatory.KVP.GET">
 						<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
@@ -3202,17 +3202,17 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 						<ctl:with-param name="selected" select="$selected"/>
 					</ctl:call-test>
 
-					<ctl:call-test name="wmts:GetTile.Implemented.KVP.GET">
+					<!-- <ctl:call-test name="wmts:GetTile.Implemented.KVP.GET">
 						<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
 						<ctl:with-param name="bootstrap" select="$bootstrap"/>
 						<ctl:with-param name="selected" select="$selected"/>
-					</ctl:call-test>
+					</ctl:call-test> -->
 
-					<ctl:call-test name="wmts:GetFeatureInfo.Implemented.KVP.GET">
+					<!-- <ctl:call-test name="wmts:GetFeatureInfo.Implemented.KVP.GET">
 						<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
 						<ctl:with-param name="bootstrap" select="$bootstrap"/>
 						<ctl:with-param name="selected" select="$selected"/>
-					</ctl:call-test>
+					</ctl:call-test> -->
 				</xsl:when>
 
 				<xsl:when test="$binding = 'KVP.POST' ">
