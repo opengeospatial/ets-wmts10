@@ -1,8 +1,13 @@
 # Release Notes OGC WMTS 1.0 Test Suite
 
+## 1.0 (2016-12)
+
+* [Issue #33](https://github.com/opengeospatial/ets-wmts10/issues/33) - Prepare Tag 1.0 - Test got approved by OGC TC
+* [Issue #34](https://github.com/opengeospatial/ets-wmts10/issues/34) - Remove not approved profiles for 1.0  
+
 
 ## 0.7 (2016-09-07)
-Note: It requires TEAM Engine 4.8.
+Note: It requires TEAM Engine 4.8 or newer.
 
 * Integrated Pull Request [PR #28](https://github.com/opengeospatial/ets-wmts10/pull/28) Commented the test which has the type 'MandatoryIfImplemented
 * Fix [issue #24](https://github.com/opengeospatial/ets-wmts10/issues/24): Server.RESTful.HTTP.Mandatory  test does not work with self-declaring service
