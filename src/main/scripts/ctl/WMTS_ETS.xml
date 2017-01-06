@@ -230,6 +230,12 @@
 
                       <ctl:message>Capabilities response is valid, continuing with selected profile(s) ...</ctl:message>
                       <ctl:message select="'********************************************************'"/>
+                      
+                            
+				      <ctl:call-test name="wmts:server.profile.kvp.get.main">
+							<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
+						</ctl:call-test>
+						
                     </xsl:otherwise>
                   </xsl:choose>
                 </xsl:otherwise>
@@ -238,30 +244,33 @@
           </xsl:choose>
         </xsl:otherwise>
       </xsl:choose>
+
+      
       <xsl:variable name="wmts.main.elapsed" select="ctl:elapsedTime('wmts.main')"/>
       <ctl:message>wmts.main.elapsed [<xsl:value-of select="$wmts.main.elapsed"/>] milliseconds</ctl:message>
     </ctl:code>
   </ctl:test>
 
-  <ctl:profile name="wmts:server.profile.kvp.get">
+<!--   <ctl:profile name="wmts:server.profile.kvp.get">
     <ctl:title>WMTS 1.0 Server Compliance Test Profile for KVP GET binding</ctl:title>
     <ctl:description>Verifies that a WMTS 1.0 server implementation complies with conformance classes for KVP GET binding.</ctl:description>
     <ctl:defaultResult>Pass</ctl:defaultResult>
     <ctl:base>wmts:server.suite.base</ctl:base>
     <ctl:starting-test>wmts:server.profile.kvp.get.main</ctl:starting-test>
-  </ctl:profile>
+  </ctl:profile> -->
 
   <ctl:test name="wmts:server.profile.kvp.get.main">
-    <ctl:context>wmts:server.profile.kvp.get</ctl:context>
+  <ctl:param name="wmts.capabilities.doc">WMTS capabilities document</ctl:param>
+    <!-- <ctl:context>wmts:server.profile.kvp.get</ctl:context> -->
     <ctl:assertion>The server satisfies all Mandatory and MandatoryIfImplemented requiresments for the KVP GET binding. 
     It must support both GetCapabilities and GetTile operations for KVP GET binding for any further tests to be performed. </ctl:assertion>
     <ctl:code>
       <ctl:message>KVP GET</ctl:message>
-      <xsl:variable name="wmts.capabilities.doc">
-        <ctl:call-function name="ctl:getLogCache">  <!-- from wmts:main -->
+      <!-- <xsl:variable name="wmts.capabilities.doc">
+        <ctl:call-function name="ctl:getLogCache">  from wmts:main
           <ctl:with-param name="id">capabilities</ctl:with-param>
         </ctl:call-function>
-      </xsl:variable>		
+      </xsl:variable> -->		
       <xsl:variable name="mode">
         <ctl:getMode/>
       </xsl:variable>

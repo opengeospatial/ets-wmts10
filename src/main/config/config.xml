@@ -21,7 +21,7 @@
         </sources>
         <resources>wmts/${spec-version}/resources</resources>
         <webdir>wmts/${spec-version}/site</webdir>
-        <profile>
+        <!-- <profile>
           <namespace-uri>http://www.opengis.net/wmts/1.0</namespace-uri>
           <prefix>wmts</prefix>
           <local-name>server.profile.kvp.get</local-name>
@@ -50,7 +50,7 @@
           <prefix>wmts</prefix>
           <local-name>server.profile.restful</local-name>
           <title>REST binding</title>
-        </profile>
+        </profile> -->
       </revision>
     </version>
   </standard>
