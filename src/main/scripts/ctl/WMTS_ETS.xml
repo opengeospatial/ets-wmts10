@@ -234,6 +234,7 @@
                             
 				      <ctl:call-test name="wmts:server.profile.kvp.get.main">
 							<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
+							<ctl:with-param name="wmtsSchemaPath" select="$wmtsSchemaPath"/>
 						</ctl:call-test>
 						
                     </xsl:otherwise>
@@ -261,6 +262,7 @@
 
   <ctl:test name="wmts:server.profile.kvp.get.main">
   <ctl:param name="wmts.capabilities.doc">WMTS capabilities document</ctl:param>
+  <ctl:param name="wmtsSchemaPath">WMTS schema path</ctl:param>
     <!-- <ctl:context>wmts:server.profile.kvp.get</ctl:context> -->
     <ctl:assertion>The server satisfies all Mandatory and MandatoryIfImplemented requiresments for the KVP GET binding. 
     It must support both GetCapabilities and GetTile operations for KVP GET binding for any further tests to be performed. </ctl:assertion>
@@ -283,11 +285,11 @@
           </ctl:call-function>
         </xsl:when>
         <xsl:otherwise>  <!-- Test or Retest Mode -->
-          <xsl:variable name="wmtsSchemaPath">
+          <!-- <xsl:variable name="wmtsSchemaPath">
             <ctl:call-function name="ctl:getLogCache">
               <ctl:with-param name="id">wmtsSchemaPath</ctl:with-param>
             </ctl:call-function>
-          </xsl:variable>
+          </xsl:variable> -->
           <xsl:variable name="wmts.capabilities.url">
             <ctl:call-function name="ctl:getLogCache">
               <ctl:with-param name="id">url</ctl:with-param>
