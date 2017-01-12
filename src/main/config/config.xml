@@ -11,11 +11,11 @@
         <prefix>wmts</prefix>
         <local-name>server.suite.base</local-name>
         <title>WMTS ${spec-version} Conformance Test Suite</title>
-        <description>Checks WMTS implementations for conformance to OGC 07-057r7.</description>
+        <description>Checks WMTS conformance</description>
       </suite>
       <revision>
         <name>${version}</name>
-        <status>Beta</status>
+        <status>Final</status>
         <sources>
           <source>wmts/${spec-version}/ctl</source>
         </sources>
