@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <artifactId>ets-wmts10</artifactId>
   <groupId>org.opengis.cite</groupId>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.0</version>
 
   <name>OGC Web Map Tile Service 1.0.0 - Executable Test Suite</name>
   <description>
