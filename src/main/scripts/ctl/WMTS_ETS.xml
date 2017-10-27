@@ -181,7 +181,7 @@
               <ctl:message>FAILURE: Missing capabilities document.</ctl:message>
               <ctl:fail/>
             </xsl:when>
-            <xsl:when test="not(contains($wmts.capabilities.doc.response//header[matches(@name,'Content-Type','i')],'/xml'))">
+            <xsl:when test="not(contains($wmts.capabilities.doc.response//header[matches(@name,'^Content-Type$','i')],'/xml'))">
               <ctl:message>FAILURE: Not an XML content type: '<xsl:value-of select="$wmts.capabilities.doc.response//header[@name='Content-Type']"/>'</ctl:message>
               <ctl:fail/>
             </xsl:when>
