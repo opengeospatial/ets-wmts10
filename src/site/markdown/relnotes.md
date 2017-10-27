@@ -1,5 +1,9 @@
 # Release Notes OGC WMTS 1.0 Test Suite
 
+## 1.1 (2017-10)
+
+* [Issue #38](https://github.com/opengeospatial/ets-wmts10/issues/38) - Test wmts:main fails because of invalid Content-Type
+
 ## 1.0 (2016-12)
 
 * [Issue #33](https://github.com/opengeospatial/ets-wmts10/issues/33) - Prepare Tag 1.0 - Test got approved by OGC TC
