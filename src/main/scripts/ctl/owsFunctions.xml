@@ -2565,13 +2565,17 @@
     <ctl:code>
       <xsl:variable name="schemaLocation" select="$capabilities.elt/@xsi:schemaLocation"/>
       <xsl:variable name="schemasList" select="tokenize($schemas, ',')"/>
+      <xsl:variable name="schemaLocationList" select="tokenize($schemaLocation, ' ')"/>
       <xsl:variable name="results">
         <xsl:for-each select="$schemasList">
           <xsl:variable name="schema" select="."/>
-          <xsl:if test="ends-with($schemaLocation, $schema)">
-            <ctl:message select="concat('Capabilities document references a normative schema: ', $schema)"/>
-            <xsl:text>true|</xsl:text>
-          </xsl:if>		
+          <xsl:for-each select="$schemaLocationList">
+			  <xsl:variable name="schemaLocation" select="."/>
+	          <xsl:if test="ends-with($schemaLocation, $schema)">
+	            <ctl:message select="concat('Capabilities document references a normative schema: ', $schema)"/>
+	            <xsl:text>true|</xsl:text>
+	          </xsl:if>
+          </xsl:for-each>		
         </xsl:for-each>
       </xsl:variable>
       <xsl:choose>
