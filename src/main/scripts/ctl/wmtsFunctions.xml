@@ -3391,7 +3391,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 				<xsl:variable name="metPrerequisites" select="."/>
 				<xsl:variable name="testName" select="substring-before(local-name(.),'.Prerequisites')"/>
 				<xsl:variable name="testSelectedName" select="concat($testName,'.Selected')"/>
-				<xsl:variable name="testSelected" select="$selected/*[local-name(.) = $testSelectedName]"/>
+        <xsl:variable name="testSelected" >true</xsl:variable>
 				<xsl:choose>
 					<xsl:when test="not($testSelected) or $testSelected = '' ">
 						<ctl:message>ERROR: prereq name: <xsl:value-of select="local-name(.)"/> met prereqs <xsl:value-of select="$metPrerequisites"/> does not match selected name <xsl:value-of select="$testSelectedName"/> selected no value: <xsl:value-of select="$testSelected"/>

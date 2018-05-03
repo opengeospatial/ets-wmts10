@@ -230,13 +230,13 @@
 
                       <ctl:message>Capabilities response is valid, continuing with selected profile(s) ...</ctl:message>
                       <ctl:message select="'********************************************************'"/>
-                      
-                            
+
+
 				      <ctl:call-test name="wmts:server.profile.kvp.get.main">
 							<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
 							<ctl:with-param name="wmtsSchemaPath" select="$wmtsSchemaPath"/>
 						</ctl:call-test>
-						
+
                     </xsl:otherwise>
                   </xsl:choose>
                 </xsl:otherwise>
@@ -322,47 +322,13 @@
 
           <xsl:choose>
             <xsl:when test="exists($bootstrap/*)">
-              <ctl:message>Completed prerequisite check:</ctl:message>
-              <xsl:variable name="selected">
-                <ctl:call-function name="wmts:testMenus">
-                  <ctl:with-param name="bootstrap" select="$bootstrap/*"/>
-                  <ctl:with-param name="interface">Server.KVP.GET</ctl:with-param>
-                </ctl:call-function>
-              </xsl:variable>
-              <xsl:choose>
-                <xsl:when test="count($selected/sel/*) gt 0">
-
-                  <xsl:variable name="selectedWithSummary">
-                    <ctl:call-function name="wmtsFunctions:interfaceSummary">
-                      <ctl:with-param name="selected" select="$selected"/>
-                    </ctl:call-function>
-                  </xsl:variable>
-
-                  <ctl:call-function name="ctl:putLogCache">
-                    <ctl:with-param name="id">selected</ctl:with-param>
-                    <ctl:with-param name="xmlToCache" select="$selectedWithSummary"/>
-                  </ctl:call-function>
-
-                  <!-- <xsl:message>selected <xsl:copy-of select="$selected"/></xsl:message> -->
-                  <ctl:call-function name="wmtsFunctions:printSelected">
-                    <ctl:with-param name="selected" select="$selectedWithSummary"/>
-                    <ctl:with-param name="interface">Server.KVP.GET</ctl:with-param>
-                  </ctl:call-function>
-
-                  <ctl:message select="concat('Completed test selecton - selected tests will now be run in ', $mode, ' mode.')"/>
-                  <ctl:call-function name="wmtsFunctions:invokeTestGroupsForBinding">
-                    <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc/*"/>
-                    <ctl:with-param name="bootstrap" select="$bootstrap/*"/>
-                    <ctl:with-param name="selected" select="$selected/*"/>
-                    <ctl:with-param name="binding">KVP.GET</ctl:with-param>
-                  </ctl:call-function>
-
-                </xsl:when>
-                <xsl:otherwise>
-                  <ctl:message>No tests selected -- failed test selection</ctl:message>
-                  <ctl:fail/>
-                </xsl:otherwise>
-              </xsl:choose>
+              <ctl:message select="concat('Completed test selecton - selected tests will now be run in ', $mode, ' mode.')"/>
+              <ctl:call-function name="wmtsFunctions:invokeTestGroupsForBinding">
+                <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc/*"/>
+                <ctl:with-param name="bootstrap" select="$bootstrap/*"/>
+                <ctl:with-param name="selected">UNUSED</ctl:with-param>
+                <ctl:with-param name="binding">KVP.GET</ctl:with-param>
+              </ctl:call-function>
             </xsl:when>
             <xsl:otherwise>
               <ctl:message>[SKIPPED] GET binding not supported.</ctl:message>
@@ -414,7 +380,7 @@
             <ctl:call-function name="ctl:getLogCache">
               <ctl:with-param name="id">url</ctl:with-param>
             </ctl:call-function>
-          </xsl:variable>	
+          </xsl:variable>
           <!-- change wmtsSchemaType to string('url') once TileMatrixLimits schema errors are fixed -->
           <xsl:variable name="wmtsSchemaType" select="string('resource')"/>
 
@@ -437,53 +403,20 @@
           <!-- bootstrap xml contains global variables for use in both test and redo from cache modes-->
           <ctl:call-function name="ctl:putLogCache">
             <ctl:with-param name="id">bootstrap</ctl:with-param>
-            <ctl:with-param name="xmlToCache"><xsl:copy-of select="$bootstrap"/></ctl:with-param> 
+            <ctl:with-param name="xmlToCache"><xsl:copy-of select="$bootstrap"/></ctl:with-param>
           </ctl:call-function>
 
 
           <xsl:choose>
             <xsl:when test="exists($bootstrap/*)">
               <ctl:message>Completed prerequisite check:</ctl:message>
-              <xsl:variable name="selected">
-                <ctl:call-function name="wmts:testMenus">
-                  <ctl:with-param name="bootstrap" select="$bootstrap/*"/>
-                  <ctl:with-param name="interface">Server.KVP.POST</ctl:with-param>
-                </ctl:call-function>
-              </xsl:variable>
-              <xsl:choose>
-                <xsl:when test="count($selected/sel/*) gt 0">
-
-                  <xsl:variable name="selectedWithSummary">
-                    <ctl:call-function name="wmtsFunctions:interfaceSummary">
-                      <ctl:with-param name="selected" select="$selected"/>
-                    </ctl:call-function>
-                  </xsl:variable>
-
-                  <ctl:call-function name="ctl:putLogCache">
-                    <ctl:with-param name="id">selected</ctl:with-param>
-                    <ctl:with-param name="xmlToCache" select="$selectedWithSummary"/>
-                  </ctl:call-function>
-
-                  <!-- <xsl:message>selected <xsl:copy-of select="$selected"/></xsl:message> -->
-                  <ctl:call-function name="wmtsFunctions:printSelected">
-                    <ctl:with-param name="selected" select="$selectedWithSummary"/>
-                    <ctl:with-param name="interface">Server.KVP.POST</ctl:with-param>
-                  </ctl:call-function>
-
-                  <ctl:message select="concat('Completed test selecton - selected tests will now be run in ', $mode, ' mode.')"/>
-                  <ctl:call-function name="wmtsFunctions:invokeTestGroupsForBinding">
-                    <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc/*"/>
-                    <ctl:with-param name="bootstrap" select="$bootstrap/*"/>
-                    <ctl:with-param name="selected" select="$selected/*"/>
-                    <ctl:with-param name="binding">KVP.POST</ctl:with-param>
-                  </ctl:call-function>
-
-                </xsl:when>
-                <xsl:otherwise>
-                  <ctl:message>No tests selected -- failed test selection</ctl:message>
-                  <ctl:fail/>
-                </xsl:otherwise>
-              </xsl:choose>
+              <ctl:message select="concat('Completed test selecton - selected tests will now be run in ', $mode, ' mode.')"/>
+              <ctl:call-function name="wmtsFunctions:invokeTestGroupsForBinding">
+                <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc/*"/>
+                <ctl:with-param name="bootstrap" select="$bootstrap/*"/>
+                <ctl:with-param name="selected">UNUSED</ctl:with-param>
+                <ctl:with-param name="binding">KVP.POST</ctl:with-param>
+              </ctl:call-function>
             </xsl:when>
             <xsl:otherwise>
               <ctl:message>[SKIPPED] POST/KVP binding not supported.</ctl:message>
@@ -569,40 +502,15 @@
                   <ctl:with-param name="interface">Server.XML.POST</ctl:with-param>
                 </ctl:call-function>
               </xsl:variable>
-              <xsl:choose>
-                <xsl:when test="count($selected/sel/*) gt 0">
 
-                  <xsl:variable name="selectedWithSummary">
-                    <ctl:call-function name="wmtsFunctions:interfaceSummary">
-                      <ctl:with-param name="selected" select="$selected"/>
-                    </ctl:call-function>
-                  </xsl:variable>
+              <ctl:message select="concat('Completed test selecton - selected tests will now be run in ', $mode, ' mode.')"/>
+              <ctl:call-function name="wmtsFunctions:invokeTestGroupsForBinding">
+                <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc/*"/>
+                <ctl:with-param name="bootstrap" select="$bootstrap/*"/>
+                <ctl:with-param name="selected">UNUSED</ctl:with-param>
+                <ctl:with-param name="binding">XML.POST</ctl:with-param>
+              </ctl:call-function>
 
-                  <ctl:call-function name="ctl:putLogCache">
-                    <ctl:with-param name="id">selected</ctl:with-param>
-                    <ctl:with-param name="xmlToCache" select="$selectedWithSummary"/>
-                  </ctl:call-function>
-
-                  <!-- <xsl:message>selected <xsl:copy-of select="$selected"/></xsl:message> -->
-                  <ctl:call-function name="wmtsFunctions:printSelected">
-                    <ctl:with-param name="selected" select="$selectedWithSummary"/>
-                    <ctl:with-param name="interface">Server.XML.POST</ctl:with-param>
-                  </ctl:call-function>
-
-                  <ctl:message select="concat('Completed test selecton - selected tests will now be run in ', $mode, ' mode.')"/>
-                  <ctl:call-function name="wmtsFunctions:invokeTestGroupsForBinding">
-                    <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc/*"/>
-                    <ctl:with-param name="bootstrap" select="$bootstrap/*"/>
-                    <ctl:with-param name="selected" select="$selected/*"/>
-                    <ctl:with-param name="binding">XML.POST</ctl:with-param>
-                  </ctl:call-function>
-
-                </xsl:when>
-                <xsl:otherwise>
-                  <ctl:message>No tests selected -- failed test selection</ctl:message>
-                  <ctl:fail/>
-                </xsl:otherwise>
-              </xsl:choose>
             </xsl:when>
             <xsl:otherwise>
               <ctl:message>[SKIPPED] POST/XML binding not supported.</ctl:message>
@@ -682,47 +590,15 @@
 
           <xsl:choose>
             <xsl:when test="exists($bootstrap/*)">
-              <ctl:message>Completed prerequisite check:</ctl:message>
-              <xsl:variable name="selected">
-                <ctl:call-function name="wmts:testMenus">
-                  <ctl:with-param name="bootstrap" select="$bootstrap/*"/>
-                  <ctl:with-param name="interface">Server.SOAP.POST</ctl:with-param>
-                </ctl:call-function>
-              </xsl:variable>
-              <xsl:choose>
-                <xsl:when test="count($selected/sel/*) gt 0">
 
-                  <xsl:variable name="selectedWithSummary">
-                    <ctl:call-function name="wmtsFunctions:interfaceSummary">
-                      <ctl:with-param name="selected" select="$selected"/>
-                    </ctl:call-function>
-                  </xsl:variable>
+              <ctl:message select="concat('Completed test selecton - selected tests will now be run in ', $mode, ' mode.')"/>
+              <ctl:call-function name="wmtsFunctions:invokeTestGroupsForBinding">
+                <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc/*"/>
+                <ctl:with-param name="bootstrap" select="$bootstrap/*"/>
+                <ctl:with-param name="selected">UNUSED</ctl:with-param>
+                <ctl:with-param name="binding">SOAP.POST</ctl:with-param>
+              </ctl:call-function>
 
-                  <ctl:call-function name="ctl:putLogCache">
-                    <ctl:with-param name="id">selected</ctl:with-param>
-                    <ctl:with-param name="xmlToCache" select="$selectedWithSummary"/>
-                  </ctl:call-function>
-
-                  <!-- <xsl:message>selected <xsl:copy-of select="$selected"/></xsl:message> -->
-                  <ctl:call-function name="wmtsFunctions:printSelected">
-                    <ctl:with-param name="selected" select="$selectedWithSummary"/>
-                    <ctl:with-param name="interface">Server.SOAP.POST</ctl:with-param>
-                  </ctl:call-function>
-
-                  <ctl:message select="concat('Completed test selecton - selected tests will now be run in ', $mode, ' mode.')"/>
-                  <ctl:call-function name="wmtsFunctions:invokeTestGroupsForBinding">
-                    <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc/*"/>
-                    <ctl:with-param name="bootstrap" select="$bootstrap/*"/>
-                    <ctl:with-param name="selected" select="$selected/*"/>
-                    <ctl:with-param name="binding">SOAP.POST</ctl:with-param>
-                  </ctl:call-function>
-
-                </xsl:when>
-                <xsl:otherwise>
-                  <ctl:message>No tests selected -- failed test selection</ctl:message>
-                  <ctl:fail/>
-                </xsl:otherwise>
-              </xsl:choose>
             </xsl:when>
             <xsl:otherwise>
               <ctl:message>[SKIPPED] POST/SOAP binding not supported.</ctl:message>
@@ -809,40 +685,15 @@
                   <ctl:with-param name="interface">Server.RESTful</ctl:with-param>
                 </ctl:call-function>
               </xsl:variable>
-              <xsl:choose>
-                <xsl:when test="count($selected/sel/*) gt 0">
 
-                  <xsl:variable name="selectedWithSummary">
-                    <ctl:call-function name="wmtsFunctions:interfaceSummary">
-                      <ctl:with-param name="selected" select="$selected"/>
-                    </ctl:call-function>
-                  </xsl:variable>
+              <ctl:message select="concat('Completed test selecton - selected tests will now be run in ', $mode, ' mode.')"/>
+              <ctl:call-function name="wmtsFunctions:invokeTestGroupsForBinding">
+                <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc/*"/>
+                <ctl:with-param name="bootstrap" select="$bootstrap/*"/>
+                <ctl:with-param name="selected">UNUSED</ctl:with-param>
+                <ctl:with-param name="binding">RESTful</ctl:with-param>
+              </ctl:call-function>
 
-                  <ctl:call-function name="ctl:putLogCache">
-                    <ctl:with-param name="id">selected</ctl:with-param>
-                    <ctl:with-param name="xmlToCache" select="$selectedWithSummary"/>
-                  </ctl:call-function>
-
-                  <!-- <xsl:message>selected <xsl:copy-of select="$selected"/></xsl:message> -->
-                  <ctl:call-function name="wmtsFunctions:printSelected">
-                    <ctl:with-param name="selected" select="$selectedWithSummary"/>
-                    <ctl:with-param name="interface">Server.RESTful</ctl:with-param>
-                  </ctl:call-function>
-
-                  <ctl:message select="concat('Completed test selecton - selected tests will now be run in ', $mode, ' mode.')"/>
-                  <ctl:call-function name="wmtsFunctions:invokeTestGroupsForBinding">
-                    <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc/*"/>
-                    <ctl:with-param name="bootstrap" select="$bootstrap/*"/>
-                    <ctl:with-param name="selected" select="$selected/*"/>
-                    <ctl:with-param name="binding">RESTful</ctl:with-param>
-                  </ctl:call-function>
-
-                </xsl:when>
-                <xsl:otherwise>
-                  <ctl:message>No tests selected -- failed test selection</ctl:message>
-                  <ctl:fail/>
-                </xsl:otherwise>
-              </xsl:choose>
             </xsl:when>
             <xsl:otherwise>
               <ctl:message>[SKIPPED] REST binding not supported.</ctl:message>
