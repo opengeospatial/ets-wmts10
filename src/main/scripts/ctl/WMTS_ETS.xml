@@ -425,7 +425,7 @@
     </ctl:code>
   </ctl:test>
 
-  <ctl:test name="wmts:CommonOperations.main">
+  <ctl:test name="wmts:CommonOperations.main" isConformanceClass="true" isBasic="true">
     <ctl:param name="wmts.capabilities.doc">WMTS capabilities document</ctl:param>
     <ctl:param name="bootstrap.kvp.get" />
     <ctl:param name="bootstrap.kvp.post" />
@@ -470,7 +470,7 @@
     </ctl:code>
   </ctl:test>
 
-  <ctl:test name="wmts:GetCapabilities.main">
+  <ctl:test name="wmts:GetCapabilities.main" isConformanceClass="true" isBasic="true">
     <ctl:param name="wmts.capabilities.doc">WMTS capabilities document</ctl:param>
     <ctl:param name="bootstrap.kvp.get" />
     <ctl:param name="bootstrap.kvp.post" />
@@ -535,7 +535,7 @@
     </ctl:code>
   </ctl:test>
 
-  <ctl:test name="wmts:GetTile.main">
+  <ctl:test name="wmts:GetTile.main" isConformanceClass="true" isBasic="true">
     <ctl:param name="wmts.capabilities.doc">WMTS capabilities document</ctl:param>
     <ctl:param name="bootstrap.kvp.get" />
     <ctl:param name="bootstrap.kvp.post" />
@@ -604,7 +604,7 @@
     </ctl:code>
   </ctl:test>
 
-  <ctl:test name="wmts:GetFeatureInfo.main">
+  <ctl:test name="wmts:GetFeatureInfo.main" isConformanceClass="true" isBasic="false">
     <ctl:param name="wmts.capabilities.doc">WMTS capabilities document</ctl:param>
     <ctl:param name="bootstrap.kvp.get" />
     <ctl:param name="bootstrap.kvp.post" />
