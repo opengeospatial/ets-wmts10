@@ -60,6 +60,77 @@
               <ctl:with-param name="id">url</ctl:with-param>
             </ctl:call-function>
           </xsl:variable>
+          <xsl:variable name="bootstrap.kvp.get">
+            <ctl:call-function name="ctl:getLogCache">
+              <ctl:with-param name="id">bootstrapkvpget</ctl:with-param>
+            </ctl:call-function>
+          </xsl:variable>
+          <xsl:variable name="bootstrap.kvp.post">
+            <ctl:call-function name="ctl:getLogCache">
+              <ctl:with-param name="id">bootstrapkvppost</ctl:with-param>
+            </ctl:call-function>
+          </xsl:variable>
+          <xsl:variable name="bootstrap.xml.post">
+            <ctl:call-function name="ctl:getLogCache">
+              <ctl:with-param name="id">bootstrapxmlpost</ctl:with-param>
+            </ctl:call-function>
+          </xsl:variable>
+          <xsl:variable name="bootstrap.soap.post">
+            <ctl:call-function name="ctl:getLogCache">
+              <ctl:with-param name="id">bootstrapsoappost</ctl:with-param>
+            </ctl:call-function>
+          </xsl:variable>
+          <xsl:variable name="bootstrap.restful">
+            <ctl:call-function name="ctl:getLogCache">
+              <ctl:with-param name="id">bootstraprestful</ctl:with-param>
+            </ctl:call-function>
+          </xsl:variable>
+
+          <xsl:if test="$bootstrap.kvp.get">
+            <ctl:call-function name="ctl:putLogCache">
+              <ctl:with-param name="id">bootstrapkvpget</ctl:with-param>
+              <ctl:with-param name="xmlToCache">
+                <xsl:copy-of select="$bootstrap.kvp.get" />
+              </ctl:with-param>
+            </ctl:call-function>
+          </xsl:if>
+
+          <xsl:if test="$bootstrap.kvp.get">
+            <ctl:call-function name="ctl:putLogCache">
+              <ctl:with-param name="id">bootstrapkvppost</ctl:with-param>
+              <ctl:with-param name="xmlToCache">
+                <xsl:copy-of select="$bootstrap.kvp.post" />
+              </ctl:with-param>
+            </ctl:call-function>
+          </xsl:if>
+
+          <xsl:if test="$bootstrap.xml.post">
+            <ctl:call-function name="ctl:putLogCache">
+              <ctl:with-param name="id">bootstrapxmlpost</ctl:with-param>
+              <ctl:with-param name="xmlToCache">
+                <xsl:copy-of select="$bootstrap.xml.post" />
+              </ctl:with-param>
+            </ctl:call-function>
+          </xsl:if>
+
+          <xsl:if test="$bootstrap.soap.post">
+            <ctl:call-function name="ctl:putLogCache">
+              <ctl:with-param name="id">bootstrapsoappost</ctl:with-param>
+              <ctl:with-param name="xmlToCache">
+                <xsl:copy-of select="$bootstrap.soap.post" />
+              </ctl:with-param>
+            </ctl:call-function>
+          </xsl:if>
+
+          <xsl:if test="$bootstrap.restful">
+            <ctl:call-function name="ctl:putLogCache">
+              <ctl:with-param name="id">bootstraprestful</ctl:with-param>
+              <ctl:with-param name="xmlToCache">
+                <xsl:copy-of select="$bootstrap.restful" />
+              </ctl:with-param>
+            </ctl:call-function>
+          </xsl:if>
+
           <xsl:choose>
             <xsl:when test="$wmts.capabilities.doc and $wmtsSchemaPath and $wmts.capabilities.url">
               <ctl:message>Retrieved bootstrap wmts.capabilities.doc and other cached elements from cache</ctl:message>
@@ -241,6 +312,12 @@
                           <ctl:with-param name="wmtsSchemaType" select="$wmtsSchemaType"/>
                         </ctl:call-function>
                       </xsl:variable>
+                      <ctl:call-function name="ctl:putLogCache">
+                        <ctl:with-param name="id">bootstrapkvpget</ctl:with-param>
+                        <ctl:with-param name="xmlToCache">
+                          <xsl:copy-of select="$bootstrap.kvp.get" />
+                        </ctl:with-param>
+                      </ctl:call-function>
 
                       <xsl:variable name="bootstrap.kvp.post">
                         <ctl:call-function name="wmtsBootstrap:bootstrap.kvp.post">
@@ -249,6 +326,12 @@
                           <ctl:with-param name="wmtsSchemaType" select="$wmtsSchemaType"/>
                         </ctl:call-function>
                       </xsl:variable>
+                      <ctl:call-function name="ctl:putLogCache">
+                        <ctl:with-param name="id">bootstrapkvppost</ctl:with-param>
+                        <ctl:with-param name="xmlToCache">
+                          <xsl:copy-of select="$bootstrap.kvp.post" />
+                        </ctl:with-param>
+                      </ctl:call-function>
 
                       <xsl:variable name="bootstrap.xml.post">
                         <ctl:call-function name="wmtsBootstrap:bootstrap.xml.post">
@@ -257,6 +340,12 @@
                           <ctl:with-param name="wmtsSchemaType" select="$wmtsSchemaType"/>
                         </ctl:call-function>
                       </xsl:variable>
+                      <ctl:call-function name="ctl:putLogCache">
+                        <ctl:with-param name="id">bootstrapxmlpost</ctl:with-param>
+                        <ctl:with-param name="xmlToCache">
+                          <xsl:copy-of select="$bootstrap.xml.post" />
+                        </ctl:with-param>
+                      </ctl:call-function>
 
                       <xsl:variable name="bootstrap.soap.post">
                         <ctl:call-function name="wmtsBootstrap:bootstrap.soap.post">
@@ -265,6 +354,12 @@
                           <ctl:with-param name="wmtsSchemaType" select="$wmtsSchemaType"/>
                         </ctl:call-function>
                       </xsl:variable>
+                      <ctl:call-function name="ctl:putLogCache">
+                        <ctl:with-param name="id">bootstrapsoappost</ctl:with-param>
+                        <ctl:with-param name="xmlToCache">
+                          <xsl:copy-of select="$bootstrap.soap.post" />
+                        </ctl:with-param>
+                      </ctl:call-function>
 
                       <xsl:variable name="bootstrap.restful">
                         <ctl:call-function name="wmtsBootstrap:bootstrap.restful">
@@ -273,6 +368,12 @@
                           <ctl:with-param name="wmtsSchemaType" select="$wmtsSchemaType"/>
                         </ctl:call-function>
                       </xsl:variable>
+                      <ctl:call-function name="ctl:putLogCache">
+                        <ctl:with-param name="id">bootstraprestful</ctl:with-param>
+                        <ctl:with-param name="xmlToCache">
+                          <xsl:copy-of select="$bootstrap.restful" />
+                        </ctl:with-param>
+                      </ctl:call-function>
 
                       <ctl:call-test name="wmts:CommonOperations.main">
                         <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc" />
@@ -319,7 +420,6 @@
         </xsl:otherwise>
       </xsl:choose>
 
-      
       <xsl:variable name="wmts.main.elapsed" select="ctl:elapsedTime('wmts.main')"/>
       <ctl:message>wmts.main.elapsed [<xsl:value-of select="$wmts.main.elapsed"/>] milliseconds</ctl:message>
     </ctl:code>
