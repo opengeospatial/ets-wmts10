@@ -3178,189 +3178,20 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 			<ctl:message select="concat('InvokeTestGroupsForBinding ', $binding)"/>
 			<xsl:choose>
 				<xsl:when test="$binding = 'KVP.GET' ">
-					<ctl:call-test name="wmts:CommonOperations.Mandatory.KVP.GET">
-						<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-						<ctl:with-param name="bootstrap" select="$bootstrap"/>
-						<ctl:with-param name="selected" select="$selected"/>
-					</ctl:call-test>
-					
-					<ctl:call-test name="wmts:GetCapabilities.Mandatory.KVP.GET">
-						<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-						<ctl:with-param name="bootstrap" select="$bootstrap"/>
-						<ctl:with-param name="selected" select="$selected"/>
-					</ctl:call-test>
-
-					<!-- <ctl:call-test name="wmts:GetCapabilities.Implemented.KVP.GET">
-						<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-						<ctl:with-param name="bootstrap" select="$bootstrap"/>
-						<ctl:with-param name="selected" select="$selected"/>
-					</ctl:call-test> -->
-
-					<ctl:call-test name="wmts:GetTile.Mandatory.KVP.GET">
-						<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-						<ctl:with-param name="bootstrap" select="$bootstrap"/>
-						<ctl:with-param name="selected" select="$selected"/>
-					</ctl:call-test>
-
-					<!-- <ctl:call-test name="wmts:GetTile.Implemented.KVP.GET">
-						<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-						<ctl:with-param name="bootstrap" select="$bootstrap"/>
-						<ctl:with-param name="selected" select="$selected"/>
-					</ctl:call-test> -->
-
-					<!-- <ctl:call-test name="wmts:GetFeatureInfo.Implemented.KVP.GET">
-						<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-						<ctl:with-param name="bootstrap" select="$bootstrap"/>
-						<ctl:with-param name="selected" select="$selected"/>
-					</ctl:call-test> -->
 				</xsl:when>
 
 				<xsl:when test="$binding = 'KVP.POST' ">
-					<ctl:call-test name="wmts:CommonOperations.Mandatory.KVP.POST">
-						<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-						<ctl:with-param name="bootstrap" select="$bootstrap"/>
-						<ctl:with-param name="selected" select="$selected"/>
-					</ctl:call-test>
-					
-					<ctl:call-test name="wmts:GetCapabilities.Mandatory.KVP.POST">
-						<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-						<ctl:with-param name="bootstrap" select="$bootstrap"/>
-						<ctl:with-param name="selected" select="$selected"/>
-					</ctl:call-test>
-
-					<ctl:call-test name="wmts:GetCapabilities.Implemented.KVP.POST">
-						<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-						<ctl:with-param name="bootstrap" select="$bootstrap"/>
-						<ctl:with-param name="selected" select="$selected"/>
-					</ctl:call-test>
-
-					<ctl:call-test name="wmts:GetTile.Mandatory.KVP.POST">
-						<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-						<ctl:with-param name="bootstrap" select="$bootstrap"/>
-						<ctl:with-param name="selected" select="$selected"/>
-					</ctl:call-test>
-
-					<ctl:call-test name="wmts:GetTile.Implemented.KVP.POST">
-						<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-						<ctl:with-param name="bootstrap" select="$bootstrap"/>
-						<ctl:with-param name="selected" select="$selected"/>
-					</ctl:call-test>
-
-					<ctl:call-test name="wmts:GetFeatureInfo.Implemented.KVP.POST">
-						<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-						<ctl:with-param name="bootstrap" select="$bootstrap"/>
-						<ctl:with-param name="selected" select="$selected"/>
-					</ctl:call-test>
 				</xsl:when>
 
 				<xsl:when test="$binding = 'XML.POST' ">
-					<ctl:call-test name="wmts:CommonOperations.Mandatory.XML.POST">
-						<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-						<ctl:with-param name="bootstrap" select="$bootstrap"/>
-						<ctl:with-param name="selected" select="$selected"/>
-					</ctl:call-test>
-					
-					<ctl:call-test name="wmts:GetCapabilities.Mandatory.XML.POST">
-						<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-						<ctl:with-param name="bootstrap" select="$bootstrap"/>
-						<ctl:with-param name="selected" select="$selected"/>
-					</ctl:call-test>
-
-					<ctl:call-test name="wmts:GetCapabilities.Implemented.XML.POST">
-						<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-						<ctl:with-param name="bootstrap" select="$bootstrap"/>
-						<ctl:with-param name="selected" select="$selected"/>
-					</ctl:call-test>
-
-					<ctl:call-test name="wmts:GetTile.Mandatory.XML.POST">
-						<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-						<ctl:with-param name="bootstrap" select="$bootstrap"/>
-						<ctl:with-param name="selected" select="$selected"/>
-					</ctl:call-test>
-
-					<ctl:call-test name="wmts:GetTile.Implemented.XML.POST">
-						<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-						<ctl:with-param name="bootstrap" select="$bootstrap"/>
-						<ctl:with-param name="selected" select="$selected"/>
-					</ctl:call-test>
-
-					<ctl:call-test name="wmts:GetFeatureInfo.Implemented.XML.POST">
-						<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-						<ctl:with-param name="bootstrap" select="$bootstrap"/>
-						<ctl:with-param name="selected" select="$selected"/>
-					</ctl:call-test>
 				</xsl:when>
 
 				<xsl:when test="$binding = 'SOAP.POST' ">
-					<ctl:call-test name="wmts:CommonOperations.Mandatory.SOAP.POST">
-						<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-						<ctl:with-param name="bootstrap" select="$bootstrap"/>
-						<ctl:with-param name="selected" select="$selected"/>
-					</ctl:call-test>
-					
-					<ctl:call-test name="wmts:GetCapabilities.Mandatory.SOAP.POST">
-						<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-						<ctl:with-param name="bootstrap" select="$bootstrap"/>
-						<ctl:with-param name="selected" select="$selected"/>
-					</ctl:call-test>
-
-					<ctl:call-test name="wmts:GetCapabilities.Implemented.SOAP.POST">
-						<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-						<ctl:with-param name="bootstrap" select="$bootstrap"/>
-						<ctl:with-param name="selected" select="$selected"/>
-					</ctl:call-test>
-
-					<ctl:call-test name="wmts:GetTile.Mandatory.SOAP.POST">
-						<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-						<ctl:with-param name="bootstrap" select="$bootstrap"/>
-						<ctl:with-param name="selected" select="$selected"/>
-					</ctl:call-test>
-
-					<ctl:call-test name="wmts:GetTile.Implemented.SOAP.POST">
-						<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-						<ctl:with-param name="bootstrap" select="$bootstrap"/>
-						<ctl:with-param name="selected" select="$selected"/>
-					</ctl:call-test>
-
-					<ctl:call-test name="wmts:GetFeatureInfo.Implemented.SOAP.POST">
-						<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-						<ctl:with-param name="bootstrap" select="$bootstrap"/>
-						<ctl:with-param name="selected" select="$selected"/>
-					</ctl:call-test>
 				</xsl:when>
-
 
 				<xsl:when test="$binding = 'RESTful' ">
-					<ctl:call-test name="wmts:CommonOperations.Mandatory.RESTful">
-						<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-						<ctl:with-param name="bootstrap" select="$bootstrap"/>
-						<ctl:with-param name="selected" select="$selected"/>
-					</ctl:call-test>
-					
-					<ctl:call-test name="wmts:GetCapabilities.Mandatory.RESTful">
-						<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-						<ctl:with-param name="bootstrap" select="$bootstrap"/>
-						<ctl:with-param name="selected" select="$selected"/>
-					</ctl:call-test>
-
-					<ctl:call-test name="wmts:GetTile.Mandatory.RESTful">
-						<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-						<ctl:with-param name="bootstrap" select="$bootstrap"/>
-						<ctl:with-param name="selected" select="$selected"/>
-					</ctl:call-test>
-
-					<ctl:call-test name="wmts:GetTile.Implemented.RESTful">
-						<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-						<ctl:with-param name="bootstrap" select="$bootstrap"/>
-						<ctl:with-param name="selected" select="$selected"/>
-					</ctl:call-test>
-
-					<ctl:call-test name="wmts:GetFeatureInfo.Implemented.RESTful">
-						<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-						<ctl:with-param name="bootstrap" select="$bootstrap"/>
-						<ctl:with-param name="selected" select="$selected"/>
-					</ctl:call-test>
 				</xsl:when>
+
 				<xsl:otherwise>
 					<ctl:message select="concat('Invalid binding ', $binding , ' - failed test selection')"/>
 					<ctl:fail/>
@@ -3377,13 +3208,13 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 		<ctl:description>Invoke selected WMTS tests</ctl:description>
 		<ctl:code>
 			<ctl:message select="concat('wmtsFunctions:invokeSelectedTests for group ', $testGroupElementName)"/>
-			<xsl:variable name="kvpGetCapabilitiesURL" select="$wmts.capabilities.doc /ows:OperationsMetadata/ows:Operation[@name='GetCapabilities']/ows:DCP/ows:HTTP/ows:Get/@xlink:href"/>
-			<xsl:variable name="postGetCapabilitiesURL" select="$wmts.capabilities.doc /ows:OperationsMetadata/ows:Operation[@name='GetCapabilities']/ows:DCP/ows:HTTP/ows:Post/@xlink:href"/>
-			<xsl:variable name="kvpGetTileURL" select="$wmts.capabilities.doc/ows:OperationsMetadata/ows:Operation[@name='GetTile']/ows:DCP/ows:HTTP/ows:Get/@xlink:href"/>
-			<xsl:variable name="postGetTileURL" select="$wmts.capabilities.doc/ows:OperationsMetadata/ows:Operation[@name='GetTile']/ows:DCP/ows:HTTP/ows:Post/@xlink:href"/>
-			<xsl:variable name="kvpGetFeatureInfoURL" select="$wmts.capabilities.doc/ows:OperationsMetadata/ows:Operation[@name='GetFeatureInfo']/ows:DCP/ows:HTTP/ows:Get/@xlink:href"/>
-			<xsl:variable name="postGetFeatureInfoURL" select="$wmts.capabilities.doc/ows:OperationsMetadata/ows:Operation[@name='GetFeatureInfo']/ows:DCP/ows:HTTP/ows:Post/@xlink:href"/>
-			<xsl:variable name="restfulServiceMetadataURL" select="$wmts.capabilities.doc/wmts:ServiceMetadataURL/@xlink:href"/>
+			<xsl:variable name="kvpGetCapabilitiesURL" select="$wmts.capabilities.doc//ows:OperationsMetadata/ows:Operation[@name='GetCapabilities']/ows:DCP/ows:HTTP/ows:Get/@xlink:href"/>
+			<xsl:variable name="postGetCapabilitiesURL" select="$wmts.capabilities.doc//ows:OperationsMetadata/ows:Operation[@name='GetCapabilities']/ows:DCP/ows:HTTP/ows:Post/@xlink:href"/>
+			<xsl:variable name="kvpGetTileURL" select="$wmts.capabilities.doc//ows:OperationsMetadata/ows:Operation[@name='GetTile']/ows:DCP/ows:HTTP/ows:Get/@xlink:href"/>
+			<xsl:variable name="postGetTileURL" select="$wmts.capabilities.doc//ows:OperationsMetadata/ows:Operation[@name='GetTile']/ows:DCP/ows:HTTP/ows:Post/@xlink:href"/>
+			<xsl:variable name="kvpGetFeatureInfoURL" select="$wmts.capabilities.doc//ows:OperationsMetadata/ows:Operation[@name='GetFeatureInfo']/ows:DCP/ows:HTTP/ows:Get/@xlink:href"/>
+			<xsl:variable name="postGetFeatureInfoURL" select="$wmts.capabilities.doc//ows:OperationsMetadata/ows:Operation[@name='GetFeatureInfo']/ows:DCP/ows:HTTP/ows:Post/@xlink:href"/>
+			<xsl:variable name="restfulServiceMetadataURL" select="$wmts.capabilities.doc//wmts:ServiceMetadataURL/@xlink:href"/>
 
 			<xsl:variable name="testGroupElement" select="$bootstrap/*[local-name() = $testGroupElementName]"/>
 			<!-- <ctl:message select="concat('bootstrap ', local-name($bootstrap), ' tge ', local-name($testGroupElement), ' sel ', local-name($selected))"/> -->

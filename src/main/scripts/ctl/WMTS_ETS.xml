@@ -231,26 +231,83 @@
                       <ctl:message>Capabilities response is valid, continuing with selected profile(s) ...</ctl:message>
                       <ctl:message select="'********************************************************'"/>
 
+                      <!-- change wmtsSchemaType to string('url') once TileMatrixLimits schema errors are fixed -->
+                      <xsl:variable name="wmtsSchemaType" select="string('resource')"/>
 
-                      <ctl:call-test name="wmts:server.profile.kvp.get.main">
+                      <xsl:variable name="bootstrap.kvp.get">
+                        <ctl:call-function name="wmtsBootstrap:bootstrap.kvp.get">
+                          <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc/*"/>
+                          <ctl:with-param name="wmtsSchemaPath" select="$wmtsSchemaPath"/>
+                          <ctl:with-param name="wmtsSchemaType" select="$wmtsSchemaType"/>
+                        </ctl:call-function>
+                      </xsl:variable>
+
+                      <xsl:variable name="bootstrap.kvp.post">
+                        <ctl:call-function name="wmtsBootstrap:bootstrap.kvp.post">
+                          <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc/*"/>
+                          <ctl:with-param name="wmtsSchemaPath" select="$wmtsSchemaPath"/>
+                          <ctl:with-param name="wmtsSchemaType" select="$wmtsSchemaType"/>
+                        </ctl:call-function>
+                      </xsl:variable>
+
+                      <xsl:variable name="bootstrap.xml.post">
+                        <ctl:call-function name="wmtsBootstrap:bootstrap.xml.post">
+                          <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc/*"/>
+                          <ctl:with-param name="wmtsSchemaPath" select="$wmtsSchemaPath"/>
+                          <ctl:with-param name="wmtsSchemaType" select="$wmtsSchemaType"/>
+                        </ctl:call-function>
+                      </xsl:variable>
+
+                      <xsl:variable name="bootstrap.soap.post">
+                        <ctl:call-function name="wmtsBootstrap:bootstrap.soap.post">
+                          <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc/*"/>
+                          <ctl:with-param name="wmtsSchemaPath" select="$wmtsSchemaPath"/>
+                          <ctl:with-param name="wmtsSchemaType" select="$wmtsSchemaType"/>
+                        </ctl:call-function>
+                      </xsl:variable>
+
+                      <xsl:variable name="bootstrap.restful">
+                        <ctl:call-function name="wmtsBootstrap:bootstrap.restful">
+                          <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc/*"/>
+                          <ctl:with-param name="wmtsSchemaPath" select="$wmtsSchemaPath"/>
+                          <ctl:with-param name="wmtsSchemaType" select="$wmtsSchemaType"/>
+                        </ctl:call-function>
+                      </xsl:variable>
+
+                      <ctl:call-test name="wmts:CommonOperations.main">
                         <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc" />
-                        <ctl:with-param name="wmtsSchemaPath" select="$wmtsSchemaPath" />
+                        <ctl:with-param name="bootstrap.kvp.get" select="$bootstrap.kvp.get" />
+                        <ctl:with-param name="bootstrap.kvp.post" select="$bootstrap.kvp.post" />
+                        <ctl:with-param name="bootstrap.xml.post" select="$bootstrap.xml.post" />
+                        <ctl:with-param name="bootstrap.soap.post" select="$bootstrap.soap.post" />
+                        <ctl:with-param name="bootstrap.restful" select="$bootstrap.restful" />
                       </ctl:call-test>
-                      <ctl:call-test name="wmts:server.profile.kvp.post.main">
+
+                      <ctl:call-test name="wmts:GetCapabilities.main">
                         <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc" />
-                        <ctl:with-param name="wmtsSchemaPath" select="$wmtsSchemaPath" />
+                        <ctl:with-param name="bootstrap.kvp.get" select="$bootstrap.kvp.get" />
+                        <ctl:with-param name="bootstrap.kvp.post" select="$bootstrap.kvp.post" />
+                        <ctl:with-param name="bootstrap.xml.post" select="$bootstrap.xml.post" />
+                        <ctl:with-param name="bootstrap.soap.post" select="$bootstrap.soap.post" />
+                        <ctl:with-param name="bootstrap.restful" select="$bootstrap.restful" />
                       </ctl:call-test>
-                      <ctl:call-test name="wmts:server.profile.xml.post.main">
+
+                      <ctl:call-test name="wmts:GetTile.main">
                         <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc" />
-                        <ctl:with-param name="wmtsSchemaPath" select="$wmtsSchemaPath" />
+                        <ctl:with-param name="bootstrap.kvp.get" select="$bootstrap.kvp.get" />
+                        <ctl:with-param name="bootstrap.kvp.post" select="$bootstrap.kvp.post" />
+                        <ctl:with-param name="bootstrap.xml.post" select="$bootstrap.xml.post" />
+                        <ctl:with-param name="bootstrap.soap.post" select="$bootstrap.soap.post" />
+                        <ctl:with-param name="bootstrap.restful" select="$bootstrap.restful" />
                       </ctl:call-test>
-                      <ctl:call-test name="wmts:server.profile.soap.post.main">
+
+                      <ctl:call-test name="wmts:GetFeatureInfo.main">
                         <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc" />
-                        <ctl:with-param name="wmtsSchemaPath" select="$wmtsSchemaPath" />
-                      </ctl:call-test>
-                      <ctl:call-test name="wmts:server.profile.restful.main">
-                        <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc" />
-                        <ctl:with-param name="wmtsSchemaPath" select="$wmtsSchemaPath" />
+                        <ctl:with-param name="bootstrap.kvp.get" select="$bootstrap.kvp.get" />
+                        <ctl:with-param name="bootstrap.kvp.post" select="$bootstrap.kvp.post" />
+                        <ctl:with-param name="bootstrap.xml.post" select="$bootstrap.xml.post" />
+                        <ctl:with-param name="bootstrap.soap.post" select="$bootstrap.soap.post" />
+                        <ctl:with-param name="bootstrap.restful" select="$bootstrap.restful" />
                       </ctl:call-test>
 
                     </xsl:otherwise>
@@ -265,6 +322,229 @@
       
       <xsl:variable name="wmts.main.elapsed" select="ctl:elapsedTime('wmts.main')"/>
       <ctl:message>wmts.main.elapsed [<xsl:value-of select="$wmts.main.elapsed"/>] milliseconds</ctl:message>
+    </ctl:code>
+  </ctl:test>
+
+  <ctl:test name="wmts:CommonOperations.main">
+    <ctl:param name="wmts.capabilities.doc">WMTS capabilities document</ctl:param>
+    <ctl:param name="bootstrap.kvp.get" />
+    <ctl:param name="bootstrap.kvp.post" />
+    <ctl:param name="bootstrap.xml.post" />
+    <ctl:param name="bootstrap.soap.post" />
+    <ctl:param name="bootstrap.restful" />
+
+    <ctl:assertion>The server satisfies all CommonOperations requirements for all supported bindings.</ctl:assertion>
+    <ctl:code>
+      <xsl:variable name="selected">UNUSED</xsl:variable>
+
+      <ctl:call-test name="wmts:CommonOperations.Mandatory.KVP.GET">
+        <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc" />
+        <ctl:with-param name="bootstrap" select="$bootstrap.kvp.get" />
+        <ctl:with-param name="selected" select="$selected" />
+      </ctl:call-test>
+
+      <ctl:call-test name="wmts:CommonOperations.Mandatory.KVP.POST">
+        <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc" />
+        <ctl:with-param name="bootstrap" select="$bootstrap.kvp.post" />
+        <ctl:with-param name="selected" select="$selected" />
+      </ctl:call-test>
+
+      <ctl:call-test name="wmts:CommonOperations.Mandatory.XML.POST">
+        <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc" />
+        <ctl:with-param name="bootstrap" select="$bootstrap.xml.post" />
+        <ctl:with-param name="selected" select="$selected" />
+      </ctl:call-test>
+
+      <ctl:call-test name="wmts:CommonOperations.Mandatory.SOAP.POST">
+        <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc" />
+        <ctl:with-param name="bootstrap" select="$bootstrap.soap.post" />
+        <ctl:with-param name="selected" select="$selected" />
+      </ctl:call-test>
+
+      <ctl:call-test name="wmts:CommonOperations.Mandatory.RESTful">
+        <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc" />
+        <ctl:with-param name="bootstrap" select="$bootstrap.restful" />
+        <ctl:with-param name="selected" select="$selected" />
+      </ctl:call-test>
+
+    </ctl:code>
+  </ctl:test>
+
+  <ctl:test name="wmts:GetCapabilities.main">
+    <ctl:param name="wmts.capabilities.doc">WMTS capabilities document</ctl:param>
+    <ctl:param name="bootstrap.kvp.get" />
+    <ctl:param name="bootstrap.kvp.post" />
+    <ctl:param name="bootstrap.xml.post" />
+    <ctl:param name="bootstrap.soap.post" />
+    <ctl:param name="bootstrap.restful" />
+
+    <ctl:assertion>The server satisfies all GetCapabilities requirements for all supported bindings.</ctl:assertion>
+    <ctl:code>
+      <xsl:variable name="selected">UNUSED</xsl:variable>
+
+      <ctl:call-test name="wmts:GetCapabilities.Mandatory.KVP.GET">
+        <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc" />
+        <ctl:with-param name="bootstrap" select="$bootstrap.kvp.get" />
+        <ctl:with-param name="selected" select="$selected" />
+      </ctl:call-test>
+      <!-- <ctl:call-test name="wmts:GetCapabilities.Implemented.KVP.GET">
+        <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
+        <ctl:with-param name="bootstrap" select="$bootstrap.kvp.get"/>
+        <ctl:with-param name="selected" select="$selected"/>
+      </ctl:call-test> -->
+
+      <ctl:call-test name="wmts:GetCapabilities.Mandatory.KVP.POST">
+        <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc" />
+        <ctl:with-param name="bootstrap" select="$bootstrap.kvp.post" />
+        <ctl:with-param name="selected" select="$selected" />
+      </ctl:call-test>
+      <ctl:call-test name="wmts:GetCapabilities.Implemented.KVP.POST">
+        <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc" />
+        <ctl:with-param name="bootstrap" select="$bootstrap.kvp.post" />
+        <ctl:with-param name="selected" select="$selected" />
+      </ctl:call-test>
+
+      <ctl:call-test name="wmts:GetCapabilities.Mandatory.XML.POST">
+        <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc" />
+        <ctl:with-param name="bootstrap" select="$bootstrap.xml.post" />
+        <ctl:with-param name="selected" select="$selected" />
+      </ctl:call-test>
+      <ctl:call-test name="wmts:GetCapabilities.Implemented.XML.POST">
+        <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc" />
+        <ctl:with-param name="bootstrap" select="$bootstrap.xml.post" />
+        <ctl:with-param name="selected" select="$selected" />
+      </ctl:call-test>
+
+      <ctl:call-test name="wmts:GetCapabilities.Mandatory.SOAP.POST">
+        <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc" />
+        <ctl:with-param name="bootstrap" select="$bootstrap.soap.post" />
+        <ctl:with-param name="selected" select="$selected" />
+      </ctl:call-test>
+      <ctl:call-test name="wmts:GetCapabilities.Implemented.SOAP.POST">
+        <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc" />
+        <ctl:with-param name="bootstrap" select="$bootstrap.soap.post" />
+        <ctl:with-param name="selected" select="$selected" />
+      </ctl:call-test>
+
+      <ctl:call-test name="wmts:GetCapabilities.Mandatory.RESTful">
+        <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc" />
+        <ctl:with-param name="bootstrap" select="$bootstrap.restful" />
+        <ctl:with-param name="selected" select="$selected" />
+      </ctl:call-test>
+
+    </ctl:code>
+  </ctl:test>
+
+  <ctl:test name="wmts:GetTile.main">
+    <ctl:param name="wmts.capabilities.doc">WMTS capabilities document</ctl:param>
+    <ctl:param name="bootstrap.kvp.get" />
+    <ctl:param name="bootstrap.kvp.post" />
+    <ctl:param name="bootstrap.xml.post" />
+    <ctl:param name="bootstrap.soap.post" />
+    <ctl:param name="bootstrap.restful" />
+
+    <ctl:assertion>The server satisfies all GetTile requirements for all supported bindings.</ctl:assertion>
+    <ctl:code>
+      <xsl:variable name="selected">UNUSED</xsl:variable>
+
+      <ctl:call-test name="wmts:GetTile.Mandatory.KVP.GET">
+        <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc" />
+        <ctl:with-param name="bootstrap" select="$bootstrap.kvp.get" />
+        <ctl:with-param name="selected" select="$selected" />
+      </ctl:call-test>
+      <!-- <ctl:call-test name="wmts:GetTile.Implemented.KVP.GET">
+        <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
+        <ctl:with-param name="bootstrap" select="$bootstrap.kvp.get"/>
+        <ctl:with-param name="selected" select="$selected"/>
+      </ctl:call-test> -->
+
+      <ctl:call-test name="wmts:GetTile.Mandatory.KVP.POST">
+        <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc" />
+        <ctl:with-param name="bootstrap" select="$bootstrap.kvp.post" />
+        <ctl:with-param name="selected" select="$selected" />
+      </ctl:call-test>
+      <ctl:call-test name="wmts:GetTile.Implemented.KVP.POST">
+        <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc" />
+        <ctl:with-param name="bootstrap" select="$bootstrap.kvp.post" />
+        <ctl:with-param name="selected" select="$selected" />
+      </ctl:call-test>
+
+      <ctl:call-test name="wmts:GetTile.Mandatory.XML.POST">
+        <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc" />
+        <ctl:with-param name="bootstrap" select="$bootstrap.xml.post" />
+        <ctl:with-param name="selected" select="$selected" />
+      </ctl:call-test>
+      <ctl:call-test name="wmts:GetTile.Implemented.XML.POST">
+        <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc" />
+        <ctl:with-param name="bootstrap" select="$bootstrap.xml.post" />
+        <ctl:with-param name="selected" select="$selected" />
+      </ctl:call-test>
+
+      <ctl:call-test name="wmts:GetTile.Mandatory.SOAP.POST">
+        <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc" />
+        <ctl:with-param name="bootstrap" select="$bootstrap.soap.post" />
+        <ctl:with-param name="selected" select="$selected" />
+      </ctl:call-test>
+      <ctl:call-test name="wmts:GetTile.Implemented.SOAP.POST">
+        <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc" />
+        <ctl:with-param name="bootstrap" select="$bootstrap.soap.post" />
+        <ctl:with-param name="selected" select="$selected" />
+      </ctl:call-test>
+
+      <ctl:call-test name="wmts:GetTile.Mandatory.RESTful">
+        <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc" />
+        <ctl:with-param name="bootstrap" select="$bootstrap.restful" />
+        <ctl:with-param name="selected" select="$selected" />
+      </ctl:call-test>
+      <ctl:call-test name="wmts:GetTile.Implemented.RESTful">
+        <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc" />
+        <ctl:with-param name="bootstrap" select="$bootstrap.restful" />
+        <ctl:with-param name="selected" select="$selected" />
+      </ctl:call-test>
+    </ctl:code>
+  </ctl:test>
+
+  <ctl:test name="wmts:GetFeatureInfo.main">
+    <ctl:param name="wmts.capabilities.doc">WMTS capabilities document</ctl:param>
+    <ctl:param name="bootstrap.kvp.get" />
+    <ctl:param name="bootstrap.kvp.post" />
+    <ctl:param name="bootstrap.xml.post" />
+    <ctl:param name="bootstrap.soap.post" />
+    <ctl:param name="bootstrap.restful" />
+
+    <ctl:assertion>The server satisfies all GetFeatureInfo requirements for all supported bindings.</ctl:assertion>
+    <ctl:code>
+      <xsl:variable name="selected">UNUSED</xsl:variable>
+
+      <!--<ctl:call-test name="wmts:GetFeatureInfo.Implemented.KVP.GET">
+            <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc" />
+            <ctl:with-param name="bootstrap" select="$bootstrap.kvp.get" />
+            <ctl:with-param name="selected" select="$selected" />
+          </ctl:call-test> -->
+
+      <ctl:call-test name="wmts:GetFeatureInfo.Implemented.KVP.POST">
+        <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc" />
+        <ctl:with-param name="bootstrap" select="$bootstrap.kvp.post" />
+        <ctl:with-param name="selected" select="$selected" />
+      </ctl:call-test>
+
+      <ctl:call-test name="wmts:GetFeatureInfo.Implemented.XML.POST">
+        <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc" />
+        <ctl:with-param name="bootstrap" select="$bootstrap.xml.post" />
+        <ctl:with-param name="selected" select="$selected" />
+      </ctl:call-test>
+
+      <ctl:call-test name="wmts:GetFeatureInfo.Implemented.SOAP.POST">
+        <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc" />
+        <ctl:with-param name="bootstrap" select="$bootstrap.soap.post" />
+        <ctl:with-param name="selected" select="$selected" />
+      </ctl:call-test>
+
+      <ctl:call-test name="wmts:GetFeatureInfo.Implemented.RESTful">
+        <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc" />
+        <ctl:with-param name="bootstrap" select="$bootstrap.restful" />
+        <ctl:with-param name="selected" select="$selected" />
+      </ctl:call-test>
     </ctl:code>
   </ctl:test>
 
