@@ -232,10 +232,26 @@
                       <ctl:message select="'********************************************************'"/>
 
 
-				      <ctl:call-test name="wmts:server.profile.kvp.get.main">
-							<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-							<ctl:with-param name="wmtsSchemaPath" select="$wmtsSchemaPath"/>
-						</ctl:call-test>
+                      <ctl:call-test name="wmts:server.profile.kvp.get.main">
+                        <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc" />
+                        <ctl:with-param name="wmtsSchemaPath" select="$wmtsSchemaPath" />
+                      </ctl:call-test>
+                      <ctl:call-test name="wmts:server.profile.kvp.post.main">
+                        <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc" />
+                        <ctl:with-param name="wmtsSchemaPath" select="$wmtsSchemaPath" />
+                      </ctl:call-test>
+                      <ctl:call-test name="wmts:server.profile.xml.post.main">
+                        <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc" />
+                        <ctl:with-param name="wmtsSchemaPath" select="$wmtsSchemaPath" />
+                      </ctl:call-test>
+                      <ctl:call-test name="wmts:server.profile.soap.post.main">
+                        <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc" />
+                        <ctl:with-param name="wmtsSchemaPath" select="$wmtsSchemaPath" />
+                      </ctl:call-test>
+                      <ctl:call-test name="wmts:server.profile.restful.main">
+                        <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc" />
+                        <ctl:with-param name="wmtsSchemaPath" select="$wmtsSchemaPath" />
+                      </ctl:call-test>
 
                     </xsl:otherwise>
                   </xsl:choose>
@@ -251,14 +267,6 @@
       <ctl:message>wmts.main.elapsed [<xsl:value-of select="$wmts.main.elapsed"/>] milliseconds</ctl:message>
     </ctl:code>
   </ctl:test>
-
-<!--   <ctl:profile name="wmts:server.profile.kvp.get">
-    <ctl:title>WMTS 1.0 Server Compliance Test Profile for KVP GET binding</ctl:title>
-    <ctl:description>Verifies that a WMTS 1.0 server implementation complies with conformance classes for KVP GET binding.</ctl:description>
-    <ctl:defaultResult>Pass</ctl:defaultResult>
-    <ctl:base>wmts:server.suite.base</ctl:base>
-    <ctl:starting-test>wmts:server.profile.kvp.get.main</ctl:starting-test>
-  </ctl:profile> -->
 
   <ctl:test name="wmts:server.profile.kvp.get.main">
   <ctl:param name="wmts.capabilities.doc">WMTS capabilities document</ctl:param>
@@ -341,14 +349,6 @@
     </ctl:code>
   </ctl:test>
 
-  <ctl:profile name="wmts:server.profile.kvp.post">
-    <ctl:title>WMTS 1.0 Server Compliance Test Profile for KVP POST binding</ctl:title>
-    <ctl:description>Verifies that a WMTS 1.0 server implementation complies with conformance classes for KVP POST binding.</ctl:description>
-    <ctl:defaultResult>Pass</ctl:defaultResult>
-    <ctl:base>wmts:server.suite.base</ctl:base>
-    <ctl:starting-test>wmts:server.profile.kvp.post.main</ctl:starting-test>
-  </ctl:profile>
-
   <ctl:test name="wmts:server.profile.kvp.post.main">
     <ctl:context>wmts:server.profile.kvp.post</ctl:context>
     <ctl:assertion>The server satisfies all Mandatory and MandatoryIfImplemented requiresments for the KVP POST binding.   It must support both GetCapabilities and GetTile operations for KVP POST binding for any further tests to be performed. </ctl:assertion>
@@ -427,14 +427,6 @@
       </xsl:choose>
     </ctl:code>	
   </ctl:test>
-
-  <ctl:profile name="wmts:server.profile.xml.post">
-    <ctl:title>WMTS 1.0 Server Compliance Test Profile for XML POST binding</ctl:title>
-    <ctl:description>Verifies that a WMTS 1.0 server implementation complies with conformance classes for XML POST binding.</ctl:description>
-    <ctl:defaultResult>Pass</ctl:defaultResult>
-    <ctl:base>wmts:server.suite.base</ctl:base>
-    <ctl:starting-test>wmts:server.profile.xml.post.main</ctl:starting-test>
-  </ctl:profile>
 
   <ctl:test name="wmts:server.profile.xml.post.main">
     <ctl:context>wmts:server.profile.kvp.post</ctl:context>
@@ -523,14 +515,6 @@
     </ctl:code>	
   </ctl:test>
 
-  <ctl:profile name="wmts:server.profile.soap.post">
-    <ctl:title>WMTS 1.0 Server Compliance Test Profile for SOAP POST binding</ctl:title>
-    <ctl:description>Verifies that a WMTS 1.0 server implementation complies with conformance classes for SOAP POST binding.</ctl:description>
-    <ctl:defaultResult>Pass</ctl:defaultResult>
-    <ctl:base>wmts:server.suite.base</ctl:base>
-    <ctl:starting-test>wmts:server.profile.soap.post.main</ctl:starting-test>
-  </ctl:profile>
-
   <ctl:test name="wmts:server.profile.soap.post.main">
     <ctl:context>wmts:server.profile.soap.post</ctl:context>
     <ctl:assertion>The server satisfies all Mandatory and MandatoryIfImplemented requiresments for the SOAP POST binding.   It must support both GetCapabilities and GetTile operations for SOAP POST binding for any further tests to be performed</ctl:assertion>
@@ -610,14 +594,6 @@
       </xsl:choose>
     </ctl:code>	
   </ctl:test>
-
-  <ctl:profile name="wmts:server.profile.restful">
-    <ctl:title>WMTS 1.0 Server Compliance Test Profile for RESTful binding</ctl:title>
-    <ctl:description>Verifies that a WMTS 1.0 server implementation complies with conformance classes for RESTful binding.</ctl:description>
-    <ctl:defaultResult>Pass</ctl:defaultResult>
-    <ctl:base>wmts:server.suite.base</ctl:base>
-    <ctl:starting-test>wmts:server.profile.restful.main</ctl:starting-test>
-  </ctl:profile>
 
   <ctl:test name="wmts:server.profile.restful.main">
     <ctl:context>wmts:server.profile.kvp.post</ctl:context>
