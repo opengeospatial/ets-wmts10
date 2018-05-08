@@ -443,7 +443,8 @@
         <ctl:with-param name="selected" select="$selected" />
       </ctl:call-test>
 
-      <ctl:call-test name="wmts:CommonOperations.Mandatory.KVP.POST">
+      <!-- Other encodings than KVP.GET are deactivated -->
+      <!--<ctl:call-test name="wmts:CommonOperations.Mandatory.KVP.POST">
         <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc" />
         <ctl:with-param name="bootstrap" select="$bootstrap.kvp.post" />
         <ctl:with-param name="selected" select="$selected" />
@@ -465,7 +466,7 @@
         <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc" />
         <ctl:with-param name="bootstrap" select="$bootstrap.restful" />
         <ctl:with-param name="selected" select="$selected" />
-      </ctl:call-test>
+      </ctl:call-test>-->
 
     </ctl:code>
   </ctl:test>
@@ -493,7 +494,8 @@
         <ctl:with-param name="selected" select="$selected"/>
       </ctl:call-test> -->
 
-      <ctl:call-test name="wmts:GetCapabilities.Mandatory.KVP.POST">
+      <!-- Other encodings than KVP.GET are deactivated -->
+      <!--<ctl:call-test name="wmts:GetCapabilities.Mandatory.KVP.POST">
         <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc" />
         <ctl:with-param name="bootstrap" select="$bootstrap.kvp.post" />
         <ctl:with-param name="selected" select="$selected" />
@@ -530,7 +532,7 @@
         <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc" />
         <ctl:with-param name="bootstrap" select="$bootstrap.restful" />
         <ctl:with-param name="selected" select="$selected" />
-      </ctl:call-test>
+      </ctl:call-test>-->
 
     </ctl:code>
   </ctl:test>
@@ -558,7 +560,8 @@
         <ctl:with-param name="selected" select="$selected"/>
       </ctl:call-test> -->
 
-      <ctl:call-test name="wmts:GetTile.Mandatory.KVP.POST">
+      <!-- Other encodings than KVP.GET are deactivated -->
+      <!--<ctl:call-test name="wmts:GetTile.Mandatory.KVP.POST">
         <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc" />
         <ctl:with-param name="bootstrap" select="$bootstrap.kvp.post" />
         <ctl:with-param name="selected" select="$selected" />
@@ -600,7 +603,7 @@
         <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc" />
         <ctl:with-param name="bootstrap" select="$bootstrap.restful" />
         <ctl:with-param name="selected" select="$selected" />
-      </ctl:call-test>
+      </ctl:call-test>-->
     </ctl:code>
   </ctl:test>
 
@@ -622,7 +625,8 @@
             <ctl:with-param name="selected" select="$selected" />
           </ctl:call-test> -->
 
-      <ctl:call-test name="wmts:GetFeatureInfo.Implemented.KVP.POST">
+      <!-- Other encodings than KVP.GET are deactivated -->
+      <!--<ctl:call-test name="wmts:GetFeatureInfo.Implemented.KVP.POST">
         <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc" />
         <ctl:with-param name="bootstrap" select="$bootstrap.kvp.post" />
         <ctl:with-param name="selected" select="$selected" />
@@ -644,7 +648,7 @@
         <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc" />
         <ctl:with-param name="bootstrap" select="$bootstrap.restful" />
         <ctl:with-param name="selected" select="$selected" />
-      </ctl:call-test>
+      </ctl:call-test>-->
     </ctl:code>
   </ctl:test>
 
