@@ -32,12 +32,20 @@
 	<ctl:context>wmts:server.profile.kvp.get.main</ctl:context>
 	<ctl:assertion>Mandatory GetTile Tests for KVP GET binding pass.</ctl:assertion>
 	<ctl:code>
-		<ctl:call-function name="wmtsFunctions:invokeSelectedTests">
-			<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-			<ctl:with-param name="bootstrap" select="$bootstrap"/>
-			<ctl:with-param name="selected" select="$selected"/>
-			<ctl:with-param name="testGroupElementName">GetTile.Mandatory.KVP.GET</ctl:with-param>
-		</ctl:call-function>
+		<xsl:choose>
+			<xsl:when test="exists($bootstrap/*)">
+				<ctl:call-function name="wmtsFunctions:invokeSelectedTests">
+					<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc" />
+					<ctl:with-param name="bootstrap" select="$bootstrap" />
+					<ctl:with-param name="selected" select="$selected" />
+					<ctl:with-param name="testGroupElementName">GetTile.Mandatory.KVP.GET</ctl:with-param>
+				</ctl:call-function>
+			</xsl:when>
+			<xsl:otherwise>
+				<ctl:message>[SKIPPED] GET binding not supported.</ctl:message>
+				<ctl:skipped />
+			</xsl:otherwise>
+		</xsl:choose>
 	</ctl:code>
 </ctl:test>
 
@@ -48,12 +56,20 @@
 	<ctl:context>wmts:server.profile.kvp.get.main</ctl:context>
 	<ctl:assertion>Mandatory if Implemented GetTile Tests for KVP GET binding pass or are skipped because they are not implemented.</ctl:assertion>
 	<ctl:code>
-		<ctl:call-function name="wmtsFunctions:invokeSelectedTests">
-			<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-			<ctl:with-param name="bootstrap" select="$bootstrap"/>
-			<ctl:with-param name="selected" select="$selected"/>
-			<ctl:with-param name="testGroupElementName">GetTile.Implemented.KVP.GET</ctl:with-param>
-		</ctl:call-function>
+		<xsl:choose>
+			<xsl:when test="exists($bootstrap/*)">
+				<ctl:call-function name="wmtsFunctions:invokeSelectedTests">
+					<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc" />
+					<ctl:with-param name="bootstrap" select="$bootstrap" />
+					<ctl:with-param name="selected" select="$selected" />
+					<ctl:with-param name="testGroupElementName">GetTile.Implemented.KVP.GET</ctl:with-param>
+				</ctl:call-function>
+			</xsl:when>
+			<xsl:otherwise>
+				<ctl:message>[SKIPPED] GET binding not supported.</ctl:message>
+				<ctl:skipped />
+			</xsl:otherwise>
+		</xsl:choose>
 	</ctl:code>
 </ctl:test>
 
@@ -64,12 +80,20 @@
 	<ctl:context>wmts:server.profile.kvp.get.main</ctl:context>
 	<ctl:assertion>Mandatory GetTile Tests for KVP POST binding pass.</ctl:assertion>
 	<ctl:code>
-		<ctl:call-function name="wmtsFunctions:invokeSelectedTests">
-			<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-			<ctl:with-param name="bootstrap" select="$bootstrap"/>
-			<ctl:with-param name="selected" select="$selected"/>
-			<ctl:with-param name="testGroupElementName">GetTile.Mandatory.KVP.POST</ctl:with-param>
-		</ctl:call-function>
+		<xsl:choose>
+			<xsl:when test="exists($bootstrap/*)">
+				<ctl:call-function name="wmtsFunctions:invokeSelectedTests">
+					<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc" />
+					<ctl:with-param name="bootstrap" select="$bootstrap" />
+					<ctl:with-param name="selected" select="$selected" />
+					<ctl:with-param name="testGroupElementName">GetTile.Mandatory.KVP.POST</ctl:with-param>
+				</ctl:call-function>
+			</xsl:when>
+			<xsl:otherwise>
+				<ctl:message>[SKIPPED] POST/KVP binding not supported.</ctl:message>
+				<ctl:skipped />
+			</xsl:otherwise>
+		</xsl:choose>
 	</ctl:code>
 </ctl:test>
 
@@ -80,12 +104,20 @@
 	<ctl:context>wmts:server.profile.kvp.get.main</ctl:context>
 	<ctl:assertion>Mandatory if Implemented GetTile Tests for KVP POST binding pass or are skipped because they are not implemented.</ctl:assertion>
 	<ctl:code>
-		<ctl:call-function name="wmtsFunctions:invokeSelectedTests">
-			<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-			<ctl:with-param name="bootstrap" select="$bootstrap"/>
-			<ctl:with-param name="selected" select="$selected"/>
-			<ctl:with-param name="testGroupElementName">GetTile.Implemented.KVP.POST</ctl:with-param>
-		</ctl:call-function>
+		<xsl:choose>
+			<xsl:when test="exists($bootstrap/*)">
+				<ctl:call-function name="wmtsFunctions:invokeSelectedTests">
+					<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc" />
+					<ctl:with-param name="bootstrap" select="$bootstrap" />
+					<ctl:with-param name="selected" select="$selected" />
+					<ctl:with-param name="testGroupElementName">GetTile.Implemented.KVP.POST</ctl:with-param>
+				</ctl:call-function>
+			</xsl:when>
+			<xsl:otherwise>
+				<ctl:message>[SKIPPED] POST/KVP binding not supported.</ctl:message>
+				<ctl:skipped />
+			</xsl:otherwise>
+		</xsl:choose>
 	</ctl:code>
 </ctl:test>
 
@@ -96,12 +128,20 @@
 	<ctl:context>wmts:server.profile.kvp.get.main</ctl:context>
 	<ctl:assertion>Mandatory GetTile Tests for XML POST binding pass.</ctl:assertion>
 	<ctl:code>
-		<ctl:call-function name="wmtsFunctions:invokeSelectedTests">
-			<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-			<ctl:with-param name="bootstrap" select="$bootstrap"/>
-			<ctl:with-param name="selected" select="$selected"/>
-			<ctl:with-param name="testGroupElementName">GetTile.Mandatory.XML.POST</ctl:with-param>
-		</ctl:call-function>
+		<xsl:choose>
+			<xsl:when test="exists($bootstrap/*)">
+				<ctl:call-function name="wmtsFunctions:invokeSelectedTests">
+					<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc" />
+					<ctl:with-param name="bootstrap" select="$bootstrap" />
+					<ctl:with-param name="selected" select="$selected" />
+					<ctl:with-param name="testGroupElementName">GetTile.Mandatory.XML.POST</ctl:with-param>
+				</ctl:call-function>
+			</xsl:when>
+			<xsl:otherwise>
+				<ctl:message>[SKIPPED] POST/XML binding not supported.</ctl:message>
+				<ctl:skipped />
+			</xsl:otherwise>
+		</xsl:choose>
 	</ctl:code>
 </ctl:test>
 
@@ -112,12 +152,20 @@
 	<ctl:context>wmts:server.profile.kvp.get.main</ctl:context>
 	<ctl:assertion>Mandatory if Implemented GetTile Tests for XML POST binding pass or are skipped because they are not implemented.</ctl:assertion>
 	<ctl:code>
-		<ctl:call-function name="wmtsFunctions:invokeSelectedTests">
-			<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-			<ctl:with-param name="bootstrap" select="$bootstrap"/>
-			<ctl:with-param name="selected" select="$selected"/>
-			<ctl:with-param name="testGroupElementName">GetTile.Implemented.XML.POST</ctl:with-param>
-		</ctl:call-function>
+		<xsl:choose>
+			<xsl:when test="exists($bootstrap/*)">
+				<ctl:call-function name="wmtsFunctions:invokeSelectedTests">
+					<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc" />
+					<ctl:with-param name="bootstrap" select="$bootstrap" />
+					<ctl:with-param name="selected" select="$selected" />
+					<ctl:with-param name="testGroupElementName">GetTile.Implemented.XML.POST</ctl:with-param>
+				</ctl:call-function>
+			</xsl:when>
+			<xsl:otherwise>
+				<ctl:message>[SKIPPED] POST/XML binding not supported.</ctl:message>
+				<ctl:skipped />
+			</xsl:otherwise>
+		</xsl:choose>
 	</ctl:code>
 </ctl:test>
 
@@ -128,12 +176,20 @@
 	<ctl:context>wmts:server.profile.kvp.get.main</ctl:context>
 	<ctl:assertion>Mandatory GetTile Tests for SOAP POST binding pass.</ctl:assertion>
 	<ctl:code>
-		<ctl:call-function name="wmtsFunctions:invokeSelectedTests">
-			<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-			<ctl:with-param name="bootstrap" select="$bootstrap"/>
-			<ctl:with-param name="selected" select="$selected"/>
-			<ctl:with-param name="testGroupElementName">GetTile.Mandatory.SOAP.POST</ctl:with-param>
-		</ctl:call-function>
+		<xsl:choose>
+			<xsl:when test="exists($bootstrap/*)">
+				<ctl:call-function name="wmtsFunctions:invokeSelectedTests">
+					<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc" />
+					<ctl:with-param name="bootstrap" select="$bootstrap" />
+					<ctl:with-param name="selected" select="$selected" />
+					<ctl:with-param name="testGroupElementName">GetTile.Mandatory.SOAP.POST</ctl:with-param>
+				</ctl:call-function>
+			</xsl:when>
+			<xsl:otherwise>
+				<ctl:message>[SKIPPED] POST/SOAP binding not supported.</ctl:message>
+				<ctl:skipped />
+			</xsl:otherwise>
+		</xsl:choose>
 	</ctl:code>
 </ctl:test>
 
@@ -144,12 +200,20 @@
 	<ctl:context>wmts:server.profile.kvp.get.main</ctl:context>
 	<ctl:assertion>Mandatory if Implemented GetTile Tests for SOAP POST binding pass or are skipped because they are not implemented.</ctl:assertion>
 	<ctl:code>
-		<ctl:call-function name="wmtsFunctions:invokeSelectedTests">
-			<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-			<ctl:with-param name="bootstrap" select="$bootstrap"/>
-			<ctl:with-param name="selected" select="$selected"/>
-			<ctl:with-param name="testGroupElementName">GetTile.Implemented.SOAP.POST</ctl:with-param>
-		</ctl:call-function>
+		<xsl:choose>
+			<xsl:when test="exists($bootstrap/*)">
+				<ctl:call-function name="wmtsFunctions:invokeSelectedTests">
+					<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc" />
+					<ctl:with-param name="bootstrap" select="$bootstrap" />
+					<ctl:with-param name="selected" select="$selected" />
+					<ctl:with-param name="testGroupElementName">GetTile.Implemented.SOAP.POST</ctl:with-param>
+				</ctl:call-function>
+			</xsl:when>
+			<xsl:otherwise>
+				<ctl:message>[SKIPPED] POST/SOAP binding not supported.</ctl:message>
+				<ctl:skipped />
+			</xsl:otherwise>
+		</xsl:choose>
 	</ctl:code>
 </ctl:test>
 
@@ -160,12 +224,20 @@
 	<ctl:context>wmts:server.profile.kvp.get.main</ctl:context>
 	<ctl:assertion>Mandatory GetTile Tests for RESTful binding pass.</ctl:assertion>
 	<ctl:code>
-		<ctl:call-function name="wmtsFunctions:invokeSelectedTests">
-			<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-			<ctl:with-param name="bootstrap" select="$bootstrap"/>
-			<ctl:with-param name="selected" select="$selected"/>
-			<ctl:with-param name="testGroupElementName">GetTile.Mandatory.RESTful</ctl:with-param>
-		</ctl:call-function>
+		<xsl:choose>
+			<xsl:when test="exists($bootstrap/*)">
+				<ctl:call-function name="wmtsFunctions:invokeSelectedTests">
+					<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc" />
+					<ctl:with-param name="bootstrap" select="$bootstrap" />
+					<ctl:with-param name="selected" select="$selected" />
+					<ctl:with-param name="testGroupElementName">GetTile.Mandatory.RESTful</ctl:with-param>
+				</ctl:call-function>
+			</xsl:when>
+			<xsl:otherwise>
+				<ctl:message>[SKIPPED] REST binding not supported.</ctl:message>
+				<ctl:skipped />
+			</xsl:otherwise>
+		</xsl:choose>
 	</ctl:code>
 </ctl:test>
 
@@ -176,12 +248,20 @@
 	<ctl:context>wmts:server.profile.kvp.get.main</ctl:context>
 	<ctl:assertion>Mandatory if Implemented GetTile Tests for RESTful binding pass or are skipped because they are not implemented.</ctl:assertion>
 	<ctl:code>
-		<ctl:call-function name="wmtsFunctions:invokeSelectedTests">
-			<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc"/>
-			<ctl:with-param name="bootstrap" select="$bootstrap"/>
-			<ctl:with-param name="selected" select="$selected"/>
-			<ctl:with-param name="testGroupElementName">GetTile.Implemented.RESTful</ctl:with-param>
-		</ctl:call-function>
+		<xsl:choose>
+			<xsl:when test="exists($bootstrap/*)">
+				<ctl:call-function name="wmtsFunctions:invokeSelectedTests">
+					<ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc" />
+					<ctl:with-param name="bootstrap" select="$bootstrap" />
+					<ctl:with-param name="selected" select="$selected" />
+					<ctl:with-param name="testGroupElementName">GetTile.Implemented.RESTful</ctl:with-param>
+				</ctl:call-function>
+			</xsl:when>
+			<xsl:otherwise>
+				<ctl:message>[SKIPPED] REST binding not supported.</ctl:message>
+				<ctl:skipped />
+			</xsl:otherwise>
+		</xsl:choose>
 	</ctl:code>
 </ctl:test>
 

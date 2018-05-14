@@ -20,7 +20,8 @@ Detailed information about this test suite is available [here](http://opengeospa
 
 This test is build using [Apache Maven](http://maven.apache.org/) To 
 build the test suite run maven from the root directory.
-   % mvn install
+
+    mvn install
 
 Follow the [TEAM ENGINE instructions](http://opengeospatial.github.io/teamengine/installation.html) to install and run the tests in TEAM   
 
