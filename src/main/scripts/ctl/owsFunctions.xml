@@ -665,7 +665,7 @@
       <xsl:variable name="validVersion" select="owsFunctions:validateVersion($version)"/>
       <xsl:choose>
         <xsl:when test="not(string($validVersion) = 'true')">
-          <ctl:message><xsl:value-of select="concat($service, ' server version ',$version, ' does not contain three non-negative integers separated by decimal points, in the form x.y.z where he integers y and z do not exceed 99')"/></ctl:message>
+          <ctl:message><xsl:value-of select="concat([FAILURE] $service, ' server version ',$version, ' does not contain three non-negative integers separated by decimal points, in the form x.y.z where he integers y and z do not exceed 99')"/></ctl:message>
           <ctl:fail/>
         </xsl:when>
         <xsl:otherwise>
@@ -712,7 +712,7 @@
       <xsl:variable name="validVersion" select="owsFunctions:validateVersion($version)"/>
       <xsl:choose>
         <xsl:when test="not(string($validVersion) = 'true')">
-          <ctl:message><xsl:value-of select="concat($service, ' server version ',$version, ' does not contain three non-negative integers separated by decimal points, in the form x.y.z where he integers y and z do not exceed 99')"/></ctl:message>
+          <ctl:message><xsl:value-of select="concat('[FAILURE]', $service, ' server version ',$version, ' does not contain three non-negative integers separated by decimal points, in the form x.y.z where he integers y and z do not exceed 99')"/></ctl:message>
           <ctl:fail/>
         </xsl:when>
         <xsl:otherwise>
@@ -763,7 +763,7 @@
       <xsl:variable name="validVersion" select="owsFunctions:validateVersion($version)"/>
       <xsl:choose>
         <xsl:when test="not(string($validVersion) = 'true')">
-          <ctl:message><xsl:value-of select="concat($service, ' server version ',$version, ' does not contain three non-negative integers separated by decimal points, in the form x.y.z where he integers y and z do not exceed 99')"/></ctl:message>
+          <ctl:message><xsl:value-of select="concat('[FAILURE]', $service, ' server version ',$version, ' does not contain three non-negative integers separated by decimal points, in the form x.y.z where he integers y and z do not exceed 99')"/></ctl:message>
           <ctl:fail/>
         </xsl:when>
         <xsl:otherwise>
@@ -804,8 +804,8 @@
           <xsl:variable name="capabilities.validation.elapsed" select="ctl:elapsedTime('capabilities.validation')"/>
           <xsl:choose>
             <xsl:when test="count($results/*) &gt; 0">
-              <ctl:message>Capabilities document failed schema validation; capabilities.validation.elapsed [<xsl:value-of select="$capabilities.validation.elapsed"/>] milliseconds</ctl:message>
-              <ctl:message>results: <xsl:copy-of select="$results"/></ctl:message>
+              <ctl:message>[FAILURE] Capabilities document failed schema validation; capabilities.validation.elapsed [<xsl:value-of select="$capabilities.validation.elapsed"/>] milliseconds</ctl:message>
+              <ctl:message>[FAILURE] results: <xsl:copy-of select="$results"/></ctl:message>
               <ctl:fail/> 
             </xsl:when>
             <xsl:otherwise>
@@ -862,7 +862,7 @@
       <xsl:variable name="validVersion" select="owsFunctions:validateVersion($version)"/>
       <xsl:choose>
         <xsl:when test="not($validVersion)">
-          <ctl:message><xsl:value-of select="concat($service, ' server version ',$version, ' does not contain three non-negative integers separated by decimal points, in the form x.y.z where he integers y and z do not exceed 99')"/></ctl:message>
+          <ctl:message><xsl:value-of select="concat('[FAILURE]', $service, ' server version ',$version, ' does not contain three non-negative integers separated by decimal points, in the form x.y.z where he integers y and z do not exceed 99')"/></ctl:message>
           <ctl:fail/>
         </xsl:when>
         <xsl:otherwise>
@@ -903,7 +903,7 @@
       <xsl:variable name="validVersion" select="owsFunctions:validateVersion($version)"/>
       <xsl:choose>
         <xsl:when test="not(string($validVersion) = 'true')">
-          <ctl:message><xsl:value-of select="concat($service, ' server version ',$version, ' does not contain three non-negative integers separated by decimal points, in the form x.y.z where he integers y and z do not exceed 99')"/></ctl:message>
+          <ctl:message><xsl:value-of select="concat('[FAILURE]', $service, ' server version ',$version, ' does not contain three non-negative integers separated by decimal points, in the form x.y.z where he integers y and z do not exceed 99')"/></ctl:message>
           <ctl:fail/>
         </xsl:when>
         <xsl:otherwise>
@@ -948,7 +948,7 @@
       <xsl:variable name="validVersion" select="owsFunctions:validateVersion($version)"/>
       <xsl:choose>
         <xsl:when test="not(string($validVersion) = 'true')">
-          <ctl:message><xsl:value-of select="concat($service, ' server version ',$version, ' does not contain three non-negative integers separated by decimal points, in the form x.y.z where he integers y and z do not exceed 99')"/></ctl:message>
+          <ctl:message><xsl:value-of select="concat('[FAILURE]', $service, ' server version ',$version, ' does not contain three non-negative integers separated by decimal points, in the form x.y.z where he integers y and z do not exceed 99')"/></ctl:message>
           <ctl:fail/>
         </xsl:when>
         <xsl:otherwise>
@@ -1117,7 +1117,7 @@
       </xsl:variable>
       <xsl:choose>
         <xsl:when test="contains($testResults,'false')">
-          <ctl:message>Test failed:  One or more requests did not return a valid capabilities document.</ctl:message>
+          <ctl:message>[FAILURE] Test failed:  One or more requests did not return a valid capabilities document.</ctl:message>
           <ctl:fail/>
         </xsl:when>
         <xsl:otherwise>
@@ -1247,8 +1247,8 @@
       <xsl:variable name="capabilities.validation.elapsed" select="ctl:elapsedTime('capabilities.validation')"/>
       <xsl:choose>
         <xsl:when test="count($results/*) &gt; 0">
-          <ctl:message>Capabilities document failed schema validation; capabilities.validation.elapsed [<xsl:value-of select="$capabilities.validation.elapsed"/>] milliseconds</ctl:message>
-          <ctl:message>results: <xsl:copy-of select="$results"/></ctl:message>
+          <ctl:message>[FAILURE] Capabilities document failed schema validation; capabilities.validation.elapsed [<xsl:value-of select="$capabilities.validation.elapsed"/>] milliseconds</ctl:message>
+          <ctl:message>[FAILURE] results: <xsl:copy-of select="$results"/></ctl:message>
           <ctl:fail/> 
         </xsl:when>
         <xsl:otherwise>
@@ -1300,31 +1300,31 @@
                               <ctl:pass/>
                             </xsl:when>
                             <xsl:otherwise>
-                              <ctl:message select="concat('Capabilities Document is missing required ', $contentsQName, ' element.')"/>
+                              <ctl:message select="concat('[FAILURE]', 'Capabilities Document is missing required ', $contentsQName, ' element.')"/>
                               <ctl:fail/>
                             </xsl:otherwise>
                           </xsl:choose>
                         </xsl:when>
                         <xsl:otherwise>
-                          <ctl:message>Capabilities Document is missing required ows:OperationsMetadata element.</ctl:message>
+                          <ctl:message>[FAILURE] Capabilities Document is missing required ows:OperationsMetadata element.</ctl:message>
                           <ctl:fail/>
                         </xsl:otherwise>
                       </xsl:choose>
                     </xsl:when>
                     <xsl:otherwise>
-                      <ctl:message>Capabilities Document is missing required ows:ServiceProvider element.</ctl:message>
+                      <ctl:message>[FAILURE] Capabilities Document is missing required ows:ServiceProvider element.</ctl:message>
                       <ctl:fail/>
                     </xsl:otherwise>
                   </xsl:choose>
                 </xsl:when>
                 <xsl:otherwise>
-                  <ctl:message>CapabilitiesDocument is missing required ows:ServiceIdentification element.</ctl:message>
+                  <ctl:message>[FAILURE] CapabilitiesDocument is missing required ows:ServiceIdentification element.</ctl:message>
                   <ctl:fail/>
                 </xsl:otherwise>
               </xsl:choose>
             </xsl:when>
             <xsl:otherwise>
-              <ctl:message select="concat('Capabilities document root element is not ', $capabilitiesQName)"/>
+              <ctl:message select="concat('[FAILURE]', 'Capabilities document root element is not ', $capabilitiesQName)"/>
               <ctl:fail/>
             </xsl:otherwise>
           </xsl:choose>
@@ -1455,8 +1455,8 @@
       <xsl:variable name="capabilities.validation.elapsed" select="ctl:elapsedTime('capabilities.validation')"/>
       <xsl:choose>
         <xsl:when test="count($results/*) &gt; 0">
-          <ctl:message>Capabilities document failed schema validation; capabilities.validation.elapsed [<xsl:value-of select="$capabilities.validation.elapsed"/>] milliseconds</ctl:message>
-          <ctl:message>results: <xsl:copy-of select="$results"/></ctl:message>
+          <ctl:message>[FAILURE] Capabilities document failed schema validation; capabilities.validation.elapsed [<xsl:value-of select="$capabilities.validation.elapsed"/>] milliseconds</ctl:message>
+          <ctl:message>[FAILURE] results: <xsl:copy-of select="$results"/></ctl:message>
           <ctl:fail/> 
         </xsl:when>
         <xsl:otherwise>
@@ -1527,13 +1527,13 @@
                   </xsl:choose>
                 </xsl:when>
                 <xsl:otherwise>
-                  <ctl:message select="concat('CapabilitiesDocument does not contain requested ', $sections, ' element(s).')"/>
+                  <ctl:message select="concat('[FAILURE] CapabilitiesDocument does not contain requested ', $sections, ' element(s).')"/>
                   <ctl:fail/>
                 </xsl:otherwise>
               </xsl:choose>
             </xsl:when>
             <xsl:otherwise>
-              <ctl:message select="concat('Capabilities document root element is not ', $capabilitiesQName)"/>
+              <ctl:message select="concat('[FAILURE] Capabilities document root element is not ', $capabilitiesQName)"/>
               <ctl:fail/>
             </xsl:otherwise>
           </xsl:choose>
@@ -2584,7 +2584,7 @@
         </xsl:when>
         <xsl:otherwise>
           <xsl:variable name="schema" select="substring-after($schemaLocation, ' ')"/>
-          <ctl:message select="concat('Capabilities document references ', $schema, ' which is not a normative schema: ', $schemas)"/>
+          <ctl:message select="concat('[FAILURE] Capabilities document references ', $schema, ' which is not a normative schema: ', $schemas)"/>
           <ctl:fail/>
         </xsl:otherwise>
       </xsl:choose>	
@@ -2705,8 +2705,8 @@
           <xsl:variable name="capabilities.validation.elapsed" select="ctl:elapsedTime('capabilities.validation')"/>
           <xsl:choose>
             <xsl:when test="count($results/*) &gt; 0">
-              <ctl:message>Capabilities document failed schema validation; capabilities.validation.elapsed [<xsl:value-of select="$capabilities.validation.elapsed"/>] milliseconds</ctl:message>
-              <ctl:message>results: <xsl:copy-of select="$results"/></ctl:message>
+              <ctl:message>[FAILURE] Capabilities document failed schema validation; capabilities.validation.elapsed [<xsl:value-of select="$capabilities.validation.elapsed"/>] milliseconds</ctl:message>
+              <ctl:message>[FAILURE] results: <xsl:copy-of select="$results"/></ctl:message>
               <ctl:fail/>
             </xsl:when>
             <xsl:otherwise>
@@ -2788,7 +2788,7 @@
           <ctl:pass/>
         </xsl:when>
         <xsl:otherwise>
-          <ctl:message select="concat('Test failed: Capabilities document AcceptFormats ', $acceptFormats, ' do not include allowed value of ', $requiredFormat)"/>
+          <ctl:message select="concat('[FAILURE] Test failed: Capabilities document AcceptFormats ', $acceptFormats, ' do not include allowed value of ', $requiredFormat)"/>
           <ctl:fail/>
         </xsl:otherwise>
       </xsl:choose>
@@ -2974,7 +2974,7 @@
               <ctl:pass/>
             </xsl:when>
             <xsl:otherwise>
-              <ctl:message select="concat('Test failed:  GetCapabilities GetEncoding is not ', $encoding)"/>
+              <ctl:message select="concat('[FAILURE] Test failed:  GetCapabilities GetEncoding is not ', $encoding)"/>
               <ctl:fail/>
             </xsl:otherwise>
           </xsl:choose>
@@ -2994,7 +2994,7 @@
               <ctl:pass/>
             </xsl:when>
             <xsl:otherwise>
-              <ctl:message select="concat('Test failed:  GetCapabilities PostEncoding does not include ', $encoding)"/>
+              <ctl:message select="concat('[FAILURE] Test failed:  GetCapabilities PostEncoding does not include ', $encoding)"/>
               <ctl:fail/>
             </xsl:otherwise>
           </xsl:choose>

@@ -150,7 +150,7 @@
               <ctl:message select="'********************************************************'"/>
             </xsl:when>
             <xsl:otherwise>
-              <ctl:message>Failed to retrieve bootstrap wmts.capabilities.doc or other cached element from cache - you must start a new test session.</ctl:message>
+              <ctl:message>[FAILURE] Failed to retrieve bootstrap wmts.capabilities.doc or other cached element from cache - you must start a new test session.</ctl:message>
               <ctl:fail/>
             </xsl:otherwise>
           </xsl:choose>
@@ -288,7 +288,7 @@
                     <xsl:when test="not(true())"> <!-- uncomment me for development 
 										<xsl:when test="count($results/*) &gt; 0"> CHANGE ME-->
                       <ctl:message>Capabilities document failed schema validation; capabilities.validation.elapsed [<xsl:value-of select="$capabilities.validation.elapsed"/>] milliseconds</ctl:message>
-                      <ctl:message>results: <xsl:copy-of select="$results"/></ctl:message>
+                      <ctl:message>[FAILURE] results: <xsl:copy-of select="$results"/></ctl:message>
                       <ctl:fail/> 
                     </xsl:when>
                     <xsl:otherwise>
