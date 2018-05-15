@@ -1,5 +1,11 @@
 # Release Notes OGC WMTS 1.0 Test Suite
 
+## 1.2 (2018-05)
+
+* [Issue #40](https://github.com/opengeospatial/ets-wmts10/issues/40) - CTL feedback should be more explicit about which particular test failed
+* [Issue #42](https://github.com/opengeospatial/ets-wmts10/issues/42) - Test wmts:Server.KVP.GET.GetCapabilities.Response.SchemaReferenced does not detect valid schema reference
+* [Issue #36](https://github.com/opengeospatial/ets-wmts10/issues/36) - Update CTL with better information about conformance classes
+
 ## 1.1 (2017-10)
 
 * [Issue #38](https://github.com/opengeospatial/ets-wmts10/issues/38) - Test wmts:main fails because of invalid Content-Type
