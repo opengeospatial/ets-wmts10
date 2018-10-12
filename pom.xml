@@ -59,7 +59,7 @@
     <ets-code>wmts</ets-code>
     <spec-version>1.0.0</spec-version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <teamengine.version>4.0.5</teamengine.version>
+    <teamengine.version>4.10</teamengine.version>
   </properties>  
   <reporting>
     <plugins>
@@ -78,9 +78,27 @@
       </plugin>  
     </plugins>
   </reporting> 
+  
+  <dependencies>
+    <dependency>
+      <groupId>org.opengis.cite.teamengine</groupId>
+      <artifactId>teamengine-spi-ctl</artifactId>
+      <version>${teamengine.version}</version>
+    </dependency>
+  </dependencies>
 
   <build>
     <plugins>  
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.6.0</version>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+          <debug>false</debug>
+        </configuration>
+      </plugin>
       <plugin>
         <artifactId>maven-jar-plugin</artifactId>
         <executions>
@@ -99,8 +117,15 @@
       <plugin>
         <artifactId>maven-assembly-plugin</artifactId>
         <configuration>
+          <archive>
+            <manifest>
+              <mainClass>org.opengis.wmts10.CtlController</mainClass>
+            </manifest>
+          </archive>
           <descriptors>
-            <descriptor>src/assembly/ctl.xml</descriptor>
+            <descriptor>${basedir}/src/assembly/ctl.xml</descriptor>
+            <descriptor>${basedir}/src/assembly/aio.xml</descriptor>
+            <descriptor>${basedir}/src/assembly/deps.xml</descriptor>
           </descriptors>
         </configuration>
         <executions>
@@ -123,11 +148,7 @@
       </plugin>
       <plugin>     
         <artifactId>maven-site-plugin</artifactId>
-        <version>3.4</version>
-        <configuration>
-          <relativizeDecorationLinks>false</relativizeDecorationLinks>
-          <skipDeploy>true</skipDeploy>
-        </configuration>
+        <version>3.5.1</version>
         <executions>
           <execution>
             <id>site-package</id>
@@ -141,7 +162,7 @@
           <dependency>
             <groupId>org.apache.maven.doxia</groupId>
             <artifactId>doxia-module-markdown</artifactId>
-            <version>1.6</version>
+            <version>1.7</version>
           </dependency>
         </dependencies>
       </plugin>
@@ -153,6 +174,22 @@
         </configuration>
       </plugin>
     </plugins>
+    
+    <resources>
+      <resource>
+        <directory>${basedir}/src/main/resources</directory>
+        <filtering>true</filtering>
+      </resource>
+      <resource>
+        <directory>${basedir}/src/main/scripts</directory>
+        <targetPath>${ets-code}/${spec-version}</targetPath>
+      </resource>
+      <resource>
+        <directory>src/main/javadoc</directory>
+        <filtering>true</filtering>
+        <targetPath>doc/${ets-code}/${project.version}</targetPath>
+      </resource>
+    </resources>
   </build>
 
   <profiles>
