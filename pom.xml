@@ -60,6 +60,12 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.build.timestamp.format>yyyy-MM-dd'T'HH:mm:ssZ</maven.build.timestamp.format>
     <teamengine.version>4.10</teamengine.version>
+    <soapui.teamengine.endpoint>http://cite.opengeospatial.org/te2</soapui.teamengine.endpoint>
+    <soapui.ets.version>1.3-SNAPSHOT</soapui.ets.version>
+    <soapui.iut>http://cite.deegree.org/deegree-webservices-3.4.0/services/wmts100?service=WMTS&amp;request=GetCapabilities</soapui.iut>
+    <soapui.tests.passed>32</soapui.tests.passed>
+    <soapui.tests.skipped>0</soapui.tests.skipped>
+    <soapui.tests.failed>0</soapui.tests.failed>
   </properties>  
   <reporting>
     <plugins>
@@ -229,8 +235,55 @@
         </plugins>
       </build>
     </profile>
+        <profile>
+      <id>soapui</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>com.smartbear.soapui</groupId>
+            <artifactId>soapui-maven-plugin</artifactId>
+            <version>5.4.0</version>
+            <dependencies>
+              <dependency>
+                <groupId>com.jgoodies</groupId>
+                <artifactId>forms</artifactId>
+                <version>1.0.7</version>
+              </dependency>
+            </dependencies>
+            <configuration>
+              <projectFile>src/test/resources/soapui/ets-wmts10-soapui-project.xml</projectFile>
+              <outputFolder>${project.build.directory}/soapui</outputFolder>
+              <junitReport>true</junitReport>
+              <testFailIgnore>${soapui.test.fail.ignore}</testFailIgnore>
+              <projectProperties>
+                <value>teamengine.endpoint=${soapui.teamengine.endpoint}</value>
+                <value>ets.version=${soapui.ets.version}</value>
+                <value>iut=${soapui.iut}</value>
+                <value>tests.passed=${soapui.tests.passed}</value>
+                <value>tests.skipped=${soapui.tests.skipped}</value>
+                <value>tests.failed=${soapui.tests.failed}</value>
+              </projectProperties>
+            </configuration>
+            <executions>
+              <execution>
+                <phase>integration-test</phase>
+                <goals>
+                  <goal>test</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+      <pluginRepositories>
+        <pluginRepository>
+          <id>smartbear-sweden-plugin-repository</id>
+          <url>http://www.soapui.org/repository/maven2/</url>
+        </pluginRepository>
+      </pluginRepositories>
+    </profile>
   </profiles>
-
+  
   <distributionManagement>
     <repository>
       <id>sonatype-nexus-staging</id>
