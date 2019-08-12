@@ -31,7 +31,7 @@
           </con:assertion>
           <con:assertion type="Simple Contains" id="22cf9feb-0c51-49a3-9966-0f65761e01b3" name="Contains test suite">
             <con:configuration>
-              <token>OGC Web Coverage Service 2.0.1 - Executable Test Suite</token>
+              <token>OGC Web Map Tile Service 1.0.0 - Executable Test Suite</token>
               <ignoreCase>false</ignoreCase>
               <useRegEx>false</useRegEx>
             </con:configuration>
