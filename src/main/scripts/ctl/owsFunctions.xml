@@ -122,6 +122,7 @@
           <ctl:method><xsl:value-of select="$method"/></ctl:method>
           <ctl:param name="service"><xsl:value-of select="$service"/></ctl:param>
           <ctl:param name="request">GetCapabilities</ctl:param>
+          <ctl:param name="AcceptVersions">1.0.0</ctl:param>
           <parsers:HTTPParser/>
         </ctl:request>
       </xsl:variable>		
@@ -678,7 +679,7 @@
               <ctl:method><xsl:value-of select="$method"/></ctl:method>
               <ctl:param name="service"><xsl:value-of select="$service"/></ctl:param>
               <ctl:param name="request">GetCapabilities</ctl:param>
-              <ctl:param name="acceptversions"><xsl:value-of select="$version" /></ctl:param>
+              <ctl:param name="AcceptVersions"><xsl:value-of select="$version" /></ctl:param>
               <parsers:XMLValidatingParser>
                 <parsers:schemas>
                   <parsers:schema type="url">http://www.w3.org/2001/xml.xsd</parsers:schema>
@@ -2609,6 +2610,7 @@
           <ctl:method><xsl:value-of select="$method"/></ctl:method>
           <ctl:param name="service"><xsl:value-of select="$service"/></ctl:param>
           <ctl:param name="request">GetCapabilities</ctl:param>
+          <ctl:param name="AcceptVersions">1.0.0</ctl:param>
           <parsers:XMLValidatingParser>
             <parsers:schemas>
               <parsers:schema type="url">http://www.w3.org/2001/xml.xsd</parsers:schema>

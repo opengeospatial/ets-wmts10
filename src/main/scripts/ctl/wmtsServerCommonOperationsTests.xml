@@ -201,7 +201,7 @@
 			<xsl:when test="$metPrerequisites = 'true' ">
 				<xsl:choose>
 					<xsl:when test="$selected = 'true' ">
-						<xsl:variable name="invalidQuery">request~GetCapabilities!service~!'WMTS'version~'1.0.0</xsl:variable>
+						<xsl:variable name="invalidQuery">request~GetCapabilities!service~!'WMTS'AcceptVersions~'1.0.0</xsl:variable>
 						<xsl:variable name="testResult">
 							<ctl:call-function name="owsFunctions:provokeKVPException">
 								<ctl:with-param name="capabilitiesURL" select="$capabilitiesURL"/>
@@ -255,7 +255,7 @@
 			<xsl:when test="$metPrerequisites = 'true' ">
 				<xsl:choose>
 					<xsl:when test="$selected = 'true' ">
-						<xsl:variable name="invalidQuery">service=BOGUS&amp;request=GetCapabilities</xsl:variable>
+						<xsl:variable name="invalidQuery">service=BOGUS&amp;request=GetCapabilities&amp;AcceptVersions=1.0.0</xsl:variable>
 						<xsl:variable name="testResult">
 							<ctl:call-function name="owsFunctions:provokeKVPException">
 								<ctl:with-param name="capabilitiesURL" select="$capabilitiesURL"/>
@@ -309,7 +309,7 @@
 			<xsl:when test="$metPrerequisites = 'true' ">
 				<xsl:choose>
 					<xsl:when test="$selected = 'true' ">
-						<xsl:variable name="invalidQuery">service=WMTS&amp;request=GetBOGUS</xsl:variable>
+						<xsl:variable name="invalidQuery">service=WMTS&amp;request=GetBOGUS&amp;AcceptVersions=1.0.0</xsl:variable>
 						<xsl:variable name="testResult">
 							<ctl:call-function name="owsFunctions:provokeKVPException">
 								<ctl:with-param name="capabilitiesURL" select="$capabilitiesURL"/>

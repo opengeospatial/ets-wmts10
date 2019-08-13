@@ -6457,6 +6457,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 					</ctl:method>
 					<ctl:param name="service">WMTS</ctl:param>
 					<ctl:param name="request">GetCapabilities</ctl:param>
+                    <ctl:param name="AcceptVersions">1.0.0</ctl:param>
 					<parsers:XMLValidatingParser>
 						<parsers:schemas>
 							<parsers:schema type="url">http://www.w3.org/2001/xml.xsd</parsers:schema>
