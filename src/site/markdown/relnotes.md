@@ -1,5 +1,12 @@
 # Release Notes OGC WMTS 1.0 Test Suite
 
+## 1.3 (2019-08)
+
+* [#57](https://github.com/opengeospatial/ets-wmts10/issues/57) - https not supported
+* [#52](https://github.com/opengeospatial/ets-wmts10/issues/52) - Enable Docker support and configure integration tests
+* [#49](https://github.com/opengeospatial/ets-wmts10/issues/49) - Enable test execution using a RESTful API
+* [#48](https://github.com/opengeospatial/ets-wmts10/issues/48) - Create SoapUI tests and integrate them into Maven and Jenkinsfile
+
 ## 1.2 (2018-05)
 
 * [Issue #40](https://github.com/opengeospatial/ets-wmts10/issues/40) - CTL feedback should be more explicit about which particular test failed
