@@ -2853,7 +2853,7 @@
             <xsl:for-each select="$capabilities.elt/ows:OperationsMetadata/ows:Operation/ows:DCP/ows:HTTP/ows:Get/@xlink:href">
               <xsl:variable name="urlPrefix" select="."/>
               <xsl:choose>
-                <xsl:when test="starts-with($urlPrefix,'http://') and ends-with($urlPrefix, '?')">
+                <xsl:when test="((starts-with($urlPrefix,'http://') or starts-with($urlPrefix,'https://')) and ends-with($urlPrefix, '?'))">
                   <xsl:text>true|</xsl:text>
                 </xsl:when>
                 <xsl:otherwise>
@@ -2867,7 +2867,7 @@
             <xsl:for-each select="$capabilities.elt/ows:OperationsMetadata/ows:Operation/ows:DCP/ows:HTTP/ows:Post/@xlink:href">
               <xsl:variable name="urlPrefix" select="."/>
               <xsl:choose>
-                <xsl:when test="starts-with($urlPrefix,'http://') and not(ends-with($urlPrefix, '?'))">
+                <xsl:when test="((starts-with($urlPrefix,'http://') or starts-with($urlPrefix,'https://')) and not(ends-with($urlPrefix, '?')))">
                   <xsl:text>true|</xsl:text>
                 </xsl:when>
                 <xsl:otherwise>
