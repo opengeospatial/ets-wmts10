@@ -175,7 +175,7 @@
           <ows:AcceptVersions>
             <xsl:for-each select="$versionsList">
               <xsl:variable name="version" select="."/>
-              <ows:Version><xsl:value-of select="$version"/></ows:Version>
+              <ows:AcceptVersions><xsl:value-of select="$version"/></ows:AcceptVersions>
             </xsl:for-each>
           </ows:AcceptVersions>
         </xsl:if>
@@ -1015,7 +1015,7 @@
     <ctl:code>
       <xsl:variable name="services">SERVICE,SeRvIcE,service</xsl:variable>
       <xsl:variable name="requests">RequesT,request,REQUEST</xsl:variable>
-      <xsl:variable name="versions">version,VERSION,VeRsIoN</xsl:variable>
+      <xsl:variable name="versions">acceptversions,ACCEPTVERSIONS,AcceptVersions</xsl:variable>
       <xsl:variable name="servicesList" select="tokenize($services, ',')"/>
       <xsl:variable name="requestsList" select="tokenize($requests, ',')"/>
       <xsl:variable name="versionsList" select="tokenize($versions, ',')"/>
@@ -1562,7 +1562,7 @@
           <ctl:method><xsl:value-of select="$method"/></ctl:method>
           <ctl:param name="service"><xsl:value-of select="$service"/></ctl:param>
           <ctl:param name="request">GetCapabilities</ctl:param>
-          <ctl:param name="version"><xsl:value-of select="$version"/></ctl:param>
+          <ctl:param name="AcceptVersions"><xsl:value-of select="$version"/></ctl:param>
           <ctl:param name="updateSequence"><xsl:value-of select="$updateSequence"/></ctl:param>
         </ctl:request>
       </xsl:variable>		
@@ -1618,7 +1618,7 @@
           <ctl:method><xsl:value-of select="$method"/></ctl:method>
           <ctl:param name="service"><xsl:value-of select="$service"/></ctl:param>
           <ctl:param name="request">GetCapabilities</ctl:param>
-          <ctl:param name="version"><xsl:value-of select="$version"/></ctl:param>
+          <ctl:param name="AcceptVersions"><xsl:value-of select="$version"/></ctl:param>
           <ctl:param name="updateSequence"><xsl:value-of select="$updateSequence"/></ctl:param>
         </ctl:request>
       </xsl:variable>		
@@ -1677,7 +1677,7 @@
     <ctl:description>Performs KVP GetCapabilities UpdateSequence test where Operation Request update Sequence is greater than that in the Service Metadata.</ctl:description>
     <ctl:code>
       <ctl:message select="concat('Sending KVP ', $method, ' GetCapabilities request to ', $capabilitiesURL, ' with optional parameter updateSequence = ', $updateSequence, ' and validating response.' )"/>
-      <xsl:variable name="invalidQuery" select="concat('service=', $service, '&amp;request=GetCapabilities&amp;version=', $version, '&amp;updateSequence=', $updateSequence)"/>
+      <xsl:variable name="invalidQuery" select="concat('service=', $service, '&amp;request=GetCapabilities&amp;AcceptVersions=', $version, '&amp;updateSequence=', $updateSequence)"/>
       <xsl:variable name="testResult">
         <ctl:call-function name="owsFunctions:provokeKVPException">
           <ctl:with-param name="capabilitiesURL" select="$capabilitiesURL"/>
