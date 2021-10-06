@@ -189,10 +189,10 @@
 	<ctl:param name="exceptionReportSchemaPath">full path to owsExceptionReport.xsd</ctl:param>
 	<ctl:context>wmts:main</ctl:context>
 	<ctl:assertion>
-	1.  the request entity is an invalid query string: "request~GetCapabilities!service~!'WMTS'version~'1.0.0'"
+	1.  the request entity is an invalid query string: "service=WMTS&amp;request~GetCapabilities!version~1.0.0"
 	2.  the response entity is a schema-valid ows:Exception document.
 	3.  the response entity contains an exceptionCode attribute value of "MissingParameterValue".
-	4.  the response entity contains a locator attribute value of "service" or "request".
+	4.  the response entity contains a locator attribute value of "request".
 	5.  the HTTP status code value is set to 400, corresponding to the message "Bad Request".</ctl:assertion>
 	<ctl:comment>Test that a WMTS server returns a valid exception report and HTTP status code in response to an invalid query string.</ctl:comment>
 	<ctl:link>docs/wmts/1.0/WMTS 1.0 ATS.html#Server.KVP.GET.InvalidQueryString</ctl:link>
@@ -201,15 +201,15 @@
 			<xsl:when test="$metPrerequisites = 'true' ">
 				<xsl:choose>
 					<xsl:when test="$selected = 'true' ">
-						<xsl:variable name="invalidQuery">request~GetCapabilities!service~!'WMTS'AcceptVersions~'1.0.0</xsl:variable>
+						<xsl:variable name="invalidQuery">service=WMTS&amp;request~GetCapabilities!version~1.0.0</xsl:variable>
 						<xsl:variable name="testResult">
 							<ctl:call-function name="owsFunctions:provokeKVPException">
 								<ctl:with-param name="capabilitiesURL" select="$capabilitiesURL"/>
 								<ctl:with-param name="invalidQuery" select="$invalidQuery"/>
 								<ctl:with-param name="method">get</ctl:with-param>
 								<ctl:with-param name="exceptionReportSchemaPath" select="$exceptionReportSchemaPath"/>
-								<ctl:with-param name="exceptionCodes">MissingParameterValue,MissingParameterValue</ctl:with-param>
-								<ctl:with-param name="locators">service,request</ctl:with-param>
+								<ctl:with-param name="exceptionCodes">MissingParameterValue</ctl:with-param>
+								<ctl:with-param name="locators">request</ctl:with-param>
 								<ctl:with-param name="oneOrAll">one</ctl:with-param>
 							</ctl:call-function>
 						</xsl:variable>
