@@ -1,5 +1,15 @@
 # Release Notes OGC WMTS 1.0 Test Suite
 
+## 1.4 (2021-10)
+
+* [#54](https://github.com/opengeospatial/ets-wmts10/issues/54) - Test wmts:Server.KVP.GET.InvalidQueryString is flawed
+* [#58](https://github.com/opengeospatial/ets-wmts10/issues/58) - URL prefixes that end in '&' are not supported
+* [#59](https://github.com/opengeospatial/ets-wmts10/issues/59) - A GetCapabilities request should use "AcceptVersions", not "version"
+* [#56](https://github.com/opengeospatial/ets-wmts10/issues/56) - Test wmts:Server.KVP.GET.InvalidRequest is flawed
+* [#65](https://github.com/opengeospatial/ets-wmts10/issues/65) - Add template to get an XML/JSON response via rest endpoint
+* [#68](https://github.com/opengeospatial/ets-wmts10/pull/68) - Set Docker TEAM Engine version to 5.4.1
+* [#67](https://github.com/opengeospatial/ets-wmts10/pull/67) - Added header for soapui test.
+
 ## 1.3 (2019-08)
 
 * [#57](https://github.com/opengeospatial/ets-wmts10/issues/57) - https not supported
