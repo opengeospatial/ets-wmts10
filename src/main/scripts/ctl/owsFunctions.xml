@@ -2968,11 +2968,20 @@
     <ctl:description>Verify that a server satisfies the requirements for using the ows:Constraint parameter. </ctl:description>
     <ctl:code>
       <xsl:choose>
-        <xsl:when test="lower-case($method) = 'get' ">
-          <xsl:variable name="gcEncoding" select="$capabilities.elt/ows:OperationsMetadata/ows:Operation[@name='GetCapabilities']//ows:Constraint[@name='GetEncoding']/ows:AllowedValues/ows:Value"/>
-          <xsl:choose>
+        <xsl:when test="lower-case($method) = 'get' ">        
+          <xsl:variable name="results">
+            <xsl:for-each select="$capabilities.elt/ows:OperationsMetadata/ows:Operation[@name='GetCapabilities']//ows:Constraint[@name='GetEncoding']/ows:AllowedValues/ows:Value">
+              <xsl:variable name="gcEncoding" select="."/>
+            <xsl:choose>
             <xsl:when test="upper-case($gcEncoding) = upper-case($encoding)">
               <ctl:message select="concat('Test passed:  GetCapabilities GetEncoding is ', $gcEncoding)"/>
+                <xsl:text>true|</xsl:text>
+            </xsl:when>
+          </xsl:choose>
+            </xsl:for-each>
+          </xsl:variable>
+          <xsl:choose>
+            <xsl:when test="contains($results, 'true')">
               <ctl:pass/>
             </xsl:when>
             <xsl:otherwise>
