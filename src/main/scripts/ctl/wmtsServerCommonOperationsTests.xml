@@ -146,41 +146,42 @@
 	</ctl:code>
 </ctl:test>
 
-<ctl:test name="wmts:Server.KVP.GET.HTTP.Mandatory"  type="Mandatory">
-	<ctl:param name="metPrerequisites">Bootstrap prerequisites test result for this test - true or false</ctl:param>
-	<ctl:param name="selected">This test was selected for execution - true or false </ctl:param>
-	<ctl:param name="capabilitiesURL">/wmts:Capabilities/ows:OperationsMetadata/ows:Operation[@name='GetCapabilities']/ows:DCP/ows:HTTP/ows:Get/@xlink:href</ctl:param>
-	<ctl:context>wmts:main</ctl:context>
-	<ctl:assertion>
-	A.  TBD: First Draft:   HTTP status code 404
-	1.  The request entity is for a non-existent service
-	2.  The HTTP status code value is set to 404, corresponding to the message "Not Found"
-	</ctl:assertion>
-	<ctl:comment>Test that a WMTS server observes the rules and conventions governing the use of HTTP GET operations.</ctl:comment>
-	<ctl:link>docs/wmts/1.0/WMTS 1.0 ATS.html#Server.KVP.GET.HTTP.Mandatory</ctl:link>
-	<ctl:code>
-		<xsl:choose>
-			<xsl:when test="$metPrerequisites = 'true' ">
-				<xsl:choose>
-					<xsl:when test="$selected = 'true' ">
-						<ctl:call-function name="wwwFunctions:provokeNotExistentService">
-							<ctl:with-param name="capabilitiesURL" select="$capabilitiesURL"/>
-							<ctl:with-param name="method">get</ctl:with-param>
-						</ctl:call-function>
-					</xsl:when>
-					<xsl:otherwise>
-						<ctl:message>Server.KVP.GET.HTTP.Mandatory not tested.</ctl:message>
-						<ctl:notTested/>
-					</xsl:otherwise>
-				</xsl:choose>
-			</xsl:when>
-			<xsl:otherwise>
-				<ctl:message>Server.KVP.GET.HTTP.Mandatory test skipped because its prerequisites were not met.</ctl:message>
-				<ctl:skipped/>
-			</xsl:otherwise>
-		</xsl:choose>
-	</ctl:code>
-</ctl:test>
+<!-- Commented out this test, see https://github.com/opengeospatial/ets-wmts10/issues/73 for more information -->
+<!-- <ctl:test name="wmts:Server.KVP.GET.HTTP.Mandatory"  type="Mandatory"> -->
+<!-- 	<ctl:param name="metPrerequisites">Bootstrap prerequisites test result for this test - true or false</ctl:param> -->
+<!-- 	<ctl:param name="selected">This test was selected for execution - true or false </ctl:param> -->
+<!-- 	<ctl:param name="capabilitiesURL">/wmts:Capabilities/ows:OperationsMetadata/ows:Operation[@name='GetCapabilities']/ows:DCP/ows:HTTP/ows:Get/@xlink:href</ctl:param> -->
+<!-- 	<ctl:context>wmts:main</ctl:context> -->
+<!-- 	<ctl:assertion> -->
+<!-- 	A.  TBD: First Draft:   HTTP status code 404 -->
+<!-- 	1.  The request entity is for a non-existent service -->
+<!-- 	2.  The HTTP status code value is set to 404, corresponding to the message "Not Found" -->
+<!-- 	</ctl:assertion> -->
+<!-- 	<ctl:comment>Test that a WMTS server observes the rules and conventions governing the use of HTTP GET operations.</ctl:comment> -->
+<!-- 	<ctl:link>docs/wmts/1.0/WMTS 1.0 ATS.html#Server.KVP.GET.HTTP.Mandatory</ctl:link> -->
+<!-- 	<ctl:code> -->
+<!-- 		<xsl:choose> -->
+<!-- 			<xsl:when test="$metPrerequisites = 'true' "> -->
+<!-- 				<xsl:choose> -->
+<!-- 					<xsl:when test="$selected = 'true' "> -->
+<!-- 						<ctl:call-function name="wwwFunctions:provokeNotExistentService"> -->
+<!-- 							<ctl:with-param name="capabilitiesURL" select="$capabilitiesURL"/> -->
+<!-- 							<ctl:with-param name="method">get</ctl:with-param> -->
+<!-- 						</ctl:call-function> -->
+<!-- 					</xsl:when> -->
+<!-- 					<xsl:otherwise> -->
+<!-- 						<ctl:message>Server.KVP.GET.HTTP.Mandatory not tested.</ctl:message> -->
+<!-- 						<ctl:notTested/> -->
+<!-- 					</xsl:otherwise> -->
+<!-- 				</xsl:choose> -->
+<!-- 			</xsl:when> -->
+<!-- 			<xsl:otherwise> -->
+<!-- 				<ctl:message>Server.KVP.GET.HTTP.Mandatory test skipped because its prerequisites were not met.</ctl:message> -->
+<!-- 				<ctl:skipped/> -->
+<!-- 			</xsl:otherwise> -->
+<!-- 		</xsl:choose> -->
+<!-- 	</ctl:code> -->
+<!-- </ctl:test> -->
 
 <ctl:test name="wmts:Server.KVP.GET.InvalidQueryString" type="Mandatory">
 	<ctl:param name="metPrerequisites">Bootstrap prerequisites test result for this test - true or false</ctl:param>

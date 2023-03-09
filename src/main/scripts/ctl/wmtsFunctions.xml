@@ -3205,13 +3205,13 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 						<ctl:message select="concat('Test wmts:', $testName, ' met prerequisites: ', $metPrerequisites, ' test selected: ', $testSelected)"/>						
 						<xsl:choose>
 
-							<xsl:when test="$testName = 'Server.KVP.GET.HTTP.Mandatory' " >
-								<ctl:call-test name="wmts:Server.KVP.GET.HTTP.Mandatory">
-									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
-									<ctl:with-param name="selected" select="$testSelected"/>
-									<ctl:with-param name="capabilitiesURL" select="$kvpGetCapabilitiesURL"/>
-								</ctl:call-test>
-							</xsl:when>
+<!-- 							<xsl:when test="$testName = 'Server.KVP.GET.HTTP.Mandatory' " > -->
+<!-- 								<ctl:call-test name="wmts:Server.KVP.GET.HTTP.Mandatory"> -->
+<!-- 									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/>  -->
+<!-- 									<ctl:with-param name="selected" select="$testSelected"/> -->
+<!-- 									<ctl:with-param name="capabilitiesURL" select="$kvpGetCapabilitiesURL"/> -->
+<!-- 								</ctl:call-test> -->
+<!-- 							</xsl:when> -->
 
 							<xsl:when test="$testName = 'Server.KVP.GET.InvalidQueryString' " >
 								<ctl:call-test name="wmts:Server.KVP.GET.InvalidQueryString">
