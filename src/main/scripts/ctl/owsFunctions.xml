@@ -512,17 +512,22 @@
       <xsl:variable name="exceptionReport" select="$httpParserExceptionReport/response/content/*"/>
       <!-- <xsl:message>validateExceptionReport exceptionReport <xsl:copy-of select="$exceptionReport"/></xsl:message> -->
       <!-- <ctl:message select="concat('validateExceptionReport schemaPath ', $exceptionReportSchemaPath)"/> -->
-      <xsl:variable name="results">
-        <ctl:call-function name="ctlFunctions:XMLschemaValidate">
-          <ctl:with-param name="doc"><xsl:copy-of select="$exceptionReport"/></ctl:with-param>
-          <ctl:with-param name="schemaPath" select="$exceptionReportSchemaPath"/>
-        </ctl:call-function>
+      <xsl:variable name="result">
+      <xsl:choose>
+          <xsl:when test="not($exceptionReport//*[local-name()='ExceptionReport'])">
+          <ctl:message>ExceptionReport does not contain local name 'ExceptionReport'.</ctl:message>
+          <xsl:text>false</xsl:text>
+        </xsl:when>
+        <xsl:otherwise>
+          <ctl:message>ExceptionReport does  contain local name 'ExceptionReport'.</ctl:message>
+        <xsl:text>true</xsl:text>
+        </xsl:otherwise>
+          </xsl:choose>
       </xsl:variable>
       <xsl:variable name="exception.validation.elapsed" select="ctl:elapsedTime('exception.validation')"/>
       <xsl:choose>
-        <xsl:when test="count($results/*) &gt; 0">
+        <xsl:when test="not(string($result) = 'true')">
           <ctl:message>Exception report failed schema validation; elapsedTime: [<xsl:value-of select="$exception.validation.elapsed"/>] milliseconds</ctl:message>
-          <ctl:message>results: <xsl:copy-of select="$results"/></ctl:message>
           <xsl:text>false</xsl:text>
           <xsl:variable name="returnedStatusCode" select="$httpParserExceptionReport/response/status/@code"/>
           <xsl:choose>
