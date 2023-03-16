@@ -519,7 +519,7 @@
           <xsl:text>false</xsl:text>
         </xsl:when>
         <xsl:otherwise>
-          <ctl:message>ExceptionReport does  contain local name 'ExceptionReport'.</ctl:message>
+          <ctl:message>ExceptionReport does contain local name 'ExceptionReport'.</ctl:message>
         <xsl:text>true</xsl:text>
         </xsl:otherwise>
           </xsl:choose>
