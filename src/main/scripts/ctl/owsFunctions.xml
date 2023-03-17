@@ -513,16 +513,16 @@
       <!-- <xsl:message>validateExceptionReport exceptionReport <xsl:copy-of select="$exceptionReport"/></xsl:message> -->
       <!-- <ctl:message select="concat('validateExceptionReport schemaPath ', $exceptionReportSchemaPath)"/> -->
       <xsl:variable name="result">
-      <xsl:choose>
+        <xsl:choose>
           <xsl:when test="not($exceptionReport//*[local-name()='ExceptionReport'])">
-          <ctl:message>ExceptionReport does not contain local name 'ExceptionReport'.</ctl:message>
-          <xsl:text>false</xsl:text>
-        </xsl:when>
-        <xsl:otherwise>
-          <ctl:message>ExceptionReport does contain local name 'ExceptionReport'.</ctl:message>
-        <xsl:text>true</xsl:text>
-        </xsl:otherwise>
-          </xsl:choose>
+            <ctl:message>ExceptionReport does not contain local name 'ExceptionReport'.</ctl:message>
+            <xsl:text>false</xsl:text>
+          </xsl:when>
+          <xsl:otherwise>
+            <ctl:message>ExceptionReport does contain local name 'ExceptionReport'.</ctl:message>
+            <xsl:text>true</xsl:text>
+          </xsl:otherwise>
+        </xsl:choose>
       </xsl:variable>
       <xsl:variable name="exception.validation.elapsed" select="ctl:elapsedTime('exception.validation')"/>
       <xsl:choose>
