@@ -514,7 +514,7 @@
       <!-- <ctl:message select="concat('validateExceptionReport schemaPath ', $exceptionReportSchemaPath)"/> -->
       <xsl:variable name="result">
         <xsl:choose>
-          <xsl:when test="not($exceptionReport//*[local-name()='ExceptionReport'])">
+          <xsl:when test="count(/response/content/*//*[local-name()='ExceptionReport']) > 0">
             <ctl:message>ExceptionReport does not contain local name 'ExceptionReport'.</ctl:message>
             <xsl:text>false</xsl:text>
           </xsl:when>
@@ -527,7 +527,7 @@
       <xsl:variable name="exception.validation.elapsed" select="ctl:elapsedTime('exception.validation')"/>
       <xsl:choose>
         <xsl:when test="not(string($result) = 'true')">
-          <ctl:message>Exception report failed schema validation; elapsedTime: [<xsl:value-of select="$exception.validation.elapsed"/>] milliseconds</ctl:message>
+          <ctl:message>Exception report failed validation; elapsedTime: [<xsl:value-of select="$exception.validation.elapsed"/>] milliseconds</ctl:message>
           <xsl:text>false</xsl:text>
           <xsl:variable name="returnedStatusCode" select="$httpParserExceptionReport/response/status/@code"/>
           <xsl:choose>
@@ -541,7 +541,7 @@
         </xsl:when>
         <xsl:otherwise>
           <ctl:message>exception.validation.elapsed [<xsl:value-of select="$exception.validation.elapsed"/>] milliseconds</ctl:message>
-          <ctl:message>Exception report is XML Schema valid, continuing...</ctl:message>
+          <ctl:message>Exception report is valid, continuing...</ctl:message>
           <xsl:variable name="exceptionCodeList" select="tokenize($exceptionCodes, ',')"/>
           <xsl:variable name="locatorList" select="tokenize($locators, ',')"/>
           <xsl:variable name="exceptionReportResults">
