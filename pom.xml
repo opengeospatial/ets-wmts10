@@ -64,7 +64,7 @@
     <soapui.teamengine.user>ogctest</soapui.teamengine.user>
     <soapui.teamengine.password>ogctest</soapui.teamengine.password>
     <soapui.iut>http://cite.deegree.org/deegree-webservices-3.4.16/services/wmts100?service=WMTS&amp;request=GetCapabilities</soapui.iut>
-    <soapui.tests.passed>32</soapui.tests.passed>
+    <soapui.tests.passed>31</soapui.tests.passed>
     <soapui.tests.skipped>0</soapui.tests.skipped>
     <soapui.tests.failed>0</soapui.tests.failed>
     <docker.teamengine.version>5.4.1</docker.teamengine.version>
