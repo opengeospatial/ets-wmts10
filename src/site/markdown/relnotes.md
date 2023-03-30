@@ -1,5 +1,13 @@
 # Release Notes OGC WMTS 1.0 Test Suite
 
+## 1.5 (2023-03)
+
+* [#73](https://github.com/opengeospatial/ets-wmts10/issues/73) - Test Server.KVP.GET.HTTP.Mandatory is flawed
+* [#71](https://github.com/opengeospatial/ets-wmts10/issues/71) - Test WMTS: service=BOGUS or without service parameter value are problematic
+* [#55](https://github.com/opengeospatial/ets-wmts10/issues/55) - Test wmts:Server.KVP.GET.InvalidService is flawed
+* [#72](https://github.com/opengeospatial/ets-wmts10/issues/72) - Test Server.KVP.GET.GetCapabilities.Response.Encoding.Constraint has a bug in Java XML validator when it contains both Get and Post KVP in Constraints
+* [#70](https://github.com/opengeospatial/ets-wmts10/pull/70) - Add credentials to SoapUI project
+
 ## 1.4 (2021-10)
 
 * [#54](https://github.com/opengeospatial/ets-wmts10/issues/54) - Test wmts:Server.KVP.GET.InvalidQueryString is flawed
