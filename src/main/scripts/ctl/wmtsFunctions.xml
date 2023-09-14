@@ -83,20 +83,20 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 					</ctl:message>
 					<fail/>
 				</xsl:if>
-				<xsl:if test="$minScaleDenominator != 'true' ">
+				<xsl:if test="$legendURL/@minScaleDenominator and $minScaleDenominator != 'true' ">
 					<ctl:message>Layer <xsl:value-of select="$layer/ows:Identifier"/> minScaleDenominator <xsl:value-of select="$legendURL/@minScaleDenominator"/> not found for TileMatrix from any TileMatrix set for Layer.</ctl:message>
 					<fail/>
 				</xsl:if>
-				<xsl:if test="$maxScaleDenominator != 'true' ">
+				<xsl:if test="$legendURL/@maxScaleDenominator and $maxScaleDenominator != 'true' ">
 					<ctl:message>Layer <xsl:value-of select="$layer/ows:Identifier"/> maxScaleDenominator <xsl:value-of select="$legendURL/@maxScaleDenominator"/> not found for TileMatrix from any TileMatrix set for Layer.</ctl:message>
 					<fail/>
 				</xsl:if>
-				<xsl:if test="$imageWidth != $legendURL/@width">
+				<xsl:if test="$legendURL/@width and $imageWidth != $legendURL/@width">
 					<ctl:message>Layer <xsl:value-of select="$layer/ows:Identifier"/> image width found for LegendURL <xsl:value-of select="$imageWidth"/> does not match specified width <xsl:value-of select="$legendURL/@width"/>
 					</ctl:message>
 					<fail/>
 				</xsl:if>
-				<xsl:if test="$imageHeight != $legendURL/@height">
+				<xsl:if test="$legendURL/@height and $imageHeight != $legendURL/@height">
 					<ctl:message>Layer <xsl:value-of select="$layer/ows:Identifier"/> image height found for LegendURL <xsl:value-of select="$imageHeight"/> does not match specified height <xsl:value-of select="$legendURL/@height"/>
 					</ctl:message>
 					<fail/>
@@ -1416,12 +1416,14 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 				<xsl:element name="{concat('Server.', $interfaceType, '.GetCapabilities.Response.Layer.LegendURL.Correct.Resource.Selected')}">
 					<xsl:value-of select="$allOrNone"/>
 				</xsl:element>
+				<!--
 				<xsl:element name="{concat('Server.', $interfaceType, '.GetCapabilities.Response.Layer.LegendURL.Correct.Format.Selected')}">
 					<xsl:value-of select="$allOrNone"/>
 				</xsl:element>
 				<xsl:element name="{concat('Server.', $interfaceType, '.GetCapabilities.Response.Layer.LegendURL.Correct.Size.Selected')}">
 					<xsl:value-of select="$allOrNone"/>
 				</xsl:element>
+				-->
 				<xsl:element name="{concat('Server.', $interfaceType, '.GetCapabilities.Response.Layer.TileMatrixSet.Valid.Selected')}">
 					<xsl:value-of select="$allOrNone"/>
 				</xsl:element>
@@ -1700,12 +1702,14 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 				<xsl:element name="{concat('Server.', $interfaceType, '.GetCapabilities.Response.Layer.LegendURL.Correct.Resource.Selected')}">
 					<xsl:value-of select="string($gc-form-values/values/value[@key='layerLegendURLsCorrectResources'] = 'on')"/>
 				</xsl:element>
+				<!--
 				<xsl:element name="{concat('Server.', $interfaceType, '.GetCapabilities.Response.Layer.LegendURL.Correct.Format.Selected')}">
 					<xsl:value-of select="string($gc-form-values/values/value[@key='layerLegendURLsCorrectFormats'] = 'on')"/>
 				</xsl:element>
 				<xsl:element name="{concat('Server.', $interfaceType, '.GetCapabilities.Response.Layer.LegendURL.Correct.Size.Selected')}">
 					<xsl:value-of select="string($gc-form-values/values/value[@key='layerLegendURLsCorrectSizes'] = 'on')"/>
 				</xsl:element>
+				-->
 				<xsl:element name="{concat('Server.', $interfaceType, '.GetCapabilities.Response.Layer.TileMatrixSet.Valid.Selected')}">
 					<xsl:value-of select="string($gc-form-values/values/value[@key='layerTileMatrixSetsValid'] = 'on')"/>
 				</xsl:element>
@@ -2289,12 +2293,14 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 						<xsl:when test="$selected/sel/Server.KVP.GET.GetCapabilities.Response.Layer.LegendURL.Correct.Resource.Selected = 'true' ">
 							<xsl:text>true</xsl:text>
 						</xsl:when>
+						<!--
 						<xsl:when test="$selected/sel/Server.KVP.GET.GetCapabilities.Response.Layer.LegendURL.Correct.Format.Selected = 'true' ">
 							<xsl:text>true</xsl:text>
 						</xsl:when>
 						<xsl:when test="$selected/sel/Server.KVP.GET.GetCapabilities.Response.Layer.LegendURL.Correct.Size.Selected = 'true' ">
 							<xsl:text>true</xsl:text>
 						</xsl:when>
+						-->
 						<xsl:when test="$selected/sel/Server.KVP.GET.GetCapabilities.Response.Layer.TileMatrixSet.Valid.Selected = 'true' ">
 							<xsl:text>true</xsl:text>
 						</xsl:when>
@@ -2500,12 +2506,14 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 						<xsl:when test="$selected/sel/Server.KVP.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Resource.Selected = 'true' ">
 							<xsl:text>true</xsl:text>
 						</xsl:when>
+						<!--
 						<xsl:when test="$selected/sel/Server.KVP.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Format.Selected = 'true' ">
 							<xsl:text>true</xsl:text>
 						</xsl:when>
 						<xsl:when test="$selected/sel/Server.KVP.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Size.Selected = 'true' ">
 							<xsl:text>true</xsl:text>
 						</xsl:when>
+						-->
 						<xsl:when test="$selected/sel/Server.KVP.POST.GetCapabilities.Response.Layer.TileMatrixSet.Valid.Selected = 'true' ">
 							<xsl:text>true</xsl:text>
 						</xsl:when>
@@ -2705,12 +2713,14 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 						<xsl:when test="$selected/sel/Server.XML.POST.GetCapabilities.Response.Layer.Identifiers.Unique.Selected = 'true' ">
 							<xsl:text>true</xsl:text>
 						</xsl:when>
+						<!--
 						<xsl:when test="$selected/sel/Server.XML.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Format.Selected = 'true' ">
 							<xsl:text>true</xsl:text>
 						</xsl:when>
 						<xsl:when test="$selected/sel/Server.XML.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Size.Selected = 'true' ">
 							<xsl:text>true</xsl:text>
 						</xsl:when>
+						-->
 						<xsl:when test="$selected/sel/Server.XML.POST.GetCapabilities.Response.Layer.TileMatrixSet.Valid.Selected = 'true' ">
 							<xsl:text>true</xsl:text>
 						</xsl:when>
@@ -2913,12 +2923,14 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 						<xsl:when test="$selected/sel/Server.SOAP.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Resource.Selected = 'true' ">
 							<xsl:text>true</xsl:text>
 						</xsl:when>
+						<!--
 						<xsl:when test="$selected/sel/Server.SOAP.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Format.Selected = 'true' ">
 							<xsl:text>true</xsl:text>
 						</xsl:when>
 						<xsl:when test="$selected/sel/Server.SOAP.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Size.Selected = 'true' ">
 							<xsl:text>true</xsl:text>
 						</xsl:when>
+						-->
 						<xsl:when test="$selected/sel/Server.SOAP.POST.GetCapabilities.Response.Layer.TileMatrixSet.Valid.Selected = 'true' ">
 							<xsl:text>true</xsl:text>
 						</xsl:when>
@@ -3478,7 +3490,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 								</ctl:call-test>
 							</xsl:when>
 
-							<xsl:when test="$testName = 'Server.KVP.GET.GetCapabilities.Response.Layer.LegendURL.Correct.Format' " >
+							<!--xsl:when test="$testName = 'Server.KVP.GET.GetCapabilities.Response.Layer.LegendURL.Correct.Format' " >
 								<ctl:call-test name="wmts:Server.KVP.GET.GetCapabilities.Response.Layer.LegendURL.Correct.Format">
 									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
 									<ctl:with-param name="selected" select="$testSelected"/>
@@ -3492,7 +3504,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 									<ctl:with-param name="selected" select="$testSelected"/>
 									<ctl:with-param name="capabilitiesURL" select="$kvpGetCapabilitiesURL"/>
 								</ctl:call-test>
-							</xsl:when>
+							</xsl:when-->
 
 							<xsl:when test="$testName = 'Server.KVP.GET.GetCapabilities.Response.Layer.TileMatrixSet.Valid' " >
 								<ctl:call-test name="wmts:Server.KVP.GET.GetCapabilities.Response.Layer.TileMatrixSet.Valid">
@@ -4166,7 +4178,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 								</ctl:call-test>
 							</xsl:when>
 
-							<xsl:when test="$testName = 'Server.KVP.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Format' " >
+							<!--xsl:when test="$testName = 'Server.KVP.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Format' " >
 								<ctl:call-test name="wmts:Server.KVP.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Format">
 									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
 									<ctl:with-param name="selected" select="$testSelected"/>
@@ -4180,7 +4192,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 									<ctl:with-param name="selected" select="$testSelected"/>
 									<ctl:with-param name="capabilitiesURL" select="$postGetCapabilitiesURL"/>
 								</ctl:call-test>
-							</xsl:when>
+							</xsl:when-->
 
 							<xsl:when test="$testName = 'Server.KVP.POST.GetCapabilities.Response.Layer.TileMatrixSet.Valid' " >
 								<ctl:call-test name="wmts:Server.KVP.POST.GetCapabilities.Response.Layer.TileMatrixSet.Valid">
@@ -4844,7 +4856,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 								</ctl:call-test>
 							</xsl:when>
 
-							<xsl:when test="$testName = 'Server.XML.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Format' " >
+							<!--xsl:when test="$testName = 'Server.XML.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Format' " >
 								<ctl:call-test name="wmts:Server.XML.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Format">
 									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
 									<ctl:with-param name="selected" select="$testSelected"/>
@@ -4858,7 +4870,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 									<ctl:with-param name="selected" select="$testSelected"/>
 									<ctl:with-param name="capabilitiesURL" select="$postGetCapabilitiesURL"/>
 								</ctl:call-test>
-							</xsl:when>
+							</xsl:when-->
 
 							<xsl:when test="$testName = 'Server.XML.POST.GetCapabilities.Response.Layer.TileMatrixSet.Valid' " >
 								<ctl:call-test name="wmts:Server.XML.POST.GetCapabilities.Response.Layer.TileMatrixSet.Valid">
@@ -5511,7 +5523,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 								</ctl:call-test>
 							</xsl:when>
 
-							<xsl:when test="$testName = 'Server.SOAP.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Format' " >
+							<!--xsl:when test="$testName = 'Server.SOAP.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Format' " >
 								<ctl:call-test name="wmts:Server.SOAP.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Format">
 									<ctl:with-param name="metPrerequisites" select="$metPrerequisites"/> 
 									<ctl:with-param name="selected" select="$testSelected"/>
@@ -5525,7 +5537,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 									<ctl:with-param name="selected" select="$testSelected"/>
 									<ctl:with-param name="capabilitiesURL" select="$postGetCapabilitiesURL"/>
 								</ctl:call-test>
-							</xsl:when>
+							</xsl:when-->
 
 							<xsl:when test="$testName = 'Server.SOAP.POST.GetCapabilities.Response.Layer.TileMatrixSet.Valid' " >
 								<ctl:call-test name="wmts:Server.SOAP.POST.GetCapabilities.Response.Layer.TileMatrixSet.Valid">

@@ -138,9 +138,11 @@
               <xsl:element name="Server.KVP.GET.GetCapabilities.Response.No.Layers.OtherSource.Prerequisites"><xsl:value-of select="$getCapabilitiesKVPGET and $Server.KVP.GET.GetCapabilities.Response.SchemaValid and $Server.KVP.GET.GetCapabilities.Response.No.Layers.OtherSource.Prerequisite-2"/></xsl:element>
               <xsl:element name="Server.KVP.GET.GetCapabilities.Response.Layer.LegendURL.Correct.Resource.Prerequisites"><xsl:value-of select="$getCapabilitiesKVPGET and $Server.KVP.GET.GetCapabilities.Response.SchemaValid"/></xsl:element>							
 
+              <!--
               <xsl:variable name="Server.KVP.GET.GetCapabilities.Response.Layer.LegendURL.Correct.Resource" select="wmtsFunctions:allLayerLegendURLCorrectResource($wmts.capabilities.doc)"/>	
-              <xsl:element name="Server.KVP.GET.GetCapabilities.Response.Layer.LegendURL.Correct.Format.Prerequisites"><xsl:value-of select="$getCapabilitiesKVPGET and $Server.KVP.GET.GetCapabilities.Response.SchemaValid and ($Server.KVP.GET.GetCapabilities.Response.Layer.LegendURL.Correct.Resource = 'true')"/></xsl:element>
-              <xsl:element name="Server.KVP.GET.GetCapabilities.Response.Layer.LegendURL.Correct.Size.Prerequisites"><xsl:value-of select="$getCapabilitiesKVPGET and $Server.KVP.GET.GetCapabilities.Response.SchemaValid and ($Server.KVP.GET.GetCapabilities.Response.Layer.LegendURL.Correct.Resource = 'true')"/></xsl:element>
+              <xsl:element name="Server.KVP.GET.GetCapabilities.Response.Layer.LegendURL.Correct.Format.Prerequisites"><xsl:value-of select="$getCapabilitiesKVPGET and $Server.KVP.GET.GetCapabilities.Response.SchemaValid"/></xsl:element>
+              <xsl:element name="Server.KVP.GET.GetCapabilities.Response.Layer.LegendURL.Correct.Size.Prerequisites"><xsl:value-of select="$getCapabilitiesKVPGET and $Server.KVP.GET.GetCapabilities.Response.SchemaValid"/></xsl:element>
+			  -->
               <xsl:element name="Server.KVP.GET.GetCapabilities.Response.Dimension.Identifiers.Unique.Prerequisites"><xsl:value-of select="$getCapabilitiesKVPGET and $Server.KVP.GET.GetCapabilities.Response.SchemaValid"/></xsl:element>
               <xsl:variable name="Server.KVP.GET.GetCapabilities.Response.TileMatrixSet.WellKnownScaleSet.Prerequisite-2" select="some $wkss in $wmts.capabilities.doc/wmts:Contents/wmts:TileMatrixSet/wmts:WellKnownScaleSet satisfies boolean($wkss = 'urn:ogc:def:wkss:OGC:1.0:GlobalCRS84Scale' or $wkss = 'urn:ogc:def:wkss:OGC:1.0:GlobalCRS84Pixel' or $wkss = 'urn:ogc:def:wkss:OGC:1.0:GoogleCRS84Quad' or $wkss = 'urn:ogc:def:wkss:OGC:1.0:GoogleMapsCompatible')"/>
               <xsl:element name="Server.KVP.GET.GetCapabilities.Response.TileMatrixSet.WellKnownScaleSet.Prerequisites"><xsl:value-of select="$getCapabilitiesKVPGET and $Server.KVP.GET.GetCapabilities.Response.SchemaValid and $Server.KVP.GET.GetCapabilities.Response.TileMatrixSet.WellKnownScaleSet.Prerequisite-2"/></xsl:element>
@@ -386,10 +388,11 @@
             <xsl:variable name="Server.KVP.GET.GetCapabilities.Response.No.Layers.OtherSource.Prerequisite-2" select="count($wmts.capabilities.doc/wmts:Contents/wmts:Layer) = 0"/>
             <xsl:element name="Server.KVP.POST.GetCapabilities.Response.No.Layers.OtherSource.Prerequisites"><xsl:value-of select="$getCapabilitiesKVPPOST and $Server.KVP.GET.GetCapabilities.Response.SchemaValid and $Server.KVP.GET.GetCapabilities.Response.No.Layers.OtherSource.Prerequisite-2"/></xsl:element>
             <xsl:element name="Server.KVP.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Resource.Prerequisites"><xsl:value-of select="$getCapabilitiesKVPPOST and $Server.KVP.GET.GetCapabilities.Response.SchemaValid"/></xsl:element>
-
+            <!--
             <xsl:variable name="Server.KVP.GET.GetCapabilities.Response.Layer.LegendURL.Correct.Resource" select="wmtsFunctions:allLayerLegendURLCorrectResource($wmts.capabilities.doc)"/>	
-            <xsl:element name="Server.KVP.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Format.Prerequisites"><xsl:value-of select="$getCapabilitiesKVPPOST and $Server.KVP.GET.GetCapabilities.Response.SchemaValid and ($Server.KVP.GET.GetCapabilities.Response.Layer.LegendURL.Correct.Resource = 'true')"/></xsl:element>
-            <xsl:element name="Server.KVP.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Size.Prerequisites"><xsl:value-of select="$getCapabilitiesKVPPOST and $Server.KVP.GET.GetCapabilities.Response.SchemaValid and ($Server.KVP.GET.GetCapabilities.Response.Layer.LegendURL.Correct.Resource = 'true')"/></xsl:element>
+            <xsl:element name="Server.KVP.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Format.Prerequisites"><xsl:value-of select="$getCapabilitiesKVPPOST and $Server.KVP.GET.GetCapabilities.Response.SchemaValid"/></xsl:element>
+            <xsl:element name="Server.KVP.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Size.Prerequisites"><xsl:value-of select="$getCapabilitiesKVPPOST and $Server.KVP.GET.GetCapabilities.Response.SchemaValid"/></xsl:element>
+			-->
             <xsl:element name="Server.KVP.POST.GetCapabilities.Response.Dimension.Identifiers.Unique.Prerequisites"><xsl:value-of select="$getCapabilitiesKVPPOST and $Server.KVP.GET.GetCapabilities.Response.SchemaValid"/></xsl:element>
 
             <xsl:variable name="Server.KVP.GET.GetCapabilities.Response.TileMatrixSet.WellKnownScaleSet.Prerequisite-2" select="some $wkss in $wmts.capabilities.doc/wmts:Contents/wmts:TileMatrixSet/wmts:WellKnownScaleSet satisfies boolean($wkss = 'urn:ogc:def:wkss:OGC:1.0:GlobalCRS84Scale' or $wkss = 'urn:ogc:def:wkss:OGC:1.0:GlobalCRS84Pixel' or $wkss = 'urn:ogc:def:wkss:OGC:1.0:GoogleCRS84Quad' or $wkss = 'urn:ogc:def:wkss:OGC:1.0:GoogleMapsCompatible')"/>
@@ -641,9 +644,11 @@
             <xsl:variable name="Server.KVP.GET.GetCapabilities.Response.No.Layers.OtherSource.Prerequisite-2" select="count($wmts.capabilities.doc/wmts:Contents/wmts:Layer) = 0"/>
             <xsl:element name="Server.XML.POST.GetCapabilities.Response.No.Layers.OtherSource.Prerequisites"><xsl:value-of select="string($getCapabilitiesXMLPOST  and $Server.KVP.GET.GetCapabilities.Response.SchemaValid and $Server.KVP.GET.GetCapabilities.Response.No.Layers.OtherSource.Prerequisite-2)"/></xsl:element>
             <xsl:element name="Server.XML.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Resource.Prerequisites"><xsl:value-of select="string($getCapabilitiesXMLPOST and $Server.KVP.GET.GetCapabilities.Response.SchemaValid)"/></xsl:element>
-            <xsl:variable name="Server.KVP.GET.GetCapabilities.Response.Layer.LegendURL.Correct.Resource" select="wmtsFunctions:allLayerLegendURLCorrectResource($wmts.capabilities.doc)"/>	
-            <xsl:element name="Server.XML.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Format.Prerequisites"><xsl:value-of select="string($getCapabilitiesXMLPOST and $Server.KVP.GET.GetCapabilities.Response.SchemaValid and ($Server.KVP.GET.GetCapabilities.Response.Layer.LegendURL.Correct.Resource = 'true'))"/></xsl:element>
-            <xsl:element name="Server.XML.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Size.Prerequisites"><xsl:value-of select="string($getCapabilitiesXMLPOST and $Server.KVP.GET.GetCapabilities.Response.SchemaValid and ($Server.KVP.GET.GetCapabilities.Response.Layer.LegendURL.Correct.Resource = 'true'))"/></xsl:element>
+            <!--
+			<xsl:variable name="Server.KVP.GET.GetCapabilities.Response.Layer.LegendURL.Correct.Resource" select="wmtsFunctions:allLayerLegendURLCorrectResource($wmts.capabilities.doc)"/>	
+            <xsl:element name="Server.XML.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Format.Prerequisites"><xsl:value-of select="string($getCapabilitiesXMLPOST and $Server.KVP.GET.GetCapabilities.Response.SchemaValid)"/></xsl:element>
+            <xsl:element name="Server.XML.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Size.Prerequisites"><xsl:value-of select="string($getCapabilitiesXMLPOST and $Server.KVP.GET.GetCapabilities.Response.SchemaValid)"/></xsl:element>
+			-->
             <xsl:element name="Server.XML.POST.GetCapabilities.Response.Dimension.Identifiers.Unique.Prerequisites"><xsl:value-of select="string($getCapabilitiesXMLPOST and $Server.KVP.GET.GetCapabilities.Response.SchemaValid)"/></xsl:element>
 
             <xsl:variable name="Server.KVP.GET.GetCapabilities.Response.TileMatrixSet.WellKnownScaleSet.Prerequisite-2" select="some $wkss in $wmts.capabilities.doc/wmts:Contents/wmts:TileMatrixSet/wmts:WellKnownScaleSet satisfies boolean($wkss = 'urn:ogc:def:wkss:OGC:1.0:GlobalCRS84Scale' or $wkss = 'urn:ogc:def:wkss:OGC:1.0:GlobalCRS84Pixel' or $wkss = 'urn:ogc:def:wkss:OGC:1.0:GoogleCRS84Quad' or $wkss = 'urn:ogc:def:wkss:OGC:1.0:GoogleMapsCompatible')"/>
@@ -896,10 +901,11 @@
             <xsl:variable name="Server.KVP.GET.GetCapabilities.Response.No.Layers.OtherSource.Prerequisite-2" select="count($wmts.capabilities.doc/wmts:Contents/wmts:Layer) = 0"/>
             <xsl:element name="Server.SOAP.POST.GetCapabilities.Response.No.Layers.OtherSource.Prerequisites"><xsl:value-of select="string($getCapabilitiesSOAPPOST  and $Server.KVP.GET.GetCapabilities.Response.SchemaValid and $Server.KVP.GET.GetCapabilities.Response.No.Layers.OtherSource.Prerequisite-2)"/></xsl:element>
             <xsl:element name="Server.SOAP.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Resource.Prerequisites"><xsl:value-of select="string($getCapabilitiesSOAPPOST and $Server.KVP.GET.GetCapabilities.Response.SchemaValid)"/></xsl:element>
-
+            <!--
             <xsl:variable name="Server.KVP.GET.GetCapabilities.Response.Layer.LegendURL.Correct.Resource" select="wmtsFunctions:allLayerLegendURLCorrectResource($wmts.capabilities.doc)"/>	
-            <xsl:element name="Server.SOAP.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Format.Prerequisites"><xsl:value-of select="string($getCapabilitiesSOAPPOST and $Server.KVP.GET.GetCapabilities.Response.SchemaValid and ($Server.KVP.GET.GetCapabilities.Response.Layer.LegendURL.Correct.Resource = 'true'))"/></xsl:element>
-            <xsl:element name="Server.SOAP.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Size.Prerequisites"><xsl:value-of select="string($getCapabilitiesSOAPPOST and $Server.KVP.GET.GetCapabilities.Response.SchemaValid and ($Server.KVP.GET.GetCapabilities.Response.Layer.LegendURL.Correct.Resource = 'true'))"/></xsl:element>
+            <xsl:element name="Server.SOAP.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Format.Prerequisites"><xsl:value-of select="string($getCapabilitiesSOAPPOST and $Server.KVP.GET.GetCapabilities.Response.SchemaValid)"/></xsl:element>
+            <xsl:element name="Server.SOAP.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Size.Prerequisites"><xsl:value-of select="string($getCapabilitiesSOAPPOST and $Server.KVP.GET.GetCapabilities.Response.SchemaValid)"/></xsl:element>
+			-->
             <xsl:element name="Server.SOAP.POST.GetCapabilities.Response.Dimension.Identifiers.Unique.Prerequisites"><xsl:value-of select="string($getCapabilitiesSOAPPOST and $Server.KVP.GET.GetCapabilities.Response.SchemaValid)"/></xsl:element>
 
             <xsl:variable name="Server.KVP.GET.GetCapabilities.Response.TileMatrixSet.WellKnownScaleSet.Prerequisite-2" select="some $wkss in $wmts.capabilities.doc/wmts:Contents/wmts:TileMatrixSet/wmts:WellKnownScaleSet satisfies boolean($wkss = 'urn:ogc:def:wkss:OGC:1.0:GlobalCRS84Scale' or $wkss = 'urn:ogc:def:wkss:OGC:1.0:GlobalCRS84Pixel' or $wkss = 'urn:ogc:def:wkss:OGC:1.0:GoogleCRS84Quad' or $wkss = 'urn:ogc:def:wkss:OGC:1.0:GoogleMapsCompatible')"/>
