@@ -17262,8 +17262,15 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 				<xsl:variable name="tileMatrixSet" select="$wmts.capabilities.doc//wmts:Contents/wmts:TileMatrixSet[ows:Identifier = $tileMatrixSetId]"/>
 				<xsl:variable name="tileMatrix" select="$tileMatrixSet/wmts:TileMatrix[1]"/>
 				<xsl:variable name="tileMatrixId" select="$tileMatrix/ows:Identifier"/>
-				<xsl:variable name="row" select="$layer/wmts:TileMatrixSetLink[1]/wmts:TileMatrixSetLimits/wmts:TileMatrixLimits[1]/wmts:MinTileRow"/>
-				<xsl:variable name="col" select="$layer/wmts:TileMatrixSetLink[1]/wmts:TileMatrixSetLimits/wmts:TileMatrixLimits[1]/wmts:MinTileCol"/>
+				<xsl:variable name="tileMatrixLimits" select="$layer/wmts:TileMatrixSetLink[1]/wmts:TileMatrixSetLimits/wmts:TileMatrixLimits[1]"/>
+				<xsl:variable name="minTileRow" select="wmtsFunctions:minTileRow($tileMatrixLimits)"/>
+				<xsl:variable name="maxTileRow" select="wmtsFunctions:maxTileRow($tileMatrixLimits, $tileMatrix)"/>
+				<xsl:variable name="midTileRow" select="($minTileRow + $maxTileRow) idiv 2"/>
+				<xsl:variable name="minTileCol" select="wmtsFunctions:minTileCol($tileMatrixLimits)"/>
+				<xsl:variable name="maxTileCol" select="wmtsFunctions:maxTileCol($tileMatrixLimits, $tileMatrix)"/>
+				<xsl:variable name="midTileCol" select="($minTileCol + $maxTileCol) idiv 2"/>
+				<xsl:variable name="row" select="$midTileRow"/>
+				<xsl:variable name="col" select="$midTileCol"/>
 				<ctl:message select="concat('layer ', $layerId, ' style ', $styleId, ' format ', $format, ' tileMatrixSet ', $tileMatrixSetId, ' tileMatrix ', $tileMatrixId, ' row ', $row, ' col ', $col)"/>
 				<xsl:variable name="response">
 					<ctl:request>
@@ -17380,8 +17387,15 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 				<xsl:variable name="tileMatrixSet" select="$wmts.capabilities.doc//wmts:Contents/wmts:TileMatrixSet[ows:Identifier = $tileMatrixSetId]"/>
 				<xsl:variable name="tileMatrix" select="$tileMatrixSet/wmts:TileMatrix[1]"/>
 				<xsl:variable name="tileMatrixId" select="$tileMatrix/ows:Identifier"/>
-				<xsl:variable name="row" select="$layer/wmts:TileMatrixSetLink[1]/wmts:TileMatrixSetLimits/wmts:TileMatrixLimits[1]/wmts:MinTileRow"/>
-				<xsl:variable name="col" select="$layer/wmts:TileMatrixSetLink[1]/wmts:TileMatrixSetLimits/wmts:TileMatrixLimits[1]/wmts:MinTileCol"/>
+				<xsl:variable name="tileMatrixLimits" select="$layer/wmts:TileMatrixSetLink[1]/wmts:TileMatrixSetLimits/wmts:TileMatrixLimits[1]"/>
+				<xsl:variable name="minTileRow" select="wmtsFunctions:minTileRow($tileMatrixLimits)"/>
+				<xsl:variable name="maxTileRow" select="wmtsFunctions:maxTileRow($tileMatrixLimits, $tileMatrix)"/>
+				<xsl:variable name="midTileRow" select="($minTileRow + $maxTileRow) idiv 2"/>
+				<xsl:variable name="minTileCol" select="wmtsFunctions:minTileCol($tileMatrixLimits)"/>
+				<xsl:variable name="maxTileCol" select="wmtsFunctions:maxTileCol($tileMatrixLimits, $tileMatrix)"/>
+				<xsl:variable name="midTileCol" select="($minTileCol + $maxTileCol) idiv 2"/>
+				<xsl:variable name="row" select="$midTileRow"/>
+				<xsl:variable name="col" select="$midTileCol"/>
 				<ctl:message select="concat('layer ', $layerId, ' style ', $styleId, ' format ', $format, ' tileMatrixSet ', $tileMatrixSetId, ' tileMatrix ', $tileMatrixId, ' row ', $row, ' col ', $col)"/>
 				<xsl:variable name="dimensionNames"></xsl:variable>
 				<xsl:variable name="dimensionValues"></xsl:variable>
@@ -17477,8 +17491,15 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 				<xsl:variable name="tileMatrixSet" select="$wmts.capabilities.doc//wmts:Contents/wmts:TileMatrixSet[ows:Identifier = $tileMatrixSetId]"/>
 				<xsl:variable name="tileMatrix" select="$tileMatrixSet/wmts:TileMatrix[1]"/>
 				<xsl:variable name="tileMatrixId" select="$tileMatrix/ows:Identifier"/>
-				<xsl:variable name="row" select="$layer/wmts:TileMatrixSetLink[1]/wmts:TileMatrixSetLimits/wmts:TileMatrixLimits[1]/wmts:MinTileRow"/>
-				<xsl:variable name="col" select="$layer/wmts:TileMatrixSetLink[1]/wmts:TileMatrixSetLimits/wmts:TileMatrixLimits[1]/wmts:MinTileCol"/>
+				<xsl:variable name="tileMatrixLimits" select="$layer/wmts:TileMatrixSetLink[1]/wmts:TileMatrixSetLimits/wmts:TileMatrixLimits[1]"/>
+				<xsl:variable name="minTileRow" select="wmtsFunctions:minTileRow($tileMatrixLimits)"/>
+				<xsl:variable name="maxTileRow" select="wmtsFunctions:maxTileRow($tileMatrixLimits, $tileMatrix)"/>
+				<xsl:variable name="midTileRow" select="($minTileRow + $maxTileRow) idiv 2"/>
+				<xsl:variable name="minTileCol" select="wmtsFunctions:minTileCol($tileMatrixLimits)"/>
+				<xsl:variable name="maxTileCol" select="wmtsFunctions:maxTileCol($tileMatrixLimits, $tileMatrix)"/>
+				<xsl:variable name="midTileCol" select="($minTileCol + $maxTileCol) idiv 2"/>
+				<xsl:variable name="row" select="$midTileRow"/>
+				<xsl:variable name="col" select="$midTileCol"/>
 				<ctl:message select="concat('layer ', $layerId, ' style ', $styleId, ' format ', $format, ' tileMatrixSet ', $tileMatrixSetId, ' tileMatrix ', $tileMatrixId, ' row ', $row, ' col ', $col)"/>
 				<xsl:variable name="dimensionNames"></xsl:variable>
 				<xsl:variable name="dimensionValues"></xsl:variable>
@@ -17584,8 +17605,15 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 				<xsl:variable name="tileMatrixSet" select="$wmts.capabilities.doc//wmts:Contents/wmts:TileMatrixSet[ows:Identifier = $tileMatrixSetId]"/>
 				<xsl:variable name="tileMatrix" select="$tileMatrixSet/wmts:TileMatrix[1]"/>
 				<xsl:variable name="tileMatrixId" select="$tileMatrix/ows:Identifier"/>
-				<xsl:variable name="row" select="$layer/wmts:TileMatrixSetLink[1]/wmts:TileMatrixSetLimits/wmts:TileMatrixLimits[1]/wmts:MinTileRow"/>
-				<xsl:variable name="col" select="$layer/wmts:TileMatrixSetLink[1]/wmts:TileMatrixSetLimits/wmts:TileMatrixLimits[1]/wmts:MinTileCol"/>
+				<xsl:variable name="tileMatrixLimits" select="$layer/wmts:TileMatrixSetLink[1]/wmts:TileMatrixSetLimits/wmts:TileMatrixLimits[1]"/>
+				<xsl:variable name="minTileRow" select="wmtsFunctions:minTileRow($tileMatrixLimits)"/>
+				<xsl:variable name="maxTileRow" select="wmtsFunctions:maxTileRow($tileMatrixLimits, $tileMatrix)"/>
+				<xsl:variable name="midTileRow" select="($minTileRow + $maxTileRow) idiv 2"/>
+				<xsl:variable name="minTileCol" select="wmtsFunctions:minTileCol($tileMatrixLimits)"/>
+				<xsl:variable name="maxTileCol" select="wmtsFunctions:maxTileCol($tileMatrixLimits, $tileMatrix)"/>
+				<xsl:variable name="midTileCol" select="($minTileCol + $maxTileCol) idiv 2"/>
+				<xsl:variable name="row" select="$midTileRow"/>
+				<xsl:variable name="col" select="$midTileCol"/>
 				<xsl:variable name="dimensionNames"></xsl:variable>
 				<xsl:variable name="dimensionValues"></xsl:variable>
 				<xsl:variable name="resourceURLtemplate" select="wmtsFunctions:getResourceURLforLayer($layer, $format, 'tile')"/>
