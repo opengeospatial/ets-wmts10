@@ -10427,11 +10427,15 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 							<!-- <ctl:message select="concat('layer ', $layer/ows:Identifier, ' format ', $format, ' template: ', $resourceURLtemplate)"/> -->
 							<xsl:choose>
 								<xsl:when test="$resourceURLtemplate != '' ">
+									<xsl:variable name="invalidLayerURLtemplate" select="replace($resourceURLtemplate, $layerId, $bogusLayerId)"/>
 									<xsl:variable name="dimensionNames" select="string-join($layer/wmts:Dimension/ows:Identifier, ',')"/>  
 									<xsl:variable name="validRequestURLtemplate" select="wmtsFunctions:isValidTileURLtemplate($resourceURLtemplate, $layerId, $dimensionNames)"/>
 									<xsl:choose>
+										<xsl:when test="$invalidLayerURLtemplate = $resourceURLtemplate">
+											<ctl:message select="concat('Template for layer ', $layer/ows:Identifier, ' does not contain layerId ', $layerId, ' to replace with an invalid value.')"/> 
+											<xsl:text>skip|</xsl:text>
+										</xsl:when>
 										<xsl:when test="not(contains($validRequestURLtemplate, 'false'))">
-											<xsl:variable name="invalidLayerURLtemplate" select="concat(substring-before($resourceURLtemplate, $layerId), $bogusLayerId, substring-after($resourceURLtemplate, $layerId))"/>
 											<xsl:variable name="tmslPos" select="(count($layer/wmts:TileMatrixSetLink) + 1) idiv 2"/>
 											<!-- <ctl:message select="concat('format ', $format, ' tmslPos ', $tmslPos)"/> -->
 											<xsl:for-each select="$layer/wmts:TileMatrixSetLink[$tmslPos]">
@@ -10563,6 +10567,10 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 				<xsl:when test="contains($results, 'false')">
 					<ctl:message>[FAILURE] Test failed. Server.RESTful.GetTile.Invalid.Layer</ctl:message>
 					<ctl:fail/>
+				</xsl:when>
+				<xsl:when test="contains($results, 'skip')">
+					<ctl:message>Test skipped. Server.RESTful.GetTile.Invalid.Layer</ctl:message>
+					<ctl:skipped/>
 				</xsl:when>
 				<xsl:when test="contains($results, 'bestPractice')">
 					<ctl:message>Test passed as BestPractice: Server.RESTful.GetTile.Invalid.Layer</ctl:message>
@@ -11029,6 +11037,10 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 									<xsl:variable name="dimensionNames" select="string-join($layer/wmts:Dimension/ows:Identifier, ',')"/>  
 									<xsl:variable name="validRequestURLtemplate" select="wmtsFunctions:isValidTileURLtemplate($resourceURLtemplate, $layerId, $dimensionNames)"/>
 									<xsl:choose>
+										<xsl:when test="not(contains($resourceURLtemplate,'{TileMatrixSet}'))">
+											<ctl:message select="concat('Template for layer ', $layer/ows:Identifier, ' does not contain {TileMatrixSet} parameter to replace with an invalid value.')"/> 
+											<xsl:text>skip|</xsl:text>
+										</xsl:when>
 										<xsl:when test="not(contains($validRequestURLtemplate, 'false'))">
 											<xsl:variable name="tmslPos" select="(count($layer/wmts:TileMatrixSetLink) + 1) idiv 2"/>
 											<!-- <ctl:message select="concat('format ', $format, ' tmslPos ', $tmslPos)"/> -->
@@ -11162,6 +11174,10 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 				<xsl:when test="contains($results, 'false')">
 					<ctl:message>[FAILURE] Test failed. Server.RESTful.GetTile.Invalid.TileMatrixSet</ctl:message>
 					<ctl:fail/>
+				</xsl:when>
+				<xsl:when test="contains($results, 'skip')">
+					<ctl:message>Test skipped. Server.RESTful.GetTile.Invalid.TileMatrixSet</ctl:message>
+					<ctl:skipped/>
 				</xsl:when>
 				<xsl:when test="contains($results, 'bestPractice')">
 					<ctl:message>Test passed as BestPractice: Server.RESTful.GetTile.Invalid.TileMatrixSet</ctl:message>
@@ -13404,17 +13420,11 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 									<xsl:variable name="dimensionNames" select="string-join($layer/wmts:Dimension/ows:Identifier, ',')"/>  
 									<xsl:variable name="validRequestURLtemplate" select="wmtsFunctions:isValidTileURLtemplate($resourceURLtemplate, $layerId, $dimensionNames)"/>
 									<xsl:choose>
+										<xsl:when test="not(contains($resourceURLtemplate,'{style}'))">
+											<ctl:message select="concat('Template for layer ', $layer/ows:Identifier, ' does not contain {style} parameter to replace with an invalid value.')"/> 
+											<xsl:text>skip|</xsl:text>
+										</xsl:when>
 										<xsl:when test="not(contains($validRequestURLtemplate, 'false'))">
-											<xsl:variable name="invalidStyleURLtemplate">
-												<xsl:choose>
-													<xsl:when test="contains($resourceURLtemplate, $styleId)">
-														<xsl:value-of select="concat(substring-before($resourceURLtemplate, $styleId), '{style}', substring-after($resourceURLtemplate, $styleId))"/>
-													</xsl:when>
-													<xsl:otherwise>
-														<xsl:value-of select="$resourceURLtemplate"/>
-													</xsl:otherwise>
-												</xsl:choose>
-											</xsl:variable> 
 											<xsl:variable name="tmslPos" select="(count($layer/wmts:TileMatrixSetLink) + 1) idiv 2"/>
 											<!-- <ctl:message select="concat('format ', $format, ' tmslPos ', $tmslPos)"/> -->
 											<xsl:for-each select="$layer/wmts:TileMatrixSetLink[$tmslPos]">
@@ -13460,7 +13470,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 													</xsl:variable>
 													<xsl:variable name="restURL">
 														<xsl:call-template name="wmts:RESTfulTemplateProcessor">
-															<xsl:with-param name="urlTemplate" select="$invalidStyleURLtemplate"/>
+															<xsl:with-param name="urlTemplate" select="$resourceURLtemplate"/>
 															<xsl:with-param name="dimensionNames" select="$dimensionNames"/>  
 															<xsl:with-param name="dimensionValues" select="$dimensionValues"/>
 															<xsl:with-param name="style" select="$bogusStyleId"/>
@@ -13547,6 +13557,10 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 				<xsl:when test="contains($results, 'false')">
 					<ctl:message>[FAILURE] Test failed. Server.RESTful.GetTile.Invalid.TileStyle</ctl:message>
 					<ctl:fail/>
+				</xsl:when>
+				<xsl:when test="contains($results, 'skip')">
+					<ctl:message>Test skipped. Server.RESTful.GetTile.Invalid.TileStyle</ctl:message>
+					<ctl:skipped/>
 				</xsl:when>
 				<xsl:when test="contains($results, 'bestPractice')">
 					<ctl:message>Test passed as BestPractice: Server.RESTful.GetTile.Invalid.TileStyle</ctl:message>
@@ -20839,11 +20853,15 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 								<!-- <ctl:message select="concat('layer ', $layer/ows:Identifier, ' format ', $format, ' template: ', $resourceURLtemplate)"/> -->
 								<xsl:choose>
 									<xsl:when test="$resourceURLtemplate != '' ">
+										<xsl:variable name="invalidLayerURLtemplate" select="replace($resourceURLtemplate, $layerId, $bogusLayerId)"/>
 										<xsl:variable name="dimensionNames" select="string-join($layer/wmts:Dimension/ows:Identifier, ',')"/>  
 										<xsl:variable name="validRequestURLtemplate" select="wmtsFunctions:isValidFeatureInfoURLtemplate($resourceURLtemplate, $layerId, $dimensionNames)"/>
 										<xsl:choose>
+											<xsl:when test="$invalidLayerURLtemplate = $resourceURLtemplate">
+												<ctl:message select="concat('Template for layer ', $layer/ows:Identifier, ' does not contain layerId ', $layerId, ' to replace with an invalid value.')"/> 
+												<xsl:text>skip|</xsl:text>
+											</xsl:when>
 											<xsl:when test="not(contains($validRequestURLtemplate, 'false'))">
-												<xsl:variable name="invalidLayerURLtemplate" select="concat(substring-before($resourceURLtemplate, $layerId), $bogusLayerId, substring-after($resourceURLtemplate, $layerId))"/>
 												<xsl:variable name="tmslPos" select="(count($layer/wmts:TileMatrixSetLink) + 1) idiv 2"/>
 												<!-- <ctl:message select="concat('format ', $format, ' tmslPos ', $tmslPos)"/> -->
 												<xsl:for-each select="$layer/wmts:TileMatrixSetLink[$tmslPos]">
@@ -20986,6 +21004,10 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 				<xsl:when test="contains($results, 'false')">
 					<ctl:message>[FAILURE] Test failed. Server.RESTful.GetFeatureInfo.Invalid.Layer</ctl:message>
 					<ctl:fail/>
+				</xsl:when>
+				<xsl:when test="contains($results, 'skip')">
+					<ctl:message>Test skipped. Server.RESTful.GetFeatureInfo.Invalid.Layer</ctl:message>
+					<ctl:skipped/>
 				</xsl:when>
 				<xsl:when test="contains($results, 'bestPractice')">
 					<ctl:message>Test passed as BestPractice: Server.RESTful.GetFeatureInfo.Invalid.Layer</ctl:message>
@@ -21512,6 +21534,10 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 										<xsl:variable name="dimensionNames" select="string-join($layer/wmts:Dimension/ows:Identifier, ',')"/>  
 										<xsl:variable name="validRequestURLtemplate" select="wmtsFunctions:isValidFeatureInfoURLtemplate($resourceURLtemplate, $layerId, $dimensionNames)"/>
 										<xsl:choose>
+											<xsl:when test="not(contains($resourceURLtemplate,'{TileMatrixSet}'))">
+												<ctl:message select="concat('Template for layer ', $layer/ows:Identifier, ' does not contain {TileMatrixSet} parameter to replace with an invalid value.')"/> 
+												<xsl:text>skip|</xsl:text>
+											</xsl:when>
 											<xsl:when test="not(contains($validRequestURLtemplate, 'false'))">
 												<xsl:variable name="tmslPos" select="(count($layer/wmts:TileMatrixSetLink) + 1) idiv 2"/>
 												<!-- <ctl:message select="concat('format ', $format, ' tmslPos ', $tmslPos)"/> -->
@@ -21656,6 +21682,10 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 				<xsl:when test="contains($results, 'false')">
 					<ctl:message>[FAILURE] Test failed. Server.RESTful.GetFeatureInfo.Invalid.TileMatrixSet</ctl:message>
 					<ctl:fail/>
+				</xsl:when>
+				<xsl:when test="contains($results, 'skip')">
+					<ctl:message>Test skipped. Server.RESTful.GetFeatureInfo.Invalid.TileMatrixSet</ctl:message>
+					<ctl:skipped/>
 				</xsl:when>
 				<xsl:when test="contains($results, 'bestPractice')">
 					<ctl:message>Test passed as BestPractice: Server.RESTful.GetFeatureInfo.Invalid.TileMatrixSet</ctl:message>
@@ -24129,17 +24159,11 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 										<xsl:variable name="dimensionNames" select="string-join($layer/wmts:Dimension/ows:Identifier, ',')"/>  
 										<xsl:variable name="validRequestURLtemplate" select="wmtsFunctions:isValidFeatureInfoURLtemplate($resourceURLtemplate, $layerId, $dimensionNames)"/>
 										<xsl:choose>
+											<xsl:when test="not(contains($resourceURLtemplate,'{style}'))">
+												<ctl:message select="concat('Template for layer ', $layer/ows:Identifier, ' does not contain {style} parameter to replace with an invalid value.')"/> 
+												<xsl:text>skip|</xsl:text>
+											</xsl:when>
 											<xsl:when test="not(contains($validRequestURLtemplate, 'false'))">
-												<xsl:variable name="invalidStyleURLtemplate">
-													<xsl:choose>
-														<xsl:when test="contains($resourceURLtemplate, $styleId)">
-															<xsl:value-of select="concat(substring-before($resourceURLtemplate, $styleId), '{style}', substring-after($resourceURLtemplate, $styleId))"/>
-														</xsl:when>
-														<xsl:otherwise>
-															<xsl:value-of select="$resourceURLtemplate"/>
-														</xsl:otherwise>
-													</xsl:choose>
-												</xsl:variable> 
 												<xsl:variable name="tmslPos" select="(count($layer/wmts:TileMatrixSetLink) + 1) idiv 2"/>
 												<!-- <ctl:message select="concat('format ', $format, ' tmslPos ', $tmslPos)"/> -->
 												<xsl:for-each select="$layer/wmts:TileMatrixSetLink[$tmslPos]">
@@ -24194,7 +24218,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 														</xsl:variable>
 														<xsl:variable name="restURL">
 															<xsl:call-template name="wmts:RESTfulTemplateProcessor">
-																<xsl:with-param name="urlTemplate" select="$invalidStyleURLtemplate"/>
+																<xsl:with-param name="urlTemplate" select="$resourceURLtemplate"/>
 																<xsl:with-param name="dimensionNames" select="$dimensionNames"/>  
 																<xsl:with-param name="dimensionValues" select="$dimensionValues"/>
 																<xsl:with-param name="style">BogusForTest</xsl:with-param>
@@ -24282,6 +24306,10 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 				<xsl:when test="contains($results, 'false')">
 					<ctl:message>[FAILURE] Test failed. Server.RESTful.GetFeatureInfo.Invalid.Tile.Style</ctl:message>
 					<ctl:fail/>
+				</xsl:when>
+				<xsl:when test="contains($results, 'skip')">
+					<ctl:message>Test skipped. Server.RESTful.GetFeatureInfo.Invalid.Tile.Style</ctl:message>
+					<ctl:skipped/>
 				</xsl:when>
 				<xsl:when test="contains($results, 'bestPractice')">
 					<ctl:message>Test passed as BestPractice: Server.RESTful.GetFeatureInfo.Invalid.Tile.Style</ctl:message>
@@ -29319,12 +29347,14 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 		<ctl:param name="dimensionNames"/>
 		<ctl:description>Returns nothing for URL template with all parameters, string with false| one or more times for invalid one.</ctl:description>
 		<ctl:code>
+		<!--
 			<xsl:if test="not(contains($template, $layerId))">
 				<xsl:text>false|</xsl:text>
 			</xsl:if>
 			<xsl:if test="not(contains($template, '{TileMatrixSet}'))">
 				<xsl:text>false|</xsl:text>
 			</xsl:if>
+		-->
 			<xsl:if test="not(contains($template, '{TileMatrix}'))">
 				<xsl:text>false|</xsl:text>
 			</xsl:if>
@@ -29334,6 +29364,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 			<xsl:if test="not(contains($template, '{TileCol}'))">
 				<xsl:text>false|</xsl:text>
 			</xsl:if>
+		<!--
 			<xsl:variable name="dimensionNameList" select="tokenize($dimensionNames, ',')"/>
 			<xsl:for-each select="$dimensionNameList">
 				<xsl:variable name="dimensionName" select="."/>
@@ -29344,6 +29375,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 					</xsl:if>
 				</xsl:if>
 			</xsl:for-each>
+		-->
 		</ctl:code>
 	</ctl:function>
 
