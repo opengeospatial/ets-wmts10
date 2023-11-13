@@ -17270,7 +17270,8 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 				<xsl:variable name="hasTransparentLayer" select="boolean($wmts.capabilities.doc//wmts:Contents/wmts:Layer[contains(.,'Transparent')])"/>
 				<xsl:variable name="layer" select="$wmts.capabilities.doc//wmts:Contents/wmts:Layer[wmts:Format[starts-with(concat(.,';'),'image/png;') or starts-with(concat(.,';'),'image/gif;')] and (contains(.,'Transparent') or not($hasTransparentLayer))][1]"/>
 				<xsl:variable name="layerId" select="string($layer/ows:Identifier)"/>
-				<xsl:variable name="styleId" select="string($layer/wmts:Style[@isDefault='true']/ows:Identifier)"/>
+				<xsl:variable name="transparentStyleId" select="string($layer/wmts:Style[contains(.,'Transparent')][1]/ows:Identifier)"/>
+				<xsl:variable name="styleId" select="if ($transparentStyleId='') then string($layer/wmts:Style[1]/ows:Identifier) else $transparentStyleId"/>
 				<xsl:variable name="format" select="string($layer/wmts:Format[starts-with(concat(.,';'),'image/png;') or starts-with(concat(.,';'),'image/gif;')][1])"/>
 				<xsl:variable name="tileMatrixSetId" select="$layer/wmts:TileMatrixSetLink[1]/wmts:TileMatrixSet"/>
 				<xsl:variable name="tileMatrixSet" select="$wmts.capabilities.doc//wmts:Contents/wmts:TileMatrixSet[ows:Identifier = $tileMatrixSetId]"/>
@@ -17395,7 +17396,8 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 				<xsl:variable name="hasTransparentLayer" select="boolean($wmts.capabilities.doc//wmts:Contents/wmts:Layer[contains(.,'Transparent')])"/>
 				<xsl:variable name="layer" select="$wmts.capabilities.doc//wmts:Contents/wmts:Layer[wmts:Format[starts-with(concat(.,';'),'image/png;') or starts-with(concat(.,';'),'image/gif;')] and (contains(.,'Transparent') or not($hasTransparentLayer))][1]"/>
 				<xsl:variable name="layerId" select="string($layer/ows:Identifier)"/>
-				<xsl:variable name="styleId" select="string($layer/wmts:Style[@isDefault='true']/ows:Identifier)"/>
+				<xsl:variable name="transparentStyleId" select="string($layer/wmts:Style[contains(.,'Transparent')][1]/ows:Identifier)"/>
+				<xsl:variable name="styleId" select="if ($transparentStyleId='') then string($layer/wmts:Style[1]/ows:Identifier) else $transparentStyleId"/>
 				<xsl:variable name="format" select="string($layer/wmts:Format[starts-with(concat(.,';'),'image/png;') or starts-with(concat(.,';'),'image/gif;')][1])"/>
 				<xsl:variable name="tileMatrixSetId" select="$layer/wmts:TileMatrixSetLink[1]/wmts:TileMatrixSet"/>
 				<xsl:variable name="tileMatrixSet" select="$wmts.capabilities.doc//wmts:Contents/wmts:TileMatrixSet[ows:Identifier = $tileMatrixSetId]"/>
@@ -17499,7 +17501,8 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 				<xsl:variable name="hasTransparentLayer" select="boolean($wmts.capabilities.doc//wmts:Contents/wmts:Layer[contains(.,'Transparent')])"/>
 				<xsl:variable name="layer" select="$wmts.capabilities.doc//wmts:Contents/wmts:Layer[wmts:Format[starts-with(concat(.,';'),'image/png;') or starts-with(concat(.,';'),'image/gif;')] and (contains(.,'Transparent') or not($hasTransparentLayer))][1]"/>
 				<xsl:variable name="layerId" select="string($layer/ows:Identifier)"/>
-				<xsl:variable name="styleId" select="string($layer/wmts:Style[@isDefault='true']/ows:Identifier)"/>
+				<xsl:variable name="transparentStyleId" select="string($layer/wmts:Style[contains(.,'Transparent')][1]/ows:Identifier)"/>
+				<xsl:variable name="styleId" select="if ($transparentStyleId='') then string($layer/wmts:Style[1]/ows:Identifier) else $transparentStyleId"/>
 				<xsl:variable name="format" select="string($layer/wmts:Format[starts-with(concat(.,';'),'image/png;') or starts-with(concat(.,';'),'image/gif;')][1])"/>
 				<xsl:variable name="tileMatrixSetId" select="$layer/wmts:TileMatrixSetLink[1]/wmts:TileMatrixSet"/>
 				<xsl:variable name="tileMatrixSet" select="$wmts.capabilities.doc//wmts:Contents/wmts:TileMatrixSet[ows:Identifier = $tileMatrixSetId]"/>
@@ -17613,7 +17616,8 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 				<xsl:variable name="hasTransparentLayer" select="boolean($wmts.capabilities.doc//wmts:Contents/wmts:Layer[contains(.,'Transparent')])"/>
 				<xsl:variable name="layer" select="$wmts.capabilities.doc//wmts:Contents/wmts:Layer[wmts:Format[starts-with(concat(.,';'),'image/png;') or starts-with(concat(.,';'),'image/gif;')] and (contains(.,'Transparent') or not($hasTransparentLayer))][1]"/>
 				<xsl:variable name="layerId" select="string($layer/ows:Identifier)"/>
-				<xsl:variable name="styleId" select="string($layer/wmts:Style[@isDefault='true']/ows:Identifier)"/>
+				<xsl:variable name="transparentStyleId" select="string($layer/wmts:Style[contains(.,'Transparent')][1]/ows:Identifier)"/>
+				<xsl:variable name="styleId" select="if ($transparentStyleId='') then string($layer/wmts:Style[1]/ows:Identifier) else $transparentStyleId"/>
 				<xsl:variable name="format" select="string($layer/wmts:Format[starts-with(concat(.,';'),'image/png;') or starts-with(concat(.,';'),'image/gif;')][1])"/>
 				<xsl:variable name="tileMatrixSetId" select="$layer/wmts:TileMatrixSetLink[1]/wmts:TileMatrixSet"/>
 				<xsl:variable name="tileMatrixSet" select="$wmts.capabilities.doc//wmts:Contents/wmts:TileMatrixSet[ows:Identifier = $tileMatrixSetId]"/>
