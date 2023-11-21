@@ -2807,7 +2807,7 @@
     <ctl:param name="capabilitiesURL"/>
     <ctl:param name="method">get|post</ctl:param>
     <ctl:param name="service">OWS service type, e.g. WMTS</ctl:param>
-    <ctl:description>Verify that each OnlineResource URL is either a URL prefix termined by "?" for HTTP Get or a URL not terminated y "?" for HTTP Post</ctl:description>
+    <ctl:description>Verify that each OnlineResource URL is either a URL prefix terminated by "?" or "&amp;" for HTTP GET, a URL for RESTful HTTP GET or a URL not terminated by "?" for HTTP POST</ctl:description>
     <ctl:code>
       <xsl:variable name="capabilities.elt" select="owsFunctions:CapabilitesResponseElement($capabilitiesURL, $method, $service)"/>
       <xsl:if test="exists($capabilities.elt)">
@@ -2822,7 +2822,7 @@
   <ctl:function name="owsFunctions:XML.GetCapabilities.Response.OnlineResource">
     <ctl:param name="capabilitiesURL"/>
     <ctl:param name="service">OWS service type, e.g. WMTS</ctl:param>
-    <ctl:description>Verify that each OnlineResource URL is either a URL prefix termined by "?" for HTTP Get or a URL not terminated y "?" for HTTP Post</ctl:description>
+    <ctl:description>Verify that each OnlineResource URL is either a URL prefix terminated by "?" or "&amp;" for HTTP GET, a URL for RESTful HTTP GET or a URL not terminated by "?" for HTTP POST</ctl:description>
     <ctl:code>
       <xsl:variable name="capabilities.elt" select="owsFunctions:XML.CapabilitesResponseElement($capabilitiesURL, $service)"/>
       <xsl:if test="exists($capabilities.elt)">
@@ -2837,7 +2837,7 @@
   <ctl:function name="owsFunctions:SOAP.GetCapabilities.Response.OnlineResource">
     <ctl:param name="capabilitiesURL"/>
     <ctl:param name="service">OWS service type, e.g. WMTS</ctl:param>
-    <ctl:description>Verify that each OnlineResource URL is either a URL prefix termined by "?" for HTTP Get or a URL not terminated y "?" for HTTP Post</ctl:description>
+    <ctl:description>Verify that each OnlineResource URL is either a URL prefix terminated by "?" or "&amp;" for HTTP GET, a URL for RESTful HTTP GET or a URL not terminated by "?" for HTTP POST</ctl:description>
     <ctl:code>
       <xsl:variable name="capabilities.elt" select="owsFunctions:SOAP.CapabilitesResponseElement($capabilitiesURL, $service)"/>
       <xsl:if test="exists($capabilities.elt)">
@@ -2852,22 +2852,35 @@
   <ctl:function name="owsFunctions:check.GetCapabilities.Response.OnlineResource">
     <ctl:param name="capabilities.elt"/>
     <ctl:param name="method">get|post</ctl:param>
-    <ctl:description>Verify that each OnlineResource URL is either a URL prefix termined by "?" for HTTP Get or a URL not terminated y "?" for HTTP Post</ctl:description>
+    <ctl:description>Verify that each OnlineResource URL is either a URL prefix terminated by "?" or "&amp;" for HTTP GET, a URL for RESTful HTTP GET or a URL not terminated by "?" for HTTP POST</ctl:description>
     <ctl:code>
       <xsl:variable name="results">
         <xsl:choose>
           <xsl:when test="lower-case($method) = 'get' ">
-            <xsl:for-each select="$capabilities.elt/ows:OperationsMetadata/ows:Operation/ows:DCP/ows:HTTP/ows:Get/@xlink:href">
-              <xsl:variable name="urlPrefix" select="."/>
-              <xsl:choose>
-                <xsl:when test="((starts-with($urlPrefix,'http://') or starts-with($urlPrefix,'https://')) and (ends-with($urlPrefix, '?') or ends-with($urlPrefix, '&amp;')))">
-                  <xsl:text>true|</xsl:text>
-                </xsl:when>
-                <xsl:otherwise>
-                  <ctl:message select="concat('URL ', $urlPrefix, ' is not a valid HTTP GET URL prefix, which must begin with http:// and end with ?')"/>
-                  <xsl:text>false|</xsl:text>
-                </xsl:otherwise>
-              </xsl:choose>
+            <xsl:for-each select="$capabilities.elt/ows:OperationsMetadata/ows:Operation/ows:DCP/ows:HTTP/ows:Get">
+              <xsl:variable name="owsGet" select="."/>
+              <xsl:if test="$owsGet/ows:Constraint[@name='GetEncoding']/ows:AllowedValues/ows:Value != 'RESTful'" >
+                <xsl:choose>
+                  <xsl:when test="((starts-with($owsGet/@xlink:href,'http://') or starts-with($owsGet/@xlink:href,'https://')) and (ends-with($owsGet/@xlink:href, '?') or ends-with($owsGet/@xlink:href, '&amp;')))">
+                    <xsl:text>true|</xsl:text>
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <ctl:message select="concat('URL ', $owsGet/@xlink:href, ' is not a valid HTTP GET URL prefix which must begin with http:// or https:// and end with ? or &amp;')"/>
+                    <xsl:text>false|</xsl:text>
+                  </xsl:otherwise>
+                </xsl:choose>
+              </xsl:if>
+              <xsl:if test="$owsGet/ows:Constraint[@name='GetEncoding']/ows:AllowedValues/ows:Value = 'RESTful'" >
+                <xsl:choose>
+                  <xsl:when test="((starts-with($owsGet/@xlink:href,'http://') or starts-with($owsGet/@xlink:href,'https://')))">
+                    <xsl:text>true|</xsl:text>
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <ctl:message select="concat('URL ', $owsGet/@xlink:href, ' is not a valid RESTful HTTP GET URL which must begin with http:// or https://')"/>
+                    <xsl:text>false|</xsl:text>
+                  </xsl:otherwise>
+                </xsl:choose>
+              </xsl:if>
             </xsl:for-each>
           </xsl:when>
           <xsl:otherwise>
@@ -2878,7 +2891,7 @@
                   <xsl:text>true|</xsl:text>
                 </xsl:when>
                 <xsl:otherwise>
-                  <ctl:message select="concat('URL ', $urlPrefix, ' is not a valid HTTP POST URL, which must begin with http:// and not end with ?')"/>
+                  <ctl:message select="concat('URL ', $urlPrefix, ' is not a valid HTTP POST URL which must begin with http:// or https:// and not end with ?')"/>
                   <xsl:text>false|</xsl:text>
                 </xsl:otherwise>
               </xsl:choose>									
