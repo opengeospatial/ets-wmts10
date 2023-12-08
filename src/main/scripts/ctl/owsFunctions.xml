@@ -2857,11 +2857,11 @@
       <xsl:variable name="results">
         <xsl:choose>
           <xsl:when test="lower-case($method) = 'get' ">
-            <xsl:for-each select="$capabilities.elt/ows:OperationsMetadata/ows:Operation/ows:DCP/ows:HTTP/ows:Get/@xlink:href">
-              <xsl:variable name="urlPrefix" select="."/>
-              <xsl:variable name="operationsMetadata" select="../../../../.."/>
+            <xsl:for-each select="$capabilities.elt/ows:OperationsMetadata//*[local-name()='Get']">
+              <xsl:variable name="urlPrefix" select="@xlink:href"/>
+              <xsl:variable name="operationsMetadata" select="../../../.."/>
               <xsl:choose>
-                <xsl:when test="$operationsMetadata/ows:Operation/ows:DCP/ows:HTTP/ows:Get/ows:Constraint[@name='GetEncoding']/ows:AllowedValues/ows:Value = 'RESTful' or
+                <xsl:when test="./ows:Constraint[@name='GetEncoding']/ows:AllowedValues/ows:Value = 'RESTful' or
                                 $operationsMetadata/ows:Operation/ows:Constraint[@name='GetEncoding']/ows:AllowedValues/ows:Value = 'RESTful' or
                                 $operationsMetadata/ows:Constraint[@name='GetEncoding']/ows:AllowedValues/ows:Value = 'RESTful'">
                   <xsl:choose>
