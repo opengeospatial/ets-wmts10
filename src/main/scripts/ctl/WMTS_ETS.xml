@@ -411,6 +411,10 @@
                         <ctl:with-param name="bootstrap.restful" select="$bootstrap.restful" />
                       </ctl:call-test>
 
+                      <ctl:call-test name="wmts:SimpleProfile.main">
+                        <ctl:with-param name="wmts.capabilities.doc" select="$wmts.capabilities.doc" />
+                      </ctl:call-test>
+
                     </xsl:otherwise>
                   </xsl:choose>
                 </xsl:otherwise>
@@ -649,6 +653,16 @@
         <ctl:with-param name="bootstrap" select="$bootstrap.restful" />
         <ctl:with-param name="selected" select="$selected" />
       </ctl:call-test>-->
+    </ctl:code>
+  </ctl:test>
+
+  <ctl:test name="wmts:SimpleProfile.main" isConformanceClass="true" isBasic="true">
+    <ctl:param name="wmts.capabilities.doc">WMTS capabilities document</ctl:param>
+    <ctl:assertion>The server satisfies all SimpleProfile requirements for all supported bindings.</ctl:assertion>
+    <ctl:code>
+      <ctl:call-test name="wmts:SimpleProfile.Schematron">
+          <ctl:with-param name="doc" select="$wmts.capabilities.doc" />
+      </ctl:call-test>
     </ctl:code>
   </ctl:test>
 

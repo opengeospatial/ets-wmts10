@@ -212,5 +212,13 @@ AAAAAMCT/j9KGCQIgHYI9QAAAABJRU5ErkJggg==&#xD;></xsl:variable>
 		<ctl:java class="com.occamlab.te.parsers.ImageParser" method="parseBase64" initialized="false"/>
   </ctl:function>
 
+  <ctl:function name="ctl:SchematronValidator">
+      <ctl:param name="doc"/>
+      <ctl:param name="schema"/>
+      <ctl:param name="phase"/>
+      <ctl:return>A list of errors (NodeList of "error" elements).</ctl:return>
+      <ctl:description>Invokes the Schematron validator.</ctl:description>
+      <ctl:java class="com.occamlab.te.parsers.ISOSchematronValidatingParser" method="validateSchematron" initialized="true"/>
+  </ctl:function>	
 
 </ctl:package>
