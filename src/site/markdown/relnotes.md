@@ -1,5 +1,10 @@
 # Release Notes OGC WMTS 1.0 Test Suite
 
+## 1.6 (2023-12)
+
+* [#79](https://github.com/opengeospatial/ets-wmts10/issues/79) - Failing WMTS compliance test for capabilities that include RESTful operation URLs
+* [#82](https://github.com/opengeospatial/ets-wmts10/pull/82) - Update TEAM Engine dependencies to version 5.7
+
 ## 1.5 (2023-03)
 
 * [#73](https://github.com/opengeospatial/ets-wmts10/issues/73) - Test Server.KVP.GET.HTTP.Mandatory is flawed
