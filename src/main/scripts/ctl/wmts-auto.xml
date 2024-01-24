@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ctl:package
+	xmlns:ctl="http://www.occamlab.com/ctl" 
+	xmlns:gml="http://www.opengis.net/gml" 
+	xmlns:html="http://www.w3.org/1999/xhtml" 	
+	xmlns:ogc="http://www.opengis.net/ogc"
+	xmlns:ows="http://www.opengis.net/ows/1.1" 
+	xmlns:parsers="http://www.occamlab.com/te/parsers"
+	xmlns:saxon="http://saxon.sf.net/" 
+	xmlns:te="http://www.occamlab.com/te"
+	xmlns:tep="http://teamengine.sourceforge.net/parsers" 
+	xmlns:xi="http://www.w3.org/2001/XInclude" 
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:xml="http://www.w3.org/XML/1998/namespace"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:wmts="http://www.opengis.net/wmts/1.0"
+	xmlns:ctlFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/ctlFunctions.xml"	
+	xmlns:owsFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/owsFunctions.xml"	
+	xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFunctions.xml"	
+	xmlns:wmtsFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wmtsFunctions.xml"	
+	xmlns:wmtsBootstrap="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/bootstrap.xml">
+	
+	<xi:include href="bootstrap.xml"/>
+	<xi:include href="ctlFunctions.xml"/>
+	<xi:include href="owsFunctions.xml"/>
+	<xi:include href="wmtsFunctions.xml"/>
+	<xi:include href="wmtsMain.xml"/>
+	<xi:include href="wmtsServerCommonOperationsTests.xml"/>
+	<xi:include href="wmtsServerGetCapabilitiesTests.xml"/>
+	<xi:include href="wmtsServerGetFeatureInfoTests.xml"/>
+	<xi:include href="wmtsServerGetTileTests.xml"/>
+	<xi:include href="wwwFunctions.xml"/>
+
+  <ctl:suite name="wmts:server.suite.base-auto">		
+    <ctl:title>WMTS 1.0 Server Compliance Test Suite Base</ctl:title>
+    <ctl:description>Verifies that a WMTS 1.0 server implementation complies with a given conformance classes.</ctl:description>
+    <ctl:link>docs/wmts/1.0/WMTS 1.0 ATS.html</ctl:link>		
+    <ctl:defaultResult>Pass</ctl:defaultResult>
+    <ctl:starting-test>wmts:main-auto</ctl:starting-test>
+  </ctl:suite>
+
+  <ctl:test name="wmts:main-auto" type="Mandatory">
+    <ctl:param name="capabilities-url" />
+    <ctl:context>wmts:server.suite.base-auto</ctl:context>
+    <ctl:assertion>The server returns a valid Capabilities document from a KVP GET or RESTful request, to support further tests in one or more profiles.</ctl:assertion>
+    <ctl:code>
+      <ctl:call-test name="wmts:main">
+        <ctl:with-param name="capabilities-url" select="$capabilities-url" />
+        <ctl:with-param name="fail-early">off</ctl:with-param>
+	    <ctl:with-param name="include-CommonOperations-tests">on</ctl:with-param>
+	    <ctl:with-param name="include-GetCapabilities-tests">on</ctl:with-param>
+	    <ctl:with-param name="include-GetTile-tests">on</ctl:with-param>
+	    <ctl:with-param name="include-GetFeatureInfo-tests">off</ctl:with-param>
+	    <ctl:with-param name="include-kvp-get-encoding">on</ctl:with-param>
+	    <ctl:with-param name="include-restful-encoding">off</ctl:with-param>
+	  </ctl:call-test>
+	</ctl:code>
+  </ctl:test>
+</ctl:package>
