@@ -36,14 +36,14 @@
 		    <input name="include-GetCapabilities-tests" type="checkbox" checked="checked"/> Include GetCapabilities Tests (Required)<br/>
 		    <input name="include-GetTile-tests" type="checkbox" checked="checked"/> Include GetTile Tests (Required)<br/>
 			-->
-		    <input name="include-GetFeatureInfo-tests" type="checkbox"/> Include GetFeatureInfo Tests (Unofficial)<br/>
+		    <input name="include-GetFeatureInfo-tests" type="checkbox"/> Include GetFeatureInfo Tests (optional)<br/>
 		  </p>
 		  <p>
 		    <input name="include-kvp-get-encoding" type="hidden" value="on"/>
 		    <!--
 		    <input name="include-kvp-get-encoding" type="checkbox" checked="checked"/> Include KVP Get Encoding Tests<br/>
 			-->
-		    <input name="include-restful-encoding" type="checkbox"/> Include RESTful Encoding Tests (Unofficial)
+		    <input name="include-restful-encoding" type="checkbox"/> Include RESTful Encoding Tests (optional)
 		  </p>
 		</fieldset>
 		<p>
