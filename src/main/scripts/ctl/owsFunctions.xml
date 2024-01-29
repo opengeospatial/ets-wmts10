@@ -514,20 +514,21 @@
       <!-- <ctl:message select="concat('validateExceptionReport schemaPath ', $exceptionReportSchemaPath)"/> -->
       <xsl:variable name="result">
         <xsl:choose>
-          <xsl:when test="count(/response/content/*//*[local-name()='ExceptionReport']) > 0">
-            <ctl:message>ExceptionReport does not contain local name 'ExceptionReport'.</ctl:message>
-            <xsl:text>false</xsl:text>
+          <xsl:when test="$httpParserExceptionReport/response/content/*[local-name()='ExceptionReport']">
+            <ctl:message>Response contains local name 'ExceptionReport'.</ctl:message>
+            <xsl:text>true</xsl:text>
           </xsl:when>
           <xsl:otherwise>
-            <ctl:message>ExceptionReport does contain local name 'ExceptionReport'.</ctl:message>
-            <xsl:text>true</xsl:text>
+            <ctl:message>Response does not contain local name 'ExceptionReport'.</ctl:message>
+            <xsl:text>false</xsl:text>
           </xsl:otherwise>
         </xsl:choose>
       </xsl:variable>
-      <xsl:variable name="exception.validation.elapsed" select="ctl:elapsedTime('exception.validation')"/>
+      <!-- <xsl:variable name="exception.validation.elapsed" select="ctl:elapsedTime('exception.validation')"/> -->
       <xsl:choose>
         <xsl:when test="not(string($result) = 'true')">
-          <ctl:message>Exception report failed validation; elapsedTime: [<xsl:value-of select="$exception.validation.elapsed"/>] milliseconds</ctl:message>
+          <!-- <ctl:message>Exception report failed validation; elapsedTime: [<xsl:value-of select="$exception.validation.elapsed"/>] milliseconds</ctl:message> -->
+          <ctl:message>Exception report failed validation</ctl:message>
           <xsl:text>false</xsl:text>
           <xsl:variable name="returnedStatusCode" select="$httpParserExceptionReport/response/status/@code"/>
           <xsl:choose>
@@ -540,8 +541,8 @@
           </xsl:choose>							
         </xsl:when>
         <xsl:otherwise>
-          <ctl:message>exception.validation.elapsed [<xsl:value-of select="$exception.validation.elapsed"/>] milliseconds</ctl:message>
-          <ctl:message>Exception report is valid, continuing...</ctl:message>
+          <!-- <ctl:message>exception.validation.elapsed [<xsl:value-of select="$exception.validation.elapsed"/>] milliseconds</ctl:message> -->
+          <!-- <ctl:message>Exception report is valid, continuing...</ctl:message> -->
           <xsl:variable name="exceptionCodeList" select="tokenize($exceptionCodes, ',')"/>
           <xsl:variable name="locatorList" select="tokenize($locators, ',')"/>
           <xsl:variable name="exceptionReportResults">
@@ -573,19 +574,30 @@
                   <xsl:choose>
                     <xsl:when test="lower-case(string($exceptionCodeReturned)) = lower-case(string($exceptionCode))">
                       <xsl:choose>
-                        <xsl:when  test="$resultReturned = 'true' ">
-                          <ctl:message select="concat('The returned exception report contained expected exceptionCode ', $exceptionCode, ' with locator ', $locatorReturned, ' valid for specified locator ', $locator)"/>
+                        <xsl:when test="$resultReturned = 'true' ">
+                          <ctl:message select="concat('The exception report contains the expected exceptionCode ', $exceptionCode, ' with locator ', $locatorReturned)"/>
                           <xsl:text>true|</xsl:text>
                         </xsl:when>
                         <xsl:when test="not($exceptionCodeTrue)">
-                          <ctl:message select="concat('The returned exception report contained expected exceptionCode ', $exceptionCode, ' with locator ', $locatorReturned, ' not valid for specified locator ', $locator)"/>
+						  <xsl:variable name="msg" select="concat('The exception report contains the expected exceptionCode ', $exceptionCode, ', but with an invalid locator ', $locatorReturned, '.')"/>
+						  <xsl:choose>
+							<xsl:when test="$locator='*'">
+							  <ctl:message select="$msg"/>
+							</xsl:when>
+							<xsl:when test="$locator='^'">
+							  <ctl:message select="concat($msg, ' No locator should be present.')"/>
+							</xsl:when>
+							<xsl:otherwise>
+							  <ctl:message select="concat($msg, ' Locator should be ', $locator, '.')"/>
+							</xsl:otherwise>
+						  </xsl:choose>
                           <xsl:text>false|</xsl:text>
                         </xsl:when>
                       </xsl:choose>
                     </xsl:when>
                     <xsl:otherwise>
                       <xsl:if test="not(contains($exceptionCodes, $exceptionCodeReturned))">
-                        <ctl:message select="concat('The returned exception report contained unexpected exceptionCode ', $exceptionCodeReturned, ' with locator ', $locatorReturned)"/>
+                        <ctl:message select="concat('The exception report contains an unexpected exceptionCode ', $exceptionCodeReturned, ' with locator ', $locatorReturned)"/>
                       </xsl:if>
                     </xsl:otherwise>
                   </xsl:choose>
@@ -671,7 +683,7 @@
       <xsl:variable name="validVersion" select="owsFunctions:validateVersion($version)"/>
       <xsl:choose>
         <xsl:when test="not(string($validVersion) = 'true')">
-          <ctl:message><xsl:value-of select="concat([FAILURE] $service, ' server version ',$version, ' does not contain three non-negative integers separated by decimal points, in the form x.y.z where he integers y and z do not exceed 99')"/></ctl:message>
+          <ctl:message><xsl:value-of select="concat('[FAILURE] ', $service, ' server version ',$version, ' does not contain three non-negative integers separated by decimal points, in the form x.y.z where he integers y and z do not exceed 99')"/></ctl:message>
           <ctl:fail/>
         </xsl:when>
         <xsl:otherwise>
@@ -1002,7 +1014,7 @@
           <ctl:pass/>
         </xsl:when>
         <xsl:otherwise>
-          <ctl:message><xsl:value-of select="concat('Test skipped: ', $service, ' server version ', $version, ' did not return a correct ows:ExceptionReport and HTTP status in response to request with an acceptversions parameter value of ', $acceptVersions, ',so Accept Versions considered to not be implemented.')"/></ctl:message>
+          <ctl:message><xsl:value-of select="concat('Test skipped: ', $service, ' server version ', $version, ' did not return a correct ows:ExceptionReport and HTTP status in response to request with an acceptversions parameter value of ', $acceptVersions, ', so version negotiation considered to not be implemented.')"/></ctl:message>
           <ctl:skipped/>
         </xsl:otherwise>
       </xsl:choose>
@@ -1941,7 +1953,7 @@
     <ctl:code>
       <xsl:variable name="updateSequenceDouble" select="number($updateSequence)"/>
       <xsl:choose>
-        <xsl:when test="$updateSequenceDouble = 'NaN' ">
+        <xsl:when test="string($updateSequenceDouble) = 'NaN' ">
           <ctl:message>Bootstrap updateSequence value is not a number; test capability not implemented yet; test skipped</ctl:message>
           <ctl:skipped/>
         </xsl:when>
@@ -2178,7 +2190,7 @@
     <ctl:code>
       <xsl:variable name="updateSequenceDouble" select="number($updateSequence)"/>
       <xsl:choose>
-        <xsl:when test="$updateSequenceDouble = 'NaN' ">
+        <xsl:when test="string($updateSequenceDouble) = 'NaN' ">
           <ctl:message>Bootstrap updateSequence value is not a number; test capability not implemented yet; test skipped</ctl:message>
           <ctl:skipped/>
         </xsl:when>

@@ -77,7 +77,7 @@
             <!-- Common Operations -->
 
             <xsl:element name="CommonOperations.Mandatory.KVP.GET">
-              <xsl:element name="Server.KVP.GET.HTTP.Mandatory.Prerequisites"><xsl:value-of select="boolean($getCapabilitiesKVPGET)" /></xsl:element>
+<!--              <xsl:element name="Server.KVP.GET.HTTP.Mandatory.Prerequisites"><xsl:value-of select="boolean($getCapabilitiesKVPGET)" /></xsl:element> -->
               <xsl:element name="Server.KVP.GET.InvalidQueryString.Prerequisites"><xsl:value-of select="boolean($getCapabilitiesKVPGET)" /></xsl:element>
               <xsl:element name="Server.KVP.GET.InvalidService.Prerequisites"><xsl:value-of select="boolean($getCapabilitiesKVPGET)" /></xsl:element>
               <xsl:element name="Server.KVP.GET.InvalidRequest.Prerequisites"><xsl:value-of select="boolean($getCapabilitiesKVPGET)" /></xsl:element>
@@ -138,9 +138,11 @@
               <xsl:element name="Server.KVP.GET.GetCapabilities.Response.No.Layers.OtherSource.Prerequisites"><xsl:value-of select="$getCapabilitiesKVPGET and $Server.KVP.GET.GetCapabilities.Response.SchemaValid and $Server.KVP.GET.GetCapabilities.Response.No.Layers.OtherSource.Prerequisite-2"/></xsl:element>
               <xsl:element name="Server.KVP.GET.GetCapabilities.Response.Layer.LegendURL.Correct.Resource.Prerequisites"><xsl:value-of select="$getCapabilitiesKVPGET and $Server.KVP.GET.GetCapabilities.Response.SchemaValid"/></xsl:element>							
 
+              <!--
               <xsl:variable name="Server.KVP.GET.GetCapabilities.Response.Layer.LegendURL.Correct.Resource" select="wmtsFunctions:allLayerLegendURLCorrectResource($wmts.capabilities.doc)"/>	
-              <xsl:element name="Server.KVP.GET.GetCapabilities.Response.Layer.LegendURL.Correct.Format.Prerequisites"><xsl:value-of select="$getCapabilitiesKVPGET and $Server.KVP.GET.GetCapabilities.Response.SchemaValid and ($Server.KVP.GET.GetCapabilities.Response.Layer.LegendURL.Correct.Resource = 'true')"/></xsl:element>
-              <xsl:element name="Server.KVP.GET.GetCapabilities.Response.Layer.LegendURL.Correct.Size.Prerequisites"><xsl:value-of select="$getCapabilitiesKVPGET and $Server.KVP.GET.GetCapabilities.Response.SchemaValid and ($Server.KVP.GET.GetCapabilities.Response.Layer.LegendURL.Correct.Resource = 'true')"/></xsl:element>
+              <xsl:element name="Server.KVP.GET.GetCapabilities.Response.Layer.LegendURL.Correct.Format.Prerequisites"><xsl:value-of select="$getCapabilitiesKVPGET and $Server.KVP.GET.GetCapabilities.Response.SchemaValid"/></xsl:element>
+              <xsl:element name="Server.KVP.GET.GetCapabilities.Response.Layer.LegendURL.Correct.Size.Prerequisites"><xsl:value-of select="$getCapabilitiesKVPGET and $Server.KVP.GET.GetCapabilities.Response.SchemaValid"/></xsl:element>
+			  -->
               <xsl:element name="Server.KVP.GET.GetCapabilities.Response.Dimension.Identifiers.Unique.Prerequisites"><xsl:value-of select="$getCapabilitiesKVPGET and $Server.KVP.GET.GetCapabilities.Response.SchemaValid"/></xsl:element>
               <xsl:variable name="Server.KVP.GET.GetCapabilities.Response.TileMatrixSet.WellKnownScaleSet.Prerequisite-2" select="some $wkss in $wmts.capabilities.doc/wmts:Contents/wmts:TileMatrixSet/wmts:WellKnownScaleSet satisfies boolean($wkss = 'urn:ogc:def:wkss:OGC:1.0:GlobalCRS84Scale' or $wkss = 'urn:ogc:def:wkss:OGC:1.0:GlobalCRS84Pixel' or $wkss = 'urn:ogc:def:wkss:OGC:1.0:GoogleCRS84Quad' or $wkss = 'urn:ogc:def:wkss:OGC:1.0:GoogleMapsCompatible')"/>
               <xsl:element name="Server.KVP.GET.GetCapabilities.Response.TileMatrixSet.WellKnownScaleSet.Prerequisites"><xsl:value-of select="$getCapabilitiesKVPGET and $Server.KVP.GET.GetCapabilities.Response.SchemaValid and $Server.KVP.GET.GetCapabilities.Response.TileMatrixSet.WellKnownScaleSet.Prerequisite-2"/></xsl:element>
@@ -177,7 +179,7 @@
             </xsl:element>
 
             <xsl:element name="GetTile.Implemented.KVP.GET">
-              <xsl:variable name="Server.KVP.GET.GetTile.Optional.Prerequisite-2" select="boolean($wmts.capabilities.doc/wmts:Contents/wmts:Layer[count(wmts:Dimension) > 2])"/>
+              <xsl:variable name="Server.KVP.GET.GetTile.Optional.Prerequisite-2" select="boolean($wmts.capabilities.doc/wmts:Contents/wmts:Layer[count(wmts:Dimension) >= 2])"/>
               <xsl:element name="Server.KVP.GET.GetTile.Optional.Prerequisites"><xsl:value-of select="$getTileKVPGET and $Server.KVP.GET.GetTile.Optional.Prerequisite-2"/></xsl:element>
               <xsl:variable name="Server.KVP.GET.GetTile.Invalid.Tile.Row.TileMatrixSetLimits.Prerequisite-2" select="boolean($wmts.capabilities.doc/wmts:Contents/wmts:Layer/wmts:TileMatrixSetLink[wmts:TileMatrixSetLimits])"/>
               <xsl:element name="Server.KVP.GET.GetTile.Invalid.Tile.Row.TileMatrixSetLimits.Prerequisites"><xsl:value-of select="$getTileKVPGET and $Server.KVP.GET.GetTile.Invalid.Tile.Row.TileMatrixSetLimits.Prerequisite-2"/></xsl:element>
@@ -198,7 +200,7 @@
 
               <xsl:variable name="Server.KVP.GET.GetTile.Current.SampleDimension.Prerequisite-2" select="boolean($wmts.capabilities.doc/wmts:Contents/wmts:Layer[wmts:Dimension/wmts:Current])"/>
               <xsl:element name="Server.KVP.GET.GetTile.Current.SampleDimension.Prerequisites"><xsl:value-of select="$getTileKVPGET and $Server.KVP.GET.GetTile.Current.SampleDimension.Prerequisite-2"/></xsl:element>
-              <xsl:variable name="Server.KVP.GET.GetTile.Valid.Tile.Transparency.TransparentNodata" select="boolean($wmts.capabilities.doc/wmts:Contents/wmts:Layer[ows:Identifier = 'TransparentNodata'])"/>
+              <xsl:variable name="Server.KVP.GET.GetTile.Valid.Tile.Transparency.TransparentNodata" select="boolean($wmts.capabilities.doc/wmts:Contents/wmts:Layer[wmts:Format[starts-with(concat(.,';'),'image/png;') or starts-with(concat(.,';'), 'image/gif;')]])"/>
               <xsl:element name="Server.KVP.GET.GetTile.Valid.Tile.Transparency.Prerequisites"><xsl:value-of select="$getTileKVPGET and $Server.KVP.GET.GetTile.Valid.Tile.Transparency.TransparentNodata"/></xsl:element>
             </xsl:element>
 
@@ -208,7 +210,7 @@
               <xsl:variable name="Server.KVP.GET.GetFeatureInfo.Mandatory.Prerequisite-2" select="boolean($wmts.capabilities.doc/wmts:Contents/wmts:Layer[wmts:InfoFormat][not(wmts:Dimension) or (every $d in wmts:Dimension satisfies $d/wmts:Default)])"/>
               <xsl:element name="Server.KVP.GET.GetFeatureInfo.Mandatory.Prerequisites"><xsl:value-of select="$getFeatureInfoKVPGET and $Server.KVP.GET.GetFeatureInfo.Mandatory.Prerequisite-2"/>
               </xsl:element>
-              <xsl:variable name="Server.KVP.GET.GetFeatureInfo.Optional.Prerequisite-2" select="boolean($wmts.capabilities.doc/wmts:Contents/wmts:Layer[wmts:InfoFormat and count(wmts:Dimension) > 2])"/>"/>
+              <xsl:variable name="Server.KVP.GET.GetFeatureInfo.Optional.Prerequisite-2" select="boolean($wmts.capabilities.doc/wmts:Contents/wmts:Layer[wmts:InfoFormat and count(wmts:Dimension) >= 2])"/>"/>
           <xsl:element name="Server.KVP.GET.GetFeatureInfo.Optional.Prerequisites"><xsl:value-of select="$getFeatureInfoKVPGET and $Server.KVP.GET.GetFeatureInfo.Optional.Prerequisite-2"/></xsl:element>
 
           <xsl:variable name="Server.KVP.GET.GetFeatureInfo.Missing.Prerequisite-2" select="$Server.KVP.GET.GetFeatureInfo.Mandatory.Prerequisite-2"/>
@@ -271,8 +273,7 @@
       </xsl:element>
     </xsl:when>
     <xsl:otherwise>
-      <ctl:message>Server does not support KVP GET GetCapabilities and GetTile ... failed prerequisite check.  No other test will be executed.</ctl:message>
-      <ctl:skipped />
+      <ctl:message>Server does not support KVP GET GetCapabilities and GetTile ... Server.KVP.GET tests will not be executed.</ctl:message>
     </xsl:otherwise>
   </xsl:choose>
 </ctl:code>
@@ -387,10 +388,11 @@
             <xsl:variable name="Server.KVP.GET.GetCapabilities.Response.No.Layers.OtherSource.Prerequisite-2" select="count($wmts.capabilities.doc/wmts:Contents/wmts:Layer) = 0"/>
             <xsl:element name="Server.KVP.POST.GetCapabilities.Response.No.Layers.OtherSource.Prerequisites"><xsl:value-of select="$getCapabilitiesKVPPOST and $Server.KVP.GET.GetCapabilities.Response.SchemaValid and $Server.KVP.GET.GetCapabilities.Response.No.Layers.OtherSource.Prerequisite-2"/></xsl:element>
             <xsl:element name="Server.KVP.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Resource.Prerequisites"><xsl:value-of select="$getCapabilitiesKVPPOST and $Server.KVP.GET.GetCapabilities.Response.SchemaValid"/></xsl:element>
-
+            <!--
             <xsl:variable name="Server.KVP.GET.GetCapabilities.Response.Layer.LegendURL.Correct.Resource" select="wmtsFunctions:allLayerLegendURLCorrectResource($wmts.capabilities.doc)"/>	
-            <xsl:element name="Server.KVP.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Format.Prerequisites"><xsl:value-of select="$getCapabilitiesKVPPOST and $Server.KVP.GET.GetCapabilities.Response.SchemaValid and ($Server.KVP.GET.GetCapabilities.Response.Layer.LegendURL.Correct.Resource = 'true')"/></xsl:element>
-            <xsl:element name="Server.KVP.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Size.Prerequisites"><xsl:value-of select="$getCapabilitiesKVPPOST and $Server.KVP.GET.GetCapabilities.Response.SchemaValid and ($Server.KVP.GET.GetCapabilities.Response.Layer.LegendURL.Correct.Resource = 'true')"/></xsl:element>
+            <xsl:element name="Server.KVP.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Format.Prerequisites"><xsl:value-of select="$getCapabilitiesKVPPOST and $Server.KVP.GET.GetCapabilities.Response.SchemaValid"/></xsl:element>
+            <xsl:element name="Server.KVP.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Size.Prerequisites"><xsl:value-of select="$getCapabilitiesKVPPOST and $Server.KVP.GET.GetCapabilities.Response.SchemaValid"/></xsl:element>
+			-->
             <xsl:element name="Server.KVP.POST.GetCapabilities.Response.Dimension.Identifiers.Unique.Prerequisites"><xsl:value-of select="$getCapabilitiesKVPPOST and $Server.KVP.GET.GetCapabilities.Response.SchemaValid"/></xsl:element>
 
             <xsl:variable name="Server.KVP.GET.GetCapabilities.Response.TileMatrixSet.WellKnownScaleSet.Prerequisite-2" select="some $wkss in $wmts.capabilities.doc/wmts:Contents/wmts:TileMatrixSet/wmts:WellKnownScaleSet satisfies boolean($wkss = 'urn:ogc:def:wkss:OGC:1.0:GlobalCRS84Scale' or $wkss = 'urn:ogc:def:wkss:OGC:1.0:GlobalCRS84Pixel' or $wkss = 'urn:ogc:def:wkss:OGC:1.0:GoogleCRS84Quad' or $wkss = 'urn:ogc:def:wkss:OGC:1.0:GoogleMapsCompatible')"/>
@@ -427,7 +429,7 @@
           </xsl:element>
 
           <xsl:element name="GetTile.Implemented.KVP.POST">
-            <xsl:variable name="Server.KVP.GET.GetTile.Optional.Prerequisite-2" select="boolean($wmts.capabilities.doc/wmts:Contents/wmts:Layer[count(wmts:Dimension) > 2])"/>
+            <xsl:variable name="Server.KVP.GET.GetTile.Optional.Prerequisite-2" select="boolean($wmts.capabilities.doc/wmts:Contents/wmts:Layer[count(wmts:Dimension) >= 2])"/>
             <xsl:element name="Server.KVP.POST.GetTile.Optional.Prerequisites"><xsl:value-of select="boolean($getTileKVPPOST and $Server.KVP.GET.GetTile.Optional.Prerequisite-2)"/></xsl:element>
 
             <xsl:variable name="Server.KVP.GET.GetTile.Invalid.Tile.Row.TileMatrixSetLimits.Prerequisite-2" select="boolean($wmts.capabilities.doc/wmts:Contents/wmts:Layer/wmts:TileMatrixSetLink[wmts:TileMatrixSetLimits])"/>
@@ -451,7 +453,7 @@
             <xsl:variable name="Server.KVP.GET.GetTile.Current.SampleDimension.Prerequisite-2" select="boolean($wmts.capabilities.doc/wmts:Contents/wmts:Layer[wmts:Dimension/wmts:Current])"/>
             <xsl:element name="Server.KVP.POST.GetTile.Current.SampleDimension.Prerequisites"><xsl:value-of select="$getTileKVPPOST and $Server.KVP.GET.GetTile.Current.SampleDimension.Prerequisite-2"/></xsl:element>
 
-            <xsl:variable name="Server.KVP.GET.GetTile.Valid.Tile.Transparency.TransparentNodata" select="boolean($wmts.capabilities.doc/wmts:Contents/wmts:Layer[ows:Identifier = 'TransparentNodata'])"/>
+            <xsl:variable name="Server.KVP.GET.GetTile.Valid.Tile.Transparency.TransparentNodata" select="boolean($wmts.capabilities.doc/wmts:Contents/wmts:Layer[wmts:Format[starts-with(concat(.,';'),'image/png;') or starts-with(concat(.,';'), 'image/gif;')]])"/>
             <xsl:element name="Server.KVP.POST.GetTile.Valid.Tile.Transparency.Prerequisites"><xsl:value-of select="$getTileKVPPOST and $Server.KVP.GET.GetTile.Valid.Tile.Transparency.TransparentNodata"/></xsl:element>
           </xsl:element>
 
@@ -460,7 +462,7 @@
             <xsl:variable name="Server.KVP.GET.GetFeatureInfo.Mandatory.Prerequisite-2" select="boolean($wmts.capabilities.doc/wmts:Contents/wmts:Layer[wmts:InfoFormat][not(wmts:Dimension) or (every $d in wmts:Dimension satisfies $d/wmts:Default)])"/>
             <xsl:element name="Server.KVP.POST.GetFeatureInfo.Mandatory.Prerequisites"><xsl:value-of select="$getFeatureInfoKVPPOST and $Server.KVP.GET.GetFeatureInfo.Mandatory.Prerequisite-2"/></xsl:element>
 
-            <xsl:variable name="Server.KVP.GET.GetFeatureInfo.Optional.Prerequisite-2" select="boolean($wmts.capabilities.doc/wmts:Contents/wmts:Layer[wmts:InfoFormat and count(wmts:Dimension) > 2])"/>"/>
+            <xsl:variable name="Server.KVP.GET.GetFeatureInfo.Optional.Prerequisite-2" select="boolean($wmts.capabilities.doc/wmts:Contents/wmts:Layer[wmts:InfoFormat and count(wmts:Dimension) >= 2])"/>"/>
         <xsl:element name="Server.KVP.POST.GetFeatureInfo.Optional.Prerequisites"><xsl:value-of select="$getFeatureInfoKVPPOST and $Server.KVP.GET.GetFeatureInfo.Optional.Prerequisite-2"/></xsl:element>
 
         <xsl:variable name="Server.KVP.GET.GetFeatureInfo.Missing.Prerequisite-2" select="$Server.KVP.GET.GetFeatureInfo.Mandatory.Prerequisite-2"/>
@@ -524,8 +526,7 @@
     </xsl:element>
   </xsl:when>
   <xsl:otherwise>
-    <ctl:message>Server does not support KVP POST GetCapabilities and GetTile ... failed prerequisite check.  No other test will be executed.</ctl:message>
-    <ctl:skipped/>
+    <ctl:message>Server does not support KVP POST GetCapabilities and GetTile ... Server.KVP.POST tests will not be executed.</ctl:message>
   </xsl:otherwise>
 </xsl:choose>
 </ctl:code>
@@ -643,9 +644,11 @@
             <xsl:variable name="Server.KVP.GET.GetCapabilities.Response.No.Layers.OtherSource.Prerequisite-2" select="count($wmts.capabilities.doc/wmts:Contents/wmts:Layer) = 0"/>
             <xsl:element name="Server.XML.POST.GetCapabilities.Response.No.Layers.OtherSource.Prerequisites"><xsl:value-of select="string($getCapabilitiesXMLPOST  and $Server.KVP.GET.GetCapabilities.Response.SchemaValid and $Server.KVP.GET.GetCapabilities.Response.No.Layers.OtherSource.Prerequisite-2)"/></xsl:element>
             <xsl:element name="Server.XML.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Resource.Prerequisites"><xsl:value-of select="string($getCapabilitiesXMLPOST and $Server.KVP.GET.GetCapabilities.Response.SchemaValid)"/></xsl:element>
-            <xsl:variable name="Server.KVP.GET.GetCapabilities.Response.Layer.LegendURL.Correct.Resource" select="wmtsFunctions:allLayerLegendURLCorrectResource($wmts.capabilities.doc)"/>	
-            <xsl:element name="Server.XML.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Format.Prerequisites"><xsl:value-of select="string($getCapabilitiesXMLPOST and $Server.KVP.GET.GetCapabilities.Response.SchemaValid and ($Server.KVP.GET.GetCapabilities.Response.Layer.LegendURL.Correct.Resource = 'true'))"/></xsl:element>
-            <xsl:element name="Server.XML.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Size.Prerequisites"><xsl:value-of select="string($getCapabilitiesXMLPOST and $Server.KVP.GET.GetCapabilities.Response.SchemaValid and ($Server.KVP.GET.GetCapabilities.Response.Layer.LegendURL.Correct.Resource = 'true'))"/></xsl:element>
+            <!--
+			<xsl:variable name="Server.KVP.GET.GetCapabilities.Response.Layer.LegendURL.Correct.Resource" select="wmtsFunctions:allLayerLegendURLCorrectResource($wmts.capabilities.doc)"/>	
+            <xsl:element name="Server.XML.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Format.Prerequisites"><xsl:value-of select="string($getCapabilitiesXMLPOST and $Server.KVP.GET.GetCapabilities.Response.SchemaValid)"/></xsl:element>
+            <xsl:element name="Server.XML.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Size.Prerequisites"><xsl:value-of select="string($getCapabilitiesXMLPOST and $Server.KVP.GET.GetCapabilities.Response.SchemaValid)"/></xsl:element>
+			-->
             <xsl:element name="Server.XML.POST.GetCapabilities.Response.Dimension.Identifiers.Unique.Prerequisites"><xsl:value-of select="string($getCapabilitiesXMLPOST and $Server.KVP.GET.GetCapabilities.Response.SchemaValid)"/></xsl:element>
 
             <xsl:variable name="Server.KVP.GET.GetCapabilities.Response.TileMatrixSet.WellKnownScaleSet.Prerequisite-2" select="some $wkss in $wmts.capabilities.doc/wmts:Contents/wmts:TileMatrixSet/wmts:WellKnownScaleSet satisfies boolean($wkss = 'urn:ogc:def:wkss:OGC:1.0:GlobalCRS84Scale' or $wkss = 'urn:ogc:def:wkss:OGC:1.0:GlobalCRS84Pixel' or $wkss = 'urn:ogc:def:wkss:OGC:1.0:GoogleCRS84Quad' or $wkss = 'urn:ogc:def:wkss:OGC:1.0:GoogleMapsCompatible')"/>
@@ -683,7 +686,7 @@
           </xsl:element>
 
           <xsl:element name="GetTile.Implemented.XML.POST">
-            <xsl:variable name="Server.KVP.GET.GetTile.Optional.Prerequisite-2" select="boolean($wmts.capabilities.doc/wmts:Contents/wmts:Layer[count(wmts:Dimension) > 2])"/>
+            <xsl:variable name="Server.KVP.GET.GetTile.Optional.Prerequisite-2" select="boolean($wmts.capabilities.doc/wmts:Contents/wmts:Layer[count(wmts:Dimension) >= 2])"/>
             <xsl:element name="Server.XML.POST.GetTile.Optional.Prerequisites"><xsl:value-of select="string($getTileXMLPOST and $Server.KVP.GET.GetTile.Optional.Prerequisite-2)"/></xsl:element>
 
             <xsl:variable name="Server.KVP.GET.GetTile.Invalid.Tile.Row.TileMatrixSetLimits.Prerequisite-2" select="boolean($wmts.capabilities.doc/wmts:Contents/wmts:Layer/wmts:TileMatrixSetLink[wmts:TileMatrixSetLimits])"/>
@@ -707,7 +710,7 @@
             <xsl:variable name="Server.KVP.GET.GetTile.Current.SampleDimension.Prerequisite-2" select="boolean($wmts.capabilities.doc/wmts:Contents/wmts:Layer[wmts:Dimension/wmts:Current])"/>
             <xsl:element name="Server.XML.POST.GetTile.Current.SampleDimension.Prerequisites"><xsl:value-of select="string($getTileXMLPOST and $Server.KVP.GET.GetTile.Current.SampleDimension.Prerequisite-2)"/></xsl:element>
 
-            <xsl:variable name="Server.KVP.GET.GetTile.Valid.Tile.Transparency.TransparentNodata" select="boolean($wmts.capabilities.doc/wmts:Contents/wmts:Layer[ows:Identifier = 'TransparentNodata'])"/>
+            <xsl:variable name="Server.KVP.GET.GetTile.Valid.Tile.Transparency.TransparentNodata" select="boolean($wmts.capabilities.doc/wmts:Contents/wmts:Layer[wmts:Format[starts-with(concat(.,';'),'image/png;') or starts-with(concat(.,';'), 'image/gif;')]])"/>
             <xsl:element name="Server.XML.POST.GetTile.Valid.Tile.Transparency.Prerequisites"><xsl:value-of select="string($getTileXMLPOST and $Server.KVP.GET.GetTile.Valid.Tile.Transparency.TransparentNodata)"/></xsl:element>
           </xsl:element>
 
@@ -717,7 +720,7 @@
             <xsl:variable name="Server.KVP.GET.GetFeatureInfo.Mandatory.Prerequisite-2" select="boolean($wmts.capabilities.doc/wmts:Contents/wmts:Layer[wmts:InfoFormat][not(wmts:Dimension) or (every $d in wmts:Dimension satisfies $d/wmts:Default)])"/>
             <xsl:element name="Server.XML.POST.GetFeatureInfo.Mandatory.Prerequisites"><xsl:value-of select="string($getFeatureInfoXMLPOST and $Server.KVP.GET.GetFeatureInfo.Mandatory.Prerequisite-2)"/></xsl:element>
 
-            <xsl:variable name="Server.KVP.GET.GetFeatureInfo.Optional.Prerequisite-2" select="boolean($wmts.capabilities.doc/wmts:Contents/wmts:Layer[wmts:InfoFormat and count(wmts:Dimension) > 2])"/>"/>
+            <xsl:variable name="Server.KVP.GET.GetFeatureInfo.Optional.Prerequisite-2" select="boolean($wmts.capabilities.doc/wmts:Contents/wmts:Layer[wmts:InfoFormat and count(wmts:Dimension) >= 2])"/>"/>
         <xsl:element name="Server.XML.POST.GetFeatureInfo.Optional.Prerequisites"><xsl:value-of select="string($getFeatureInfoXMLPOST and $Server.KVP.GET.GetFeatureInfo.Optional.Prerequisite-2)"/></xsl:element>
 
         <xsl:variable name="Server.KVP.GET.GetFeatureInfo.Missing.Prerequisite-2" select="$Server.KVP.GET.GetFeatureInfo.Mandatory.Prerequisite-2"/>
@@ -780,8 +783,7 @@
     </xsl:element>
   </xsl:when>
   <xsl:otherwise>
-    <ctl:message>Server does not support XML POST GetCapabilities and GetTile ... failed prerequisite check.  No other test will be executed.</ctl:message>
-    <ctl:skipped />
+    <ctl:message>Server does not support XML POST GetCapabilities and GetTile ... Server.XML.POST tests will not be executed.</ctl:message>
   </xsl:otherwise>
 </xsl:choose>
 </ctl:code>
@@ -899,10 +901,11 @@
             <xsl:variable name="Server.KVP.GET.GetCapabilities.Response.No.Layers.OtherSource.Prerequisite-2" select="count($wmts.capabilities.doc/wmts:Contents/wmts:Layer) = 0"/>
             <xsl:element name="Server.SOAP.POST.GetCapabilities.Response.No.Layers.OtherSource.Prerequisites"><xsl:value-of select="string($getCapabilitiesSOAPPOST  and $Server.KVP.GET.GetCapabilities.Response.SchemaValid and $Server.KVP.GET.GetCapabilities.Response.No.Layers.OtherSource.Prerequisite-2)"/></xsl:element>
             <xsl:element name="Server.SOAP.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Resource.Prerequisites"><xsl:value-of select="string($getCapabilitiesSOAPPOST and $Server.KVP.GET.GetCapabilities.Response.SchemaValid)"/></xsl:element>
-
+            <!--
             <xsl:variable name="Server.KVP.GET.GetCapabilities.Response.Layer.LegendURL.Correct.Resource" select="wmtsFunctions:allLayerLegendURLCorrectResource($wmts.capabilities.doc)"/>	
-            <xsl:element name="Server.SOAP.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Format.Prerequisites"><xsl:value-of select="string($getCapabilitiesSOAPPOST and $Server.KVP.GET.GetCapabilities.Response.SchemaValid and ($Server.KVP.GET.GetCapabilities.Response.Layer.LegendURL.Correct.Resource = 'true'))"/></xsl:element>
-            <xsl:element name="Server.SOAP.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Size.Prerequisites"><xsl:value-of select="string($getCapabilitiesSOAPPOST and $Server.KVP.GET.GetCapabilities.Response.SchemaValid and ($Server.KVP.GET.GetCapabilities.Response.Layer.LegendURL.Correct.Resource = 'true'))"/></xsl:element>
+            <xsl:element name="Server.SOAP.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Format.Prerequisites"><xsl:value-of select="string($getCapabilitiesSOAPPOST and $Server.KVP.GET.GetCapabilities.Response.SchemaValid)"/></xsl:element>
+            <xsl:element name="Server.SOAP.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Size.Prerequisites"><xsl:value-of select="string($getCapabilitiesSOAPPOST and $Server.KVP.GET.GetCapabilities.Response.SchemaValid)"/></xsl:element>
+			-->
             <xsl:element name="Server.SOAP.POST.GetCapabilities.Response.Dimension.Identifiers.Unique.Prerequisites"><xsl:value-of select="string($getCapabilitiesSOAPPOST and $Server.KVP.GET.GetCapabilities.Response.SchemaValid)"/></xsl:element>
 
             <xsl:variable name="Server.KVP.GET.GetCapabilities.Response.TileMatrixSet.WellKnownScaleSet.Prerequisite-2" select="some $wkss in $wmts.capabilities.doc/wmts:Contents/wmts:TileMatrixSet/wmts:WellKnownScaleSet satisfies boolean($wkss = 'urn:ogc:def:wkss:OGC:1.0:GlobalCRS84Scale' or $wkss = 'urn:ogc:def:wkss:OGC:1.0:GlobalCRS84Pixel' or $wkss = 'urn:ogc:def:wkss:OGC:1.0:GoogleCRS84Quad' or $wkss = 'urn:ogc:def:wkss:OGC:1.0:GoogleMapsCompatible')"/>
@@ -939,7 +942,7 @@
           </xsl:element>
 
           <xsl:element name="GetTile.Implemented.SOAP.POST">
-            <xsl:variable name="Server.KVP.GET.GetTile.Optional.Prerequisite-2" select="boolean($wmts.capabilities.doc/wmts:Contents/wmts:Layer[count(wmts:Dimension) > 2])"/>
+            <xsl:variable name="Server.KVP.GET.GetTile.Optional.Prerequisite-2" select="boolean($wmts.capabilities.doc/wmts:Contents/wmts:Layer[count(wmts:Dimension) >= 2])"/>
             <xsl:element name="Server.SOAP.POST.GetTile.Optional.Prerequisites"><xsl:value-of select="string($getTileSOAPPOST and $Server.KVP.GET.GetTile.Optional.Prerequisite-2)"/></xsl:element>
 
             <xsl:variable name="Server.KVP.GET.GetTile.Invalid.Tile.Row.TileMatrixSetLimits.Prerequisite-2" select="boolean($wmts.capabilities.doc/wmts:Contents/wmts:Layer/wmts:TileMatrixSetLink[wmts:TileMatrixSetLimits])"/>
@@ -963,7 +966,7 @@
             <xsl:variable name="Server.KVP.GET.GetTile.Current.SampleDimension.Prerequisite-2" select="boolean($wmts.capabilities.doc/wmts:Contents/wmts:Layer[wmts:Dimension/wmts:Current])"/>
             <xsl:element name="Server.SOAP.POST.GetTile.Current.SampleDimension.Prerequisites"><xsl:value-of select="string($getTileSOAPPOST and $Server.KVP.GET.GetTile.Current.SampleDimension.Prerequisite-2)"/></xsl:element>
 
-            <xsl:variable name="Server.KVP.GET.GetTile.Valid.Tile.Transparency.TransparentNodata" select="boolean($wmts.capabilities.doc/wmts:Contents/wmts:Layer[ows:Identifier = 'TransparentNodata'])"/>
+            <xsl:variable name="Server.KVP.GET.GetTile.Valid.Tile.Transparency.TransparentNodata" select="boolean($wmts.capabilities.doc/wmts:Contents/wmts:Layer[wmts:Format[starts-with(concat(.,';'),'image/png;') or starts-with(concat(.,';'), 'image/gif;')]])"/>
             <xsl:element name="Server.SOAP.POST.GetTile.Valid.Tile.Transparency.Prerequisites"><xsl:value-of select="string($getTileSOAPPOST and $Server.KVP.GET.GetTile.Valid.Tile.Transparency.TransparentNodata)"/></xsl:element>
           </xsl:element>
 
@@ -973,7 +976,7 @@
             <xsl:variable name="Server.KVP.GET.GetFeatureInfo.Mandatory.Prerequisite-2" select="boolean($wmts.capabilities.doc/wmts:Contents/wmts:Layer[wmts:InfoFormat][not(wmts:Dimension) or (every $d in wmts:Dimension satisfies $d/wmts:Default)])"/>
             <xsl:element name="Server.SOAP.POST.GetFeatureInfo.Mandatory.Prerequisites"><xsl:value-of select="string($getFeatureInfoSOAPPOST and $Server.KVP.GET.GetFeatureInfo.Mandatory.Prerequisite-2)"/></xsl:element>
 
-            <xsl:variable name="Server.KVP.GET.GetFeatureInfo.Optional.Prerequisite-2" select="boolean($wmts.capabilities.doc/wmts:Contents/wmts:Layer[wmts:InfoFormat and count(wmts:Dimension) > 2])"/>"/>
+            <xsl:variable name="Server.KVP.GET.GetFeatureInfo.Optional.Prerequisite-2" select="boolean($wmts.capabilities.doc/wmts:Contents/wmts:Layer[wmts:InfoFormat and count(wmts:Dimension) >= 2])"/>"/>
         <xsl:element name="Server.SOAP.POST.GetFeatureInfo.Optional.Prerequisites"><xsl:value-of select="string($getFeatureInfoSOAPPOST and $Server.KVP.GET.GetFeatureInfo.Optional.Prerequisite-2)"/></xsl:element>
 
         <xsl:variable name="Server.KVP.GET.GetFeatureInfo.Missing.Prerequisite-2" select="$Server.KVP.GET.GetFeatureInfo.Mandatory.Prerequisite-2"/>
@@ -1036,8 +1039,7 @@
     </xsl:element>
   </xsl:when>
   <xsl:otherwise>
-    <ctl:message>Server does not support SOAP POST GetCapabilities and GetTile ... failed prerequisite check.  No other test will be executed.</ctl:message>
-    <ctl:skipped />
+    <ctl:message>Server does not support SOAP POST GetCapabilities and GetTile ... Server.SOAP.POST tests will not be executed.</ctl:message>
   </xsl:otherwise>
 </xsl:choose>
 </ctl:code>
@@ -1136,7 +1138,7 @@
           </xsl:element>
 
           <xsl:element name="GetTile.Implemented.RESTful">
-            <xsl:variable name="Server.KVP.GET.GetTile.Optional.Prerequisite-2" select="boolean($wmts.capabilities.doc/wmts:Contents/wmts:Layer[count(wmts:Dimension) > 2])"/>
+            <xsl:variable name="Server.KVP.GET.GetTile.Optional.Prerequisite-2" select="boolean($wmts.capabilities.doc/wmts:Contents/wmts:Layer[count(wmts:Dimension) >= 2])"/>
             <xsl:element name="Server.RESTful.GetTile.Optional.Prerequisites"><xsl:value-of select="string($getTileRESTful and $Server.KVP.GET.GetTile.Optional.Prerequisite-2)"/></xsl:element>
 
             <xsl:variable name="Server.KVP.GET.GetTile.Invalid.Tile.Row.TileMatrixSetLimits.Prerequisite-2" select="boolean($wmts.capabilities.doc/wmts:Contents/wmts:Layer/wmts:TileMatrixSetLink[wmts:TileMatrixSetLimits])"/>
@@ -1158,7 +1160,7 @@
             <xsl:variable name="Server.KVP.GET.GetTile.Current.SampleDimension.Prerequisite-2" select="boolean($wmts.capabilities.doc/wmts:Contents/wmts:Layer[wmts:Dimension/wmts:Current])"/>
             <xsl:element name="Server.RESTful.GetTile.Current.SampleDimension.Prerequisites"><xsl:value-of select="string($getTileRESTful and $Server.KVP.GET.GetTile.Current.SampleDimension.Prerequisite-2)"/></xsl:element>
 
-            <xsl:variable name="Server.KVP.GET.GetTile.Valid.Tile.Transparency.TransparentNodata" select="boolean($wmts.capabilities.doc/wmts:Contents/wmts:Layer[ows:Identifier = 'TransparentNodata'])"/>
+            <xsl:variable name="Server.KVP.GET.GetTile.Valid.Tile.Transparency.TransparentNodata" select="boolean($wmts.capabilities.doc/wmts:Contents/wmts:Layer[wmts:Format[starts-with(concat(.,';'),'image/png;') or starts-with(concat(.,';'), 'image/gif;')]])"/>
             <xsl:element name="Server.RESTful.GetTile.Valid.Tile.Transparency.Prerequisites"><xsl:value-of select="string($getTileRESTful and $Server.KVP.GET.GetTile.Valid.Tile.Transparency.TransparentNodata)"/></xsl:element>
           </xsl:element>
 
@@ -1168,7 +1170,7 @@
             <xsl:variable name="Server.KVP.GET.GetFeatureInfo.Mandatory.Prerequisite-2" select="boolean($wmts.capabilities.doc/wmts:Contents/wmts:Layer[wmts:InfoFormat][not(wmts:Dimension) or (every $d in wmts:Dimension satisfies $d/wmts:Default)])"/>
             <xsl:element name="Server.RESTful.GetFeatureInfo.Mandatory.Prerequisites"><xsl:value-of select="string($getFeatureInfoRESTful and $Server.KVP.GET.GetFeatureInfo.Mandatory.Prerequisite-2)"/></xsl:element>
 
-            <xsl:variable name="Server.KVP.GET.GetFeatureInfo.Optional.Prerequisite-2" select="boolean($wmts.capabilities.doc/wmts:Contents/wmts:Layer[wmts:InfoFormat and count(wmts:Dimension) > 2])"/>"/>
+            <xsl:variable name="Server.KVP.GET.GetFeatureInfo.Optional.Prerequisite-2" select="boolean($wmts.capabilities.doc/wmts:Contents/wmts:Layer[wmts:InfoFormat and count(wmts:Dimension) >= 2])"/>"/>
         <xsl:element name="Server.RESTful.GetFeatureInfo.Optional.Prerequisites"><xsl:value-of select="string($getFeatureInfoRESTful and $Server.KVP.GET.GetFeatureInfo.Optional.Prerequisite-2)"/></xsl:element>
 
         <xsl:variable name="Server.KVP.GET.GetFeatureInfo.Missing.Prerequisite-2" select="$Server.KVP.GET.GetFeatureInfo.Mandatory.Prerequisite-2"/>
@@ -1223,8 +1225,7 @@
     </xsl:element>
   </xsl:when>
   <xsl:otherwise>
-    <ctl:message>Server does not support KVP POST GetCapabilities and GetTile ... failed prerequisite check.  No other test will be executed.</ctl:message>
-    <ctl:skipped />
+    <ctl:message>Server does not contain RESTful capabilities and tile endpoints ... Server.RESTful tests will not be executed.</ctl:message>
   </xsl:otherwise>
 </xsl:choose>
 </ctl:code>

@@ -1349,6 +1349,8 @@
 		f.  height - must be the height (in pixels) of the legend image</ctl:assertion>
 	<ctl:comment>Verify that the metadata for each of the LegendURL resources is correct. </ctl:comment>
 	<ctl:link>docs/wmts/1.0/WMTS 1.0 ATS.html#Server.KVP.GET.GetCapabilities.Response.Layer.LegendURL.Correct.Resource</ctl:link>
+	<ctl:link>docs/wmts/1.0/WMTS 1.0 ATS.html#Server.KVP.GET.GetCapabilities.Response.Layer.LegendURL.Correct.Format</ctl:link>
+	<ctl:link>docs/wmts/1.0/WMTS 1.0 ATS.html#Server.KVP.GET.GetCapabilities.Response.Layer.LegendURL.Correct.Size</ctl:link>
 	<ctl:code>
 		<xsl:choose>
 			<xsl:when test="$metPrerequisites = 'true' ">
@@ -2750,6 +2752,8 @@
 		f.  height - must be the height (in pixels) of the legend image</ctl:assertion>
 	<ctl:comment>Verify that the metadata for each of the LegendURL resources is correct. </ctl:comment>
 	<ctl:link>docs/wmts/1.0/WMTS 1.0 ATS.html#Server.KVP.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Resource</ctl:link>
+	<ctl:link>docs/wmts/1.0/WMTS 1.0 ATS.html#Server.KVP.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Format</ctl:link>
+	<ctl:link>docs/wmts/1.0/WMTS 1.0 ATS.html#Server.KVP.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Size</ctl:link>
 	<ctl:code>
 		<xsl:choose>
 			<xsl:when test="$metPrerequisites = 'true' ">
@@ -4100,6 +4104,8 @@
 		f.  height - must be the height (in pixels) of the legend image</ctl:assertion>
 	<ctl:comment>Verify that the metadata for each of the LegendURL resources is correct. </ctl:comment>
 	<ctl:link>docs/wmts/1.0/WMTS 1.0 ATS.html#Server.XML.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Resource</ctl:link>
+	<ctl:link>docs/wmts/1.0/WMTS 1.0 ATS.html#Server.XML.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Format</ctl:link>
+	<ctl:link>docs/wmts/1.0/WMTS 1.0 ATS.html#Server.XML.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Size</ctl:link>
 	<ctl:code>
 		<xsl:choose>
 			<xsl:when test="$metPrerequisites = 'true' ">
@@ -5422,6 +5428,8 @@
 		f.  height - must be the height (in pixels) of the legend image</ctl:assertion>
 	<ctl:comment>Verify that the metadata for each of the LegendURL resources is correct. </ctl:comment>
 	<ctl:link>docs/wmts/1.0/WMTS 1.0 ATS.html#Server.SOAP.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Resource</ctl:link>
+	<ctl:link>docs/wmts/1.0/WMTS 1.0 ATS.html#Server.SOAP.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Format</ctl:link>
+	<ctl:link>docs/wmts/1.0/WMTS 1.0 ATS.html#Server.SOAP.POST.GetCapabilities.Response.Layer.LegendURL.Correct.Size</ctl:link>
 	<ctl:code>
 		<xsl:choose>
 			<xsl:when test="$metPrerequisites = 'true' ">
