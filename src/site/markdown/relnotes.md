@@ -1,5 +1,10 @@
 # Release Notes OGC WMTS 1.0 Test Suite
 
+## 1.7 (2024-01)
+
+* [#78](https://github.com/opengeospatial/ets-wmts10/pull/78) - Bug fixes, GetFeatureInfo tests, RESTful tests
+* [#84](https://github.com/opengeospatial/ets-wmts10/pull/84) - Set xercesImpl to version 2.12.2
+
 ## 1.6 (2023-12)
 
 * [#79](https://github.com/opengeospatial/ets-wmts10/issues/79) - Failing WMTS compliance test for capabilities that include RESTful operation URLs
