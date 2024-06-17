@@ -7600,10 +7600,10 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 			<xsl:variable name="matrixLimits" select="count($tileMatrixLimits/*) gt 0"/>
 			<xsl:choose>
 				<xsl:when test="$matrixLimits">
-					<xsl:value-of select="xs:integer($tileMatrixLimits/wmts:MinTileRow)"/>
+					<xsl:value-of select="xsd:integer($tileMatrixLimits/wmts:MinTileRow)"/>
 				</xsl:when>
 				<xsl:otherwise>
-					<xsl:value-of select="xs:integer(0)"/>
+					<xsl:value-of select="xsd:integer(0)"/>
 				</xsl:otherwise>
 			</xsl:choose>
 		</ctl:code>
@@ -7616,10 +7616,10 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 			<xsl:variable name="matrixLimits" select="count($tileMatrixLimits/*) gt 0"/>
 			<xsl:choose>
 				<xsl:when test="$matrixLimits">
-					<xsl:value-of select="xs:integer($tileMatrixLimits/wmts:MaxTileRow)"/>
+					<xsl:value-of select="xsd:integer($tileMatrixLimits/wmts:MaxTileRow)"/>
 				</xsl:when>
 				<xsl:otherwise>
-					<xsl:value-of select="xs:integer($tileMatrix/wmts:MatrixHeight) - 1"/>
+					<xsl:value-of select="xsd:integer($tileMatrix/wmts:MatrixHeight) - 1"/>
 				</xsl:otherwise>
 			</xsl:choose>
 		</ctl:code>
@@ -7631,10 +7631,10 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 			<xsl:variable name="matrixLimits" select="count($tileMatrixLimits/*) gt 0"/>
 			<xsl:choose>
 				<xsl:when test="$matrixLimits">
-					<xsl:value-of select="xs:integer($tileMatrixLimits/wmts:MinTileCol)"/>
+					<xsl:value-of select="xsd:integer($tileMatrixLimits/wmts:MinTileCol)"/>
 				</xsl:when>
 				<xsl:otherwise>
-					<xsl:value-of select="xs:integer(0)"/>
+					<xsl:value-of select="xsd:integer(0)"/>
 				</xsl:otherwise>
 			</xsl:choose>
 		</ctl:code>
@@ -7647,10 +7647,10 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 			<xsl:variable name="matrixLimits" select="count($tileMatrixLimits/*) gt 0"/>
 			<xsl:choose>
 				<xsl:when test="$matrixLimits">
-					<xsl:value-of select="xs:integer($tileMatrixLimits/wmts:MaxTileCol)"/>
+					<xsl:value-of select="xsd:integer($tileMatrixLimits/wmts:MaxTileCol)"/>
 				</xsl:when>
 				<xsl:otherwise>
-					<xsl:value-of select="xs:integer($tileMatrix/wmts:MatrixWidth) - 1"/>
+					<xsl:value-of select="xsd:integer($tileMatrix/wmts:MatrixWidth) - 1"/>
 				</xsl:otherwise>
 			</xsl:choose>
 		</ctl:code>
