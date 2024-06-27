@@ -1,5 +1,10 @@
 # Release Notes OGC WMTS 1.0 Test Suite
 
+## 1.8 (2024-06)
+
+* [#85](https://github.com/opengeospatial/ets-wmts10/issues/85) - Exponential notation sometimes used for row/col in GetTile requests
+* [#87](https://github.com/opengeospatial/ets-wmts10/pull/87) - Update value of soapui iut
+
 ## 1.7 (2024-01)
 
 * [#78](https://github.com/opengeospatial/ets-wmts10/pull/78) - Bug fixes, GetFeatureInfo tests, RESTful tests
