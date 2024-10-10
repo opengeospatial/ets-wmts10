@@ -1164,6 +1164,7 @@
           <ctl:param name="service"><xsl:value-of select="$service"/></ctl:param>
           <ctl:param name="request">GetCapabilities</ctl:param>
           <ctl:param name="sections">all</ctl:param>
+          <ctl:param name="acceptversions">1.0.0</ctl:param>
           <parsers:XMLValidatingParser>
             <parsers:schemas>
               <parsers:schema type="url">http://www.w3.org/2001/xml.xsd</parsers:schema>
@@ -1370,6 +1371,7 @@
           <ctl:param name="service"><xsl:value-of select="$service"/></ctl:param>
           <ctl:param name="request">GetCapabilities</ctl:param>
           <ctl:param name="sections"><xsl:value-of select="$sections"/></ctl:param>
+          <ctl:param name="AcceptVersionS">1.0.0</ctl:param>
           <parsers:XMLValidatingParser>
             <parsers:schemas>
               <parsers:schema type="url">http://www.w3.org/2001/xml.xsd</parsers:schema>
