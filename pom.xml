@@ -4,7 +4,7 @@
   <artifactId>ets-wmts10</artifactId>
   <groupId>org.opengis.cite</groupId>
   <version>1.9-SNAPSHOT</version>
-  <packaging>pom</packaging>
+  <packaging>jar</packaging>
 
   <name>OGC Web Map Tile Service 1.0.0 - Executable Test Suite</name>
   <description>
