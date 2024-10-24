@@ -861,7 +861,7 @@
 				<xsl:choose>
 					<xsl:when test="$selected = 'true' ">
 						<ctl:message>Sending KVP GET GetCapabilities request with optional parameter sections=Bogus and validating response.</ctl:message>
-						<xsl:variable name="invalidQuery">service=WMTS&amp;request=GetCapabilities&amp;sections=Bogus&amp;ACCEPTVERSIONS=1.0.0</xsl:variable>
+						<xsl:variable name="invalidQuery">service=WMTS&amp;request=GetCapabilities&amp;sections=Bogus&amp;acceptversions=1.0.0</xsl:variable>
 						<xsl:variable name="testResult">
 							<ctl:call-function name="owsFunctions:provokeKVPException">
 								<ctl:with-param name="capabilitiesURL" select="$capabilitiesURL"/>
@@ -920,7 +920,7 @@
 				<xsl:choose>
 					<xsl:when test="$selected = 'true' ">
 						<ctl:message>Sending KVP GET GetCapabilities request with optional parameter sections with a missing parameter value and validating response.</ctl:message>
-						<xsl:variable name="invalidQuery">service=WMTS&amp;request=GetCapabilities&amp;sections=&amp;acceptVERSIONs=1.0.0</xsl:variable>
+						<xsl:variable name="invalidQuery">service=WMTS&amp;request=GetCapabilities&amp;sections=&amp;acceptversions=1.0.0</xsl:variable>
 						<xsl:variable name="testResult">
 							<ctl:call-function name="owsFunctions:provokeKVPException">
 								<ctl:with-param name="capabilitiesURL" select="$capabilitiesURL"/>
