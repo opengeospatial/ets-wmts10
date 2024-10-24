@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ctl:package xmlns:ctl="http://www.occamlab.com/ctl" 
+xmlns:fn="http://www.w3.org/2005/xpath-functions"
 xmlns:gml="http://www.opengis.net/gml" 
 xmlns:html="http://www.w3.org/1999/xhtml" 
 xmlns:ogc="http://www.opengis.net/ogc"
@@ -6315,9 +6316,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 						</xsl:otherwise>
 					</xsl:choose>
 				</xsl:when>
-				<xsl:otherwise>
-					<xsl:text>false</xsl:text>
-				</xsl:otherwise>
 			</xsl:choose>
 		</ctl:code>
 	</ctl:function>
@@ -6356,8 +6354,7 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 			<xsl:variable name="wellKnownScaleDenominators" select="wmtsFunctions:scaleDenominatorsForWellKnownScaleSet($wellKnownScaleSet)"/>
 			<xsl:choose>
 				<xsl:when test="$wellKnownScaleDenominators = ',' ">
-					<ctl:message select="concat('No scale denominators are available for well known scale set ', $wellKnownScaleSet, ' which is unknown.')"/>
-					<xsl:text>false</xsl:text>
+					<!-- <ctl:message select="concat('No scale denominators are available for well known scale set ', $wellKnownScaleSet, ' which is unknown.')"/> -->
 				</xsl:when>
 				<xsl:otherwise>
 					<xsl:variable name="scaleDenominatorsList" select="tokenize($scaleDenominators, ',')"/>
@@ -6368,28 +6365,22 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 					</xsl:variable>
 					<xsl:variable name="sortedList" select="tokenize($sortedScaleDenominators, '\s')"/>
 					<xsl:variable name="wellKnownList" select="tokenize($wellKnownScaleDenominators, ',')"/>
-					<xsl:variable name="numSorted" select="count($sortedList)"/>
-					<xsl:variable name="numWK" select="count($wellKnownList)"/>
+					<xsl:variable name="numToTest" select="fn:min((count($sortedList), count($wellKnownList)))"/>
+					<xsl:variable name="eps" select="number(.000001)"/>
 					<!--
 					<ctl:message select="concat('scale Denominators ', $scaleDenominators)"/>
 					<ctl:message select="concat('scaleDenominatorsList ', string-join($scaleDenominatorsList, ','))"/>
 					<ctl:message select="concat('sortedList ', string-join($sortedList, ','))"/>
-					<ctl:message select="concat('num sorted ', $numSorted, ' num wk ', $numWK)"/>
+					<ctl:message select="concat('numToTest ', $numToTest)"/>
 -->
-					<xsl:choose>
-						<xsl:when test="$numSorted gt $numWK">
-							<ctl:message select="concat('More scale denominators (', $numSorted, ') from tile matrix set to test than are defined (', $numWK, ') for well known scale set ', $wellKnownScaleSet)"/>
-							<xsl:text>false</xsl:text>
-						</xsl:when>
-						<xsl:otherwise>
 							<xsl:variable name="results">
-								<xsl:for-each select="1 to $numSorted">
+								<xsl:for-each select="1 to $numToTest">
 									<xsl:variable name="pos" select="."/>
 									<xsl:variable name="sd" select="number($sortedList[$pos])"/>
 									<xsl:variable name="wk" select="number($wellKnownList[$pos])"/>
 									<!-- <ctl:message select="concat('Position ', $pos, ' scale denominator ', $sd, ' well known ', $wk)"/> -->
 									<xsl:choose>
-										<xsl:when test="$sd != $wk">
+										<xsl:when test="fn:abs($sd - $wk) gt $eps">
 											<ctl:message select="concat('Scale Denominator ', $sd, ' in position ', $pos, ' sorted descending does not match corresponding value ', $wk, ' for well known scale set ', $wellKnownScaleSet)"/>
 											<xsl:text>false|</xsl:text>
 										</xsl:when>
@@ -6404,8 +6395,6 @@ xmlns:wwwFunctions="https://cite.opengeospatial.org/wmts-1.0.0/src/ctl/wwwFuncti
 									<xsl:text>true</xsl:text>
 								</xsl:otherwise>
 							</xsl:choose>
-						</xsl:otherwise>
-					</xsl:choose>
 				</xsl:otherwise>
 			</xsl:choose>
 		</ctl:code>
