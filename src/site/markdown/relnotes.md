@@ -1,5 +1,13 @@
 # Release Notes OGC WMTS 1.0 Test Suite
 
+## 1.9 (2024-10)
+
+* [#91](https://github.com/opengeospatial/ets-wmts10/issues/91) - Test wmts:Server.KVP.GET.GetCapabilities.Response.TileMatrixSet.WellKnownScaleSet is too strict
+* [#90](https://github.com/opengeospatial/ets-wmts10/issues/90) - Some GetCapabilities requests do not specify version 1.0.0
+* [#89](https://github.com/opengeospatial/ets-wmts10/issues/89) - REST interface is not available on Beta
+* [#94](https://github.com/opengeospatial/ets-wmts10/pull/94) - Set parameter keys to lower cases to align to other parameters
+* [#88](https://github.com/opengeospatial/ets-wmts10/pull/88) - Introduce nexus-staging-maven-plugin
+
 ## 1.8 (2024-06)
 
 * [#85](https://github.com/opengeospatial/ets-wmts10/issues/85) - Exponential notation sometimes used for row/col in GetTile requests
