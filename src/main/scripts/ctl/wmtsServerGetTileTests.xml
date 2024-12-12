@@ -25,7 +25,7 @@
 <!-- note:  tests are grouped by operation and type by containment in group elements created by bootstrap.xml functions.
 				If you change a test type, you need to move it to its new group in the appropriate bootstrap function. -->
 				
-<ctl:test name="wmts:GetTile.Mandatory.KVP.GET" type="Mandatory">
+<ctl:test name="wmts:GetTile.Mandatory.KVP.GET" type="MandatoryIfImplemented">
 	<ctl:param name="wmts.capabilities.doc">WMTS capabilities document from bootstrap</ctl:param>
 	<ctl:param name="bootstrap">Bootstrap prerequisites test results in XML</ctl:param>
 	<ctl:param name="selected">Selected tests in XML</ctl:param>
@@ -73,7 +73,7 @@
 	</ctl:code>
 </ctl:test>
 
-<ctl:test name="wmts:GetTile.Mandatory.KVP.POST" type="Mandatory">
+<ctl:test name="wmts:GetTile.Mandatory.KVP.POST" type="MandatoryIfImplemented">
 	<ctl:param name="wmts.capabilities.doc">WMTS capabilities document from bootstrap</ctl:param>
 	<ctl:param name="bootstrap">Bootstrap prerequisites test results in XML</ctl:param>
 	<ctl:param name="selected">Selected tests in XML</ctl:param>
@@ -121,7 +121,7 @@
 	</ctl:code>
 </ctl:test>
 
-<ctl:test name="wmts:GetTile.Mandatory.XML.POST" type="Mandatory">
+<ctl:test name="wmts:GetTile.Mandatory.XML.POST" type="MandatoryIfImplemented">
 	<ctl:param name="wmts.capabilities.doc">WMTS capabilities document from bootstrap</ctl:param>
 	<ctl:param name="bootstrap">Bootstrap prerequisites test results in XML</ctl:param>
 	<ctl:param name="selected">Selected tests in XML</ctl:param>
@@ -169,7 +169,7 @@
 	</ctl:code>
 </ctl:test>
 
-<ctl:test name="wmts:GetTile.Mandatory.SOAP.POST" type="Mandatory">
+<ctl:test name="wmts:GetTile.Mandatory.SOAP.POST" type="MandatoryIfImplemented">
 	<ctl:param name="wmts.capabilities.doc">WMTS capabilities document from bootstrap</ctl:param>
 	<ctl:param name="bootstrap">Bootstrap prerequisites test results in XML</ctl:param>
 	<ctl:param name="selected">Selected tests in XML</ctl:param>
@@ -217,7 +217,7 @@
 	</ctl:code>
 </ctl:test>
 
-<ctl:test name="wmts:GetTile.Mandatory.RESTful" type="Mandatory">
+<ctl:test name="wmts:GetTile.Mandatory.RESTful" type="MandatoryIfImplemented">
 	<ctl:param name="wmts.capabilities.doc">WMTS capabilities document from bootstrap</ctl:param>
 	<ctl:param name="bootstrap">Bootstrap prerequisites test results in XML</ctl:param>
 	<ctl:param name="selected">Selected tests in XML</ctl:param>
@@ -266,7 +266,7 @@
 </ctl:test>
 
 
-<ctl:test name="wmts:Server.KVP.GET.GetTile.Mandatory" type="Mandatory">
+<ctl:test name="wmts:Server.KVP.GET.GetTile.Mandatory" type="MandatoryIfImplemented">
 	<ctl:param name="metPrerequisites">Bootstrap prerequisites test result for this test - true or false</ctl:param>
 	<ctl:param name="selected">This test was selected for execution - true or false </ctl:param>
 	<ctl:param name="tileURL">/wmts:Capabilities/ows:OperationsMetadata/ows:Operation[@name='GetTile']/ows:DCP/ows:HTTP/ows:Get/@xlink:href</ctl:param>
@@ -366,7 +366,7 @@
 	</ctl:code>
 </ctl:test>
 
-<ctl:test name="wmts:Server.KVP.GET.GetTile.Missing" type="Mandatory">
+<ctl:test name="wmts:Server.KVP.GET.GetTile.Missing" type="MandatoryIfImplemented">
 	<ctl:param name="metPrerequisites">Bootstrap prerequisites test result for this test - true or false</ctl:param>
 	<ctl:param name="selected">This test was selected for execution - true or false </ctl:param>
 	<ctl:param name="tileURL">/wmts:Capabilities/ows:OperationsMetadata/ows:Operation[@name='GetTile']/ows:DCP/ows:HTTP/ows:Get/@xlink:href</ctl:param>
@@ -420,7 +420,7 @@
 	</ctl:code>
 </ctl:test>
 
-<ctl:test name="wmts:Server.KVP.GET.GetTile.Invalid.Layer" type="Mandatory">
+<ctl:test name="wmts:Server.KVP.GET.GetTile.Invalid.Layer" type="MandatoryIfImplemented">
 	<ctl:param name="metPrerequisites">Bootstrap prerequisites test result for this test - true or false</ctl:param>
 	<ctl:param name="selected">This test was selected for execution - true or false </ctl:param>
 	<ctl:param name="tileURL">/wmts:Capabilities/ows:OperationsMetadata/ows:Operation[@name='GetTile']/ows:DCP/ows:HTTP/ows:Get/@xlink:href</ctl:param>
@@ -474,7 +474,7 @@
 	</ctl:code>
 </ctl:test>
 
-<ctl:test name="wmts:Server.KVP.GET.GetTile.Invalid.TileMatrixSet" type="Mandatory">
+<ctl:test name="wmts:Server.KVP.GET.GetTile.Invalid.TileMatrixSet" type="MandatoryIfImplemented">
 	<ctl:param name="metPrerequisites">Bootstrap prerequisites test result for this test - true or false</ctl:param>
 	<ctl:param name="selected">This test was selected for execution - true or false </ctl:param>
 	<ctl:param name="tileURL">/wmts:Capabilities/ows:OperationsMetadata/ows:Operation[@name='GetTile']/ows:DCP/ows:HTTP/ows:Get/@xlink:href</ctl:param>
@@ -528,7 +528,7 @@
 	</ctl:code>
 </ctl:test>
 
-<ctl:test name="wmts:Server.KVP.GET.GetTile.Invalid.TileMatrix" type="Mandatory">
+<ctl:test name="wmts:Server.KVP.GET.GetTile.Invalid.TileMatrix" type="MandatoryIfImplemented">
 	<ctl:param name="metPrerequisites">Bootstrap prerequisites test result for this test - true or false</ctl:param>
 	<ctl:param name="selected">This test was selected for execution - true or false </ctl:param>
 	<ctl:param name="tileURL">/wmts:Capabilities/ows:OperationsMetadata/ows:Operation[@name='GetTile']/ows:DCP/ows:HTTP/ows:Get/@xlink:href</ctl:param>
@@ -684,7 +684,7 @@
 	</ctl:code>
 </ctl:test>
 
-<ctl:test name="wmts:Server.KVP.GET.GetTile.Invalid.Tile.Style" type="Mandatory">
+<ctl:test name="wmts:Server.KVP.GET.GetTile.Invalid.Tile.Style" type="MandatoryIfImplemented">
 	<ctl:param name="metPrerequisites">Bootstrap prerequisites test result for this test - true or false</ctl:param>
 	<ctl:param name="selected">This test was selected for execution - true or false </ctl:param>
 	<ctl:param name="tileURL">/wmts:Capabilities/ows:OperationsMetadata/ows:Operation[@name='GetTile']/ows:DCP/ows:HTTP/ows:Get/@xlink:href</ctl:param>
@@ -896,7 +896,7 @@
 	</ctl:code>
 </ctl:test>
 
-<ctl:test name="wmts:Server.KVP.GET.GetTile.Valid.Tile.Format" type="Mandatory">
+<ctl:test name="wmts:Server.KVP.GET.GetTile.Valid.Tile.Format" type="MandatoryIfImplemented">
 	<ctl:param name="metPrerequisites">Bootstrap prerequisites test result for this test - true or false</ctl:param>
 	<ctl:param name="selected">This test was selected for execution - true or false </ctl:param>
 	<ctl:param name="tileURL">/wmts:Capabilities/ows:OperationsMetadata/ows:Operation[@name='GetTile']/ows:DCP/ows:HTTP/ows:Get/@xlink:href</ctl:param>
@@ -947,7 +947,7 @@
 	</ctl:code>
 </ctl:test>
 
-<ctl:test name="wmts:Server.KVP.GET.GetTile.Invalid.Tile.Format" type="Mandatory">
+<ctl:test name="wmts:Server.KVP.GET.GetTile.Invalid.Tile.Format" type="MandatoryIfImplemented">
 	<ctl:param name="metPrerequisites">Bootstrap prerequisites test result for this test - true or false</ctl:param>
 	<ctl:param name="selected">This test was selected for execution - true or false </ctl:param>
 	<ctl:param name="tileURL">/wmts:Capabilities/ows:OperationsMetadata/ows:Operation[@name='GetTile']/ows:DCP/ows:HTTP/ows:Get/@xlink:href</ctl:param>
@@ -1003,7 +1003,7 @@
 	</ctl:code>
 </ctl:test>
 
-<ctl:test name="wmts:Server.KVP.GET.GetTile.Valid.Tile.Size" type="Mandatory">
+<ctl:test name="wmts:Server.KVP.GET.GetTile.Valid.Tile.Size" type="MandatoryIfImplemented">
 	<ctl:param name="metPrerequisites">Bootstrap prerequisites test result for this test - true or false</ctl:param>
 	<ctl:param name="selected">This test was selected for execution - true or false </ctl:param>
 	<ctl:param name="tileURL">/wmts:Capabilities/ows:OperationsMetadata/ows:Operation[@name='GetTile']/ows:DCP/ows:HTTP/ows:Get/@xlink:href</ctl:param>
