@@ -1,5 +1,9 @@
 # Release Notes OGC WMTS 1.0 Test Suite
 
+## 1.10 (2024-12)
+
+* [#95](https://github.com/opengeospatial/ets-wmts10/issues/95) - WTMS failed inherently for skipped tests on beta team engine?
+
 ## 1.9 (2024-10)
 
 * [#91](https://github.com/opengeospatial/ets-wmts10/issues/91) - Test wmts:Server.KVP.GET.GetCapabilities.Response.TileMatrixSet.WellKnownScaleSet is too strict
