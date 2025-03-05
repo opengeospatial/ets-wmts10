@@ -1,5 +1,11 @@
 # Release Notes OGC WMTS 1.0 Test Suite
 
+## 1.11 (2025-03)
+
+Attention: Java 17 and Tomcat 10.1 are required.
+
+* [#97](https://github.com/opengeospatial/ets-wmts10/issues/97) - Migrate test suite to TEAM Engine 6 (Java 17)
+
 ## 1.10 (2024-12)
 
 * [#95](https://github.com/opengeospatial/ets-wmts10/issues/95) - WTMS failed inherently for skipped tests on beta team engine?
