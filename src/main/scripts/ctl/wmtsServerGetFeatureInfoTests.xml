@@ -946,7 +946,7 @@ the request entity is a valid KVP GET GetFeatureInfo request with an optional sa
 	14.  the request entity is a valid KVP GET GetFeatureInfo request with the mandatory I parameter with a column index value from zero to the value of &lt;TileWidth&gt; minus 1 for the specified TileMatrix from the Service Metadata document;	
 	15.  the request entity is a valid KVP GET GetFeatureInfo request with the mandatory infoFormat parameter with an InfoFormat value that is not one of the &lt;InfoFormat&gt;s for the specified Layer from the Service Metadata document;
 	16.  the response entity is a schema-valid ows:Exception document.
-	17.  the response entity contains an exceptionCode attribute value of "InvalidParameterValue".
+	17.  the response entity contains an exceptionCode attribute value of "PointIJOutOfRange".
 	18.  the response entity contains a locator attribute value of the InfoFormat.
 	19.  the HTTP status code value is set to 400, corresponding to the message "Bad Request".</ctl:assertion>
 	<ctl:comment>Verify that when a GetFeature request contains an InfoFormat incorrect value, then the server throws an exception. </ctl:comment>
@@ -1003,7 +1003,7 @@ the request entity is a valid KVP GET GetFeatureInfo request with an optional sa
     14.  the request entity is a valid KVP GET GetFeatureInfo request with the mandatory I parameter with a column index value from zero to the value of &lt;TileWidth&gt; minus 1 for the specified TileMatrix from the Service Metadata document;
     15.  the request entity is a valid KVP GET GetFeatureInfo request with the mandatory infoFormat parameter with an InfoFormat value that is one of the &lt;InfoFormat&gt;s for the specified Layer from the Service Metadata document;
     16.  the response entity is a schema-valid ows:Exception document.
-    17.  the response entity contains an exceptionCode attribute value of "InvalidParameterValue".
+    17.  the response entity contains an exceptionCode attribute value of "PointIJOutOfRange".
     18.  the response entity contains a locator attribute value of "J".
     19.  the HTTP status code value is set to 400, corresponding to the message "Bad Request".</ctl:assertion>
 	<ctl:comment>Verify that when a GetFeature request contains a Pixel Row J incorrect value, then the server throws an exception. </ctl:comment>
